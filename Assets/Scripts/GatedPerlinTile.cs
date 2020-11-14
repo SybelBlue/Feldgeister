@@ -29,6 +29,9 @@ namespace UnityEngine.Tilemaps
         /// </summary>
         [SerializeField] public WeightedSprite[] Sprites;
 
+        // don't ask.
+        private static float one_ish = Mathf.PI / 3f;
+
         /// <summary>
         /// Retrieves any tile rendering data from the scripted tile.
         /// </summary>
@@ -41,7 +44,10 @@ namespace UnityEngine.Tilemaps
             
             if (Sprites == null || Sprites.Length <= 0) return;
             
-            float noiseValue = maxNoiseLevel * Mathf.PerlinNoise(stretch * position.x * Mathf.PI / 3f, stretch * position.y * Mathf.PI / 3f);
+            // need to multiply by one_ish so that the numbers are floats.
+            // Anything resembling an int will always return 46.75821.
+            // god help me
+            float noiseValue = maxNoiseLevel * Mathf.PerlinNoise(stretch * position.x * one_ish, stretch * position.y * one_ish);
 
             foreach (var spriteInfo in Sprites)
             {
