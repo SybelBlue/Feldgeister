@@ -33,13 +33,13 @@ MonoBehaviour:
     e33: 1
   m_InstancedGameObject: {fileID: 0}
   m_Flags: 1
-  m_ColliderType: 1
+  m_ColliderType: 0
   stretch: 1
-  maxNoiseLevel: 1050
+  maxNoiseLevel: 1000
   Sprites:
   - Sprite: {fileID: -1278126039186916399, guid: 7da770ef7766a4ce8b40466d35f66c3f,
       type: 3}
-    Weight: 800
+    Weight: 850
   - Sprite: {fileID: -3635625735869372126, guid: 7da770ef7766a4ce8b40466d35f66c3f,
       type: 3}
     Weight: 760

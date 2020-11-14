@@ -22,6 +22,13 @@ namespace UnityEngine.Tilemaps
             yOffset = Random.Range(1000, 10000);
         }
 
+        public override void RefreshTile(Vector3Int position, ITilemap tilemap)
+        {
+            Rerandomize();
+            base.RefreshTile(position, tilemap);
+            Debug.Log(position);
+        }
+
         /// <summary>
         /// Scales the step in noise between tiles.
         /// </summary>
