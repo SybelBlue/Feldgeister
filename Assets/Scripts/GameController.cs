@@ -6,12 +6,8 @@ public class GameController : MonoBehaviour
 {
     public UnityEngine.Tilemaps.GatedPerlinTile perlinGround;
     public UnityEngine.Tilemaps.Tilemap perlinGroundMap;
-    void Awake()
-    {
-        // perlinGround.Rerandomize();
-        // perlinGroundMap.RefreshAllTiles();
-        // UnityEngine.Tilemaps.GatedPerlinTile.Rerandomize();
-    }
+    
+    void Awake() => RandomizeGround();
 
     void Update()
     {
@@ -26,10 +22,12 @@ public class GameController : MonoBehaviour
 
     void OnGUI()
     {
-        if (GUI.Button(new Rect(2, 2, 90, 20), "Refresh All"))
+        if (GUI.Button(new Rect(2, 2, 120, 30), "Refresh Ground"))
         {
             Debug.LogWarning("Refreshing...");
-            perlinGroundMap.RefreshAllTiles();
+            RandomizeGround();
         }
     }
+
+    private void RandomizeGround() => perlinGroundMap.RefreshAllTiles();
 }
