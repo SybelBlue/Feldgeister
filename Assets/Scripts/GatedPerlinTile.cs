@@ -22,11 +22,11 @@ namespace UnityEngine.Tilemaps
             yOffset = Random.Range(1000, 10000);
         }
 
-        public override void RefreshTile(Vector3Int position, ITilemap tilemap)
+        public override bool StartUp(Vector3Int location, ITilemap tilemap, GameObject go)
         {
             Rerandomize();
-            base.RefreshTile(position, tilemap);
-            Debug.Log(position);
+            tilemap.RefreshTile(location);
+            return false;
         }
 
         /// <summary>
