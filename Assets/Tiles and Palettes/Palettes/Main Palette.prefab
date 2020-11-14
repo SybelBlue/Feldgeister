@@ -41,29 +41,11 @@ Tilemap:
   m_GameObject: {fileID: 3921444800371198169}
   m_Enabled: 1
   m_Tiles:
-  - first: {x: -1, y: 0, z: 0}
+  - first: {x: 1, y: 1, z: 0}
     second:
       serializedVersion: 2
       m_TileIndex: 18
-      m_TileSpriteIndex: 4294967295
-      m_TileMatrixIndex: 0
-      m_TileColorIndex: 0
-      m_TileObjectToInstantiateIndex: 65535
-      m_AllTileFlags: 1073741825
-  - first: {x: 0, y: 0, z: 0}
-    second:
-      serializedVersion: 2
-      m_TileIndex: 18
-      m_TileSpriteIndex: 4294967295
-      m_TileMatrixIndex: 0
-      m_TileColorIndex: 0
-      m_TileObjectToInstantiateIndex: 65535
-      m_AllTileFlags: 1073741825
-  - first: {x: 4, y: 0, z: 0}
-    second:
-      serializedVersion: 2
-      m_TileIndex: 18
-      m_TileSpriteIndex: 4294967295
+      m_TileSpriteIndex: 0
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -268,10 +250,10 @@ Tilemap:
     m_Data: {fileID: 11400000, guid: 55b94a79ca74341a283825a055ac9f40, type: 2}
   - m_RefCount: 1
     m_Data: {fileID: 11400000, guid: 7636f3c42056d48ecb8d0b3c73bebc5a, type: 2}
-  - m_RefCount: 3
+  - m_RefCount: 1
     m_Data: {fileID: 11400000, guid: cc8a52a8243ff4d6c86291985abaa10e, type: 2}
   m_TileSpriteArray:
-  - m_RefCount: 2
+  - m_RefCount: 3
     m_Data: {fileID: -3714409817710726143, guid: 7da770ef7766a4ce8b40466d35f66c3f,
       type: 3}
   - m_RefCount: 1
@@ -322,8 +304,10 @@ Tilemap:
   - m_RefCount: 1
     m_Data: {fileID: 3837198916444595400, guid: 7da770ef7766a4ce8b40466d35f66c3f,
       type: 3}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
   m_TileMatrixArray:
-  - m_RefCount: 21
+  - m_RefCount: 19
     m_Data:
       e00: 1
       e01: 0
@@ -342,8 +326,10 @@ Tilemap:
       e32: 0
       e33: 1
   m_TileColorArray:
-  - m_RefCount: 21
+  - m_RefCount: 19
     m_Data: {r: 1, g: 1, b: 1, a: 1}
+  - m_RefCount: 0
+    m_Data: {r: 0.76290464, g: 0.41515067, b: 0.45498842, a: 1}
   m_TileObjectToInstantiateArray: []
   m_AnimationFrameRate: 1
   m_Color: {r: 1, g: 1, b: 1, a: 1}

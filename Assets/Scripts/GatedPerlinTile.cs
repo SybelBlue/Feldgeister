@@ -14,6 +14,14 @@ namespace UnityEngine.Tilemaps
     [Serializable]
     public class GatedPerlinTile : Tile 
     {
+        private static int xOffset, yOffset;
+
+        public static void RandomizeAllTiles()
+        {
+            xOffset = Random.Range(1000, 10000);
+            yOffset = Random.Range(1000, 10000);
+        }
+
         /// <summary>
         /// Scales the step in noise between tiles.
         /// </summary>
@@ -47,7 +55,8 @@ namespace UnityEngine.Tilemaps
             // need to multiply by one_ish so that the numbers are floats.
             // Anything resembling an int will always return 46.75821.
             // god help me
-            float noiseValue = maxNoiseLevel * Mathf.PerlinNoise(stretch * position.x * one_ish, stretch * position.y * one_ish);
+            float noiseValue = maxNoiseLevel * Mathf.PerlinNoise(stretch * (position.x + xOffset) * one_ish, stretch * (position.y + yOffset) * one_ish);
+            noiseValue = Mathf.Min(maxNoiseLevel - 0.1f, Mathf.Max(noiseValue, 0.1f));
 
             foreach (var spriteInfo in Sprites)
             {
@@ -78,6 +87,7 @@ namespace UnityEngine.Tilemaps
         {
             m_Color = serializedObject.FindProperty("m_Color");
             m_ColliderType = serializedObject.FindProperty("m_ColliderType");
+            GatedPerlinTile.RandomizeAllTiles();
         }
 
         /// <summary>
@@ -103,6 +113,7 @@ namespace UnityEngine.Tilemaps
 
             EditorGUILayout.Space();
             Tile.stretch = EditorGUILayout.FloatField("Stretch", Tile.stretch);
+            Tile.stretch = Tile.stretch == 0 ? 1 : Tile.stretch;
             Tile.maxNoiseLevel = EditorGUILayout.IntField("Max Noise", Tile.maxNoiseLevel);
             EditorGUILayout.Space();
 
@@ -129,6 +140,7 @@ namespace UnityEngine.Tilemaps
 
             if (EditorGUI.EndChangeCheck())
             {
+                GatedPerlinTile.RandomizeAllTiles();
                 EditorUtility.SetDirty(Tile);
                 serializedObject.ApplyModifiedProperties();
             }
