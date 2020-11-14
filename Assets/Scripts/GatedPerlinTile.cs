@@ -113,6 +113,7 @@ namespace UnityEngine.Tilemaps
             lastSprite.Sprite = (Sprite) EditorGUILayout.ObjectField("Default Sprite", lastSprite.Sprite, typeof(Sprite), false, null);
             EditorGUI.BeginDisabledGroup(true);
             lastSprite.Weight = EditorGUILayout.IntField("Threshold " + (count - 1), 0);
+            Tile.Sprites[count - 1] = lastSprite;
             EditorGUI.EndDisabledGroup();
 
             EditorGUILayout.Space();
