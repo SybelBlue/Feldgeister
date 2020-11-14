@@ -9,7 +9,7 @@ public class GameController : MonoBehaviour
     void Awake()
     {
         // perlinGround.Rerandomize();
-        // perlinGroundMap.RefreshAllTiles();
+        perlinGroundMap.RefreshAllTiles();
         // UnityEngine.Tilemaps.GatedPerlinTile.Rerandomize();
     }
 

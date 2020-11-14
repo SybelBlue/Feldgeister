@@ -24,8 +24,7 @@ namespace UnityEngine.Tilemaps
 
         public override bool StartUp(Vector3Int location, ITilemap tilemap, GameObject go)
         {
-            Rerandomize();
-            tilemap.RefreshTile(location);
+            // Rerandomize();
             return false;
         }
 
@@ -73,6 +72,8 @@ namespace UnityEngine.Tilemaps
                     return;
                 }
             }
+
+            Debug.Log("get");
         }
     }
 
