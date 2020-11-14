@@ -14,9 +14,9 @@ namespace UnityEngine.Tilemaps
     [Serializable]
     public class GatedPerlinTile : Tile 
     {
-        private static int xOffset, yOffset;
+        private int xOffset, yOffset;
 
-        public static void RandomizeAllTiles()
+        public void Rerandomize()
         {
             xOffset = Random.Range(1000, 10000);
             yOffset = Random.Range(1000, 10000);
@@ -87,7 +87,7 @@ namespace UnityEngine.Tilemaps
         {
             m_Color = serializedObject.FindProperty("m_Color");
             m_ColliderType = serializedObject.FindProperty("m_ColliderType");
-            GatedPerlinTile.RandomizeAllTiles();
+            Tile.Rerandomize();
         }
 
         /// <summary>
@@ -112,13 +112,17 @@ namespace UnityEngine.Tilemaps
                 return;
 
             EditorGUILayout.Space();
-            Tile.stretch = EditorGUILayout.FloatField("Stretch", Tile.stretch);
-            Tile.stretch = Tile.stretch == 0 ? 1 : Tile.stretch;
-            Tile.maxNoiseLevel = EditorGUILayout.IntField("Max Noise", Tile.maxNoiseLevel);
-            EditorGUILayout.Space();
 
-            EditorGUILayout.LabelField("Place random sprites.");
-            EditorGUILayout.Space();
+            if (count > 1)
+            {
+                Tile.stretch = EditorGUILayout.FloatField("Stretch", Tile.stretch);
+                Tile.stretch = Tile.stretch == 0 ? 1 : Tile.stretch;
+                Tile.maxNoiseLevel = EditorGUILayout.IntField("Max Noise", Tile.maxNoiseLevel);
+                EditorGUILayout.Space();
+
+                EditorGUILayout.LabelField("Place random sprites.");
+                EditorGUILayout.Space();
+            }
 
             for (int i = 0; i < count - 1; i++) 
             {
@@ -127,11 +131,16 @@ namespace UnityEngine.Tilemaps
             }
 
             var lastSprite = Tile.Sprites[count - 1];
+
             lastSprite.Sprite = (Sprite) EditorGUILayout.ObjectField("Default Sprite", lastSprite.Sprite, typeof(Sprite), false, null);
-            EditorGUI.BeginDisabledGroup(true);
-            lastSprite.Weight = EditorGUILayout.IntField("Threshold " + count, 0);
+            if (count > 1)
+            {
+                EditorGUI.BeginDisabledGroup(true);
+                lastSprite.Weight = EditorGUILayout.IntField("Threshold " + count, 0);
+                EditorGUI.EndDisabledGroup();
+            }
+
             Tile.Sprites[count - 1] = lastSprite;
-            EditorGUI.EndDisabledGroup();
 
             EditorGUILayout.Space();
 
@@ -140,7 +149,7 @@ namespace UnityEngine.Tilemaps
 
             if (EditorGUI.EndChangeCheck())
             {
-                GatedPerlinTile.RandomizeAllTiles();
+                Tile.Rerandomize();
                 EditorUtility.SetDirty(Tile);
                 serializedObject.ApplyModifiedProperties();
             }
