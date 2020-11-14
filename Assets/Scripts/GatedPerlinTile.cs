@@ -16,18 +16,6 @@ namespace UnityEngine.Tilemaps
     {
         private int xOffset, yOffset;
 
-        public void Rerandomize()
-        {
-            xOffset = Random.Range(1000, 10000);
-            yOffset = Random.Range(1000, 10000);
-        }
-
-        public override bool StartUp(Vector3Int location, ITilemap tilemap, GameObject go)
-        {
-            // Rerandomize();
-            return false;
-        }
-
         /// <summary>
         /// Scales the step in noise between tiles.
         /// </summary>
@@ -45,6 +33,34 @@ namespace UnityEngine.Tilemaps
 
         // don't ask.
         private static float one_ish = Mathf.PI / 3f;
+
+        // adapted from
+        // https://gamedev.stackexchange.com/questions/169700/how-can-i-change-a-sprite-used-for-a-unity-tilemap-tile-at-runtime
+        /// <summary>
+        /// Called when a tile gets the signal to refresh from outside sources.
+        /// Strangely necessary for the map to be able to reresh itself.
+        /// </summary>
+        public override void RefreshTile(Vector3Int position, ITilemap tilemap)
+            => tilemap.RefreshTile(position);
+
+        /// <summary>
+        /// Re-randomizes this scriptableobject instace of GatedPerlinTile
+        /// </summary>
+        public void Rerandomize()
+        {
+            // Perlin noise is symmetric across axes, so avoid 0 offsets.
+            xOffset = (Random.value < 0.5f? -1 : 1) * Random.Range(100, 10000);
+            yOffset = (Random.value < 0.5f? -1 : 1) * Random.Range(100, 10000);
+        }
+
+        /// <summary>
+        /// Runs each time the tile is created.
+        /// </summary>
+        public override bool StartUp(Vector3Int location, ITilemap tilemap, GameObject go)
+        {
+            Rerandomize();
+            return base.StartUp(location, tilemap, go);
+        }
 
         /// <summary>
         /// Retrieves any tile rendering data from the scripted tile.

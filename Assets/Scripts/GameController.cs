@@ -9,7 +9,7 @@ public class GameController : MonoBehaviour
     void Awake()
     {
         // perlinGround.Rerandomize();
-        perlinGroundMap.RefreshAllTiles();
+        // perlinGroundMap.RefreshAllTiles();
         // UnityEngine.Tilemaps.GatedPerlinTile.Rerandomize();
     }
 
@@ -21,6 +21,15 @@ public class GameController : MonoBehaviour
             // will have to fix, does not respect sorting layer.
             var tile = perlinGroundMap.GetTile(new Vector3Int((int)pos.x, (int)pos.y, 0));
             if (tile) Debug.Log("Clicked " + tile);
+        }
+    }
+
+    void OnGUI()
+    {
+        if (GUI.Button(new Rect(2, 2, 90, 20), "Refresh All"))
+        {
+            Debug.LogWarning("Refreshing...");
+            perlinGroundMap.RefreshAllTiles();
         }
     }
 }
