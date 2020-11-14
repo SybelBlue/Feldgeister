@@ -41,7 +41,7 @@ namespace UnityEngine.Tilemaps
             
             if (Sprites == null || Sprites.Length <= 0) return;
             
-            float noiseValue = maxNoiseLevel * Mathf.PerlinNoise((float)(stretch * position.x), (float)(stretch * position.y));
+            float noiseValue = maxNoiseLevel * Mathf.PerlinNoise(stretch * position.x * Mathf.PI / 3f, stretch * position.y * Mathf.PI / 3f);
 
             foreach (var spriteInfo in Sprites)
             {
@@ -112,7 +112,7 @@ namespace UnityEngine.Tilemaps
             var lastSprite = Tile.Sprites[count - 1];
             lastSprite.Sprite = (Sprite) EditorGUILayout.ObjectField("Default Sprite", lastSprite.Sprite, typeof(Sprite), false, null);
             EditorGUI.BeginDisabledGroup(true);
-            lastSprite.Weight = EditorGUILayout.IntField("Threshold " + (count - 1), 0);
+            lastSprite.Weight = EditorGUILayout.IntField("Threshold " + count, 0);
             Tile.Sprites[count - 1] = lastSprite;
             EditorGUI.EndDisabledGroup();
 
