@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2e0b2d7ac889f48678f1397ee6afdb51, type: 3}
-  m_Name: Foliage GP Tile
+  m_Name: Ground Perlin Tile
   m_EditorClassIdentifier: 
   m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -34,5 +34,21 @@ MonoBehaviour:
   m_InstancedGameObject: {fileID: 0}
   m_Flags: 1
   m_ColliderType: 1
+  stretch: 1.2
   maxNoiseLevel: 0
-  Sprites: []
+  Sprites:
+  - Sprite: {fileID: -1278126039186916399, guid: 7da770ef7766a4ce8b40466d35f66c3f,
+      type: 3}
+    Weight: 98
+  - Sprite: {fileID: -3635625735869372126, guid: 7da770ef7766a4ce8b40466d35f66c3f,
+      type: 3}
+    Weight: 95
+  - Sprite: {fileID: 8589081340543278931, guid: 7da770ef7766a4ce8b40466d35f66c3f,
+      type: 3}
+    Weight: 90
+  - Sprite: {fileID: 6898460269864436913, guid: 7da770ef7766a4ce8b40466d35f66c3f,
+      type: 3}
+    Weight: 88
+  - Sprite: {fileID: -3714409817710726143, guid: 7da770ef7766a4ce8b40466d35f66c3f,
+      type: 3}
+    Weight: 0
