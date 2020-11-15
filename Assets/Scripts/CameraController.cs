@@ -45,4 +45,18 @@ public class CameraController : MonoBehaviour
             transform.position += pctMouseVwPos.y < 50 ? Vector3.down : Vector3.up;
         }
     }
+
+    private void OnDrawGizmosSelected()
+    {
+        var oldColor = Gizmos.color;
+        Gizmos.color = Color.yellow;
+        
+        var bottomLeft = Camera.main.ViewportToWorldPoint(Vector3.zero);
+        var topRight = Camera.main.ViewportToWorldPoint(new Vector3(1, 1, 0));
+        var width = (topRight.x - bottomLeft.x) * pctHorizontalDeadzone / 100f;
+        var height = (topRight.y - bottomLeft.y) * pctVerticalDeadzone / 100f;
+        Gizmos.DrawWireCube(transform.position, new Vector3(width, height, 1));
+        
+        Gizmos.color = oldColor;
+    }
 }
