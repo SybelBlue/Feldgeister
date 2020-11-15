@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Dark Forest Perlin Tile
   m_EditorClassIdentifier: 
   m_Sprite: {fileID: 0}
-  m_Color: {r: 0.69874966, g: 0.5372549, b: 1, a: 1}
+  m_Color: {r: 0.82064986, g: 0.7216981, b: 1, a: 1}
   m_Transform:
     e00: 1
     e01: 0
@@ -35,23 +35,23 @@ MonoBehaviour:
   m_Flags: 1
   m_ColliderType: 0
   stretch: 1.2
-  maxNoiseLevel: 1000
+  maxNoiseLevel: 1200
   Sprites:
   - Sprite: {fileID: -3635625735869372126, guid: 7da770ef7766a4ce8b40466d35f66c3f,
       type: 3}
-    Weight: 800
+    Weight: 1100
   - Sprite: {fileID: -2526173852214472953, guid: 7da770ef7766a4ce8b40466d35f66c3f,
       type: 3}
-    Weight: 700
+    Weight: 900
   - Sprite: {fileID: -8654443223794788069, guid: 7da770ef7766a4ce8b40466d35f66c3f,
       type: 3}
-    Weight: 600
+    Weight: 800
   - Sprite: {fileID: 4129759459313471094, guid: 7da770ef7766a4ce8b40466d35f66c3f,
       type: 3}
-    Weight: 400
+    Weight: 600
   - Sprite: {fileID: 7431505947384117887, guid: 7da770ef7766a4ce8b40466d35f66c3f,
       type: 3}
-    Weight: 200
+    Weight: 400
   - Sprite: {fileID: -3714409817710726143, guid: 7da770ef7766a4ce8b40466d35f66c3f,
       type: 3}
     Weight: 0
