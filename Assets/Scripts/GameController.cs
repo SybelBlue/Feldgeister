@@ -13,7 +13,7 @@ public class GameController : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
-            Vector3 pos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            Vector3 pos = StaticUtils.currentWorldMousePosition;
             // will have to fix, does not respect sorting layer.
             var tile = perlinGroundMap.GetTile(new Vector3Int((int)pos.x, (int)pos.y, 0));
             if (tile) Debug.Log("Clicked " + tile);
