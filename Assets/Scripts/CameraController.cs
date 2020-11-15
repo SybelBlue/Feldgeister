@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 using static StaticUtils;
 using static UnityEngine.Mathf;
@@ -24,9 +22,6 @@ public class CameraController : MonoBehaviour
         }
     }
 
-    private Vector3 VwToWorld(float x, float y)
-        => Camera.main.ViewportToWorldPoint(new Vector3(x, y, 0));
-
     private void PanWithMouse()
     {
         // each value is a percent of the height/width of the viewport
@@ -40,7 +35,6 @@ public class CameraController : MonoBehaviour
         // | percentViewport - 50 | > 0.5 * percentDeadzone
         // returns true when the mouse is outside the deadzone in one axis
 
-
         if (Abs(pctMouseVwPos.x - 50) > pctHorizontalDeadzone / 2f)
         {
             transform.position += pctMouseVwPos.x < 50 ? Vector3.left : Vector3.right;
@@ -50,6 +44,5 @@ public class CameraController : MonoBehaviour
         {
             transform.position += pctMouseVwPos.y < 50 ? Vector3.down : Vector3.up;
         }
-
     }
 }
