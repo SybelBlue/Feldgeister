@@ -58,6 +58,11 @@ public class MapGenerator : MonoBehaviour
         // add 2 more houses (now 5, enough for each character)
         house3Keystone = LoadTemplate(houseTemplate);
         house4Keystone = LoadTemplate(houseTemplate);
+
+        // make roads
+        // make river
+        // make fields
+        // make wells, rocks?
     }
 
     KeystoneTile LoadTemplate(Tilemap template)
