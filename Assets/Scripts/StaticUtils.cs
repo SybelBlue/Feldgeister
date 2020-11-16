@@ -17,5 +17,6 @@ public static class StaticUtils
         => Mathf.PerlinNoise(x * one_ish, y * one_ish);
 
 
-    public static int randomSign => Random.value < 0.5f? -1 : 1;
+    public static bool randomBool => Random.value < 0.5f;
+    public static int randomSign => randomBool? -1 : 1;
 }

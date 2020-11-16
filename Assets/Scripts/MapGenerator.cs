@@ -89,7 +89,7 @@ public class MapGenerator : MonoBehaviour
                 return new Vector3Int(-keystone.boundingBox.x / 2, -keystone.boundingBox.y / 2, 0);
             case KeystoneTile.PlacementStrategy.Graveyard:
                 Vector2Int placementDimensions = usableMapDimensions - keystone.boundingBox;
-                Vector3Int rawPos = RawRandomGraveyardPosition(placementDimensions);
+                Vector3Int rawPos = RandomPositionOnPerimeter(placementDimensions);
                 return rawPos + bottomLeftCorner.To3D();
             default:
                 var dimensions = keystone.boundingBox;
@@ -110,21 +110,28 @@ public class MapGenerator : MonoBehaviour
         return Vector3Int.zero;
     }
 
-    private static Vector3Int RawRandomGraveyardPosition(Vector2Int placementDimensions)
+    private static Vector3Int RandomPositionOnPerimeter(Vector2Int placementDimensions)
     {
-        int perimeter = 2 * (placementDimensions.x + placementDimensions.y);
-        int loc = Random.Range(0, perimeter);
-        
-        if (loc < placementDimensions.y) return new Vector3Int(0, loc, 0);
-        loc -= placementDimensions.y;
-        
-        if (loc < placementDimensions.x) return new Vector3Int(loc, placementDimensions.y, 0);
-        loc -= placementDimensions.x;
-        
-        if (loc < placementDimensions.y) return new Vector3Int(placementDimensions.x, loc, 0);
-        loc -= placementDimensions.y;
+        // one coordinate is always either 0 or maxed out, the other coordinate is a random value in [0, bound]
 
-        return new Vector3Int(loc, 0, 0);
+        // pick a 0 or maxed coordinate
+        bool staticX = StaticUtils.randomBool;
+        // get its max value
+        int staticBound = staticX ? placementDimensions.x : placementDimensions.y;
+        // pick 0 or max value
+        int staticValue = StaticUtils.randomBool ? staticBound : 0;
+        
+        // get the max rand value
+        int randBound = !staticX ? placementDimensions.x : placementDimensions.y;
+        // pick a random value in the range
+        int randValue = Random.Range(0, randBound);
+
+        // return
+        return new Vector3Int(
+            staticX ? staticValue : randValue, 
+            staticX ? randValue : staticValue, 
+            0
+        );
     }
 
     void OnValidate()
