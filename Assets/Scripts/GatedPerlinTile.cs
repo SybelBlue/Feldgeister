@@ -31,9 +31,6 @@ namespace UnityEngine.Tilemaps
         /// </summary>
         [SerializeField] public WeightedSprite[] Sprites;
 
-        // don't ask.
-        private static float one_ish = Mathf.PI / 3f;
-
         // adapted from
         // https://gamedev.stackexchange.com/questions/169700/how-can-i-change-a-sprite-used-for-a-unity-tilemap-tile-at-runtime
         /// <summary>
@@ -74,10 +71,7 @@ namespace UnityEngine.Tilemaps
             
             if (Sprites == null || Sprites.Length <= 0) return;
             
-            // need to multiply by one_ish so that the numbers are floats.
-            // Anything resembling an int will always return 46.75821.
-            // god help me
-            float noiseValue = maxNoiseLevel * Mathf.PerlinNoise(stretch * (position.x + xOffset) * one_ish, stretch * (position.y + yOffset) * one_ish);
+            float noiseValue = maxNoiseLevel * StaticUtils.PerlinNoise(stretch * (position.x + xOffset), stretch * (position.y + yOffset));
             noiseValue = Mathf.Min(maxNoiseLevel - 0.1f, Mathf.Max(noiseValue, 0.1f));
 
             foreach (var spriteInfo in Sprites)
@@ -88,8 +82,6 @@ namespace UnityEngine.Tilemaps
                     return;
                 }
             }
-
-            Debug.Log("get");
         }
     }
 

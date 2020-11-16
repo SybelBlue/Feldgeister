@@ -34,7 +34,7 @@ MonoBehaviour:
   m_InstancedGameObject: {fileID: 0}
   m_Flags: 1
   m_ColliderType: 0
-  stretch: 0.75
+  stretch: 0.5
   maxNoiseLevel: 1000
   Sprites:
   - Sprite: {fileID: -1278126039186916399, guid: 7da770ef7766a4ce8b40466d35f66c3f,
