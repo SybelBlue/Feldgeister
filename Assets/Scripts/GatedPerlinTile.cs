@@ -46,8 +46,8 @@ namespace UnityEngine.Tilemaps
         public void Rerandomize()
         {
             // Perlin noise is symmetric across axes, so avoid 0 offsets.
-            xOffset = (Random.value < 0.5f? -1 : 1) * Random.Range(100, 10000);
-            yOffset = (Random.value < 0.5f? -1 : 1) * Random.Range(100, 10000);
+            xOffset = StaticUtils.randomSign * Random.Range(100, 10000);
+            yOffset = StaticUtils.randomSign * Random.Range(100, 10000);
         }
 
         /// <summary>

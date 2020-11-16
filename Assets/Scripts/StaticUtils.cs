@@ -15,4 +15,7 @@ public static class StaticUtils
     // god help me
     public static float PerlinNoise(float x, float y)
         => Mathf.PerlinNoise(x * one_ish, y * one_ish);
+
+
+    public static int randomSign => Random.value < 0.5f? -1 : 1;
 }

@@ -3,6 +3,7 @@
 using static StaticUtils;
 using static UnityEngine.Mathf;
 
+#pragma warning disable 0649
 public class CameraController : MonoBehaviour
 {
     [SerializeField, Range(1, 100), Tooltip("Percent of the width of the window that does not pan when the mouse is present.")]
