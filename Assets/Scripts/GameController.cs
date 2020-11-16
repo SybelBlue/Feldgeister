@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class GameController : MonoBehaviour
 {
-    public UnityEngine.Tilemaps.GatedPerlinTile perlinGround;
     public UnityEngine.Tilemaps.Tilemap perlinGroundMap;
     
     void Awake() => RandomizeGround();

@@ -6,6 +6,9 @@ using static UnityEngine.Mathf;
 #pragma warning disable 0649
 public class CameraController : MonoBehaviour
 {
+    [Tooltip("Defines the outer limits of where the camera can move")]
+    public Vector2Int mapDimensions;
+
     [SerializeField, Range(1, 100), Tooltip("Percent of the width of the window that does not pan when the mouse is present.")]
     private float pctHorizontalDeadzone = 60;
     [SerializeField, Range(1, 100), Tooltip("Percent of the height of the window that does not pan when the mouse is present.")]
@@ -18,7 +21,7 @@ public class CameraController : MonoBehaviour
     private float scrollSensitivity = 0.1f;
 
     [SerializeField, ReadOnly]
-    private float zoomValue = 1;
+    private float zoomValue = 1.5f;
 
     [SerializeField]
     private float minZoomValue, maxZoomValue;
@@ -63,6 +66,11 @@ public class CameraController : MonoBehaviour
         {
             transform.position += pctMouseVwPos.y < 50 ? Vector3.down : Vector3.up;
         }
+
+        transform.position = transform.position.ClampInCube(
+            new Vector3(-mapDimensions.x/2f, -mapDimensions.y/2f, -Mathf.Infinity),
+            new Vector3(mapDimensions.x/2f, mapDimensions.y/2f, Mathf.Infinity)
+        );
     }
 
     private void UpdateZoom()
@@ -87,7 +95,7 @@ public class CameraController : MonoBehaviour
         var width = (topRight.x - bottomLeft.x) * pctHorizontalDeadzone / 100f;
         var height = (topRight.y - bottomLeft.y) * pctVerticalDeadzone / 100f;
         Gizmos.DrawWireCube(transform.position, new Vector3(width, height, 1));
-        
+
         Gizmos.color = oldColor;
     }
 }

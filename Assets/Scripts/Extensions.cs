@@ -12,6 +12,13 @@ public static class Extensions
     public static Vector3 ZComponent(this Vector3 vec)
         => new Vector3(0, 0, vec.z);
 
+    public static Vector3 ClampInCube(this Vector3 vec, Vector3 bottomCorner, Vector3 topCorner)
+        => new Vector3(
+            Mathf.Clamp(vec.x, bottomCorner.x, topCorner.x), 
+            Mathf.Clamp(vec.y, bottomCorner.y, topCorner.y), 
+            Mathf.Clamp(vec.z, bottomCorner.z, topCorner.z)
+        );
+
     public static Vector2 XComponent(this Vector2 vec)
         => new Vector2(vec.x, 0);
 
