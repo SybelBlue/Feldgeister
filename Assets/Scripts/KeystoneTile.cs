@@ -20,8 +20,21 @@ public class KeystoneTile : Tile
 
     public PlacementStrategy strategy;
     public Vector2Int boundingBox;
+    public RoadHookup[] roadHookups;
+}
 
-    public Vector2Int[] roadHookups;
+[Serializable]
+public struct RoadHookup
+{
+    [Serializable]
+    public enum Direction
+    {
+        Down,
+        Up,
+    }
+
+    public Direction direction;
+    public Vector2Int hookupPoint;
 }
 
 #if UNITY_EDITOR

@@ -38,4 +38,5 @@ MonoBehaviour:
   strategy: 1
   boundingBox: {x: 11, y: 10}
   roadHookups:
-  - {x: 5, y: 0}
+  - direction: 0
+    hookupPoint: {x: 5, y: 0}

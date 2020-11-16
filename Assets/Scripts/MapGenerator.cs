@@ -25,7 +25,7 @@ public class MapGenerator : MonoBehaviour
     private KeystoneTile castleKeystone, graveyardKeystone, house1Keystone, house2Keystone, house3Keystone, house4Keystone, shop1Keystone, shop2Keystone, shopHouseKeystone;
 
     [SerializeField, ReadOnly]
-    private List<Vector2Int> hookups;
+    private List<RoadHookup> hookups;
 
     [SerializeField, ReadOnly]
     private List<RectInt> usedSpaces;
@@ -33,7 +33,7 @@ public class MapGenerator : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        hookups = new List<Vector2Int>();
+        hookups = new List<RoadHookup>();
         usedSpaces = new List<RectInt>();
 
         // do castle first, always centered.
