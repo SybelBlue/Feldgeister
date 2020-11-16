@@ -23,6 +23,7 @@ public class MapGenerator : MonoBehaviour
     {
         hookups = new List<Vector2Int>();
         castleKeystone = LoadTemplate(castleTemplate);
+        graveyardKeystone = LoadTemplate(graveyardTemplate);
     }
 
     KeystoneTile LoadTemplate(Tilemap template)
@@ -51,6 +52,21 @@ public class MapGenerator : MonoBehaviour
         {
             case KeystoneTile.PlacementStrategy.Castle:
                 return new Vector3Int(-keystone.boundingBox.x / 2, -keystone.boundingBox.y / 2, 0);
+            case KeystoneTile.PlacementStrategy.Graveyard:
+                Vector2Int placementDimensions = usableMapDimensions - keystone.boundingBox;
+                int perimeter = 2 * (placementDimensions.x + placementDimensions.y);
+                int loc = Random.Range(0, perimeter);
+                
+                if (loc < placementDimensions.y) return new Vector3Int(0, loc, 0);
+                loc -= placementDimensions.y;
+                
+                if (loc < placementDimensions.x) return new Vector3Int(loc, placementDimensions.y, 0);
+                loc -= placementDimensions.x;
+                
+                if (loc < placementDimensions.y) return new Vector3Int(placementDimensions.x, loc, 0);
+                loc -= placementDimensions.y;
+                
+                return new Vector3Int(loc, 0, 0);
         }
         return Vector3Int.zero;
     } 
