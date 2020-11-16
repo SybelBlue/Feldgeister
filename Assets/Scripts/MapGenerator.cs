@@ -22,7 +22,7 @@ public class MapGenerator : MonoBehaviour
     private Tilemap castleTemplate, graveyardTemplate, houseTemplate, shop1Template, shop2Template, shopHouseTemplate;
 
     [SerializeField, ReadOnly] 
-    private KeystoneTile castleKeystone, graveyardKeystone, house1Keystone, house2Keystone, house3Keystone, shop1Keystone, shop2Keystone, shopHouseKeystone;
+    private KeystoneTile castleKeystone, graveyardKeystone, house1Keystone, house2Keystone, house3Keystone, house4Keystone, shop1Keystone, shop2Keystone, shopHouseKeystone;
 
     [SerializeField, ReadOnly]
     private List<Vector2Int> hookups;
@@ -41,12 +41,20 @@ public class MapGenerator : MonoBehaviour
         // do graveyard next, always on an edge.
         graveyardKeystone = LoadTemplate(graveyardTemplate);
 
-        // add 2 houses and 2 shops
+        // add 2 houses
         house1Keystone = LoadTemplate(houseTemplate);
         house2Keystone = LoadTemplate(houseTemplate);
 
+        // add 2 shops
         shop1Keystone = LoadTemplate(shop1Template);
         shop2Keystone = LoadTemplate(shop2Template);
+
+        // add shop&house
+        shopHouseKeystone = LoadTemplate(shopHouseTemplate);
+
+        // add 2 more houses (now 5, enough for each character)
+        house3Keystone = LoadTemplate(houseTemplate);
+        house4Keystone = LoadTemplate(houseTemplate);
     }
 
     KeystoneTile LoadTemplate(Tilemap template)

@@ -36,6 +36,6 @@ MonoBehaviour:
   m_Flags: 1
   m_ColliderType: 0
   strategy: 0
-  boundingBox: {x: 9, y: 10}
+  boundingBox: {x: 11, y: 12}
   roadHookups:
   - {x: 4, y: -1}
