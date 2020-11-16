@@ -13,31 +13,47 @@ public class MapGenerator : MonoBehaviour
     [SerializeField]
     private Tilemap castleTemplate, graveyardTemplate, houseTemplate, shop1Template, shop2Template, shopHouseTemplate;
 
+    [SerializeField, ReadOnly] 
+    private KeystoneTile castleKeystone, graveyardKeystone, houseKeystone, shop1Keystone, shop2Keystone, shopHouseKeystone;
+
     [SerializeField, ReadOnly]
     private List<Vector2Int> hookups;
     // Start is called before the first frame update
     void Start()
     {
         hookups = new List<Vector2Int>();
-        KeystoneTile castleKeystone = castleTemplate.GetKeystone();
-        Vector2Int size = castleKeystone.boundingBox;
-        hookups.AddRange(castleKeystone.roadHookups);
+        castleKeystone = LoadTemplate(castleTemplate);
+    }
+
+    KeystoneTile LoadTemplate(Tilemap template)
+    {
+        KeystoneTile keystone = template.GetKeystone();
+        hookups.AddRange(keystone.roadHookups);
+        
+        Vector2Int size = keystone.boundingBox;
+        Vector3Int offset = GetOffset(keystone);
 
         for (int i = 0; i < size.x; i++)
         {
             for (int j = 0; j < size.y; j++)
             {
                 Vector3Int pos = new Vector3Int(i, j, 0);
-                mainTilemap.SetTile(pos, castleTemplate.GetTile(pos));
+                mainTilemap.SetTile(offset + pos, template.GetTile(pos));
             }
         }
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+        return keystone;
     }
+    
+    private Vector3Int GetOffset(KeystoneTile keystone)
+    {
+        switch (keystone.strategy)
+        {
+            case KeystoneTile.PlacementStrategy.Castle:
+                return new Vector3Int(-keystone.boundingBox.x / 2, -keystone.boundingBox.y / 2, 0);
+        }
+        return Vector3Int.zero;
+    } 
 
     void OnValidate()
     {
