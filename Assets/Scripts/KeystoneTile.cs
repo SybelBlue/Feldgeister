@@ -14,7 +14,8 @@ public class KeystoneTile : Tile
     {
         Castle,
         Graveyard,
-        Random,
+        Shop,
+        Domicile,
     }
 
     public PlacementStrategy strategy;

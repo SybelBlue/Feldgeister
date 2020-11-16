@@ -10,11 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: df0c2dc644abe4b42b16f70216a9f1ac, type: 3}
-  m_Name: Graveyard Keystone Tile
+  m_Name: Shack Keystone Tile
   m_EditorClassIdentifier: 
-  m_Sprite: {fileID: 5885394863454697278, guid: 7da770ef7766a4ce8b40466d35f66c3f,
-    type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.22745098}
+  m_Sprite: {fileID: 479825303997335645, guid: 7da770ef7766a4ce8b40466d35f66c3f, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.19215687}
   m_Transform:
     e00: 1
     e01: 0
@@ -35,7 +34,7 @@ MonoBehaviour:
   m_InstancedGameObject: {fileID: 0}
   m_Flags: 1
   m_ColliderType: 0
-  strategy: 1
-  boundingBox: {x: 11, y: 10}
+  strategy: 3
+  boundingBox: {x: 3, y: 2}
   roadHookups:
-  - {x: 4, y: -1}
+  - {x: 1, y: -1}
