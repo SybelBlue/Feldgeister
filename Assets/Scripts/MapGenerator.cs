@@ -21,6 +21,9 @@ public class MapGenerator : MonoBehaviour
     [SerializeField]
     private Tilemap castleTemplate, graveyardTemplate, houseTemplate, shop1Template, shop2Template, shopHouseTemplate;
 
+    [SerializeField]
+    private TileBase roadTile;
+
     [SerializeField, ReadOnly] 
     private KeystoneTile castleKeystone, graveyardKeystone, house1Keystone, house2Keystone, house3Keystone, house4Keystone, shop1Keystone, shop2Keystone, shopHouseKeystone;
 
