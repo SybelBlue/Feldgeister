@@ -14,16 +14,26 @@ public class MapGenerator : MonoBehaviour
     private Tilemap castleTemplate, graveyardTemplate, houseTemplate, shop1Template, shop2Template, shopHouseTemplate;
 
     [SerializeField, ReadOnly] 
-    private KeystoneTile castleKeystone, graveyardKeystone, houseKeystone, shop1Keystone, shop2Keystone, shopHouseKeystone;
+    private KeystoneTile castleKeystone, graveyardKeystone, house1Keystone, house2Keystone, house3Keystone, shop1Keystone, shop2Keystone, shopHouseKeystone;
 
     [SerializeField, ReadOnly]
     private List<Vector2Int> hookups;
+
+    [SerializeField, ReadOnly]
+    private List<RectInt> usedSpaces;
+
     // Start is called before the first frame update
     void Start()
     {
         hookups = new List<Vector2Int>();
+        usedSpaces = new List<RectInt>();
+        
+        // do castle first, always centered.
         castleKeystone = LoadTemplate(castleTemplate);
+        // do graveyard next, always on an edge.
         graveyardKeystone = LoadTemplate(graveyardTemplate);
+
+        // add 2 houses and 2 shops
     }
 
     KeystoneTile LoadTemplate(Tilemap template)
