@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: df0c2dc644abe4b42b16f70216a9f1ac, type: 3}
-  m_Name: Castle Keystone Tile
+  m_Name: Graveyard Keystone Tile
   m_EditorClassIdentifier: 
   m_Sprite: {fileID: 5885394863454697278, guid: 7da770ef7766a4ce8b40466d35f66c3f,
     type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.21176471}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.22745098}
   m_Transform:
     e00: 1
     e01: 0
@@ -35,4 +35,7 @@ MonoBehaviour:
   m_InstancedGameObject: {fileID: 0}
   m_Flags: 1
   m_ColliderType: 0
-  boundingBox: {x: 9, y: 9}
+  strategy: 1
+  boundingBox: {x: 9, y: 8}
+  roadHookups:
+  - {x: 4, y: -1}
