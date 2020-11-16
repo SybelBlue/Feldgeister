@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GameController : MonoBehaviour
+public class MFGameController : MonoBehaviour
 {
     public UnityEngine.Tilemaps.Tilemap perlinGroundMap;
     
