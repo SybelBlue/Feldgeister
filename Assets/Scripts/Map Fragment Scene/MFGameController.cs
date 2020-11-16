@@ -14,8 +14,9 @@ public class MFGameController : MonoBehaviour
         {
             Vector3 pos = StaticUtils.currentWorldMousePosition;
             // will have to fix, does not respect sorting layer.
-            var tile = perlinGroundMap.GetTile(new Vector3Int((int)pos.x, (int)pos.y, 0));
-            if (tile) Debug.Log("Clicked " + tile);
+            var intPos = new Vector3Int((int)pos.x, (int)pos.y, 0);
+            var tile = perlinGroundMap.GetTile(intPos);
+            if (tile) Debug.Log("Clicked " + intPos + " - " + tile);
         }
     }
 

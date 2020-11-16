@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Linq;
 using UnityEngine;
+using UnityEngine.Tilemaps;
 
 public static class Extensions
 {
@@ -33,4 +35,10 @@ public static class Extensions
     
     public static bool AllComponents(this Vector3 vec, Predicate<float> pred)
         => pred(vec.x) && pred(vec.y) && pred(vec.z);
+
+    public static KeystoneTile GetKeystone(this Tilemap tilemap)
+    {
+        TileBase[] allTiles = tilemap.GetTilesBlock(tilemap.cellBounds);
+        return (KeystoneTile) allTiles.First(tile => tile != null && tile.GetType() == typeof(KeystoneTile));
+    }
 }
