@@ -9,7 +9,18 @@ using UnityEditor;
 [Serializable]
 public class KeystoneTile : Tile
 {
+    [Serializable]
+    public enum PlacementStrategy
+    {
+        Castle,
+        Graveyard,
+        Random,
+    }
+
+    public PlacementStrategy strategy;
     public Vector2Int boundingBox;
+
+    public Vector2Int[] roadHookups;
 }
 
 #if UNITY_EDITOR
