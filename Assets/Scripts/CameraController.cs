@@ -90,11 +90,19 @@ public class CameraController : MonoBehaviour
         var oldColor = Gizmos.color;
         Gizmos.color = Color.yellow;
         
-        var bottomLeft = Camera.main.ViewportToWorldPoint(Vector3.zero);
-        var topRight = Camera.main.ViewportToWorldPoint(new Vector3(1, 1, 0));
-        var width = (topRight.x - bottomLeft.x) * pctHorizontalDeadzone / 100f;
-        var height = (topRight.y - bottomLeft.y) * pctVerticalDeadzone / 100f;
+        Vector3 bottomLeft = Camera.main.ViewportToWorldPoint(Vector3.zero);
+        Vector3 topRight = Camera.main.ViewportToWorldPoint(new Vector3(1, 1, 0));
+        float vwWidth = topRight.x - bottomLeft.x;
+        float vwHeight = topRight.y - bottomLeft.y;
+        float width = vwWidth * pctHorizontalDeadzone / 100f;
+        float height = vwHeight * pctVerticalDeadzone / 100f;
         Gizmos.DrawWireCube(transform.position, new Vector3(width, height, 1));
+
+        Gizmos.color = Color.green;
+        Gizmos.DrawWireCube(transform.position, new Vector3(vwWidth, vwHeight, 1));
+
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireCube(Vector3.zero, new Vector3(mapDimensions.x, mapDimensions.y, 1));
 
         Gizmos.color = oldColor;
     }
