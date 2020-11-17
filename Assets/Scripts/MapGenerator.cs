@@ -69,7 +69,12 @@ public class MapGenerator : MonoBehaviour
         // make wells, rocks?
     }
 
-    KeystoneTile LoadTemplate(Tilemap template)
+    private void LoadRiver()
+    {
+        
+    }
+
+    private KeystoneTile LoadTemplate(Tilemap template)
     {
         KeystoneTile keystone = template.GetKeystone();
         hookups.AddRange(keystone.roadHookups);
