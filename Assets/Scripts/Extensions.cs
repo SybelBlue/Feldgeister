@@ -33,6 +33,9 @@ public static class Extensions
     public static Vector3Int To3D(this Vector2Int vec)
         => new Vector3Int(vec.x, vec.y, 0);
 
+    public static Vector2Int To2D(this Vector3Int vec)
+        => new Vector2Int(vec.x, vec.y);
+
     public static bool AnyComponent(this Vector3 vec, Predicate<float> pred)
         => pred(vec.x) || pred(vec.y) || pred(vec.z);
     

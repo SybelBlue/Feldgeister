@@ -56,14 +56,14 @@ namespace AStarSharp
     public class Astar
     {
         List<List<Node>> Grid;
-        int GridRows
+        public int GridRows
         {
             get
             {
                return Grid[0].Count;
             }
         }
-        int GridCols
+        public int GridCols
         {
             get
             {

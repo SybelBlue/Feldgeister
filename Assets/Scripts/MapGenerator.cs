@@ -4,6 +4,8 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
+using AStarSharp;
+
 #pragma warning disable 0649
 public class MapGenerator : MonoBehaviour
 {
@@ -65,14 +67,46 @@ public class MapGenerator : MonoBehaviour
 
         // make roads
         // make river
+        LoadRiver();
         // make fields
         // make wells, rocks?
     }
 
     private void LoadRiver()
     {
-        
+        var grid = new List<List<Node>>();
+        for (int i = bottomLeftCorner.x; i < upperRightCorner.x; i++)
+        {
+            var row = new List<Node>();
+            for (int j = bottomLeftCorner.y; j < upperRightCorner.y; j++)
+            {
+                row.Add(MakeMapNode(new Vector2Int(i, j)));
+            }
+            grid.Add(row);
+        }
+        Astar astar = new Astar(grid);
+
+        print(astar.GridRows + " " + astar.GridCols);
+
+        var pathStack = astar.FindPath(
+            new Vector2Int(
+                Random.Range(mapBounds.width / 4, mapBounds.width * 3 / 4),
+                mapBounds.y + mapBounds.height
+            ),
+            new Vector2Int(
+                Random.Range(mapBounds.width / 4, mapBounds.width * 3 / 4),
+                mapBounds.y
+            )
+        );
+
+        foreach (var item in pathStack)
+        {
+            print(item);
+        }
     }
+
+    private Node MakeMapNode(Vector2Int vec)
+        => new Node(vec - bottomLeftCorner, usedSpaces.Any(sp => sp.Contains(vec)), groundTile.RawPerlinValue(vec.x, vec.y));
 
     private KeystoneTile LoadTemplate(Tilemap template)
     {
