@@ -2,9 +2,11 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Numerics;
 using UnityEngine;
+
+// combined two articles 
+// first on AStar which lacked priority queue
+// other on priority queue which lacked AStar
 
 // https://github.com/davecusatis/A-Star-Sharp/blob/master/Astar.cs
 namespace AStarSharp
