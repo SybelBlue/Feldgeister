@@ -25,7 +25,7 @@ public class MapGenerator : MonoBehaviour
     private Tilemap castleTemplate, graveyardTemplate, houseTemplate, shop1Template, shop2Template, shopHouseTemplate;
 
     [SerializeField]
-    private TileBase roadTile;
+    private TileBase roadTile, riverTile;
 
     [SerializeField]
     private GatedPerlinTile groundTile;
@@ -75,10 +75,10 @@ public class MapGenerator : MonoBehaviour
     private void LoadRiver()
     {
         var grid = new List<List<Node>>();
-        for (int i = bottomLeftCorner.x; i < upperRightCorner.x; i++)
+        for (int i = bottomLeftCorner.x - 5; i < upperRightCorner.x + 5; i++)
         {
             var row = new List<Node>();
-            for (int j = bottomLeftCorner.y; j < upperRightCorner.y; j++)
+            for (int j = bottomLeftCorner.y - 5; j < upperRightCorner.y + 5; j++)
             {
                 row.Add(MakeMapNode(new Vector2Int(i, j)));
             }
@@ -86,21 +86,36 @@ public class MapGenerator : MonoBehaviour
         }
         Astar astar = new Astar(grid);
 
-        print(astar.GridRows + " " + astar.GridCols);
+        var start = -castleKeystone.boundingBox / 2 - bottomLeftCorner + new Vector2Int(5, 5);
+        var end = new Vector2Int(1, 1);
 
-        var pathStack = astar.FindPath(
-            Vector2Int.zero,
-            usableMapDimensions
-        );
+        var pathStack = astar.FindPath(start, end);
 
-        foreach (var item in pathStack)
+        if (pathStack != null) 
         {
-            print(item);
+            foreach (var item in pathStack)
+            {
+                var pos = item.Position + bottomLeftCorner - new Vector2Int(5, 5);
+                mainTilemap.SetTile(pos.To3D(), riverTile);
+            }
+        }
+
+        start = castleKeystone.boundingBox / 2 - bottomLeftCorner + new Vector2Int(4, 4);
+        end = usableMapDimensions + new Vector2Int(8, 8);
+
+        pathStack = astar.FindPath(start, end);
+        if (pathStack != null) 
+        {
+            foreach (var item in pathStack)
+            {
+                var pos = item.Position + bottomLeftCorner - new Vector2Int(5, 5);
+                mainTilemap.SetTile(pos.To3D(), riverTile);
+            }
         }
     }
 
     private Node MakeMapNode(Vector2Int vec)
-        => new Node(vec - bottomLeftCorner, usedSpaces.Any(sp => sp.Contains(vec)), groundTile.RawPerlinValue(vec.x, vec.y));
+        => new Node(vec - bottomLeftCorner + new Vector2Int(5, 5), !usedSpaces.Any(sp => sp.Contains(vec)), 10 * groundTile.RawPerlinValue(vec.x, vec.y));
 
     private KeystoneTile LoadTemplate(Tilemap template)
     {

@@ -80,7 +80,6 @@ namespace AStarSharp
                 OpenList.Remove(current);
                 ClosedList.Add(current);
                 adjacencies = GetAdjacentNodes(current);
-                Debug.Log(current);
  
                 foreach(Node n in adjacencies)
                 {
@@ -121,8 +120,6 @@ namespace AStarSharp
 
             int row = n.Position.y;
             int col = n.Position.x;
-
-            Debug.Log(row + " " + col);
 
             if(row + 1 < GridRows)
             {

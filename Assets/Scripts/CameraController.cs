@@ -21,7 +21,7 @@ public class CameraController : MonoBehaviour
     private float scrollSensitivity = 0.1f;
 
     [SerializeField, ReadOnly]
-    private float zoomValue = 1.5f;
+    private float zoomValue;
 
     [SerializeField]
     private float minZoomValue, maxZoomValue;
@@ -31,6 +31,7 @@ public class CameraController : MonoBehaviour
     private void Start()
     {
         originalScale = transform.localScale;
+        zoomValue = 1.5f;
     }
 
     // Update is called once per frame
@@ -77,10 +78,11 @@ public class CameraController : MonoBehaviour
     {
         float scroll = Input.mouseScrollDelta.y;
         
-        if (scroll == 0) return;
-
-        zoomValue *= scroll > 0 ? 1 + scrollSensitivity : 1 - scrollSensitivity;
-        zoomValue = Clamp(zoomValue, minZoomValue, maxZoomValue);
+        if (scroll != 0)
+        {
+            zoomValue *= scroll > 0 ? 1 + scrollSensitivity : 1 - scrollSensitivity;
+            zoomValue = Clamp(zoomValue, minZoomValue, maxZoomValue);
+        }
 
         transform.localScale = originalScale * zoomValue;
     }
