@@ -4,10 +4,6 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-// combined two articles 
-// first on AStar which lacked priority queue
-// other on priority queue which lacked AStar
-
 // https://github.com/davecusatis/A-Star-Sharp/blob/master/Astar.cs
 namespace AStarSharp
 {
@@ -41,18 +37,6 @@ namespace AStarSharp
         }
     }
 
-    public class PriorityNode : Node, IPrioritizable
-    {
-        public float Priority { get; set; }
-        public PriorityNode(Vector2Int pos, bool walkable, float priority, float weight = 1) : base(pos, walkable, weight)
-        {
-            Priority = priority;
-        }
-        
-        public PriorityNode(Node node, float priority) : this(node.Position, node.Walkable, priority, node.Weight)
-        { }
-    }
-
     public class Astar
     {
         List<List<Node>> Grid;
@@ -82,31 +66,33 @@ namespace AStarSharp
             Node end = new Node(End, true);
 
             Stack<Node> Path = new Stack<Node>();
-            PriorityQueue<PriorityNode> OpenList = new PriorityQueue<PriorityNode>();
+            List<Node> OpenList = new List<Node>();
             List<Node> ClosedList = new List<Node>();
             List<Node> adjacencies;
             Node current = start;
            
             // add start node to Open List
-            OpenList.Enqueue(new PriorityNode(start, 1));
+            OpenList.Add(start);
 
             while(OpenList.Count != 0 && !ClosedList.Exists(x => x.Position == end.Position))
             {
-                current = OpenList.Dequeue();
+                current = OpenList[0];
+                OpenList.Remove(current);
                 ClosedList.Add(current);
                 adjacencies = GetAdjacentNodes(current);
-
+                Debug.Log(current);
  
                 foreach(Node n in adjacencies)
                 {
                     if (!ClosedList.Contains(n) && n.Walkable)
                     {
-                        if (!OpenList.Any(pn => pn.Position == n.Position))
+                        if (!OpenList.Contains(n))
                         {
                             n.Parent = current;
                             n.DistanceToTarget = Math.Abs(n.Position.x - end.Position.x) + Math.Abs(n.Position.y - end.Position.y);
                             n.Cost = n.Weight + n.Parent.Cost;
-                            OpenList.Enqueue(new PriorityNode(n, n.F));
+                            OpenList.Add(n);
+                            OpenList = OpenList.OrderBy(node => node.F).ToList<Node>();
                         }
                     }
                 }
@@ -133,8 +119,10 @@ namespace AStarSharp
         {
             List<Node> temp = new List<Node>();
 
-            int row = (int)n.Position.y;
-            int col = (int)n.Position.x;
+            int row = n.Position.y;
+            int col = n.Position.x;
+
+            Debug.Log(row + " " + col);
 
             if(row + 1 < GridRows)
             {
@@ -155,66 +143,5 @@ namespace AStarSharp
 
             return temp;
         }
-    }
-}
-
-// https://medium.com/@basilin/priority-queue-with-c-7089f4898c8d
-namespace AStarSharp
-{
-    public interface IPrioritizable
-    {
-        /// <summary>
-        /// Priority of the item.
-        /// </summary>
-        float Priority { get; set; }
-    }
-    
-    public sealed class PriorityQueue<TEntry> where TEntry : IPrioritizable
-    {
-        public LinkedList<TEntry> Entries { get; } = new LinkedList<TEntry>();
-
-        public int Count
-            => Entries.Count;
-
-        public TEntry Dequeue()
-        {
-            if (Entries.Any())
-            {
-                var itemTobeRemoved = Entries.First.Value;
-                Entries.RemoveFirst();
-                return itemTobeRemoved;
-            }
-
-            return default(TEntry);
-        }
-
-        public void Enqueue(TEntry entry)
-        {
-            var value = new LinkedListNode<TEntry>(entry);
-            if (Entries.First == null)
-            {
-                Entries.AddFirst(value);
-            }
-            else
-            {
-                var ptr = Entries.First;
-                while (ptr.Next != null && ptr.Value.Priority < entry.Priority)
-                {
-                    ptr = ptr.Next;
-                }
-
-                if (ptr.Value.Priority <= entry.Priority)
-                {
-                    Entries.AddAfter(ptr, value);
-                }
-                else
-                {
-                    Entries.AddBefore(ptr, value);
-                }
-            }
-        }
-
-        public bool Any(Func<TEntry, bool> pred)
-            => Entries.Any(pred);
     }
 }

@@ -89,14 +89,8 @@ public class MapGenerator : MonoBehaviour
         print(astar.GridRows + " " + astar.GridCols);
 
         var pathStack = astar.FindPath(
-            new Vector2Int(
-                Random.Range(mapBounds.width / 4, mapBounds.width * 3 / 4),
-                mapBounds.y + mapBounds.height
-            ),
-            new Vector2Int(
-                Random.Range(mapBounds.width / 4, mapBounds.width * 3 / 4),
-                mapBounds.y
-            )
+            Vector2Int.zero,
+            usableMapDimensions
         );
 
         foreach (var item in pathStack)
