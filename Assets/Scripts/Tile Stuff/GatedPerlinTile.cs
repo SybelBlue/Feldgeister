@@ -71,7 +71,7 @@ namespace UnityEngine.Tilemaps
             
             if (Sprites == null || Sprites.Length <= 0) return;
             
-            float noiseValue = maxNoiseLevel * StaticUtils.PerlinNoise(stretch * (position.x + xOffset), stretch * (position.y + yOffset));
+            float noiseValue = maxNoiseLevel * RawPerlinValue(position.x, position.y);
             noiseValue = Mathf.Min(maxNoiseLevel - 0.1f, Mathf.Max(noiseValue, 0.1f));
 
             foreach (var spriteInfo in Sprites)
@@ -83,6 +83,9 @@ namespace UnityEngine.Tilemaps
                 }
             }
         }
+
+        public float RawPerlinValue(int x, int y)
+            => StaticUtils.PerlinNoise(stretch * (x + xOffset), stretch * (y + yOffset));
     }
 
 #if UNITY_EDITOR

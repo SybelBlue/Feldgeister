@@ -4,6 +4,7 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
+#pragma warning disable 0649
 public class MapGenerator : MonoBehaviour
 {
     [SerializeField, ReadOnly] 
@@ -23,6 +24,9 @@ public class MapGenerator : MonoBehaviour
 
     [SerializeField]
     private TileBase roadTile;
+
+    [SerializeField]
+    private GatedPerlinTile groundTile;
 
     [SerializeField, ReadOnly] 
     private KeystoneTile castleKeystone, graveyardKeystone, house1Keystone, house2Keystone, house3Keystone, house4Keystone, shop1Keystone, shop2Keystone, shopHouseKeystone;
@@ -115,7 +119,6 @@ public class MapGenerator : MonoBehaviour
 
                 return pos;
         }
-        return Vector3Int.zero;
     }
 
     private static Vector3Int RandomPositionOnPerimeter(Vector2Int placementDimensions)
