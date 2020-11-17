@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Numerics;
+using UnityEngine;
 
 // https://github.com/davecusatis/A-Star-Sharp/blob/master/Astar.cs
 namespace AStarSharp
@@ -38,6 +39,18 @@ namespace AStarSharp
         }
     }
 
+    public class PriorityNode : Node, IPrioritizable
+    {
+        public float Priority { get; set; }
+        public PriorityNode(Vector2Int pos, bool walkable, float priority, float weight = 1) : base(pos, walkable, weight)
+        {
+            Priority = priority;
+        }
+        
+        public PriorityNode(Node node, float priority) : this(node.Position, node.Walkable, priority, node.Weight)
+        { }
+    }
+
     public class Astar
     {
         List<List<Node>> Grid;
@@ -67,18 +80,17 @@ namespace AStarSharp
             Node end = new Node(End, true);
 
             Stack<Node> Path = new Stack<Node>();
-            List<Node> OpenList = new List<Node>();
+            PriorityQueue<PriorityNode> OpenList = new PriorityQueue<PriorityNode>();
             List<Node> ClosedList = new List<Node>();
             List<Node> adjacencies;
             Node current = start;
            
             // add start node to Open List
-            OpenList.Add(start);
+            OpenList.Enqueue(new PriorityNode(start, 1));
 
             while(OpenList.Count != 0 && !ClosedList.Exists(x => x.Position == end.Position))
             {
-                current = OpenList[0];
-                OpenList.Remove(current);
+                current = OpenList.Dequeue();
                 ClosedList.Add(current);
                 adjacencies = GetAdjacentNodes(current);
 
@@ -87,13 +99,12 @@ namespace AStarSharp
                 {
                     if (!ClosedList.Contains(n) && n.Walkable)
                     {
-                        if (!OpenList.Contains(n))
+                        if (!OpenList.Any(pn => pn.Position == n.Position))
                         {
                             n.Parent = current;
-                            n.DistanceToTarget = Math.Abs(n.Position.X - end.Position.X) + Math.Abs(n.Position.Y - end.Position.Y);
+                            n.DistanceToTarget = Math.Abs(n.Position.x - end.Position.x) + Math.Abs(n.Position.y - end.Position.y);
                             n.Cost = n.Weight + n.Parent.Cost;
-                            OpenList.Add(n);
-                            OpenList = OpenList.OrderBy(node => node.F).ToList<Node>();
+                            OpenList.Enqueue(new PriorityNode(n, n.F));
                         }
                     }
                 }
@@ -120,8 +131,8 @@ namespace AStarSharp
         {
             List<Node> temp = new List<Node>();
 
-            int row = (int)n.Position.Y;
-            int col = (int)n.Position.X;
+            int row = (int)n.Position.y;
+            int col = (int)n.Position.x;
 
             if(row + 1 < GridRows)
             {
@@ -153,17 +164,15 @@ namespace AStarSharp
         /// <summary>
         /// Priority of the item.
         /// </summary>
-        double Priority { get; set; }
+        float Priority { get; set; }
     }
     
     public sealed class PriorityQueue<TEntry> where TEntry : IPrioritizable
     {
         public LinkedList<TEntry> Entries { get; } = new LinkedList<TEntry>();
 
-        public int Count()
-        {
-            return Entries.Count;
-        }
+        public int Count
+            => Entries.Count;
 
         public TEntry Dequeue()
         {
@@ -202,5 +211,8 @@ namespace AStarSharp
                 }
             }
         }
+
+        public bool Any(Func<TEntry, bool> pred)
+            => Entries.Any(pred);
     }
 }
