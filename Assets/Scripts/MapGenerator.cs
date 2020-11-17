@@ -67,7 +67,7 @@ public class MapGenerator : MonoBehaviour
 
         // make roads
         // make river
-        LoadRiver();
+        // LoadRiver();
         // make fields
         // make wells, rocks?
     }
