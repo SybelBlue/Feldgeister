@@ -1,6 +1,5 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
@@ -36,34 +35,33 @@ public class MapGenerator : MonoBehaviour
     [SerializeField, ReadOnly]
     private List<RoadHookup> hookups;
 
-    [SerializeField, ReadOnly]
-    private List<RectInt> usedSpaces;
+    [ReadOnly]
+    public readonly RegionManager<string> usedSpaces = new RegionManager<string>();
 
     // Start is called before the first frame update
     void Start()
     {
         hookups = new List<RoadHookup>();
-        usedSpaces = new List<RectInt>();
 
         // do castle first, always centered.
-        castleKeystone = LoadTemplate(castleTemplate);
+        castleKeystone = LoadTemplate(castleTemplate, "castle");
         // do graveyard next, always on an edge.
-        graveyardKeystone = LoadTemplate(graveyardTemplate);
+        graveyardKeystone = LoadTemplate(graveyardTemplate, "graveyard");
 
         // add 2 houses
-        house1Keystone = LoadTemplate(houseTemplate);
-        house2Keystone = LoadTemplate(houseTemplate);
+        house1Keystone = LoadTemplate(houseTemplate, "house1");
+        house2Keystone = LoadTemplate(houseTemplate, "house2");
 
         // add 2 shops
-        shop1Keystone = LoadTemplate(shop1Template);
-        shop2Keystone = LoadTemplate(shop2Template);
+        shop1Keystone = LoadTemplate(shop1Template, "shop1");
+        shop2Keystone = LoadTemplate(shop2Template, "shop2");
 
         // add shop&house
-        shopHouseKeystone = LoadTemplate(shopHouseTemplate);
+        shopHouseKeystone = LoadTemplate(shopHouseTemplate, "shopHouse");
 
         // add 2 more houses (now 5, enough for each character)
-        house3Keystone = LoadTemplate(houseTemplate);
-        house4Keystone = LoadTemplate(houseTemplate);
+        house3Keystone = LoadTemplate(houseTemplate, "house3");
+        house4Keystone = LoadTemplate(houseTemplate, "house4");
 
         // make roads
         // make river
@@ -115,9 +113,9 @@ public class MapGenerator : MonoBehaviour
     }
 
     private Node MakeMapNode(Vector2Int vec)
-        => new Node(vec - bottomLeftCorner + new Vector2Int(5, 5), !usedSpaces.Any(sp => sp.Contains(vec)), 10 * groundTile.RawPerlinValue(vec.x, vec.y));
+        => new Node(vec - bottomLeftCorner + new Vector2Int(5, 5), !usedSpaces.AnyContain(vec), 10 * groundTile.RawPerlinValue(vec.x, vec.y));
 
-    private KeystoneTile LoadTemplate(Tilemap template)
+    private KeystoneTile LoadTemplate(Tilemap template, string name)
     {
         KeystoneTile keystone = template.GetKeystone();
         hookups.AddRange(keystone.roadHookups);
@@ -126,7 +124,7 @@ public class MapGenerator : MonoBehaviour
         Vector3Int offset = GetOffset(keystone);
         
         RectInt usedSpace = new RectInt(offset.x, offset.y, size.x, size.y);
-        usedSpaces.Add(usedSpace);
+        usedSpaces.Add(usedSpace, name);
 
         for (int i = 0; i < size.x; i++)
         {
@@ -163,7 +161,7 @@ public class MapGenerator : MonoBehaviour
                         0
                     );
                     usedSpace = new RectInt(pos.x, pos.y, dimensions.x, dimensions.y);
-                } while (usedSpaces.Any(rect => rect.Overlaps(usedSpace)));
+                } while (usedSpaces.AnyOverlap(usedSpace));
 
                 return pos;
         }
