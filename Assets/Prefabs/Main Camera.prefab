@@ -117,8 +117,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b2edf7968bc04e31bd443afaa8e123a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mapDimensions: {x: 42, y: 30}
-  pctHorizontalDeadzone: 85
+  mapDimensions: {x: 42, y: 32}
+  pctHorizontalDeadzone: 80
   pctVerticalDeadzone: 70
   framesPerPan: 5
   scrollSensitivity: 0.03
