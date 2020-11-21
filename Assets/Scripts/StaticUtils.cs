@@ -19,4 +19,19 @@ public static class StaticUtils
 
     public static bool randomBool => Random.value < 0.5f;
     public static int randomSign => randomBool? -1 : 1;
+
+    public static void DrawGizmoWireBox(RectInt rect, Color boxColor)
+        => DrawGizmoWireBox(rect, boxColor, Vector3.zero);
+
+    public static void DrawGizmoWireBox(RectInt rect, Color boxColor, Vector3 offset)
+    {
+        var oldColor = Gizmos.color;
+        Gizmos.color = boxColor;
+        
+        Vector3 size = rect.size.To3DFloat();
+        Vector3 position = offset + rect.position.To3DFloat() + size / 2.0f;
+        Gizmos.DrawWireCube(position, size + new Vector3(0, 0, 1));
+
+        Gizmos.color = oldColor;
+    }
 }

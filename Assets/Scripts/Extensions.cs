@@ -51,6 +51,9 @@ public static class Extensions
     public static bool AllComponents(this Vector3 vec, Predicate<float> pred)
         => pred(vec.x) && pred(vec.y) && pred(vec.z);
 
+    public static Vector3 MapComponents(this Vector3 vec, Func<float, float> f)
+        => new Vector3(f(vec.x), f(vec.y), f(vec.z));
+
     public static KeystoneTile GetKeystone(this Tilemap tilemap)
     {
         TileBase[] allTiles = tilemap.GetTilesBlock(tilemap.cellBounds);
