@@ -30,8 +30,11 @@ public class MapGenerator : MonoBehaviour
     [SerializeField]
     private GatedPerlinTile groundTile;
 
-    [SerializeField, ReadOnly] 
-    private KeystoneTile castleKeystone, graveyardKeystone, house1Keystone, house2Keystone, house3Keystone, house4Keystone, shop1Keystone, shop2Keystone, shopHouseKeystone;
+    private KeystoneTile castleKeystone;
+    private KeystoneTile graveyardKeystone;
+    private KeystoneTile house1Keystone, house2Keystone, house3Keystone, house4Keystone;
+    private KeystoneTile shop1Keystone, shop2Keystone;
+    private KeystoneTile shopHouseKeystone;
 
     [SerializeField, ReadOnly]
     private List<RoadHookup> hookups;
@@ -71,50 +74,15 @@ public class MapGenerator : MonoBehaviour
         // make wells, rocks?
     }
 
-    private void LoadRiver()
+    void Update()
     {
-        var grid = new List<List<Node>>();
-        for (int i = bottomLeftCorner.x - 5; i < upperRightCorner.x + 5; i++)
+        if (Input.GetMouseButtonDown(0)) 
         {
-            var row = new List<Node>();
-            for (int j = bottomLeftCorner.y - 5; j < upperRightCorner.y + 5; j++)
-            {
-                row.Add(MakeMapNode(new Vector2Int(i, j)));
-            }
-            grid.Add(row);
-        }
-        Astar astar = new Astar(grid);
-
-        var start = -castleKeystone.boundingBox / 2 - bottomLeftCorner + new Vector2Int(5, 5);
-        var end = new Vector2Int(1, 1);
-
-        var pathStack = astar.FindPath(start, end);
-
-        if (pathStack != null) 
-        {
-            foreach (var item in pathStack)
-            {
-                var pos = item.Position + bottomLeftCorner - new Vector2Int(5, 5);
-                mainTilemap.SetTile(pos.To3D(), riverTile);
-            }
-        }
-
-        start = castleKeystone.boundingBox / 2 - bottomLeftCorner + new Vector2Int(4, 4);
-        end = usableMapDimensions + new Vector2Int(8, 8);
-
-        pathStack = astar.FindPath(start, end);
-        if (pathStack != null) 
-        {
-            foreach (var item in pathStack)
-            {
-                var pos = item.Position + bottomLeftCorner - new Vector2Int(5, 5);
-                mainTilemap.SetTile(pos.To3D(), riverTile);
-            }
+            var flattened = StaticUtils.currentWorldMousePosition.To2DInt();
+            print(usedSpaces[flattened]?.buildingName);
+            print(mainTilemap.GetTile(flattened.To3D()));
         }
     }
-
-    private Node MakeMapNode(Vector2Int vec)
-        => new Node(vec - bottomLeftCorner + new Vector2Int(5, 5), !usedSpaces.AnyContain(vec), 10 * groundTile.RawPerlinValue(vec.x, vec.y));
 
     private KeystoneTile LoadHouse(Tilemap template, string name, Character character)
     {
@@ -150,7 +118,7 @@ public class MapGenerator : MonoBehaviour
             for (int j = 0; j < size.y; j++)
             {
                 Vector3Int pos = new Vector3Int(i, j, 0);
-                Vector3Int mainPos = offset + pos;
+                Vector3Int mainPos = offset + pos + new Vector3Int(1, 1, 0);
                 mainTilemap.SetTile(mainPos, template.GetTile(pos));
             }
         }
@@ -216,4 +184,51 @@ public class MapGenerator : MonoBehaviour
         mainTilemap = transform.GetChild(1)?.GetComponent<Tilemap>();
         darkForestTilemap = transform.GetChild(2)?.GetComponent<Tilemap>();
     }
+
+
+
+    private void LoadRiver()
+    {
+        var grid = new List<List<Node>>();
+        for (int i = bottomLeftCorner.x - 5; i < upperRightCorner.x + 5; i++)
+        {
+            var row = new List<Node>();
+            for (int j = bottomLeftCorner.y - 5; j < upperRightCorner.y + 5; j++)
+            {
+                row.Add(MakeMapNode(new Vector2Int(i, j)));
+            }
+            grid.Add(row);
+        }
+        Astar astar = new Astar(grid);
+
+        var start = -castleKeystone.boundingBox / 2 - bottomLeftCorner + new Vector2Int(5, 5);
+        var end = new Vector2Int(1, 1);
+
+        var pathStack = astar.FindPath(start, end);
+
+        if (pathStack != null) 
+        {
+            foreach (var item in pathStack)
+            {
+                var pos = item.Position + bottomLeftCorner - new Vector2Int(5, 5);
+                mainTilemap.SetTile(pos.To3D(), riverTile);
+            }
+        }
+
+        start = castleKeystone.boundingBox / 2 - bottomLeftCorner + new Vector2Int(4, 4);
+        end = usableMapDimensions + new Vector2Int(8, 8);
+
+        pathStack = astar.FindPath(start, end);
+        if (pathStack != null) 
+        {
+            foreach (var item in pathStack)
+            {
+                var pos = item.Position + bottomLeftCorner - new Vector2Int(5, 5);
+                mainTilemap.SetTile(pos.To3D(), riverTile);
+            }
+        }
+    }
+
+    private Node MakeMapNode(Vector2Int vec)
+        => new Node(vec - bottomLeftCorner + new Vector2Int(5, 5), !usedSpaces.AnyContain(vec), 10 * groundTile.RawPerlinValue(vec.x, vec.y));
 }
