@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.Tilemaps;
 
 using AStarSharp;
+using static Character;
 
 #pragma warning disable 0649
 public class MapGenerator : MonoBehaviour
@@ -36,7 +37,7 @@ public class MapGenerator : MonoBehaviour
     private List<RoadHookup> hookups;
 
     [ReadOnly]
-    public readonly RegionManager<string> usedSpaces = new RegionManager<string>();
+    public readonly RegionManager<Building> usedSpaces = new RegionManager<Building>();
 
     // Start is called before the first frame update
     void Start()
@@ -44,24 +45,24 @@ public class MapGenerator : MonoBehaviour
         hookups = new List<RoadHookup>();
 
         // do castle first, always centered.
-        castleKeystone = LoadTemplate(castleTemplate, "castle");
+        castleKeystone = LoadBuilding(castleTemplate, "castle");
         // do graveyard next, always on an edge.
-        graveyardKeystone = LoadTemplate(graveyardTemplate, "graveyard");
+        graveyardKeystone = LoadBuilding(graveyardTemplate, "graveyard");
 
         // add 2 houses
-        house1Keystone = LoadTemplate(houseTemplate, "house1");
-        house2Keystone = LoadTemplate(houseTemplate, "house2");
+        house1Keystone = LoadHouse(houseTemplate, "house1", Miner);
+        house2Keystone = LoadHouse(houseTemplate, "house2", Blacksmith);
 
         // add 2 shops
-        shop1Keystone = LoadTemplate(shop1Template, "shop1");
-        shop2Keystone = LoadTemplate(shop2Template, "shop2");
+        shop1Keystone = LoadBuilding(shop1Template, "shop1");
+        shop2Keystone = LoadBuilding(shop2Template, "shop2");
 
         // add shop&house
-        shopHouseKeystone = LoadTemplate(shopHouseTemplate, "shopHouse");
+        shopHouseKeystone = LoadBuilding(shopHouseTemplate, "shopHouse");
 
         // add 2 more houses (now 5, enough for each character)
-        house3Keystone = LoadTemplate(houseTemplate, "house3");
-        house4Keystone = LoadTemplate(houseTemplate, "house4");
+        house3Keystone = LoadHouse(houseTemplate, "house3", Watcher);
+        house4Keystone = LoadHouse(houseTemplate, "house4", Witch);
 
         // make roads
         // make river
@@ -115,7 +116,26 @@ public class MapGenerator : MonoBehaviour
     private Node MakeMapNode(Vector2Int vec)
         => new Node(vec - bottomLeftCorner + new Vector2Int(5, 5), !usedSpaces.AnyContain(vec), 10 * groundTile.RawPerlinValue(vec.x, vec.y));
 
-    private KeystoneTile LoadTemplate(Tilemap template, string name)
+    private KeystoneTile LoadHouse(Tilemap template, string name, Character character)
+    {
+        KeystoneTile keystone = LoadTemplate(template, out RectInt usedSpace);
+        House house = House.AddTo(gameObject, name, character, usedSpace);
+        usedSpaces.Add(usedSpace, house);
+        return keystone;
+    }
+
+    private KeystoneTile LoadBuilding(Tilemap template, string name)
+    {
+        KeystoneTile keystone = LoadTemplate(template, out RectInt usedSpace);
+        Building building = Building.AddTo(gameObject, name, usedSpace);
+        usedSpaces.Add(usedSpace, building);
+        return keystone;
+    }
+
+    private KeystoneTile LoadTemplate(Tilemap template)
+        => LoadTemplate(template, out RectInt _);
+    
+    private KeystoneTile LoadTemplate(Tilemap template, out RectInt usedSpace)
     {
         KeystoneTile keystone = template.GetKeystone();
         hookups.AddRange(keystone.roadHookups);
@@ -123,8 +143,7 @@ public class MapGenerator : MonoBehaviour
         Vector2Int size = keystone.boundingBox;
         Vector3Int offset = GetOffset(keystone);
         
-        RectInt usedSpace = new RectInt(offset.x, offset.y, size.x, size.y);
-        usedSpaces.Add(usedSpace, name);
+        usedSpace = new RectInt(offset.x, offset.y, size.x, size.y);
 
         for (int i = 0; i < size.x; i++)
         {
