@@ -23,20 +23,6 @@ public class KeystoneTile : Tile
     public RoadHookup[] roadHookups;
 }
 
-[Serializable]
-public struct RoadHookup
-{
-    [Serializable]
-    public enum Direction
-    {
-        Down,
-        Up,
-    }
-
-    public Direction direction;
-    public Vector2Int hookupPoint;
-}
-
 #if UNITY_EDITOR
 namespace UnityEngine.Tilemaps
 {

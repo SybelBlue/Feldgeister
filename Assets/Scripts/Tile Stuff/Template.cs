@@ -21,7 +21,6 @@ public class Template : MonoBehaviour
     public PlacementStrategy strategy;
     public RectInt boundingBox;
     public RoadHookup[] roadHookups;
-
     
     private void OnDrawGizmosSelected()
     {
