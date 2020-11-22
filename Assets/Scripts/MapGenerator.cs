@@ -79,7 +79,6 @@ public class MapGenerator : MonoBehaviour
         {
             var flattened = StaticUtils.currentWorldMousePosition.To2DInt();
             print(usedSpaces[flattened]?.buildingName);
-            print(mainTilemap.GetTile(flattened.To3D()));
         }
     }
 

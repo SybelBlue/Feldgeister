@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class Building : MonoBehaviour, IRegion
 {
+    [ReadOnly]
     public string buildingName;
     public RectInt region { get; set; }
 
