@@ -21,8 +21,11 @@ public class Template : MonoBehaviour
     public RectInt boundingBox;
     public RoadHookup[] roadHookups;
 
-    void OnStart()
+    void Start()
         => tilemap = tilemap ?? GetComponent<Tilemap>();
+
+    public TileBase GetTile(Vector3Int pos)
+        => tilemap.GetTile(pos);
 
 #if UNITY_EDITOR
     public bool highlightOnMap = true;

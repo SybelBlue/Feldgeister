@@ -53,10 +53,4 @@ public static class Extensions
 
     public static Vector3 MapComponents(this Vector3 vec, Func<float, float> f)
         => new Vector3(f(vec.x), f(vec.y), f(vec.z));
-
-    public static KeystoneTile GetKeystone(this Tilemap tilemap)
-    {
-        TileBase[] allTiles = tilemap.GetTilesBlock(tilemap.cellBounds);
-        return (KeystoneTile) allTiles.First(tile => tile != null && tile.GetType() == typeof(KeystoneTile));
-    }
 }

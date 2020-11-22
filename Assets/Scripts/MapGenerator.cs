@@ -22,7 +22,7 @@ public class MapGenerator : MonoBehaviour
         => new RectInt(bottomLeftCorner.x, bottomLeftCorner.y, usableMapDimensions.x, usableMapDimensions.y);
 
     [SerializeField]
-    private Tilemap castleTemplate, graveyardTemplate, houseTemplate, shop1Template, shop2Template, shopHouseTemplate;
+    private Tilemap castleTilemap, graveyardTilemap, houseTilemap, shop1Tilemap, shop2Tilemap, shopHouseTilemap;
 
     [SerializeField]
     private TileBase roadTile, riverTile;
@@ -30,11 +30,10 @@ public class MapGenerator : MonoBehaviour
     [SerializeField]
     private GatedPerlinTile groundTile;
 
-    private KeystoneTile castleKeystone;
-    private KeystoneTile graveyardKeystone;
-    private KeystoneTile house1Keystone, house2Keystone, house3Keystone, house4Keystone;
-    private KeystoneTile shop1Keystone, shop2Keystone;
-    private KeystoneTile shopHouseKeystone;
+    private Template castleTemplate;
+    private Template graveyardTemplate;
+    private Template house1Template, house2Template, house3Template, house4Template;
+    private Template shop1Template, shop2Template, shopHouseTemplate;
 
     [SerializeField, ReadOnly]
     private List<RoadHookup> hookups;
@@ -48,24 +47,24 @@ public class MapGenerator : MonoBehaviour
         hookups = new List<RoadHookup>();
 
         // do castle first, always centered.
-        castleKeystone = LoadBuilding(castleTemplate, "castle");
+        castleTemplate = LoadBuilding(castleTilemap, "castle");
         // do graveyard next, always on an edge.
-        graveyardKeystone = LoadBuilding(graveyardTemplate, "graveyard");
+        graveyardTemplate = LoadBuilding(graveyardTilemap, "graveyard");
 
         // add 2 houses
-        house1Keystone = LoadHouse(houseTemplate, "house1", Miner);
-        house2Keystone = LoadHouse(houseTemplate, "house2", Blacksmith);
+        house1Template = LoadHouse(houseTilemap, "house1", Miner);
+        house2Template = LoadHouse(houseTilemap, "house2", Blacksmith);
 
         // add 2 shops
-        shop1Keystone = LoadBuilding(shop1Template, "shop1");
-        shop2Keystone = LoadBuilding(shop2Template, "shop2");
+        shop1Template = LoadBuilding(shop1Tilemap, "shop1");
+        shop2Template = LoadBuilding(shop2Tilemap, "shop2");
 
         // add shop&house
-        shopHouseKeystone = LoadBuilding(shopHouseTemplate, "shopHouse");
+        shopHouseTemplate = LoadBuilding(shopHouseTilemap, "shopHouse");
 
         // add 2 more houses (now 5, enough for each character)
-        house3Keystone = LoadHouse(houseTemplate, "house3", Watcher);
-        house4Keystone = LoadHouse(houseTemplate, "house4", Witch);
+        house3Template = LoadHouse(houseTilemap, "house3", Watcher);
+        house4Template = LoadHouse(houseTilemap, "house4", Witch);
 
         // make roads
         // make river
@@ -84,26 +83,26 @@ public class MapGenerator : MonoBehaviour
         }
     }
 
-    private KeystoneTile LoadHouse(Tilemap template, string name, Character character)
+    private Template LoadHouse(Tilemap tilemap, string name, Character character)
     {
-        KeystoneTile keystone = LoadTemplate(template, out RectInt usedSpace);
+        Template template = LoadTemplate(tilemap, out RectInt usedSpace);
         House house = House.AddTo(gameObject, name, character, usedSpace);
         usedSpaces.Add(usedSpace, house);
-        return keystone;
+        return template;
     }
 
-    private KeystoneTile LoadBuilding(Tilemap template, string name)
+    private Template LoadBuilding(Tilemap tilemap, string name)
     {
-        KeystoneTile keystone = LoadTemplate(template, out RectInt usedSpace);
+        Template template = LoadTemplate(tilemap, out RectInt usedSpace);
         Building building = Building.AddTo(gameObject, name, usedSpace);
         usedSpaces.Add(usedSpace, building);
-        return keystone;
+        return template;
     }
 
-    private KeystoneTile LoadTemplate(Tilemap template)
-        => LoadTemplate(template, out RectInt _);
+    private Template LoadTemplate(Tilemap tilemap)
+        => LoadTemplate(tilemap, out RectInt _);
     
-    private KeystoneTile LoadTemplate(Tilemap tilemap, out RectInt usedSpace)
+    private Template LoadTemplate(Tilemap tilemap, out RectInt usedSpace)
     {
         Template template = tilemap.GetComponent<Template>();
         hookups.AddRange(template.roadHookups);
@@ -119,7 +118,7 @@ public class MapGenerator : MonoBehaviour
             mainTilemap.SetTile(mainPos, tilemap.GetTile(pos));
         }
 
-        return null;
+        return template;
     }
     
     private Vector3Int GetOffset(Template template)
@@ -207,7 +206,7 @@ public class MapGenerator : MonoBehaviour
         }
         Astar astar = new Astar(grid);
 
-        var start = -castleKeystone.boundingBox / 2 - bottomLeftCorner + new Vector2Int(5, 5);
+        var start = -castleTemplate.boundingBox.size / 2 - bottomLeftCorner + new Vector2Int(5, 5);
         var end = new Vector2Int(1, 1);
 
         var pathStack = astar.FindPath(start, end);
@@ -221,7 +220,7 @@ public class MapGenerator : MonoBehaviour
             }
         }
 
-        start = castleKeystone.boundingBox / 2 - bottomLeftCorner + new Vector2Int(4, 4);
+        start = castleTemplate.boundingBox.size / 2 - bottomLeftCorner + new Vector2Int(4, 4);
         end = usableMapDimensions + new Vector2Int(8, 8);
 
         pathStack = astar.FindPath(start, end);

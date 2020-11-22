@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 1589639009177443337}
   - component: {fileID: 1589639008578903077}
   m_Layer: 0
-  m_Name: Shack Tilemap
+  m_Name: House Tilemap
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
