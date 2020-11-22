@@ -2,13 +2,20 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
+using UnityEngine.Events;
 
 using AStarSharp;
 using static Character;
 
+[System.Serializable]
+public class MapEvent : UnityEvent<MapGenerator>
+{  }
+
 #pragma warning disable 0649
 public class MapGenerator : MonoBehaviour
 {
+    public MapEvent onMapMade;
+
     [SerializeField, ReadOnly] 
     private Tilemap groundTilemap, mainTilemap, darkForestTilemap;
 
@@ -38,7 +45,6 @@ public class MapGenerator : MonoBehaviour
     [SerializeField, ReadOnly]
     private List<RoadHookup> hookups;
 
-    [ReadOnly]
     public readonly RegionManager<Building> usedSpaces = new RegionManager<Building>();
 
     // Start is called before the first frame update
@@ -71,15 +77,8 @@ public class MapGenerator : MonoBehaviour
         // LoadRiver();
         // make fields
         // make wells, rocks?
-    }
 
-    void Update()
-    {
-        if (Input.GetMouseButtonDown(0)) 
-        {
-            var flattened = StaticUtils.currentWorldMousePosition.To2DInt();
-            print(usedSpaces[flattened]?.buildingName);
-        }
+        onMapMade.Invoke(this);
     }
 
     private Template LoadHouse(Tilemap tilemap, string name, Character character)
