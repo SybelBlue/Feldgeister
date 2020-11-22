@@ -11,6 +11,7 @@ public class GameController : MonoBehaviour
 
 #if UNITY_EDITOR
     // used only to display progress in inspector!
+#pragma warning disable 0414
     [SerializeField, ReadOnly]
     private bool _mapReady = false;
 #endif
@@ -24,10 +25,15 @@ public class GameController : MonoBehaviour
 
     void Update()
     {
-        if (mapReady && Input.GetMouseButtonDown(0)) 
+        if (Feldgeister.Input.mouseHasMoved && mapReady) 
         {
-            var flattened = StaticUtils.currentWorldMousePosition.To2DInt();
-            print(buildingMap[flattened]?.buildingName);
+            var flattened = Feldgeister.Input.currentWorldMousePosition.To2DInt();
+            Feldgeister.Input.lastFocused = buildingMap[flattened];
+        }
+
+        if (Input.GetMouseButtonDown(0))
+        {
+            Feldgeister.Input.SendClick();
         }
     }
 }

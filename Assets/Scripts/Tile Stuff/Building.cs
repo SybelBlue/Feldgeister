@@ -14,6 +14,21 @@ public class Building : MonoBehaviour, IRegion
         return building;
     }
 
+    public virtual void OnHoverEnter()
+    {
+        print($"Hovering over {buildingName}");
+    }
+
+    public virtual void OnHoverExit()
+    {
+        print($"Cursor left {buildingName}");
+    }
+
+    public virtual void OnClick()
+    {
+        print($"Clicked {buildingName}");
+    }
+
 #if UNITY_EDITOR
     public bool highlightOnMap = true;
 
