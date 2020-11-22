@@ -253,7 +253,7 @@ Tilemap:
     second:
       serializedVersion: 2
       m_TileIndex: 6
-      m_TileSpriteIndex: 6
+      m_TileSpriteIndex: 10
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -487,7 +487,7 @@ Tilemap:
     second:
       serializedVersion: 2
       m_TileIndex: 5
-      m_TileSpriteIndex: 5
+      m_TileSpriteIndex: 6
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -730,11 +730,11 @@ Tilemap:
   - m_RefCount: 2
     m_Data: {fileID: 7099628705277205302, guid: 7da770ef7766a4ce8b40466d35f66c3f,
       type: 3}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
   - m_RefCount: 1
     m_Data: {fileID: -2180500286531836312, guid: 7da770ef7766a4ce8b40466d35f66c3f,
       type: 3}
-  - m_RefCount: 1
-    m_Data: {fileID: 154413943850823707, guid: 7da770ef7766a4ce8b40466d35f66c3f, type: 3}
   - m_RefCount: 25
     m_Data: {fileID: -3714409817710726143, guid: 7da770ef7766a4ce8b40466d35f66c3f,
       type: 3}
@@ -744,8 +744,8 @@ Tilemap:
   - m_RefCount: 1
     m_Data: {fileID: 6898460269864436913, guid: 7da770ef7766a4ce8b40466d35f66c3f,
       type: 3}
-  - m_RefCount: 0
-    m_Data: {fileID: 0}
+  - m_RefCount: 1
+    m_Data: {fileID: 154413943850823707, guid: 7da770ef7766a4ce8b40466d35f66c3f, type: 3}
   m_TileMatrixArray:
   - m_RefCount: 72
     m_Data:
@@ -853,7 +853,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 42bd552afd22c4e92bc10d69952a493f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tilemap: {fileID: 7314902712041161721}
+  tilemap: {fileID: 0}
   strategy: 1
   boundingBox:
     x: -1
@@ -861,3 +861,4 @@ MonoBehaviour:
     width: 11
     height: 10
   roadHookups: []
+  highlightOnMap: 1

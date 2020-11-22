@@ -13,8 +13,15 @@ public class Building : MonoBehaviour, IRegion
         return building;
     }
 
+#if UNITY_EDITOR
+    public bool highlightOnMap = true;
+
     private void OnDrawGizmosSelected()
     {
-        StaticUtils.DrawGizmoWireBox(region, Color.yellow, transform.position);
+        if (highlightOnMap)
+        {
+            StaticUtils.DrawGizmoWireBox(region, Color.yellow, transform.position);
+        }
     }
+#endif
 }

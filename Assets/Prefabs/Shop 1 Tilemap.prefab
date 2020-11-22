@@ -259,3 +259,4 @@ MonoBehaviour:
     width: 6
     height: 4
   roadHookups: []
+  highlightOnMap: 1

@@ -103,51 +103,47 @@ public class MapGenerator : MonoBehaviour
     private KeystoneTile LoadTemplate(Tilemap template)
         => LoadTemplate(template, out RectInt _);
     
-    private KeystoneTile LoadTemplate(Tilemap template, out RectInt usedSpace)
+    private KeystoneTile LoadTemplate(Tilemap tilemap, out RectInt usedSpace)
     {
-        KeystoneTile keystone = template.GetKeystone();
-        hookups.AddRange(keystone.roadHookups);
+        Template template = tilemap.GetComponent<Template>();
+        hookups.AddRange(template.roadHookups);
         
-        Vector2Int size = keystone.boundingBox;
-        Vector3Int offset = GetOffset(keystone);
+        Vector2Int size = template.boundingBox.size;
+        Vector3Int offset = GetOffset(template);
         
         usedSpace = new RectInt(offset.x, offset.y, size.x, size.y);
 
-        for (int i = 0; i < size.x; i++)
+        foreach (Vector3Int pos in template.boundingBox.allPositionsWithin)
         {
-            for (int j = 0; j < size.y; j++)
-            {
-                Vector3Int pos = new Vector3Int(i, j, 0);
-                Vector3Int mainPos = offset + pos + new Vector3Int(1, 1, 0);
-                mainTilemap.SetTile(mainPos, template.GetTile(pos));
-            }
+            Vector3Int mainPos = offset + pos - template.boundingBox.position.To3D();
+            mainTilemap.SetTile(mainPos, tilemap.GetTile(pos));
         }
 
-        return keystone;
+        return null;
     }
     
-    private Vector3Int GetOffset(KeystoneTile keystone)
+    private Vector3Int GetOffset(Template template)
     {
-        switch (keystone.strategy)
+        var size = template.boundingBox.size;
+        switch (template.strategy)
         {
-            case KeystoneTile.PlacementStrategy.Castle:
-                return new Vector3Int(-keystone.boundingBox.x / 2, -keystone.boundingBox.y / 2, 0);
-            case KeystoneTile.PlacementStrategy.Graveyard:
-                Vector2Int placementDimensions = usableMapDimensions - keystone.boundingBox;
+            case Template.PlacementStrategy.Castle:
+                return new Vector3Int(-size.x / 2, -size.y / 2, 0);
+            case Template.PlacementStrategy.Graveyard:
+                Vector2Int placementDimensions = usableMapDimensions - size;
                 Vector3Int rawPos = RandomPositionOnPerimeter(placementDimensions);
                 return rawPos + bottomLeftCorner.To3D();
             default:
-                var dimensions = keystone.boundingBox;
                 Vector3Int pos;
                 RectInt usedSpace;
                 do
                 {
                     pos = new Vector3Int(
-                        Random.Range(bottomLeftCorner.x, upperRightCorner.x - dimensions.x),
-                        Random.Range(bottomLeftCorner.y, upperRightCorner.y - dimensions.y),
+                        Random.Range(bottomLeftCorner.x, upperRightCorner.x - size.x),
+                        Random.Range(bottomLeftCorner.y, upperRightCorner.y - size.y),
                         0
                     );
-                    usedSpace = new RectInt(pos.x, pos.y, dimensions.x, dimensions.y);
+                    usedSpace = new RectInt(pos.x, pos.y, size.x, size.y);
                 } while (usedSpaces.AnyOverlap(usedSpace));
 
                 return pos;
@@ -185,7 +181,17 @@ public class MapGenerator : MonoBehaviour
         darkForestTilemap = transform.GetChild(2)?.GetComponent<Tilemap>();
     }
 
+#if UNITY_EDITOR
+    public bool showMapBounds = true;
 
+    private void OnDrawGizmosSelected()
+    {
+        if (showMapBounds)
+        {
+            StaticUtils.DrawGizmoWireBox(mapBounds, Color.blue, transform.position);
+        }
+    }
+#endif
 
     private void LoadRiver()
     {

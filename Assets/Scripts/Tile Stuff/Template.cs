@@ -8,7 +8,6 @@ public class Template : MonoBehaviour
     [SerializeField, ReadOnly]
     private Tilemap tilemap;
 
-
     [Serializable]
     public enum PlacementStrategy
     {
@@ -21,17 +20,24 @@ public class Template : MonoBehaviour
     public PlacementStrategy strategy;
     public RectInt boundingBox;
     public RoadHookup[] roadHookups;
-    
+
+    void OnStart()
+        => tilemap = tilemap ?? GetComponent<Tilemap>();
+
+#if UNITY_EDITOR
+    public bool highlightOnMap = true;
+
     private void OnDrawGizmosSelected()
     {
-        StaticUtils.DrawGizmoWireBox(boundingBox, Color.yellow, transform.position);
+        if (highlightOnMap)
+        {
+            StaticUtils.DrawGizmoWireBox(boundingBox, Color.yellow, transform.position);
+        }
     }
 
     void OnValidate()
     {
-        if (!tilemap)
-        {
-            tilemap = GetComponent<Tilemap>();
-        }
+        tilemap = tilemap ?? GetComponent<Tilemap>();
     }
+#endif
 }

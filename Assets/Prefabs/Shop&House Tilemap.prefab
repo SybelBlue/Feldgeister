@@ -64,7 +64,7 @@ Tilemap:
     second:
       serializedVersion: 2
       m_TileIndex: 1
-      m_TileSpriteIndex: 1
+      m_TileSpriteIndex: 4
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -175,16 +175,16 @@ Tilemap:
   - m_RefCount: 4
     m_Data: {fileID: 4586225796832013606, guid: 7da770ef7766a4ce8b40466d35f66c3f,
       type: 3}
-  - m_RefCount: 1
-    m_Data: {fileID: -8251702662545473453, guid: 7da770ef7766a4ce8b40466d35f66c3f,
-      type: 3}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
   - m_RefCount: 3
     m_Data: {fileID: -1026678048515916684, guid: 7da770ef7766a4ce8b40466d35f66c3f,
       type: 3}
   - m_RefCount: 5
     m_Data: {fileID: 514596867462105363, guid: 7da770ef7766a4ce8b40466d35f66c3f, type: 3}
-  - m_RefCount: 0
-    m_Data: {fileID: 0}
+  - m_RefCount: 1
+    m_Data: {fileID: -8251702662545473453, guid: 7da770ef7766a4ce8b40466d35f66c3f,
+      type: 3}
   m_TileMatrixArray:
   - m_RefCount: 13
     m_Data:
@@ -293,10 +293,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tilemap: {fileID: 2534415541085000727}
-  strategy: 0
+  strategy: 2
   boundingBox:
     x: -2
     y: -1
     width: 7
     height: 5
   roadHookups: []
+  highlightOnMap: 1
