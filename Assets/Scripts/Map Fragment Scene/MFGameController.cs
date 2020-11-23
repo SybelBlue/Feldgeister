@@ -12,7 +12,7 @@ public class MFGameController : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
-            Vector3 pos = StaticUtils.currentWorldMousePosition;
+            Vector3 pos = Feldgeister.Input.currentWorldMousePosition;
             // will have to fix, does not respect sorting layer.
             var intPos = new Vector3Int((int)pos.x, (int)pos.y, 0);
             var tile = perlinGroundMap.GetTile(intPos);

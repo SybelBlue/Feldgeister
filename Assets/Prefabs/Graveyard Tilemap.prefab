@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 7314902712041161727}
   - component: {fileID: 7314902712041161721}
   - component: {fileID: 7314902712041161726}
+  - component: {fileID: 7314902711574530167}
   m_Layer: 0
   m_Name: Graveyard Tilemap
   m_TagString: Untagged
@@ -25,7 +26,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7314902712041161724}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -41,15 +42,6 @@ Tilemap:
   m_GameObject: {fileID: 7314902712041161724}
   m_Enabled: 1
   m_Tiles:
-  - first: {x: -2, y: -2, z: 0}
-    second:
-      serializedVersion: 2
-      m_TileIndex: 10
-      m_TileSpriteIndex: 10
-      m_TileMatrixIndex: 0
-      m_TileColorIndex: 1
-      m_TileObjectToInstantiateIndex: 65535
-      m_AllTileFlags: 1
   - first: {x: 0, y: 0, z: 0}
     second:
       serializedVersion: 2
@@ -261,7 +253,7 @@ Tilemap:
     second:
       serializedVersion: 2
       m_TileIndex: 6
-      m_TileSpriteIndex: 6
+      m_TileSpriteIndex: 10
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -495,7 +487,7 @@ Tilemap:
     second:
       serializedVersion: 2
       m_TileIndex: 5
-      m_TileSpriteIndex: 5
+      m_TileSpriteIndex: 6
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -720,8 +712,8 @@ Tilemap:
     m_Data: {fileID: 11400000, guid: e5317ada4f0ff4b54a9028f94978b4ce, type: 2}
   - m_RefCount: 1
     m_Data: {fileID: 11400000, guid: ff74c8fff42de4ad180bd3c71715efa9, type: 2}
-  - m_RefCount: 1
-    m_Data: {fileID: 11400000, guid: 3115d7fa5b2854d16b1942af8b97c38c, type: 2}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
   m_TileSpriteArray:
   - m_RefCount: 18
     m_Data: {fileID: -1321855135786350244, guid: 7da770ef7766a4ce8b40466d35f66c3f,
@@ -738,11 +730,11 @@ Tilemap:
   - m_RefCount: 2
     m_Data: {fileID: 7099628705277205302, guid: 7da770ef7766a4ce8b40466d35f66c3f,
       type: 3}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
   - m_RefCount: 1
     m_Data: {fileID: -2180500286531836312, guid: 7da770ef7766a4ce8b40466d35f66c3f,
       type: 3}
-  - m_RefCount: 1
-    m_Data: {fileID: 154413943850823707, guid: 7da770ef7766a4ce8b40466d35f66c3f, type: 3}
   - m_RefCount: 25
     m_Data: {fileID: -3714409817710726143, guid: 7da770ef7766a4ce8b40466d35f66c3f,
       type: 3}
@@ -753,10 +745,9 @@ Tilemap:
     m_Data: {fileID: 6898460269864436913, guid: 7da770ef7766a4ce8b40466d35f66c3f,
       type: 3}
   - m_RefCount: 1
-    m_Data: {fileID: 5885394863454697278, guid: 7da770ef7766a4ce8b40466d35f66c3f,
-      type: 3}
+    m_Data: {fileID: 154413943850823707, guid: 7da770ef7766a4ce8b40466d35f66c3f, type: 3}
   m_TileMatrixArray:
-  - m_RefCount: 73
+  - m_RefCount: 72
     m_Data:
       e00: 1
       e01: 0
@@ -777,7 +768,7 @@ Tilemap:
   m_TileColorArray:
   - m_RefCount: 72
     m_Data: {r: 1, g: 1, b: 1, a: 1}
-  - m_RefCount: 1
+  - m_RefCount: 0
     m_Data: {r: 1, g: 1, b: 1, a: 0.22745098}
   m_TileObjectToInstantiateArray: []
   m_AnimationFrameRate: 1
@@ -850,3 +841,24 @@ TilemapRenderer:
   m_Mode: 0
   m_DetectChunkCullingBounds: 0
   m_MaskInteraction: 0
+--- !u!114 &7314902711574530167
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7314902712041161724}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 42bd552afd22c4e92bc10d69952a493f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tilemap: {fileID: 0}
+  strategy: 1
+  boundingBox:
+    x: -1
+    y: -1
+    width: 11
+    height: 10
+  roadHookups: []
+  highlightOnMap: 1

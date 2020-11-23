@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 3526183683549314493}
   - component: {fileID: 3526183683549314495}
   - component: {fileID: 3526183683549314494}
+  - component: {fileID: 1490348597775770363}
   m_Layer: 0
   m_Name: Shop 2 Tilemap
   m_TagString: Untagged
@@ -41,20 +42,11 @@ Tilemap:
   m_GameObject: {fileID: 3526183683549314492}
   m_Enabled: 1
   m_Tiles:
-  - first: {x: -1, y: -1, z: 0}
-    second:
-      serializedVersion: 2
-      m_TileIndex: 6
-      m_TileSpriteIndex: 6
-      m_TileMatrixIndex: 0
-      m_TileColorIndex: 1
-      m_TileObjectToInstantiateIndex: 65535
-      m_AllTileFlags: 1
   - first: {x: 0, y: 0, z: 0}
     second:
       serializedVersion: 2
       m_TileIndex: 0
-      m_TileSpriteIndex: 0
+      m_TileSpriteIndex: 6
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -118,11 +110,11 @@ Tilemap:
     m_Data: {fileID: 11400000, guid: a99e83d817620420baa9ba123a012dd4, type: 2}
   - m_RefCount: 1
     m_Data: {fileID: 11400000, guid: e17f170ab21ce4943a2510957cb78b05, type: 2}
-  - m_RefCount: 1
-    m_Data: {fileID: 11400000, guid: 94e4c1819a17e49328188071504ac5bb, type: 2}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
   m_TileSpriteArray:
-  - m_RefCount: 1
-    m_Data: {fileID: 197762750460564403, guid: 7da770ef7766a4ce8b40466d35f66c3f, type: 3}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
   - m_RefCount: 1
     m_Data: {fileID: -2144371481799232851, guid: 7da770ef7766a4ce8b40466d35f66c3f,
       type: 3}
@@ -139,10 +131,9 @@ Tilemap:
     m_Data: {fileID: 3298336703920444007, guid: 7da770ef7766a4ce8b40466d35f66c3f,
       type: 3}
   - m_RefCount: 1
-    m_Data: {fileID: -3049486498344388694, guid: 7da770ef7766a4ce8b40466d35f66c3f,
-      type: 3}
+    m_Data: {fileID: 197762750460564403, guid: 7da770ef7766a4ce8b40466d35f66c3f, type: 3}
   m_TileMatrixArray:
-  - m_RefCount: 7
+  - m_RefCount: 6
     m_Data:
       e00: 1
       e01: 0
@@ -163,13 +154,13 @@ Tilemap:
   m_TileColorArray:
   - m_RefCount: 6
     m_Data: {r: 1, g: 1, b: 1, a: 1}
-  - m_RefCount: 1
+  - m_RefCount: 0
     m_Data: {r: 1, g: 1, b: 1, a: 0.15686275}
   m_TileObjectToInstantiateArray: []
   m_AnimationFrameRate: 1
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Origin: {x: -1, y: -1, z: 0}
-  m_Size: {x: 4, y: 3, z: 1}
+  m_Origin: {x: -2, y: -2, z: 0}
+  m_Size: {x: 5, y: 4, z: 1}
   m_TileAnchor: {x: 0.5, y: 0.5, z: 0}
   m_TileOrientation: 0
   m_TileOrientationMatrix:
@@ -236,3 +227,24 @@ TilemapRenderer:
   m_Mode: 0
   m_DetectChunkCullingBounds: 0
   m_MaskInteraction: 0
+--- !u!114 &1490348597775770363
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3526183683549314492}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 42bd552afd22c4e92bc10d69952a493f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tilemap: {fileID: 3526183683549314495}
+  strategy: 2
+  boundingBox:
+    x: -1
+    y: -1
+    width: 5
+    height: 4
+  roadHookups: []
+  highlightOnMap: 1

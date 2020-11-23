@@ -1,14 +1,21 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 using UnityEngine.Tilemaps;
+using UnityEngine.Events;
 
 using AStarSharp;
+using static Character;
+
+[System.Serializable]
+public class MapEvent : UnityEvent<MapGenerator>
+{  }
 
 #pragma warning disable 0649
 public class MapGenerator : MonoBehaviour
 {
+    public MapEvent onMapMade;
+
     [SerializeField, ReadOnly] 
     private Tilemap groundTilemap, mainTilemap, darkForestTilemap;
 
@@ -22,7 +29,7 @@ public class MapGenerator : MonoBehaviour
         => new RectInt(bottomLeftCorner.x, bottomLeftCorner.y, usableMapDimensions.x, usableMapDimensions.y);
 
     [SerializeField]
-    private Tilemap castleTemplate, graveyardTemplate, houseTemplate, shop1Template, shop2Template, shopHouseTemplate;
+    private Tilemap castleTilemap, graveyardTilemap, houseTilemap, shop1Tilemap, shop2Tilemap, shopHouseTilemap;
 
     [SerializeField]
     private TileBase roadTile, riverTile;
@@ -30,140 +37,111 @@ public class MapGenerator : MonoBehaviour
     [SerializeField]
     private GatedPerlinTile groundTile;
 
-    [SerializeField, ReadOnly] 
-    private KeystoneTile castleKeystone, graveyardKeystone, house1Keystone, house2Keystone, house3Keystone, house4Keystone, shop1Keystone, shop2Keystone, shopHouseKeystone;
+    private Template castleTemplate;
+    private Template graveyardTemplate;
+    private Template house1Template, house2Template, house3Template, house4Template;
+    private Template shop1Template, shop2Template, shopHouseTemplate;
 
     [SerializeField, ReadOnly]
     private List<RoadHookup> hookups;
 
-    [SerializeField, ReadOnly]
-    private List<RectInt> usedSpaces;
+    public readonly RegionManager<Building> usedSpaces = new RegionManager<Building>();
 
     // Start is called before the first frame update
     void Start()
     {
         hookups = new List<RoadHookup>();
-        usedSpaces = new List<RectInt>();
 
         // do castle first, always centered.
-        castleKeystone = LoadTemplate(castleTemplate);
+        castleTemplate = LoadBuilding(castleTilemap, "castle");
         // do graveyard next, always on an edge.
-        graveyardKeystone = LoadTemplate(graveyardTemplate);
+        graveyardTemplate = LoadBuilding(graveyardTilemap, "graveyard");
 
         // add 2 houses
-        house1Keystone = LoadTemplate(houseTemplate);
-        house2Keystone = LoadTemplate(houseTemplate);
+        house1Template = LoadHouse(houseTilemap, "house1", Miner);
+        house2Template = LoadHouse(houseTilemap, "house2", Blacksmith);
 
         // add 2 shops
-        shop1Keystone = LoadTemplate(shop1Template);
-        shop2Keystone = LoadTemplate(shop2Template);
+        shop1Template = LoadBuilding(shop1Tilemap, "shop1");
+        shop2Template = LoadBuilding(shop2Tilemap, "shop2");
 
         // add shop&house
-        shopHouseKeystone = LoadTemplate(shopHouseTemplate);
+        shopHouseTemplate = LoadBuilding(shopHouseTilemap, "shopHouse");
 
         // add 2 more houses (now 5, enough for each character)
-        house3Keystone = LoadTemplate(houseTemplate);
-        house4Keystone = LoadTemplate(houseTemplate);
+        house3Template = LoadHouse(houseTilemap, "house3", Watcher);
+        house4Template = LoadHouse(houseTilemap, "house4", Witch);
 
         // make roads
         // make river
         // LoadRiver();
         // make fields
         // make wells, rocks?
+
+        onMapMade.Invoke(this);
     }
 
-    private void LoadRiver()
+    private Template LoadHouse(Tilemap tilemap, string name, Character character)
     {
-        var grid = new List<List<Node>>();
-        for (int i = bottomLeftCorner.x - 5; i < upperRightCorner.x + 5; i++)
-        {
-            var row = new List<Node>();
-            for (int j = bottomLeftCorner.y - 5; j < upperRightCorner.y + 5; j++)
-            {
-                row.Add(MakeMapNode(new Vector2Int(i, j)));
-            }
-            grid.Add(row);
-        }
-        Astar astar = new Astar(grid);
-
-        var start = -castleKeystone.boundingBox / 2 - bottomLeftCorner + new Vector2Int(5, 5);
-        var end = new Vector2Int(1, 1);
-
-        var pathStack = astar.FindPath(start, end);
-
-        if (pathStack != null) 
-        {
-            foreach (var item in pathStack)
-            {
-                var pos = item.Position + bottomLeftCorner - new Vector2Int(5, 5);
-                mainTilemap.SetTile(pos.To3D(), riverTile);
-            }
-        }
-
-        start = castleKeystone.boundingBox / 2 - bottomLeftCorner + new Vector2Int(4, 4);
-        end = usableMapDimensions + new Vector2Int(8, 8);
-
-        pathStack = astar.FindPath(start, end);
-        if (pathStack != null) 
-        {
-            foreach (var item in pathStack)
-            {
-                var pos = item.Position + bottomLeftCorner - new Vector2Int(5, 5);
-                mainTilemap.SetTile(pos.To3D(), riverTile);
-            }
-        }
+        Template template = LoadTemplate(tilemap, out RectInt usedSpace);
+        House house = House.AddTo(gameObject, name, character, usedSpace);
+        usedSpaces.Add(usedSpace, house);
+        return template;
     }
 
-    private Node MakeMapNode(Vector2Int vec)
-        => new Node(vec - bottomLeftCorner + new Vector2Int(5, 5), !usedSpaces.Any(sp => sp.Contains(vec)), 10 * groundTile.RawPerlinValue(vec.x, vec.y));
-
-    private KeystoneTile LoadTemplate(Tilemap template)
+    private Template LoadBuilding(Tilemap tilemap, string name)
     {
-        KeystoneTile keystone = template.GetKeystone();
-        hookups.AddRange(keystone.roadHookups);
-        
-        Vector2Int size = keystone.boundingBox;
-        Vector3Int offset = GetOffset(keystone);
-        
-        RectInt usedSpace = new RectInt(offset.x, offset.y, size.x, size.y);
-        usedSpaces.Add(usedSpace);
+        Template template = LoadTemplate(tilemap, out RectInt usedSpace);
+        Building building = Building.AddTo(gameObject, name, usedSpace);
+        usedSpaces.Add(usedSpace, building);
+        return template;
+    }
 
-        for (int i = 0; i < size.x; i++)
+    private Template LoadTemplate(Tilemap tilemap)
+        => LoadTemplate(tilemap, out RectInt _);
+    
+    private Template LoadTemplate(Tilemap tilemap, out RectInt usedSpace)
+    {
+        Template template = tilemap.GetComponent<Template>();
+        hookups.AddRange(template.roadHookups);
+        
+        Vector2Int size = template.boundingBox.size;
+        Vector3Int offset = GetOffset(template);
+        
+        usedSpace = new RectInt(offset.x, offset.y, size.x, size.y);
+
+        foreach (Vector3Int pos in template.boundingBox.allPositionsWithin)
         {
-            for (int j = 0; j < size.y; j++)
-            {
-                Vector3Int pos = new Vector3Int(i, j, 0);
-                Vector3Int mainPos = offset + pos;
-                mainTilemap.SetTile(mainPos, template.GetTile(pos));
-            }
+            Vector3Int mainPos = offset + pos - template.boundingBox.position.To3D();
+            mainTilemap.SetTile(mainPos, tilemap.GetTile(pos));
         }
 
-        return keystone;
+        return template;
     }
     
-    private Vector3Int GetOffset(KeystoneTile keystone)
+    private Vector3Int GetOffset(Template template)
     {
-        switch (keystone.strategy)
+        var size = template.boundingBox.size;
+        switch (template.strategy)
         {
-            case KeystoneTile.PlacementStrategy.Castle:
-                return new Vector3Int(-keystone.boundingBox.x / 2, -keystone.boundingBox.y / 2, 0);
-            case KeystoneTile.PlacementStrategy.Graveyard:
-                Vector2Int placementDimensions = usableMapDimensions - keystone.boundingBox;
+            case Template.PlacementStrategy.Castle:
+                return new Vector3Int(-size.x / 2, -size.y / 2, 0);
+            case Template.PlacementStrategy.Graveyard:
+                Vector2Int placementDimensions = usableMapDimensions - size;
                 Vector3Int rawPos = RandomPositionOnPerimeter(placementDimensions);
                 return rawPos + bottomLeftCorner.To3D();
             default:
-                var dimensions = keystone.boundingBox;
                 Vector3Int pos;
                 RectInt usedSpace;
                 do
                 {
                     pos = new Vector3Int(
-                        Random.Range(bottomLeftCorner.x, upperRightCorner.x - dimensions.x),
-                        Random.Range(bottomLeftCorner.y, upperRightCorner.y - dimensions.y),
+                        Random.Range(bottomLeftCorner.x, upperRightCorner.x - size.x),
+                        Random.Range(bottomLeftCorner.y, upperRightCorner.y - size.y),
                         0
                     );
-                    usedSpace = new RectInt(pos.x, pos.y, dimensions.x, dimensions.y);
-                } while (usedSpaces.Any(rect => rect.Overlaps(usedSpace)));
+                    usedSpace = new RectInt(pos.x, pos.y, size.x, size.y);
+                } while (usedSpaces.AnyOverlap(usedSpace));
 
                 return pos;
         }
@@ -199,4 +177,61 @@ public class MapGenerator : MonoBehaviour
         mainTilemap = transform.GetChild(1)?.GetComponent<Tilemap>();
         darkForestTilemap = transform.GetChild(2)?.GetComponent<Tilemap>();
     }
+
+#if UNITY_EDITOR
+    public bool showMapBounds = true;
+
+    private void OnDrawGizmosSelected()
+    {
+        if (showMapBounds)
+        {
+            StaticUtils.DrawGizmoWireBox(mapBounds, Color.blue, transform.position);
+        }
+    }
+#endif
+
+    private void LoadRiver()
+    {
+        var grid = new List<List<Node>>();
+        for (int i = bottomLeftCorner.x - 5; i < upperRightCorner.x + 5; i++)
+        {
+            var row = new List<Node>();
+            for (int j = bottomLeftCorner.y - 5; j < upperRightCorner.y + 5; j++)
+            {
+                row.Add(MakeMapNode(new Vector2Int(i, j)));
+            }
+            grid.Add(row);
+        }
+        Astar astar = new Astar(grid);
+
+        var start = -castleTemplate.boundingBox.size / 2 - bottomLeftCorner + new Vector2Int(5, 5);
+        var end = new Vector2Int(1, 1);
+
+        var pathStack = astar.FindPath(start, end);
+
+        if (pathStack != null) 
+        {
+            foreach (var item in pathStack)
+            {
+                var pos = item.Position + bottomLeftCorner - new Vector2Int(5, 5);
+                mainTilemap.SetTile(pos.To3D(), riverTile);
+            }
+        }
+
+        start = castleTemplate.boundingBox.size / 2 - bottomLeftCorner + new Vector2Int(4, 4);
+        end = usableMapDimensions + new Vector2Int(8, 8);
+
+        pathStack = astar.FindPath(start, end);
+        if (pathStack != null) 
+        {
+            foreach (var item in pathStack)
+            {
+                var pos = item.Position + bottomLeftCorner - new Vector2Int(5, 5);
+                mainTilemap.SetTile(pos.To3D(), riverTile);
+            }
+        }
+    }
+
+    private Node MakeMapNode(Vector2Int vec)
+        => new Node(vec - bottomLeftCorner + new Vector2Int(5, 5), !usedSpaces.AnyContain(vec), 10 * groundTile.RawPerlinValue(vec.x, vec.y));
 }
