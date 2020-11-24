@@ -87,30 +87,22 @@ public class Character : MonoBehaviour
 [CustomEditor(typeof(Character))]
 public class CharacterEditor : Editor
 {
-    [Serializable]
-    private enum EditorMoraleMode
-    {
-        Standard,
-        Unflinching,
-        Terrorized
-    }
-
     private SerializedProperty m_onDeathProp;
 
     private Character character {
         get => target as Character;
     }
 
-    private EditorMoraleMode moraleMode {
+    private MoraleLevel moraleMode {
         get {
             switch (character.moraleMode)
             {
                 case UnflinchingMorale _:
-                    return EditorMoraleMode.Unflinching;
+                    return MoraleLevel.Unflinching;
                 case TerrorizedMorale _:
-                    return EditorMoraleMode.Terrorized;
+                    return MoraleLevel.Terrorized;
                 default:
-                    return EditorMoraleMode.Standard;
+                    return MoraleLevel.Normal;
             }
         }
 
@@ -118,13 +110,13 @@ public class CharacterEditor : Editor
             if (moraleMode == value) return;
             switch (value)
             {
-                case EditorMoraleMode.Unflinching:
+                case MoraleLevel.Unflinching:
                     character.moraleMode = new UnflinchingMorale();
                     break;
-                case EditorMoraleMode.Terrorized:
+                case MoraleLevel.Terrorized:
                     character.moraleMode = new TerrorizedMorale();
                     break;
-                case EditorMoraleMode.Standard:
+                case MoraleLevel.Normal:
                     character.moraleMode = new StandardMorale();
                     break;
             }
@@ -161,9 +153,9 @@ public class CharacterEditor : Editor
 
             EditorGUILayout.Space();
 
-            var newMode = (EditorMoraleMode)EditorGUILayout.EnumPopup("Morale Mode", moraleMode);
+            var newMode = (MoraleLevel)EditorGUILayout.EnumPopup("Morale Mode", moraleMode);
             moraleMode = newMode;
-            if (newMode == EditorMoraleMode.Standard)
+            if (newMode == MoraleLevel.Normal)
             {
                 EditorGUI.indentLevel++;
 
@@ -174,12 +166,8 @@ public class CharacterEditor : Editor
 
                 EditorGUI.indentLevel++;
                 
-                if (character.moraleMode.unflinching) {
-                    EditorGUILayout.LabelField("Unflinching");
-                }
-
-                if (character.moraleMode.terrorized) {
-                    EditorGUILayout.LabelField("Terrorized");
+                if (character.moraleMode.mood != MoraleLevel.Normal) {
+                    EditorGUILayout.LabelField(character.moraleMode.mood.ToString());
                 }
 
                 EditorGUI.indentLevel--;
