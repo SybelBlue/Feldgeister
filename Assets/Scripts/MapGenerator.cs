@@ -4,7 +4,6 @@ using UnityEngine;
 using UnityEngine.Tilemaps;
 using UnityEngine.Events;
 
-using AStarSharp;
 using static CharacterClass;
 
 [System.Serializable]
