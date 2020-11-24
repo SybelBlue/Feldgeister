@@ -3,10 +3,83 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.Tilemaps;
 
-// https://github.com/davecusatis/A-Star-Sharp/blob/master/Astar.cs
 namespace AStarSharp
 {
+    class AStarRiver
+    {
+        private Vector2Int bottomLeftCorner, upperRightCorner, usableMapDimensions;
+        private Template castleTemplate;
+        private RegionManager<Building> usedSpaces;
+        private GatedPerlinTile groundTile;
+        private TileBase riverTile;
+
+        public AStarRiver(
+            Template castleTemplate, 
+            Vector2Int usableMapDimensions,
+            Vector2Int bottomLeftCorner, 
+            Vector2Int upperRightCorner,
+            RegionManager<Building> usedSpaces,
+            GatedPerlinTile groundTile,
+            TileBase riverTile)
+        {
+            this.castleTemplate = castleTemplate;
+            this.bottomLeftCorner = bottomLeftCorner;
+            this.upperRightCorner = upperRightCorner;
+            this.usedSpaces = usedSpaces;
+            this.groundTile = groundTile;
+            this.riverTile = riverTile;
+            this.usableMapDimensions = usableMapDimensions;
+        }
+
+        public void LoadRiver(Tilemap mainTilemap)
+        {
+            var grid = new List<List<Node>>();
+            for (int i = bottomLeftCorner.x - 5; i < upperRightCorner.x + 5; i++)
+            {
+                var row = new List<Node>();
+                for (int j = bottomLeftCorner.y - 5; j < upperRightCorner.y + 5; j++)
+                {
+                    row.Add(MakeMapNode(new Vector2Int(i, j)));
+                }
+                grid.Add(row);
+            }
+            var astar = new Astar(grid);
+
+            var start = -castleTemplate.boundingBox.size / 2 - bottomLeftCorner + new Vector2Int(5, 5);
+            var end = new Vector2Int(1, 1);
+
+            var pathStack = astar.FindPath(start, end);
+
+            if (pathStack != null) 
+            {
+                foreach (var item in pathStack)
+                {
+                    var pos = item.Position + bottomLeftCorner - new Vector2Int(5, 5);
+                    mainTilemap.SetTile(pos.To3D(), riverTile);
+                }
+            }
+
+            start = castleTemplate.boundingBox.size / 2 - bottomLeftCorner + new Vector2Int(4, 4);
+            end = usableMapDimensions + new Vector2Int(8, 8);
+
+            pathStack = astar.FindPath(start, end);
+            if (pathStack != null) 
+            {
+                foreach (var item in pathStack)
+                {
+                    var pos = item.Position + bottomLeftCorner - new Vector2Int(5, 5);
+                    mainTilemap.SetTile(pos.To3D(), riverTile);
+                }
+            }
+        }
+
+        private Node MakeMapNode(Vector2Int vec)
+            => new Node(vec - bottomLeftCorner + new Vector2Int(5, 5), !usedSpaces.AnyContain(vec), 10 * groundTile.RawPerlinValue(vec.x, vec.y));
+    }
+
+    // https://github.com/davecusatis/A-Star-Sharp/blob/master/Astar.cs
     public class Node
     {
         public Node Parent;
@@ -44,7 +117,7 @@ namespace AStarSharp
         {
             get
             {
-               return Grid[0].Count;
+                return Grid[0].Count;
             }
         }
         public int GridCols
@@ -70,7 +143,7 @@ namespace AStarSharp
             List<Node> ClosedList = new List<Node>();
             List<Node> adjacencies;
             Node current = start;
-           
+            
             // add start node to Open List
             OpenList.Add(start);
 
@@ -80,7 +153,7 @@ namespace AStarSharp
                 OpenList.Remove(current);
                 ClosedList.Add(current);
                 adjacencies = GetAdjacentNodes(current);
- 
+
                 foreach(Node n in adjacencies)
                 {
                     if (!ClosedList.Contains(n) && n.Walkable)
@@ -113,7 +186,7 @@ namespace AStarSharp
             } while (temp != start && temp != null) ;
             return Path;
         }
-		
+        
         private List<Node> GetAdjacentNodes(Node n)
         {
             List<Node> temp = new List<Node>();
