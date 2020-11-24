@@ -5,7 +5,7 @@ using UnityEngine.Tilemaps;
 using UnityEngine.Events;
 
 using AStarSharp;
-using static Character;
+using static CharacterClass;
 
 [System.Serializable]
 public class MapEvent : UnityEvent<MapGenerator>
@@ -81,7 +81,7 @@ public class MapGenerator : MonoBehaviour
         onMapMade.Invoke(this);
     }
 
-    private Template LoadHouse(Tilemap tilemap, string name, Character character)
+    private Template LoadHouse(Tilemap tilemap, string name, CharacterClass character)
     {
         Template template = LoadTemplate(tilemap, out RectInt usedSpace);
         House house = House.AddTo(gameObject, name, character, usedSpace);

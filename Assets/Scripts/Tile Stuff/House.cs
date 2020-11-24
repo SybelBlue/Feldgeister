@@ -3,9 +3,9 @@ using UnityEngine;
 
 public class House : Building
 {
-    public Character character;
+    public CharacterClass character;
 
-    public static House AddTo(GameObject gameObject, string name, Character character, RectInt region)
+    public static House AddTo(GameObject gameObject, string name, CharacterClass character, RectInt region)
     {
         House house = gameObject.AddComponent<House>() as House;
         house.buildingName = name;
