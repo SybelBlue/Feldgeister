@@ -9,7 +9,7 @@ public class House : Building
     public List<BuildingDefense> defenses;
     public int defenseLevel
     {
-        get => defenses.Aggregate(0, (defenseLevel, defenseItem) => defenseLevel + defenseItem.value);
+        get => defenses.Select(defenseItem => defenseItem.value).Sum();
         set => defenses = 
             defenses.Aggregate(
                 (list: new List<BuildingDefense>(), remaining: value), 
@@ -22,17 +22,17 @@ public class House : Building
 
                     // add the next item to the new list
                     tuple.list.Add(defenseItem);
-                    
-                    if (defenseItem.value <= tuple.remaining) {
-                        // if there's enough points, just subtract from remaining
-                        // could become 0 if defenseItem.Value == tuple.remaining
-                        tuple.remaining -= defenseItem.value;
-                    } else {
-                        // if there isn't, decrease the value of the last item
+
+                    if (defenseItem.value > tuple.remaining) 
+                    {
+                        // if there isn't enough remaining, 
+                        // decrease the value of the last item
                         defenseItem.value = tuple.remaining;
-                        // and zero out the remaining
-                        tuple.remaining = 0;
+                        defenseItem.damaged = true; // set damaged flag
                     }
+                    
+                    // subtract the value of the defenseItem
+                    tuple.remaining -= defenseItem.value;
                     
                     return tuple;
                 })
