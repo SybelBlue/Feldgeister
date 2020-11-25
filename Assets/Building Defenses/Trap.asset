@@ -15,5 +15,6 @@ MonoBehaviour:
   itemName: Trap
   description: Monster catcher
   magical: 0
+  damaged: 0
   value: 1
   source: 1

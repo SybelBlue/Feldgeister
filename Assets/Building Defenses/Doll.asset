@@ -15,5 +15,6 @@ MonoBehaviour:
   itemName: Doll
   description: Stuffed, for your protection.
   magical: 1
+  damaged: 1
   value: 2
   source: 2
