@@ -121,6 +121,18 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!114 &189269765 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6286999437612336129, guid: 279189553b44545dcbef89debc46304b,
+    type: 3}
+  m_PrefabInstance: {fileID: 6286999437759660804}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db977300b61ec434e9cc6f9f566fddd0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &183142498856795648
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -133,6 +145,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Witch
       objectReference: {fileID: 0}
+    - target: {fileID: 183142497910124613, guid: 558566e8d34374b10a2e32e448bffaba,
+        type: 3}
+      propertyPath: onDeath.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 189269765}
     - target: {fileID: 183142497910124614, guid: 558566e8d34374b10a2e32e448bffaba,
         type: 3}
       propertyPath: m_LocalPosition.x

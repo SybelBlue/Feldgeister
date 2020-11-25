@@ -25,7 +25,7 @@ public class Character : MonoBehaviour
 {
     public CharacterClass characterClass;
 
-    public IMorale moraleMode;
+    public IMorale morale;
 
     public CharacterEvent onDeath;
 
@@ -43,6 +43,9 @@ public class Character : MonoBehaviour
             _hunger;
         set => _hunger = value;
     }
+
+    public void PlummentMorale()
+        => morale.Plummet();
 }
 
 
@@ -73,7 +76,7 @@ public class CharacterEditor : Editor
 
     private MoraleLevel moraleMode {
         get {
-            switch (character.moraleMode)
+            switch (character.morale)
             {
                 case UnflinchingMorale _:
                     return MoraleLevel.Unflinching;
@@ -89,13 +92,13 @@ public class CharacterEditor : Editor
             switch (value)
             {
                 case MoraleLevel.Unflinching:
-                    character.moraleMode = new UnflinchingMorale();
+                    character.morale = new UnflinchingMorale();
                     break;
                 case MoraleLevel.Terrorized:
-                    character.moraleMode = new TerrorizedMorale();
+                    character.morale = new TerrorizedMorale();
                     break;
                 case MoraleLevel.Normal:
-                    character.moraleMode = new StandardMorale();
+                    character.morale = new StandardMorale();
                     break;
             }
         }
@@ -137,15 +140,15 @@ public class CharacterEditor : Editor
             {
                 EditorGUI.indentLevel++;
 
-                StandardMorale morale = character.moraleMode as StandardMorale ?? new StandardMorale();
-                morale.maxMorale = (short)EditorGUILayout.IntField("Max Morale", morale.maxMorale);
-                morale.morale = (short)EditorGUILayout.IntSlider("Morale", morale.morale, 0, morale.maxMorale);
-                character.moraleMode = morale;
+                StandardMorale morale = character.morale as StandardMorale ?? new StandardMorale();
+                morale.maxMorale = (short)EditorGUILayout.IntSlider("Max Morale", morale.maxMorale, 3, 10);
+                morale.value = (short)EditorGUILayout.IntSlider("Morale", morale.value, 0, morale.maxMorale);
+                character.morale = morale;
 
                 EditorGUI.indentLevel++;
                 
-                if (character.moraleMode.mood != MoraleLevel.Normal) {
-                    EditorGUILayout.LabelField(character.moraleMode.mood.ToString());
+                if (character.morale.mood != MoraleLevel.Normal) {
+                    EditorGUILayout.LabelField(character.morale.mood.ToString());
                 }
 
                 EditorGUI.indentLevel--;

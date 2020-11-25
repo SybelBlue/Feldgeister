@@ -29,6 +29,7 @@ public interface IMorale
 }
 
 /// <summary> The basic morale behavior class </summary>
+[System.Serializable]
 public class StandardMorale : IMorale
 {
     // if morale is greater than 75%
@@ -38,17 +39,17 @@ public class StandardMorale : IMorale
     // otherwise
     //      Normal
     public MoraleLevel mood
-        => morale * 4 >= maxMorale * 3 ?
+        => value * 4 >= maxMorale * 3 ?
                 MoraleLevel.Unflinching :
-                morale * 4 <= maxMorale ?
+                value * 4 <= maxMorale ?
                     MoraleLevel.Terrorized:
                     MoraleLevel.Normal;
 
     // holding variable, do not use
-    private short _morale;
-    public short morale { 
-        get => _morale;
-        set => _morale = ClampMorale(value);
+    private short _value;
+    public short value { 
+        get => _value;
+        set => _value = ClampMorale(value);
     }
     
     // holding variable, do not use
@@ -58,7 +59,7 @@ public class StandardMorale : IMorale
         get => _maxMorale;
         set {
             _maxMorale = (short)Mathf.Max(0, value);
-            morale = _morale;
+            this.value = _value;
         }
     }
 
@@ -66,26 +67,27 @@ public class StandardMorale : IMorale
     public StandardMorale(short maxMorale = 6)
     {
         this.maxMorale = maxMorale;
-        morale = (short)UnityEngine.Random.Range(maxMorale / 2, maxMorale);
+        value = (short)UnityEngine.Random.Range(maxMorale / 2, maxMorale);
     }
 
     public void Increase() 
-        => morale = ClampMorale(morale - 1);
+        => value = ClampMorale(value - 1);
 
     public void Decrease()
-        => morale = ClampMorale(morale + 1);
+        => value = ClampMorale(value + 1);
 
     public void Plummet()
-        => morale = 0;
+        => value = 0;
 
     public void Skyrocket()
-        => morale = maxMorale;
+        => value = maxMorale;
 
     private short ClampMorale(int newMorale)
         => (short)Mathf.Clamp(newMorale, 0, maxMorale);
 }
 
 /// <summary> A morale behavior that does not decrease from max </summary>
+[System.Serializable]
 public class UnflinchingMorale : IMorale
 {
     public MoraleLevel mood => MoraleLevel.Unflinching;   
@@ -104,6 +106,7 @@ public class UnflinchingMorale : IMorale
 }
 
 /// <summary> A morale behavior that does not increase from min </summary>
+[System.Serializable]
 public class TerrorizedMorale : IMorale
 {
     public MoraleLevel mood => MoraleLevel.Terrorized;
