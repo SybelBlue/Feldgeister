@@ -27,7 +27,7 @@ public class Character : MonoBehaviour
 
     public IMorale moraleMode;
 
-    public CharacterEvent m_onDeath;
+    public CharacterEvent onDeath;
 
     public bool immortal {
         get => characterClass == CharacterClass.Mayor || characterClass == CharacterClass.Witch;
@@ -65,7 +65,7 @@ public class Character : MonoBehaviour
 [CustomEditor(typeof(Character))]
 public class CharacterEditor : Editor
 {
-    private SerializedProperty m_onDeathProp;
+    private SerializedProperty onDeathProp;
 
     private Character character {
         get => target as Character;
@@ -103,7 +103,7 @@ public class CharacterEditor : Editor
 
     void OnEnable()
     {
-        m_onDeathProp = serializedObject.FindProperty("m_onDeath");
+        onDeathProp = serializedObject.FindProperty("onDeath");
     }
 
     public override void OnInspectorGUI()
@@ -155,10 +155,7 @@ public class CharacterEditor : Editor
 
         EditorGUILayout.Separator();
 
-        if (character.characterClass != CharacterClass.Mayor)
-        {
-            EditorGUILayout.PropertyField(m_onDeathProp, new GUIContent("On Death"));
-        }
+        EditorGUILayout.PropertyField(onDeathProp, new GUIContent("On Death"));
 
         EditorGUILayout.Separator();
 

@@ -28,4 +28,10 @@ public static class StaticUtils
 
         Gizmos.color = oldColor;
     }
+
+    [UnityEditor.MenuItem("Assets/Create/Scriptable Objects/Building Defense")]
+    public static void CreateDefense()
+    {
+        UnityEditor.ProjectWindowUtil.CreateAsset(ScriptableObject.CreateInstance<BuildingDefense>(), "New Defense.asset");
+    }
 }
