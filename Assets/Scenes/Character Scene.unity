@@ -133,6 +133,78 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db977300b61ec434e9cc6f9f566fddd0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &369297273
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 0}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::StandardMorale
+--- !u!114 &612220729
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 0}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::StandardMorale
+--- !u!114 &799490814
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 0}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::StandardMorale
+--- !u!114 &1140448889
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 0}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TerrorizedMorale
+--- !u!114 &1467083589
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 0}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UnflinchingMorale
+--- !u!114 &1851828907
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 0}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::StandardMorale
 --- !u!1001 &183142498856795648
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -150,6 +222,11 @@ PrefabInstance:
       propertyPath: onDeath.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 189269765}
+    - target: {fileID: 183142497910124613, guid: 558566e8d34374b10a2e32e448bffaba,
+        type: 3}
+      propertyPath: morale
+      value: 
+      objectReference: {fileID: 1467083589}
     - target: {fileID: 183142497910124614, guid: 558566e8d34374b10a2e32e448bffaba,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -269,6 +346,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 372054244289775459, guid: c2a6bc6fdd27343249482f9847143570,
+        type: 3}
+      propertyPath: morale
+      value: 
+      objectReference: {fileID: 1140448889}
     - target: {fileID: 372054244289775484, guid: c2a6bc6fdd27343249482f9847143570,
         type: 3}
       propertyPath: m_Name
@@ -288,6 +370,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Blacksmith
       objectReference: {fileID: 0}
+    - target: {fileID: 6286999437612336129, guid: 279189553b44545dcbef89debc46304b,
+        type: 3}
+      propertyPath: morale
+      value: 
+      objectReference: {fileID: 369297273}
     - target: {fileID: 6286999437612336130, guid: 279189553b44545dcbef89debc46304b,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -357,6 +444,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Mayor
       objectReference: {fileID: 0}
+    - target: {fileID: 7561774881533543033, guid: 78193e51c392848eda403db9e59c6eef,
+        type: 3}
+      propertyPath: morale
+      value: 
+      objectReference: {fileID: 612220729}
     - target: {fileID: 7561774881533543034, guid: 78193e51c392848eda403db9e59c6eef,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -421,6 +513,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 7640438891557228836, guid: 7cf45a1cc025e49cfbf8ad7234fe2154,
+        type: 3}
+      propertyPath: morale
+      value: 
+      objectReference: {fileID: 1851828907}
     - target: {fileID: 7640438891557228837, guid: 7cf45a1cc025e49cfbf8ad7234fe2154,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -550,5 +647,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Farmer
       objectReference: {fileID: 0}
+    - target: {fileID: 8469361942942560043, guid: cbdc0b02be6454023891e30cc46a0911,
+        type: 3}
+      propertyPath: morale
+      value: 
+      objectReference: {fileID: 799490814}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cbdc0b02be6454023891e30cc46a0911, type: 3}

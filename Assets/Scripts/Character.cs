@@ -25,7 +25,7 @@ public class Character : MonoBehaviour
 {
     public CharacterClass characterClass;
 
-    public IMorale morale;
+    public Morale morale;
 
     public CharacterEvent onDeath;
 
@@ -78,6 +78,9 @@ public class CharacterEditor : Editor
         get {
             switch (character.morale)
             {
+                case null:
+                    character.morale = ScriptableObject.CreateInstance<StandardMorale>();
+                    return MoraleLevel.Normal;
                 case UnflinchingMorale _:
                     return MoraleLevel.Unflinching;
                 case TerrorizedMorale _:
@@ -92,13 +95,13 @@ public class CharacterEditor : Editor
             switch (value)
             {
                 case MoraleLevel.Unflinching:
-                    character.morale = new UnflinchingMorale();
+                    character.morale = ScriptableObject.CreateInstance<UnflinchingMorale>();
                     break;
                 case MoraleLevel.Terrorized:
-                    character.morale = new TerrorizedMorale();
+                    character.morale = ScriptableObject.CreateInstance<TerrorizedMorale>();
                     break;
                 case MoraleLevel.Normal:
-                    character.morale = new StandardMorale();
+                    character.morale = ScriptableObject.CreateInstance<StandardMorale>();
                     break;
             }
         }
@@ -140,7 +143,7 @@ public class CharacterEditor : Editor
             {
                 EditorGUI.indentLevel++;
 
-                StandardMorale morale = character.morale as StandardMorale ?? new StandardMorale();
+                StandardMorale morale = character.morale as StandardMorale ?? ScriptableObject.CreateInstance<StandardMorale>();
                 morale.maxMorale = (short)EditorGUILayout.IntSlider("Max Morale", morale.maxMorale, 3, 10);
                 morale.value = (short)EditorGUILayout.IntSlider("Morale", morale.value, 0, morale.maxMorale);
                 character.morale = morale;
