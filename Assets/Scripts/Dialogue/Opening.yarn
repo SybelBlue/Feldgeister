@@ -1,0 +1,122 @@
+title: Start
+tags: Opening 
+colorID: 0
+position: 473,60
+---
+It is the night after a joyous first birthday celebration for Minna, the only lamb in the village of Schafstadt am Berg. Ewald, the mayor of the village, lies in a deep sleep
+EWALD: Zzz... Zzz... Zzz
+a rattling wind blows outside, the sound of cornstalks brushing together, wheat shifting in the wind, and underneath it all... the sound of wolves howling
+EWALD: Zzz... Zzz... AH! 
+Ewald jerks awake, as if from a nightmare. Rubs his eyes. The wind still blows.
+EWALD: Ugh... too much to drink. Maybe I should get some fresh air.
+-> Get up
+    Ewald yawns, rubs sleep from his eyes. Gets out of bed.
+[[Go outside |Door]]
+[[Open a window |Window]]
+===
+title: Door
+tags: Opening
+colorID: 0
+position: 231,359
+---
+Ewald approaches the door
+As he moves to push it open, something outsides snarls. 
+The smell of rotten corn is overpowering. 
+He freezes in his tracks.
+Ewald: Magdalene?
+[[The door bursts open: |The_Corn_King]]
+===
+title: Window
+tags: Opening
+colorID: 0
+position: 701,366
+---
+Ewald walks to the window and opens it. A gust of cold, cold air blows in, the smell of pine from the forest mixed with an undertone of moldering corn. 
+The howls grow louder. Ewald shakes his head, mutters: 
+EWALD: Early for wolves. I'll have to tell Helmut to mind harvesting alone.
+Ewald takes a breath of night air, shivers.
+A chuckle drifts on the wind, like dry kernels rattled in a cup.
+-> Who's there? 
+    The wind dies. All is quiet
+    EWALD: Magdalene, if you're having a joke again, it's damn late.
+    [[Go outside to investigate |Door]]
+-> Shut the window
+    Ewald closes the window, shakes his head. Goes back to bed.
+    The howls grow louder.
+    There is a faint knock at the door
+    [[ Ignore it: |Ignore_knock]]
+    [[ Go to the door: |Door]]
+===
+title: The_Corn_King
+tags: 
+colorID: 0
+position: -30,701
+---
+The doorway is filled with a figure twice Ewald's height, wearing nothing but a skirt of corn husks
+Its skin is peppered with hardened corn kernels, tufts of corn silk where hair should be.
+Atop its head a crown of corn cobs, knawed to the core and rotting.
+It steps into the house.
+[[Say nothing |Fear]]
+[["If you're going to barge in, at least introduce yourself |Snark]]
+===
+title: Ignore_knock
+tags: 
+colorID: 0
+position: 489,685
+---
+Ewald pretends he hasn't heard anything. It might just be the wind.
+The knock grows louder.
+
+-> Ignore it 
+    Ewald puts the pillow over his head
+    The wind picks up. 
+    The smell of rotting corn gets stronger.
+    The knocking gets louder.
+    [[ Go to the door|Door]]
+
+[[ Go to the door|Door]]
+===
+title: Fear
+tags: 
+colorID: 0
+position: -247,1024
+---
+The figure looms over Ewald. The smell is overpowering.
+CORN KING: Cat got your tongue, little sheep?
+The figure laughs
+CORN KING: No matter, where is the lamb?
+Ewald gathers himself
+[[ Why do you ask? |Why]] 
+[[ It's rude to barge in. Come back in the morning. |Back_in_morning]]
+===
+title: Snark
+tags: 
+colorID: 0
+position: 150,1034
+---
+The figure emits a laugh like kernels popping in the kettle
+CORN KING: Oh, little sheep. I like you. If you were a smidge younger...
+CORN KING: ...I could just eat you up.
+The figure leers at Ewald
+CORN KING: But, alas. Too late. no matter. Where is the lamb?
+[[ Why do you ask? |Why]] 
+[[ It's rude to barge in. Come back in the morning. |Back_in_morning]]
+===
+title: Why
+tags: 
+colorID: 0
+position: -176,1400
+---
+CORN KING: Why does anybody do anything, little sheep.
+CORN KING: Because we're hungry.
+Two wolves, eyes glowing red, enter the house behind the figure.
+===
+title: Back_in_morning
+tags: 
+colorID: 0
+position: 138,1414
+---
+A loud growl sounds behind the Oat King.
+Two wolves, eyes glowing red, stalk into the house.
+THE OAT KING:
+===

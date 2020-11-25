@@ -1,0 +1,83 @@
+fileFormatVersion: 2
+guid: 98375bf560082574685b03d232eb6fe6
+ScriptedImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 2
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: 11500000, guid: 94073015eacc34c1d8fc6786e43d60ca, type: 3}
+  baseLanguageID: 
+  stringIDs:
+  - Opening-Start-0
+  - Opening-Start-1
+  - Opening-Start-2
+  - Opening-Start-3
+  - Opening-Start-4
+  - Opening-Start-5
+  - Opening-Start-6
+  - Opening-Start-7
+  - Opening-Start-8
+  - Opening-Start-9
+  - Opening-Door-10
+  - Opening-Door-11
+  - Opening-Door-12
+  - Opening-Door-13
+  - Opening-Door-14
+  - Opening-Door-15
+  - Opening-Window-16
+  - Opening-Window-17
+  - Opening-Window-18
+  - Opening-Window-19
+  - Opening-Window-20
+  - Opening-Window-21
+  - Opening-Window-22
+  - Opening-Window-23
+  - Opening-Window-24
+  - Opening-Window-25
+  - Opening-Window-26
+  - Opening-Window-27
+  - Opening-Window-28
+  - Opening-Window-29
+  - Opening-Window-30
+  - Opening-The_Corn_King-31
+  - Opening-The_Corn_King-32
+  - Opening-The_Corn_King-33
+  - Opening-The_Corn_King-34
+  - Opening-The_Corn_King-35
+  - Opening-The_Corn_King-36
+  - Opening-Ignore_knock-37
+  - Opening-Ignore_knock-38
+  - Opening-Ignore_knock-39
+  - Opening-Ignore_knock-40
+  - Opening-Ignore_knock-41
+  - Opening-Ignore_knock-42
+  - Opening-Ignore_knock-43
+  - Opening-Ignore_knock-44
+  - Opening-Ignore_knock-45
+  - Opening-Fear-46
+  - Opening-Fear-47
+  - Opening-Fear-48
+  - Opening-Fear-49
+  - Opening-Fear-50
+  - Opening-Fear-51
+  - Opening-Fear-52
+  - Opening-Snark-53
+  - Opening-Snark-54
+  - Opening-Snark-55
+  - Opening-Snark-56
+  - Opening-Snark-57
+  - Opening-Snark-58
+  - Opening-Snark-59
+  - Opening-Why-60
+  - Opening-Why-61
+  - Opening-Why-62
+  - Opening-Back_in_morning-63
+  - Opening-Back_in_morning-64
+  - Opening-Back_in_morning-65
+  compilationStatus: 1
+  isSuccesfullyCompiled: 1
+  compilationErrorMessage: 
+  baseLanguage: {instanceID: 0}
+  localizations: []

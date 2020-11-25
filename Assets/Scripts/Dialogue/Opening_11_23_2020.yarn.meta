@@ -1,0 +1,84 @@
+fileFormatVersion: 2
+guid: b0f0dc7b077f2c1479dd16e05a2ea0dd
+ScriptedImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 2
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: 11500000, guid: 94073015eacc34c1d8fc6786e43d60ca, type: 3}
+  baseLanguageID: en-US
+  stringIDs:
+  - Opening_11_23_2020-Start-0
+  - Opening_11_23_2020-Start-1
+  - Opening_11_23_2020-Start-2
+  - Opening_11_23_2020-Start-3
+  - Opening_11_23_2020-Start-4
+  - Opening_11_23_2020-Start-5
+  - Opening_11_23_2020-Start-6
+  - Opening_11_23_2020-Start-7
+  - Opening_11_23_2020-Start-8
+  - Opening_11_23_2020-Start-9
+  - Opening_11_23_2020-Door-10
+  - Opening_11_23_2020-Door-11
+  - Opening_11_23_2020-Door-12
+  - Opening_11_23_2020-Door-13
+  - Opening_11_23_2020-Door-14
+  - Opening_11_23_2020-Door-15
+  - Opening_11_23_2020-Window-16
+  - Opening_11_23_2020-Window-17
+  - Opening_11_23_2020-Window-18
+  - Opening_11_23_2020-Window-19
+  - Opening_11_23_2020-Window-20
+  - Opening_11_23_2020-Window-21
+  - Opening_11_23_2020-Window-22
+  - Opening_11_23_2020-Window-23
+  - Opening_11_23_2020-Window-24
+  - Opening_11_23_2020-Window-25
+  - Opening_11_23_2020-Window-26
+  - Opening_11_23_2020-Window-27
+  - Opening_11_23_2020-Window-28
+  - Opening_11_23_2020-Window-29
+  - Opening_11_23_2020-Window-30
+  - Opening_11_23_2020-The_Corn_King-31
+  - Opening_11_23_2020-The_Corn_King-32
+  - Opening_11_23_2020-The_Corn_King-33
+  - Opening_11_23_2020-The_Corn_King-34
+  - Opening_11_23_2020-The_Corn_King-35
+  - Opening_11_23_2020-The_Corn_King-36
+  - Opening_11_23_2020-Ignore_knock-37
+  - Opening_11_23_2020-Ignore_knock-38
+  - Opening_11_23_2020-Ignore_knock-39
+  - Opening_11_23_2020-Ignore_knock-40
+  - Opening_11_23_2020-Ignore_knock-41
+  - Opening_11_23_2020-Ignore_knock-42
+  - Opening_11_23_2020-Ignore_knock-43
+  - Opening_11_23_2020-Ignore_knock-44
+  - Opening_11_23_2020-Ignore_knock-45
+  - Opening_11_23_2020-Fear-46
+  - Opening_11_23_2020-Fear-47
+  - Opening_11_23_2020-Fear-48
+  - Opening_11_23_2020-Fear-49
+  - Opening_11_23_2020-Fear-50
+  - Opening_11_23_2020-Fear-51
+  - Opening_11_23_2020-Fear-52
+  - Opening_11_23_2020-Snark-53
+  - Opening_11_23_2020-Snark-54
+  - Opening_11_23_2020-Snark-55
+  - Opening_11_23_2020-Snark-56
+  - Opening_11_23_2020-Snark-57
+  - Opening_11_23_2020-Snark-58
+  - Opening_11_23_2020-Snark-59
+  - Opening_11_23_2020-Why-60
+  - Opening_11_23_2020-Why-61
+  - Opening_11_23_2020-Why-62
+  - Opening_11_23_2020-Back_in_morning-63
+  - Opening_11_23_2020-Back_in_morning-64
+  - Opening_11_23_2020-Back_in_morning-65
+  compilationStatus: 1
+  isSuccesfullyCompiled: 1
+  compilationErrorMessage: 
+  baseLanguage: {fileID: 7128917941130120860, guid: b0f0dc7b077f2c1479dd16e05a2ea0dd,
+    type: 3}
+  localizations: []
