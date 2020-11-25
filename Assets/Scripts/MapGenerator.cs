@@ -2,6 +2,7 @@
 using UnityEngine;
 using UnityEngine.Tilemaps;
 using UnityEngine.Events;
+using System.Linq;
 
 using static CharacterClass;
 
@@ -34,6 +35,8 @@ public class MapGenerator : MonoBehaviour
 
     [SerializeField]
     private GatedPerlinTile groundTile;
+
+    public BuildingDefense[] giveEachHouse;
 
     private Template castleTemplate;
     private Template graveyardTemplate;
@@ -83,6 +86,7 @@ public class MapGenerator : MonoBehaviour
     {
         Template template = LoadTemplate(tilemap, out RectInt usedSpace);
         House house = House.AddTo(gameObject, name, character, usedSpace);
+        house.defenses = giveEachHouse.Select(defense => Instantiate(defense)).ToList();
         usedSpaces.Add(usedSpace, house);
         return template;
     }

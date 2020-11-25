@@ -2,6 +2,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 
+#if UNITY_EDITOR
+using UnityEditor;
+#endif
+
 public class House : Building
 {
     public CharacterClass character;
@@ -41,3 +45,31 @@ public class House : Building
         print($"Clicked the {character}'s house!");
     }
 }
+
+#if UNITY_EDITOR
+[CustomEditor(typeof(House))]
+public class HouseEditor : Editor
+{
+    private House house => target as House;
+    public override void OnInspectorGUI()
+    {
+        base.OnInspectorGUI();
+
+        var oldLevel = house.defenseLevel;
+        var newLevel = EditorGUILayout.IntField("Defense Level", oldLevel);
+        if (newLevel < 0)
+        {
+            Debug.LogWarning("Cannot decrease defense level past 0.");
+            house.defenseLevel = 0;
+        }
+        else if (oldLevel > newLevel)
+        {
+            house.defenseLevel = newLevel;
+        }
+        else if (oldLevel < newLevel)
+        {
+            Debug.LogWarning("Cannot increase defense level directly. \nAdd a defense object to the defenses list instead.");
+        }
+    }
+}
+#endif
