@@ -1,11 +1,10 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 using UnityEngine.Events;
+using System.Linq;
 
-using AStarSharp;
-using static Character;
+using static CharacterClass;
 
 [System.Serializable]
 public class MapEvent : UnityEvent<MapGenerator>
@@ -36,6 +35,8 @@ public class MapGenerator : MonoBehaviour
 
     [SerializeField]
     private GatedPerlinTile groundTile;
+
+    public BuildingDefense[] giveEachHouse;
 
     private Template castleTemplate;
     private Template graveyardTemplate;
@@ -81,10 +82,11 @@ public class MapGenerator : MonoBehaviour
         onMapMade.Invoke(this);
     }
 
-    private Template LoadHouse(Tilemap tilemap, string name, Character character)
+    private Template LoadHouse(Tilemap tilemap, string name, CharacterClass character)
     {
         Template template = LoadTemplate(tilemap, out RectInt usedSpace);
         House house = House.AddTo(gameObject, name, character, usedSpace);
+        house.defenses = giveEachHouse.Select(defense => Instantiate(defense)).ToList();
         usedSpaces.Add(usedSpace, house);
         return template;
     }
@@ -189,49 +191,4 @@ public class MapGenerator : MonoBehaviour
         }
     }
 #endif
-
-    private void LoadRiver()
-    {
-        var grid = new List<List<Node>>();
-        for (int i = bottomLeftCorner.x - 5; i < upperRightCorner.x + 5; i++)
-        {
-            var row = new List<Node>();
-            for (int j = bottomLeftCorner.y - 5; j < upperRightCorner.y + 5; j++)
-            {
-                row.Add(MakeMapNode(new Vector2Int(i, j)));
-            }
-            grid.Add(row);
-        }
-        Astar astar = new Astar(grid);
-
-        var start = -castleTemplate.boundingBox.size / 2 - bottomLeftCorner + new Vector2Int(5, 5);
-        var end = new Vector2Int(1, 1);
-
-        var pathStack = astar.FindPath(start, end);
-
-        if (pathStack != null) 
-        {
-            foreach (var item in pathStack)
-            {
-                var pos = item.Position + bottomLeftCorner - new Vector2Int(5, 5);
-                mainTilemap.SetTile(pos.To3D(), riverTile);
-            }
-        }
-
-        start = castleTemplate.boundingBox.size / 2 - bottomLeftCorner + new Vector2Int(4, 4);
-        end = usableMapDimensions + new Vector2Int(8, 8);
-
-        pathStack = astar.FindPath(start, end);
-        if (pathStack != null) 
-        {
-            foreach (var item in pathStack)
-            {
-                var pos = item.Position + bottomLeftCorner - new Vector2Int(5, 5);
-                mainTilemap.SetTile(pos.To3D(), riverTile);
-            }
-        }
-    }
-
-    private Node MakeMapNode(Vector2Int vec)
-        => new Node(vec - bottomLeftCorner + new Vector2Int(5, 5), !usedSpaces.AnyContain(vec), 10 * groundTile.RawPerlinValue(vec.x, vec.y));
 }
