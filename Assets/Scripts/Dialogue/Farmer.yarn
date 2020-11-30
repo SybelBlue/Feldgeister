@@ -1,5 +1,5 @@
-title: Farmer_first_day
-tags: Farmer
+title: farmer_first_day_start
+tags: farmer
 colorID: 0
 position: 191,147
 ---
@@ -11,9 +11,67 @@ HELMUT: Hard to get worse than another Feldgeister attack.
     HELMUT: I don't need your sorries, Schaf. What do you want.
     EWALD: Need to make sure everyone's fed. 
     HELMUT: And?
+[[EWALD: Well, you are the farmer: |less_morale_1]]
+
 -> That's why I'm here. Trying to make sure everyone's fed. 
     HELMUT: I've got what we have from last week's early wheat.
     HELMUT: Set it aside to give those damn wolves the tithe
     HELMUT: But looks like we won't be needing that this year. 
     EWALD: Looks like it.
+    HELMUT: ...
+    EWALD: ...
+    HELMUT: ...
+    [[EWALD: So how are the crops? |more_morale_1]]
+===
+title: less_morale_1
+tags: farmer
+colorID: 0
+position: -94,442
+---
+HELMUT: And you're the mayor.
+[[ [sighs] Helmut, I know you don't like me |: less_morale_2]]
+
+[[ [pause] So, how are the crops doing? It'll be a long month: |more_morale_1]]
+===
+title: more_morale_1
+tags: farmer
+colorID: 0
+position: 469,441
+---
+$if oat king angry
+HELMUT: [snorts] Not well, Schaf
+HELMUT: That cold snap last night froze 
+
+$if oat king happy
+===
+title: : less_morale_2
+tags: farmer
+colorID: 0
+position: -23,773
+---
+$farmer_angry
+HELMUT: Yes. Correct. 
+EWALD: ... 
+HELMUT: ...
+
+[[So. Uh. How are the crops? |more_morale_1]]
+
+[[Why? |less_morale_2]]
+
+$if sweetbread
+[[Would you like some sweetbread? The Watcher made it for you.|more_morale_2]]
+===
+title: less_morale_2
+tags: farmer
+colorID: 0
+position: 234,1066
+---
+Empty Text
+===
+title: more_morale_2
+tags: farmer
+colorID: 0
+position: -306,1071
+---
+Empty Text
 ===
