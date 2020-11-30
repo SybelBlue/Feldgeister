@@ -133,6 +133,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db977300b61ec434e9cc6f9f566fddd0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &216450043
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 0}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::StandardMorale
 --- !u!114 &369297273
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -157,6 +169,18 @@ MonoBehaviour:
   m_Script: {fileID: 0}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::StandardMorale
+--- !u!114 &708846418
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9e20e2270f33e4ee49c3a18ee626ea61, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &799490814
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -169,7 +193,7 @@ MonoBehaviour:
   m_Script: {fileID: 0}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::StandardMorale
---- !u!114 &1140448889
+--- !u!114 &1243810422
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -180,8 +204,8 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 0}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::TerrorizedMorale
---- !u!114 &1467083589
+  m_EditorClassIdentifier: Assembly-CSharp::StandardMorale
+--- !u!114 &1477597415
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -192,7 +216,19 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 0}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::UnflinchingMorale
+  m_EditorClassIdentifier: Assembly-CSharp::StandardMorale
+--- !u!114 &1492444063
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 0}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::StandardMorale
 --- !u!114 &1851828907
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -205,6 +241,18 @@ MonoBehaviour:
   m_Script: {fileID: 0}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::StandardMorale
+--- !u!114 &2011951756
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a5a9dd95435db4deeb901abdf5bf7f31, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &183142498856795648
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -226,7 +274,7 @@ PrefabInstance:
         type: 3}
       propertyPath: morale
       value: 
-      objectReference: {fileID: 1467083589}
+      objectReference: {fileID: 2011951756}
     - target: {fileID: 183142497910124614, guid: 558566e8d34374b10a2e32e448bffaba,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -350,7 +398,7 @@ PrefabInstance:
         type: 3}
       propertyPath: morale
       value: 
-      objectReference: {fileID: 1140448889}
+      objectReference: {fileID: 708846418}
     - target: {fileID: 372054244289775484, guid: c2a6bc6fdd27343249482f9847143570,
         type: 3}
       propertyPath: m_Name
