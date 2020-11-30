@@ -25,8 +25,6 @@ public class Character : MonoBehaviour
 {
     public CharacterClass characterClass;
 
-    public Morale morale;
-
     public CharacterEvent onDeath;
 
     public bool immortal {
@@ -44,8 +42,72 @@ public class Character : MonoBehaviour
         set => _hunger = value;
     }
 
-    public void PlummentMorale()
-        => morale.Plummet();
+    public bool unchangingMood;
+    
+    [SerializeField]
+    public MoraleLevel _mood;
+    
+    public MoraleLevel mood
+    {
+        get => unchangingMood ? 
+                _mood :
+                value * 4 >= maxMorale * 3 ?
+                    MoraleLevel.Unflinching :
+                    value * 4 <= maxMorale ?
+                        MoraleLevel.Terrorized:
+                        MoraleLevel.Normal;
+        set => _mood = value;
+    }
+
+    [SerializeField]
+    private int _value;
+    
+    public int value { 
+        get => _value;
+        set => _value = ClampMorale(value);
+    }
+
+    [SerializeField]
+    private int _maxMorale = 6;
+    public int maxMorale 
+    { 
+        get => _maxMorale;
+        set {
+            _maxMorale = Mathf.Max(0, value);
+            this.value = _value;
+        }
+    }
+
+        /// <summary> increases morale </summary>
+    public void IncreaseMorale()
+    {
+        if (unchangingMood) return;
+        value = ClampMorale(value + 1);
+    }
+    
+    /// <summary> decreases morale </summary>
+    public void DecreaseMorale()
+    {
+        if (unchangingMood) return;
+        value = ClampMorale(value - 1);
+    }
+    
+    /// <summary> plummets morale </summary>
+    public void PlummetMorale()
+    {
+        if (unchangingMood) return;
+        value = 0;
+    }
+
+    /// <summary> skyrockets morale </summary>
+    public void SkyrocketMorale()
+    {
+        if (unchangingMood) return;
+        value = maxMorale;
+    }
+
+    private int ClampMorale(int newMorale)
+        => Mathf.Clamp(newMorale, 0, maxMorale);
 }
 
 
@@ -72,39 +134,6 @@ public class CharacterEditor : Editor
 
     private Character character {
         get => target as Character;
-    }
-
-    private MoraleLevel moraleMode {
-        get {
-            switch (character.morale)
-            {
-                case null:
-                    character.morale = ScriptableObject.CreateInstance<StandardMorale>();
-                    return MoraleLevel.Normal;
-                case UnflinchingMorale _:
-                    return MoraleLevel.Unflinching;
-                case TerrorizedMorale _:
-                    return MoraleLevel.Terrorized;
-                default:
-                    return MoraleLevel.Normal;
-            }
-        }
-
-        set {
-            if (moraleMode == value) return;
-            switch (value)
-            {
-                case MoraleLevel.Unflinching:
-                    character.morale = ScriptableObject.CreateInstance<UnflinchingMorale>();
-                    break;
-                case MoraleLevel.Terrorized:
-                    character.morale = ScriptableObject.CreateInstance<TerrorizedMorale>();
-                    break;
-                case MoraleLevel.Normal:
-                    character.morale = ScriptableObject.CreateInstance<StandardMorale>();
-                    break;
-            }
-        }
     }
 
     void OnEnable()
@@ -137,24 +166,19 @@ public class CharacterEditor : Editor
 
             EditorGUILayout.Space();
 
-            var newMode = (MoraleLevel)EditorGUILayout.EnumPopup("Morale Mode", moraleMode);
-            moraleMode = newMode;
-            if (newMode == MoraleLevel.Normal)
+            character.unchangingMood = EditorGUILayout.Toggle("Unchanging Mood", character.unchangingMood);
+            
+            if (!character.unchangingMood) EditorGUI.BeginDisabledGroup(true);
+            character.mood = (MoraleLevel)EditorGUILayout.EnumPopup("Mood", character.mood);
+            if (!character.unchangingMood) EditorGUI.EndDisabledGroup();
+            
+            if (!character.unchangingMood)
             {
                 EditorGUI.indentLevel++;
 
-                StandardMorale morale = character.morale as StandardMorale ?? ScriptableObject.CreateInstance<StandardMorale>();
-                morale.maxMorale = (short)EditorGUILayout.IntSlider("Max Morale", morale.maxMorale, 3, 10);
-                morale.value = (short)EditorGUILayout.IntSlider("Morale", morale.value, 0, morale.maxMorale);
-                character.morale = morale;
+                character.maxMorale = EditorGUILayout.IntSlider("Max Morale", character.maxMorale, 3, 10);
+                character.value = EditorGUILayout.IntSlider("Morale", character.value, 0, character.maxMorale);
 
-                EditorGUI.indentLevel++;
-                
-                if (character.morale.mood != MoraleLevel.Normal) {
-                    EditorGUILayout.LabelField(character.morale.mood.ToString());
-                }
-
-                EditorGUI.indentLevel--;
                 EditorGUI.indentLevel--;
             }
         }

@@ -44,7 +44,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   characterClass: 2
-  morale: {fileID: 0}
   onDeath:
     m_PersistentCalls:
       m_Calls:
@@ -60,3 +59,7 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   alive: 1
+  unchangingMood: 1
+  _mood: 1
+  _value: 0
+  _maxMorale: 6
