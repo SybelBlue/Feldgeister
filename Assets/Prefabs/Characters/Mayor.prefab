@@ -49,6 +49,6 @@ MonoBehaviour:
       m_Calls: []
   alive: 1
   unchangingMood: 0
-  _mood: 0
-  _value: 4
-  _maxMorale: 6
+  _mood: 1
+  _moraleValue: 0
+  _maxMorale: 0

@@ -50,5 +50,5 @@ MonoBehaviour:
   alive: 1
   unchangingMood: 1
   _mood: 2
-  _value: 0
+  _moraleValue: 0
   _maxMorale: 6

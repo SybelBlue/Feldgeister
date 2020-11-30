@@ -45,26 +45,34 @@ public class Character : MonoBehaviour
     public bool unchangingMood;
     
     [SerializeField]
-    public MoraleLevel _mood;
+    private MoraleLevel _mood;
     
+    /// <summary> 
+    /// If unchangingMood:
+    ///     returns the stored mood, can be set and get normally.
+    ///
+    /// Else:
+    ///     computes the current mood based on the current moraleValue,
+    ///     cannot be set directly (will have no effect)
+    /// </summary>
     public MoraleLevel mood
     {
         get => unchangingMood ? 
                 _mood :
-                value * 4 >= maxMorale * 3 ?
+                moraleValue * 4 >= maxMorale * 3 ?
                     MoraleLevel.Unflinching :
-                    value * 4 <= maxMorale ?
+                    moraleValue * 4 <= maxMorale ?
                         MoraleLevel.Terrorized:
                         MoraleLevel.Normal;
         set => _mood = value;
     }
 
     [SerializeField]
-    private int _value;
+    private int _moraleValue;
     
-    public int value { 
-        get => _value;
-        set => _value = ClampMorale(value);
+    public int moraleValue { 
+        get => _moraleValue;
+        set => _moraleValue = ClampMorale(moraleValue);
     }
 
     [SerializeField]
@@ -73,39 +81,43 @@ public class Character : MonoBehaviour
     { 
         get => _maxMorale;
         set {
-            _maxMorale = Mathf.Max(0, value);
-            this.value = _value;
+            _maxMorale = Mathf.Max(0, moraleValue);
+            this.moraleValue = _moraleValue;
         }
     }
 
-        /// <summary> increases morale </summary>
+        /// <summary> increases morale by 1 </summary>
     public void IncreaseMorale()
     {
         if (unchangingMood) return;
-        value = ClampMorale(value + 1);
+        moraleValue = ClampMorale(moraleValue + 1);
     }
     
-    /// <summary> decreases morale </summary>
+    /// <summary> decreases morale by 1 </summary>
     public void DecreaseMorale()
     {
         if (unchangingMood) return;
-        value = ClampMorale(value - 1);
+        moraleValue = ClampMorale(moraleValue - 1);
     }
     
-    /// <summary> plummets morale </summary>
+    /// <summary> sets moraleValue to min </summary>
     public void PlummetMorale()
     {
         if (unchangingMood) return;
-        value = 0;
+        moraleValue = 0;
     }
 
-    /// <summary> skyrockets morale </summary>
+    /// <summary> sets moraleValue to max </summary>
     public void SkyrocketMorale()
     {
         if (unchangingMood) return;
-        value = maxMorale;
+        moraleValue = maxMorale;
     }
 
+    /// <summary>
+    /// returns newMorale if it's between 0 and maxMorale,
+    /// otherwise it returns the closest bound to newMorale
+    /// </summary>
     private int ClampMorale(int newMorale)
         => Mathf.Clamp(newMorale, 0, maxMorale);
 }
@@ -177,7 +189,7 @@ public class CharacterEditor : Editor
                 EditorGUI.indentLevel++;
 
                 character.maxMorale = EditorGUILayout.IntSlider("Max Morale", character.maxMorale, 3, 10);
-                character.value = EditorGUILayout.IntSlider("Morale", character.value, 0, character.maxMorale);
+                character.moraleValue = EditorGUILayout.IntSlider("Morale", character.moraleValue, 0, character.maxMorale);
 
                 EditorGUI.indentLevel--;
             }
