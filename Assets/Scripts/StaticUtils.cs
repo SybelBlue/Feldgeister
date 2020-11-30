@@ -1,5 +1,4 @@
 using UnityEngine;
-using static UnityEngine.Input;
 
 public static class StaticUtils 
 {
@@ -33,5 +32,31 @@ public static class StaticUtils
     public static void CreateDefense()
     {
         UnityEditor.ProjectWindowUtil.CreateAsset(ScriptableObject.CreateInstance<BuildingDefense>(), "New Defense.asset");
+    }
+}
+
+public sealed class MaybeDisabledGroup : System.IDisposable
+{
+    public readonly bool disable;
+    /// <summary>
+    /// Creates an IDisposable that, if doDisable is true, will disable the editor
+    /// on construction, then re-enable it on dispose.
+    /// If doDisable is false, does nothing.
+    /// </summary>
+    public MaybeDisabledGroup(bool doDisable=true)
+    {
+        disable = doDisable;
+        if (disable)
+        {
+            UnityEditor.EditorGUI.BeginDisabledGroup(true);
+        }
+    }
+    
+    public void Dispose()
+    {
+        if (disable)
+        {
+            UnityEditor.EditorGUI.EndDisabledGroup();
+        }
     }
 }

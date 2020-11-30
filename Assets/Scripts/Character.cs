@@ -131,8 +131,6 @@ public class Character : MonoBehaviour
 //                                    CHARACTER CLASS IN THE UNITY INSPECTOR.
 //                                         WILL NOT EFFECT GAMEPLAY AT RUNTIME
 
-//                                  !!!!!!!!!        UNDOCUMENTED         !!!!!!!!!!!
-
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -164,31 +162,40 @@ public class CharacterEditor : Editor
 
         EditorGUILayout.Space();
 
-        if (character.immortal) EditorGUI.BeginDisabledGroup(true);
-        character.alive = EditorGUILayout.Toggle("Alive", character.immortal || character.alive);
-        if (character.immortal) EditorGUI.EndDisabledGroup();
+        using (new MaybeDisabledGroup(character.immortal))
+        {
+            character.alive = EditorGUILayout.Toggle("Alive", character.immortal || character.alive);
+        }
 
         if (character.alive)
         {
             EditorGUILayout.Space();
 
-            if (character.characterClass == CharacterClass.Farmer) EditorGUI.BeginDisabledGroup(true);
-            character.hunger = (HungerLevel)EditorGUILayout.EnumPopup("Hunger", character.hunger);
-            if (character.characterClass == CharacterClass.Farmer) EditorGUI.EndDisabledGroup();
+            // if farmer, can't change hunger level from max
+            using (new MaybeDisabledGroup(character.characterClass == CharacterClass.Farmer))
+            {
+                character.hunger = (HungerLevel)EditorGUILayout.EnumPopup("Hunger", character.hunger);
+            }
 
             EditorGUILayout.Space();
 
+            // make checkbox for unchanging mood
             character.unchangingMood = EditorGUILayout.Toggle("Unchanging Mood", character.unchangingMood);
             
-            if (!character.unchangingMood) EditorGUI.BeginDisabledGroup(true);
-            character.mood = (MoraleLevel)EditorGUILayout.EnumPopup("Mood", character.mood);
-            if (!character.unchangingMood) EditorGUI.EndDisabledGroup();
+            // if character has unchanging mood, then can't change mood
+            using (new MaybeDisabledGroup(character.unchangingMood))
+            {
+                character.mood = (MoraleLevel)EditorGUILayout.EnumPopup("Mood", character.mood);
+            }
             
+            // make sub fields for altering the morale levels
             if (!character.unchangingMood)
             {
                 EditorGUI.indentLevel++;
 
+                // set the max morale in [3, 10]
                 character.maxMorale = EditorGUILayout.IntSlider("Max Morale", character.maxMorale, 3, 10);
+                // set the morale value in [0, maxMorale]
                 character.moraleValue = EditorGUILayout.IntSlider("Morale", character.moraleValue, 0, character.maxMorale);
 
                 EditorGUI.indentLevel--;
@@ -197,10 +204,12 @@ public class CharacterEditor : Editor
 
         EditorGUILayout.Separator();
 
+        // create the onDeath event box
         EditorGUILayout.PropertyField(onDeathProp, new GUIContent("On Death"));
 
         EditorGUILayout.Separator();
 
+        // serialize changes, if any made
         if (EditorGUI.EndChangeCheck())
         {
             EditorUtility.SetDirty(character);
