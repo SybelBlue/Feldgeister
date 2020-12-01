@@ -1,0 +1,80 @@
+fileFormatVersion: 2
+guid: dff43fff18211c64c857e21d72b93116
+ScriptedImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 2
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: 11500000, guid: 94073015eacc34c1d8fc6786e43d60ca, type: 3}
+  baseLanguageID: 
+  stringIDs:
+  - Blacksmith-Start-0
+  - Blacksmith-Start-1
+  - Blacksmith-Start-2
+  - Blacksmith-Start-3
+  - Blacksmith-morale_up_1-4
+  - Blacksmith-morale_up_1-5
+  - Blacksmith-morale_up_1-6
+  - Blacksmith-morale_up_1-7
+  - Blacksmith-morale_up_1-8
+  - Blacksmith-morale_down_1-9
+  - Blacksmith-morale_down_1-10
+  - Blacksmith-morale_down_1-11
+  - Blacksmith-morale_down_1-12
+  - Blacksmith-morale_neutral_1-13
+  - Blacksmith-morale_neutral_1-14
+  - Blacksmith-morale_neutral_1-15
+  - Blacksmith-morale_neutral_1-16
+  - Blacksmith-morale_neutral_1-17
+  - Blacksmith-morale_up_2-18
+  - Blacksmith-morale_up_2-19
+  - Blacksmith-morale_up_2-20
+  - Blacksmith-morale_up_2-21
+  - Blacksmith-morale_up_2-22
+  - Blacksmith-morale_up_2-23
+  - Blacksmith-morale_up_2-24
+  - Blacksmith-morale_down_2-25
+  - Blacksmith-morale_down_2-26
+  - Blacksmith-morale_down_2-27
+  - Blacksmith-morale_down_2-28
+  - Blacksmith-morale_down_2-29
+  - Blacksmith-morale_down_2-30
+  - Blacksmith-morale_neutral_2-31
+  - Blacksmith-morale_neutral_2-32
+  - Blacksmith-morale_neutral_2-33
+  - Blacksmith-morale_neutral_2-34
+  - Blacksmith-morale_neutral_2-35
+  - Blacksmith-morale_neutral_2-36
+  - Blacksmith-morale_neutral_2-37
+  - Blacksmith-morale_neutral_2-38
+  - Blacksmith-morale_neutral_2-39
+  - Blacksmith-morale_down_3-40
+  - Blacksmith-morale_down_3-41
+  - Blacksmith-morale_down_3-42
+  - Blacksmith-morale_down_3-43
+  - Blacksmith-morale_down_3-44
+  - Blacksmith-morale_down_3-45
+  - Blacksmith-morale_up_3-46
+  - Blacksmith-morale_up_3-47
+  - Blacksmith-morale_up_3-48
+  - Blacksmith-morale_up_3-49
+  - Blacksmith-morale_up_3-50
+  - Blacksmith-morale_up_3-51
+  - Blacksmith-morale_up_3-52
+  - Blacksmith-morale_up_3-53
+  - Blacksmith-morale_down_4-54
+  - Blacksmith-morale_down_4-55
+  - Blacksmith-morale_down_4-56
+  - Blacksmith-morale_down_4-57
+  - Blacksmith-morale_down_4-58
+  - Blacksmith-end-59
+  - Blacksmith-end-60
+  - Blacksmith-end-61
+  - Blacksmith-end-62
+  compilationStatus: 1
+  isSuccesfullyCompiled: 1
+  compilationErrorMessage: 
+  baseLanguage: {instanceID: 0}
+  localizations: []

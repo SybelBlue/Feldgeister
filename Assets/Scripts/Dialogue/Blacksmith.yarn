@@ -1,0 +1,129 @@
+title: Start
+tags: 
+colorID: 0
+position: 216,382
+---
+The blacksmith puffs herself out so that she looks a little bit fleecier.
+Hi there, Ewald. I supposee you're here about the baa-aad news, then?
+[[Yes, do you have any weapons you could contribute? |morale_up_1]]
+[[Yes, but we can get to that. How are you? |morale_down_1]]
+===
+title: morale_up_1
+tags: 
+colorID: 0
+position: -85,638
+---
+Well, of course, I'm sure you'll be in a rush. 
+Straight to business and all that, just like my Pops. 
+Well, he isn't here now anyway, just his big apron and that loud snoring of mine I got to remember him by.
+[[I'm sure he was a great man. |morale_neutral_1]]
+[[What sort of weapons do you have? |morale_up_2]]
+===
+title: morale_down_1
+tags: 
+colorID: 0
+position: 441,638
+---
+The Blacksmith turns a slight pink color
+Oh, wow. I'm fine, really. That's all.
+[[No really, how are you? |morale_down_2]]
+[[Let's get down to business, then.|morale_up_1]]
+===
+title: morale_neutral_1
+tags: 
+colorID: 0
+position: -274,945
+---
+The Blacksmith turns slightly pink.
+FRANZISKA: Well, yes. He was. Certainly.
+She brightens
+FRANZISKA: How about I get you those weapons?
+[[Wait for Blacksmith |morale_neutral_2]]
+===
+title: morale_up_2
+tags: 
+colorID: 0
+position: 118,976
+---
+FRANZISKA: Well, I'll just go em quick, I know you don't have much time.
+FRANZISKA: See, I've been working on multiple designs all day, so much so that my little hooves are worn out.
+FRANZISKA:I haven't felt this tired since I hauled a whole day's worth of iron back just to my house just to impress...
+FRANZISKA:I haven't felt this tired since I hauled a whole day's worth of iron back just to my house just to impress...
+FRANZISKA: ...well, that's neither here nor there
+[[How about those weapons |morale_up_3]]
+[[Wait, impress who? |morale_down_4]]
+===
+title: morale_down_2
+tags: 
+colorID: 0
+position: 700,1135
+---
+The Blacksmith turns a darker shade of pink
+FRANZISKA: Oh, my. I really don't know how to talk about myself. 
+FRANZISKA: I'm really fine, please don't worry.
+She brightens
+FRANZISKA: Let me get you those weapons!
+[[Wait for Blacksmith |morale_up_3]]
+===
+title: morale_neutral_2
+tags: 
+colorID: 0
+position: -279,1323
+---
+Well, let me get you what I can find, I suppose.
+t's a lot of hard work for me to make all these sorts of things this fast, but we're a hardy town, nothing we can't handle.
+-> Hardiest around
+I'm sure you're very experienced with leadership and things, anyway.
+But no funny business, you hear me?
+->No ma'am
+You keep that farmer of ours safe...and Magdalene, and the Watcher and little Minna, bless them.
+[[I'll keep them all safe. The witch, too. |morale_down_3]]
+[[I'll take any weapons you can get me. |morale_up_3]]
+===
+title: morale_down_3
+tags: 
+colorID: 0
+position: -515,1667
+---
+FRANSIZKA: Oh, the witch? Funny, I...nearly forgot. 
+FRANSIZKA: About them. 
+FRANSIZKA: Funny how that happens. Anyway.
+FRANSIZKA: Here are those weapons of yours, Ewald. 
+FRANSIZKA: Let me know if there's anything else I can do for you.
+[[Thanks, Blacksmith |end]]
+===
+title: morale_up_3
+tags: 
+colorID: 0
+position: -33,1653
+---
+The Blacksmith rustles around in the back of her house a long time, muttering to herself.
+She comes back to the front of the smithy clutching a few battered pitchforks, a sword, and some knives
+FRANZISKA: Well, here's what I have for you today.
+FRANZISKA: Now you take care and everything like that. Alright? 
+FRANZISKA: And, uh, now that I think about it, erm, keep an eye on that Witch of ours too.
+FRANZISKA: They're quite capable, of course, nothing they can't handle, but you know.
+FRANZISKA: ...
+[[Thanks, Blacksmith |end]]
+===
+title: morale_down_4
+tags: 
+colorID: 0
+position: 214,1237
+---
+The Blacksmith seems to turn a little pink
+FRANZISKA: It's not important. Really.
+FRANZISKA: Anyhow, you wanted those weapons, right?
+The Blacksmith bustles away to find her weapons.
+[[Wait for Blacksmith |morale_up_3]]
+===
+title: end
+tags: 
+colorID: 0
+position: -45,2094
+---
+FRANSIZKA: It's no problem, Ewald. No problem at all.
+The Blacksmith bustles back into the smithy. 
+The sounds of hammer clanging on anvil is soon heard form the back.
+-> Time to go.
+===
