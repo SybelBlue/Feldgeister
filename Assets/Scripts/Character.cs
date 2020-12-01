@@ -27,6 +27,8 @@ public class Character : MonoBehaviour
 
     public CharacterEvent onDeath;
 
+    public Sprite happySprite, normalSprite, angrySprite;
+
     public bool immortal {
         get => characterClass == CharacterClass.Mayor || characterClass == CharacterClass.Witch;
     }
@@ -141,6 +143,7 @@ public class Character : MonoBehaviour
 public class CharacterEditor : Editor
 {
     private SerializedProperty onDeathProp;
+    private SerializedProperty happySpriteProp, normalSpriteProp, angrySpriteProp;
 
     private Character character {
         get => target as Character;
@@ -149,6 +152,9 @@ public class CharacterEditor : Editor
     void OnEnable()
     {
         onDeathProp = serializedObject.FindProperty("onDeath");
+        happySpriteProp = serializedObject.FindProperty("happySprite");
+        normalSpriteProp = serializedObject.FindProperty("normalSprite");
+        angrySpriteProp = serializedObject.FindProperty("angrySprite");
     }
 
     public override void OnInspectorGUI()
@@ -201,6 +207,12 @@ public class CharacterEditor : Editor
                 EditorGUI.indentLevel--;
             }
         }
+
+        EditorGUILayout.Space();
+
+        EditorGUILayout.PropertyField(happySpriteProp, new GUIContent("Happy Sprite"));
+        EditorGUILayout.PropertyField(normalSpriteProp, new GUIContent("Normal Sprite"));
+        EditorGUILayout.PropertyField(angrySpriteProp, new GUIContent("Angry Sprite"));
 
         EditorGUILayout.Separator();
 
