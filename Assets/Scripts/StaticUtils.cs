@@ -35,7 +35,7 @@ public static class StaticUtils
     }
 }
 
-public sealed class MaybeDisabledGroup : System.IDisposable
+public sealed class DisabledGroup : System.IDisposable
 {
     public readonly bool disable;
     /// <summary>
@@ -43,7 +43,7 @@ public sealed class MaybeDisabledGroup : System.IDisposable
     /// on construction, then re-enable it on dispose.
     /// If doDisable is false, does nothing.
     /// </summary>
-    public MaybeDisabledGroup(bool doDisable=true)
+    public DisabledGroup(bool doDisable=true)
     {
         disable = doDisable;
         if (disable)
