@@ -36,4 +36,7 @@ public class GameController : MonoBehaviour
             Feldgeister.Input.SendClick();
         }
     }
+
+    public void SetCameraLock(bool locked)
+        => Camera.main.GetComponent<CameraController>().lockPosition = locked;
 }

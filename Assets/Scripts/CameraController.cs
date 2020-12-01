@@ -26,6 +26,8 @@ public class CameraController : MonoBehaviour
     [SerializeField]
     private float minZoomValue, maxZoomValue;
 
+    public bool lockPosition = false;
+
     private Vector3 originalScale;
 
     private void Start()
@@ -37,6 +39,8 @@ public class CameraController : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
+        if (lockPosition) return;
+        
         if (Time.frameCount % framesPerPan == 0)
         {
             PanWithMouse();
