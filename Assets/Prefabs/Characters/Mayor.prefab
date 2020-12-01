@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7561774881533543033}
   m_Layer: 0
   m_Name: Mayor
-  m_TagString: Untagged
+  m_TagString: CharacterObject
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
