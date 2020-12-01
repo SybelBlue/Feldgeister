@@ -1,0 +1,89 @@
+fileFormatVersion: 2
+guid: b51821cdbd240e34ca9ddf8802b21ef7
+ScriptedImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 2
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: 11500000, guid: 94073015eacc34c1d8fc6786e43d60ca, type: 3}
+  baseLanguageID: 
+  stringIDs:
+  - Witch-Start-0
+  - Witch-Start-1
+  - Witch-Start-2
+  - Witch-Start-3
+  - Witch-Start-4
+  - Witch-Start-5
+  - Witch-Start-6
+  - Witch-Start-7
+  - Witch-Start-8
+  - Witch-Start-9
+  - Witch-Start-10
+  - Witch-Start-11
+  - Witch-Start-12
+  - Witch-Start-13
+  - Witch-Start-14
+  - Witch-less_morale_1-15
+  - Witch-less_morale_1-16
+  - Witch-less_morale_1-17
+  - Witch-less_morale_1-18
+  - Witch-more_morale_1-19
+  - Witch-more_morale_1-20
+  - Witch-more_morale_1-21
+  - Witch-more_morale_1-22
+  - Witch-more_morale_1-23
+  - Witch-more_morale_1-24
+  - Witch-more_morale_1-25
+  - Witch-more_morale_1-26
+  - Witch-more_morale_1-27
+  - Witch-neutral_morale_1-28
+  - Witch-neutral_morale_1-29
+  - Witch-neutral_morale_1-30
+  - Witch-neutral_morale_1-31
+  - Witch-neutral_morale_1-32
+  - Witch-neutral_morale_1-33
+  - Witch-neutral_morale_1-34
+  - Witch-neutral_morale_1-35
+  - Witch-neutral_morale_1-36
+  - Witch-neutral_morale_1-37
+  - Witch-less_morale_2-38
+  - Witch-less_morale_2-39
+  - Witch-less_morale_2-40
+  - Witch-less_morale_2-41
+  - Witch-less_morale_2-42
+  - Witch-less_morale_2-43
+  - Witch-less_morale_2-44
+  - Witch-less_morale_2-45
+  - Witch-less_morale_2-46
+  - Witch-less_morale_2-47
+  - Witch-less_morale_2-48
+  - Witch-less_morale_2-49
+  - Witch-less_morale_2-50
+  - Witch-less_morale_2-51
+  - Witch-less_morale_2-52
+  - Witch-less_morale_2-53
+  - Witch-more_morale_2-54
+  - Witch-more_morale_2-55
+  - Witch-more_morale_2-56
+  - Witch-more_morale_2-57
+  - Witch-more_morale_2-58
+  - Witch-more_morale_2-59
+  - Witch-more_morale_2-60
+  - Witch-more_morale_2-61
+  - Witch-more_morale_2-62
+  - Witch-more_morale_2-63
+  - Witch-more_morale_2-64
+  - Witch-more_morale_2-65
+  - Witch-more_morale_2-66
+  - Witch-End-67
+  - Witch-End-68
+  - Witch-End-69
+  - Witch-End-70
+  - Witch-End-71
+  compilationStatus: 1
+  isSuccesfullyCompiled: 1
+  compilationErrorMessage: 
+  baseLanguage: {instanceID: 0}
+  localizations: []

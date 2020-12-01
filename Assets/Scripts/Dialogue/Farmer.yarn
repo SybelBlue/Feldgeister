@@ -1,0 +1,127 @@
+title: farmer_first_day_start
+tags: farmer
+colorID: 0
+position: 191,147
+---
+The farmer looks up from his work and scowls. 
+HELMUT: Mayor Schaf. Bearing more bad news, I presume.
+EWALD: Not any worse than what you heard this morning, Helmut.
+HELMUT: Hard to get worse than another Feldgeister attack. 
+-> I'm sorry, Helmut.
+    HELMUT: I don't need your sorries, Schaf. What do you want.
+    EWALD: Need to make sure everyone's fed. 
+    HELMUT: And?
+[[EWALD: Well, you are the farmer: |less_morale_1]]
+
+-> That's why I'm here. Trying to make sure everyone's fed. 
+    HELMUT: I've got what we have from last week's early wheat.
+    HELMUT: Set it aside to give those damn wolves the tithe
+    HELMUT: But looks like we won't be needing that this year. 
+    EWALD: Looks like it.
+    HELMUT: ...
+    EWALD: ...
+    HELMUT: ...
+    [[EWALD: So how are the crops? |more_morale_1]]
+===
+title: less_morale_1
+tags: farmer
+colorID: 0
+position: -94,442
+---
+HELMUT: And you're the mayor.
+[[ [sighs] Helmut, I know you don't like me |: less_morale_2]]
+
+[[ [pause] So, how are the crops doing? It'll be a long month: |neutral_morale_1]]
+===
+title: more_morale_1
+tags: farmer
+colorID: 0
+position: 469,441
+---
+$if oat king angry
+HELMUT: [snorts] Not well, Schaf
+HELMUT: That cold snap last night froze half of what's still in the fields.
+-> How much is left?
+HELMUT: A month, if we stretch. More, if I can spend a day haying. 
+[[Damn those Feldgeister. That chill rolled in with them. |less_morale_3]]
+[[I can lend a hand, or ask some of the others. |neutral_morale_2]]
+
+$if oat king happy
+HELMUT: Been a good harvest. Should have plenty for the month.
+HELMUT: Could use some help haying, though.
+[[I can lend a hand, or ask some of the others. |neutral_morale_2]]
+===
+title: less_morale_2
+tags: farmer
+colorID: 0
+position: -81,1093
+---
+HELMUT: Schaf, I don't owe you an explanation. 
+HELMUT: I don't owe you a damn thing.
+EWALD: ...
+HELMUT: ...
+EWALD: ...
+[[Regardless. What do the food stores look like? |more_morale_1]]
+===
+title: more_morale_2
+tags: farmer
+colorID: 0
+position: -465,1078
+---
+HELMUT: That so? 
+He takes the bread
+HELMUT: Ah, still warm.
+HELMUT: ... 
+HELMUT: Well. Tell Elfriede thank you, Schaf. 
+HELMUT: Her and the lamb both.
+-> Of course
+HELMUT: Now. What do you want?
+[[Need to know what the food stores look like. |more_morale_1]]
+===
+title: less_morale_3
+tags: 
+colorID: 0
+position: 702,992
+---
+HELMUT: No use crying over what you can't change, Schaf.
+-> Fair enough.
+HELMUT: ...
+EWALD: ...
+[[I can lend a hand, or ask some of the others. |neutral_morale_2]]
+===
+title: neutral_morale_2
+tags: 
+colorID: 0
+position: 383,1056
+---
+HELMUT: I should be fine, but I'll call if I could use a hoof.
+-> Just holler. And stay safe.
+HELMUT: You watch your back, Schaf. Those wolves have long teeth.
+The farmer abruptly turns around and returns to the field. 
+He picks up a pitchfork and begins to hay.
+[[It's time to check on the others |End]]
+===
+title: neutral_morale_1
+tags: 
+colorID: 0
+position: -291,765
+---
+$farmer_angry
+HELMUT: Yes. Correct. 
+EWALD: ... 
+HELMUT: ...
+
+[[So. Uh. How are the crops? |more_morale_1]]
+
+[[Why? |less_morale_2]]
+
+$if sweetbread
+[[Would you like some sweetbread? The Watcher made it for you.|more_morale_2]]
+===
+title: End
+tags: 
+colorID: 0
+position: 656,1329
+---
+Empty Text
+===

@@ -1,0 +1,126 @@
+title: Start
+tags: 
+colorID: 0
+position: 381,92
+---
+The Watcher is inside her house, cradling Minna
+-> How's the lamb, Elfriede?
+    ELFRIEDE: Happy, Ewald. Ignorant. 
+    A silence falls.
+[[I don't mean to pry but... you said you've been having dreams |less_info_1]]
+[[You seem tired, is there anything I can do? |more_info_1]]
+===
+title: less_info_1
+tags: 
+colorID: 0
+position: 11,446
+---
+ELFRIEDE: I... yes. Yes I have. 
+The Watcher grows visibly uncomfortable.
+ELFRIEDE: I'm not feeling very well. I need to make some tea.
+She moves to close the door.
+[[Elfriede, wait! I'm sorry. I know this is scary. |more_info_3]]
+[[Elfriede, I need to know what you saw. |less_info_2]]
+===
+title: more_info_1
+tags: 
+colorID: 0
+position: 604,404
+---
+ELFRIEDE: I... I haven't been sleeping very well. 
+She hugs the lamb closer to her. Minna coos. 
+[[I can understand. It's a stressful time |more_info_2]]
+[[You said that you've been having nightmares about the Feldgeister. Can you tell me about them?|less_info_1]]
+===
+title: more_info_2
+tags: 
+colorID: 0
+position: 711,708
+---
+ELFRIEDE: It is. It's been so many years since the last attack
+ELFRIEDE: I just never thought... 
+ELFRIEDE: ...
+-> Never thought it would be your lamb?
+The watcher winces a bit.
+ELFRIEDE: Yes. Yes, I never did.
+-> I'm working on making the town as secure as possible
+She brightens a bit. 
+ELFRIEDE: Oh? Is there... Is there anything I can do to help?
+[[I know this is scary, but have you seen anything... specific in your dreams? |full_info_end]]
+[[Tell me about your nightmares |some_info_end]]
+===
+title: more_info_3
+tags: 
+colorID: 0
+position: 284,760
+---
+The Watcher stops and turns around. Minna is quiet. 
+ELFRIEDE: I... I understand. 
+ELFRIEDE: I just... 
+She shakes her head as if to clear quiet
+-> I'm doing my best to protect the town
+ELFRIEDE: Of course. Of course. Yes.
+[[We all have a part to play, but I know your situation is... unique|more_info_2]]
+===
+title: less_info_2
+tags: 
+colorID: 0
+position: -119,769
+---
+The sound of a kettle clanking onto a stove comes from inside the house. 
+Minna begins to fuss.
+ELFRIEDE: What was that, I can't hear you.
+[[Elfriede, I'm sorry. I should have been more patient. The town is in danger.| ]]
+[[Elfriede, for Minna's sake, stop running away! |no_info]]
+===
+title: no_info
+tags: 
+colorID: 0
+position: -325,1148
+---
+Elfriede comes back to the door. Minna is crying. 
+ELFRIEDE: I'm sorry, Ewald. Come back tomorrow. I have a lot to do. 
+She shuts the door
+-> Elfriede, wait--
+There is only the sound of the kettle beginning to boil
+[[Time to go back to town |end]]
+===
+title: full_info_end
+tags: 
+colorID: 0
+position: 601,1089
+---
+ELFRIEDE: I... well. Yes. I have.
+Minna perks up and begins baa-ing at Ewald
+ELFRIEDE: Oh! I think she wants you to hold her 
+-> Oh, er, I, well, if she insists
+The watcher passes Ewald the lamb. Minna stares at Ewald in silence. 
+-> So... your dreams?
+The watcher takes a deep breath.
+ELFRIEDE: Every night I go to sleep and hear wolves howling. 
+ELFRIEDE: But last night... it was different
+[[Go on|end_most]]
+===
+title: some_info_end
+tags: 
+colorID: 0
+position: 917,1089
+---
+Empty Text
+===
+title: end
+tags: 
+colorID: 0
+position: 135,1485
+---
+Empty Text
+===
+title: end_most
+tags: 
+colorID: 0
+position: 447,1431
+---
+The Watcher tells Ewald what she saw
+Ewald hands the lamb back. Minna promptly falls asleep.
+[[Thank you, Elfriede |end]]
+===
