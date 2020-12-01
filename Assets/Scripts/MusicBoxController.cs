@@ -2,19 +2,28 @@
 
 public class MusicBoxController : MonoBehaviour
 {
+    public static MusicBoxController instance { get; private set; }
+
+    [SerializeField, ReadOnly]
+    private AudioSource mainSource;
+
     // taken from
     // https://docs.unity3d.com/ScriptReference/Object.DontDestroyOnLoad.html
     //
     // Will ensure object is persistent singleton
     void Awake()
     {
-        GameObject[] objs = GameObject.FindGameObjectsWithTag("Music Box");
-
-        if (objs.Length > 1)
+        if (instance)
         {
             Destroy(gameObject);
+            return;
         }
+        
+        instance = this;
+    }
 
-        DontDestroyOnLoad(gameObject);
+    void OnValidate()
+    {
+        mainSource = GetComponent<AudioSource>();
     }
 }
