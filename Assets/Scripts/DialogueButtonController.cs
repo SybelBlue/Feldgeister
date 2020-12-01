@@ -11,8 +11,9 @@ public class DialogueButtonController : MonoBehaviour, IPointerEnterHandler, IPo
     [ReadOnly, SerializeField]
     private bool hovering = false;
 
+    private GameController _gameController;
     private GameController gameController
-        => GameObject.FindGameObjectWithTag("GameController")?.GetComponent<GameController>();
+        => (_gameController = _gameController ?? GameObject.FindGameObjectWithTag("GameController")?.GetComponent<GameController>());
 
     void OnValidate()
     {
@@ -47,5 +48,10 @@ public class DialogueButtonController : MonoBehaviour, IPointerEnterHandler, IPo
         {
             gameController?.PlayButttonSelect();
         }
+    }
+
+    void OnDisable()
+    {
+        hovering = false;
     }
 }
