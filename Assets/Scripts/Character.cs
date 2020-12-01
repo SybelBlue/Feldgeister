@@ -29,6 +29,22 @@ public class Character : MonoBehaviour
 
     public Sprite happySprite, normalSprite, angrySprite;
 
+    public Sprite spriteForMood
+    {
+        get
+        {
+            switch(mood)
+            {
+                case MoraleLevel.Terrorized:
+                    return angrySprite;
+                case MoraleLevel.Unflinching:
+                    return happySprite;
+                default:
+                    return normalSprite;
+            }
+        }
+    }
+
     public bool immortal {
         get => characterClass == CharacterClass.Mayor || characterClass == CharacterClass.Witch;
     }
