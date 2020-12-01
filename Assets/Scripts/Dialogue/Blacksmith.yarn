@@ -4,7 +4,7 @@ colorID: 0
 position: 216,382
 ---
 The blacksmith puffs herself out so that she looks a little bit fleecier.
-Hi there, Ewald. I supposee you're here about the baa-aad news, then?
+FRANZISKA: Hi there, Ewald. I suppose you're here about the baa-aad news, then?
 [[Yes, do you have any weapons you could contribute? |morale_up_1]]
 [[Yes, but we can get to that. How are you? |morale_down_1]]
 ===
@@ -13,9 +13,9 @@ tags:
 colorID: 0
 position: -85,638
 ---
-Well, of course, I'm sure you'll be in a rush. 
-Straight to business and all that, just like my Pops. 
-Well, he isn't here now anyway, just his big apron and that loud snoring of mine I got to remember him by.
+FRANZISKA: Well, of course, I'm sure you'll be in a rush. 
+FRANZISKA: Straight to business and all that, just like my Pops. 
+FRANZISKA: Well, he isn't here now anyway, just his big apron and that loud snoring of mine I got to remember him by.
 [[I'm sure he was a great man. |morale_neutral_1]]
 [[What sort of weapons do you have? |morale_up_2]]
 ===
@@ -25,7 +25,7 @@ colorID: 0
 position: 441,638
 ---
 The Blacksmith turns a slight pink color
-Oh, wow. I'm fine, really. That's all.
+FRANZISKA: Oh, wow. I'm fine, really. That's all.
 [[No really, how are you? |morale_down_2]]
 [[Let's get down to business, then.|morale_up_1]]
 ===
@@ -48,7 +48,6 @@ position: 118,976
 FRANZISKA: Well, I'll just go em quick, I know you don't have much time.
 FRANZISKA: See, I've been working on multiple designs all day, so much so that my little hooves are worn out.
 FRANZISKA:I haven't felt this tired since I hauled a whole day's worth of iron back just to my house just to impress...
-FRANZISKA:I haven't felt this tired since I hauled a whole day's worth of iron back just to my house just to impress...
 FRANZISKA: ...well, that's neither here nor there
 [[How about those weapons |morale_up_3]]
 [[Wait, impress who? |morale_down_4]]
@@ -70,13 +69,13 @@ tags:
 colorID: 0
 position: -279,1323
 ---
-Well, let me get you what I can find, I suppose.
-t's a lot of hard work for me to make all these sorts of things this fast, but we're a hardy town, nothing we can't handle.
+FRANZISKA: Well, let me get you what I can find, I suppose.
+FRANZISKA: It's a lot of hard work for me to make all these sorts of things this fast, but we're a hardy town, nothing we can't handle.
 -> Hardiest around
-I'm sure you're very experienced with leadership and things, anyway.
-But no funny business, you hear me?
+FRANZISKA: I'm sure you're very experienced with leadership and things, anyway.
+FRANZISKA: But no funny business, you hear me?
 ->No ma'am
-You keep that farmer of ours safe...and Magdalene, and the Watcher and little Minna, bless them.
+FRANZISKA: You keep that farmer of ours safe...and Magdalene, and the Watcher and little Minna, bless them.
 [[I'll keep them all safe. The witch, too. |morale_down_3]]
 [[I'll take any weapons you can get me. |morale_up_3]]
 ===
