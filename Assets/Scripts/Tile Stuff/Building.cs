@@ -14,19 +14,30 @@ public class Building : MonoBehaviour, IRegion
         return building;
     }
 
+    public bool debugClicks = false;
+
     public virtual void OnHoverEnter()
     {
-        print($"Hovering over {buildingName}");
+        if (debugClicks)
+        {
+            print($"Hovering over {buildingName}");
+        }
     }
 
     public virtual void OnHoverExit()
     {
-        print($"Cursor left {buildingName}");
+        if (debugClicks)
+        {
+            print($"Cursor left {buildingName}");
+        }
     }
 
     public virtual void OnClick()
     {
-        print($"Clicked {buildingName}");
+        if (debugClicks)
+        {
+            print($"Clicked {buildingName}");
+        }
     }
 
 #if UNITY_EDITOR

@@ -2,7 +2,7 @@ using System;
 
 /// <summary> An enum to represent all the character classes </summary>
 [Serializable]
-public enum CharacterClass
+public enum CharacterClass : int
 {
     Miner,
     Blacksmith,

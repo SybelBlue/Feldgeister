@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
+using System;
 
 #if UNITY_EDITOR
 using UnityEditor;
@@ -11,6 +12,34 @@ public class House : Building
     public CharacterClass character;
 
     public List<BuildingDefense> defenses;
+
+    public Character occupant
+        => characters[(int)character];
+
+    private Character[] characters;
+
+    void Awake()
+        => ResetCharactersArray();
+
+    public void ResetCharactersArray()
+    {
+        if (characters == null)
+        {
+            characters = 
+                GameObject
+                    .FindGameObjectsWithTag("CharacterObject")
+                    .Select(obj => obj?.GetComponent<Character>())
+                    .Where(c => c != null)
+                    .OrderBy(c => c.characterClass)
+                    .Distinct()
+                    .ToArray();
+            
+            if (Enum.GetValues(typeof(CharacterClass)).Length != characters.Length)
+            {
+                Debug.LogError($"Expected {Enum.GetValues(typeof(CharacterClass)).Length} character objects, got {characters.Length}");
+            }
+        }
+    }
 
     public int defenseLevel
     {
@@ -42,11 +71,18 @@ public class House : Building
 
     public override void OnClick()
     {
-        print($"Clicked the {character}'s house!");
+        if (debugClicks)
+        {
+            print($"Clicked the {character}'s house! (occupant={occupant})");
+        }
+
+        // TODO: update ui to display occupant data and enter house
+        print($"Fill in UI hook for {occupant} here.");
     }
 }
 
 #if UNITY_EDITOR
+#pragma warning disable 0618
 [CustomEditor(typeof(House))]
 public class HouseEditor : Editor
 {
@@ -69,6 +105,15 @@ public class HouseEditor : Editor
         else if (oldLevel < newLevel)
         {
             Debug.LogWarning("Cannot increase defense level directly. \nAdd a defense object to the defenses list instead.");
+        }
+
+        using (new MaybeDisabledGroup())
+        {
+            if (!house.occupant)
+            {
+                house.ResetCharactersArray();
+            }
+            EditorGUILayout.ObjectField("Occupant", house.occupant, typeof(Character));
         }
     }
 }
