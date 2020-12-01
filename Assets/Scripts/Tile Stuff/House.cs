@@ -107,7 +107,7 @@ public class HouseEditor : Editor
             Debug.LogWarning("Cannot increase defense level directly. \nAdd a defense object to the defenses list instead.");
         }
 
-        using (new MaybeDisabledGroup())
+        using (new DisabledGroup())
         {
             if (!house.occupant)
             {

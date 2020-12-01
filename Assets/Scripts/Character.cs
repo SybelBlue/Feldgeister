@@ -184,7 +184,7 @@ public class CharacterEditor : Editor
 
         EditorGUILayout.Space();
 
-        using (new MaybeDisabledGroup(character.immortal))
+        using (new DisabledGroup(character.immortal))
         {
             character.alive = EditorGUILayout.Toggle("Alive", character.immortal || character.alive);
         }
@@ -194,7 +194,7 @@ public class CharacterEditor : Editor
             EditorGUILayout.Space();
 
             // if farmer, can't change hunger level from max
-            using (new MaybeDisabledGroup(character.characterClass == CharacterClass.Farmer))
+            using (new DisabledGroup(character.characterClass == CharacterClass.Farmer))
             {
                 character.hunger = (HungerLevel)EditorGUILayout.EnumPopup("Hunger", character.hunger);
             }
@@ -205,7 +205,7 @@ public class CharacterEditor : Editor
             character.unchangingMood = EditorGUILayout.Toggle("Unchanging Mood", character.unchangingMood);
             
             // if character has unchanging mood, then can't change mood
-            using (new MaybeDisabledGroup(character.unchangingMood))
+            using (new DisabledGroup(character.unchangingMood))
             {
                 character.mood = (MoraleLevel)EditorGUILayout.EnumPopup("Mood", character.mood);
             }
