@@ -35,9 +35,9 @@ public class Character : MonoBehaviour
         {
             switch(mood)
             {
-                case MoraleLevel.Terrorized:
+                case MoraleLevel.Angry:
                     return angrySprite;
-                case MoraleLevel.Unflinching:
+                case MoraleLevel.Joyous:
                     return happySprite;
                 default:
                     return normalSprite;
@@ -78,9 +78,9 @@ public class Character : MonoBehaviour
         get => unchangingMood ? 
                 _mood :
                 moraleValue * 4 >= maxMorale * 3 ?
-                    MoraleLevel.Unflinching :
+                    MoraleLevel.Joyous :
                     moraleValue * 4 <= maxMorale ?
-                        MoraleLevel.Terrorized:
+                        MoraleLevel.Angry:
                         MoraleLevel.Normal;
         set => _mood = value;
     }

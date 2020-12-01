@@ -5,6 +5,6 @@ using System;
 public enum MoraleLevel
 {
     Normal,
-    Unflinching,
-    Terrorized
+    Joyous,
+    Angry
 }
