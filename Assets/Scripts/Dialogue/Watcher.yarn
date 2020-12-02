@@ -1,4 +1,4 @@
-title: Start
+title: watcher_start
 tags: 
 colorID: 0
 position: 381,92
@@ -70,7 +70,7 @@ position: -119,769
 The sound of a kettle clanking onto a stove comes from inside the house. 
 Minna begins to fuss.
 ELFRIEDE: What was that, I can't hear you.
-[[Elfriede, I'm sorry. I should have been more patient. The town is in danger.| ]]
+[[Elfriede, I'm sorry. I should have been more patient. The town is in danger. |more_info_3]]
 [[Elfriede, for Minna's sake, stop running away! |no_info]]
 ===
 title: no_info
