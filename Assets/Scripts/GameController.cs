@@ -10,6 +10,9 @@ public class GameController : MonoBehaviour
 
     public bool mapReady { get => mapGenerator != null; }
 
+    [Range(0, 1)]
+    public float UIVolume;
+
 #if UNITY_EDITOR
     // used only to display progress in inspector!
 #pragma warning disable 0414
@@ -43,7 +46,7 @@ public class GameController : MonoBehaviour
         var source = GetComponent<AudioSource>();
         if (!source) return;
         source.clip = buttonHoverClip;
-        source.volume = 0.15f;
+        source.volume = UIVolume;
         source.Play();
     }
 
@@ -52,7 +55,7 @@ public class GameController : MonoBehaviour
         var source = GetComponent<AudioSource>();
         if (!source) return;
         source.clip = buttonSelectClip;
-        source.volume = 0.15f;
+        source.volume = UIVolume;
         source.Play();
     }
 
