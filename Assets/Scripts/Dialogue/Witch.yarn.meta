@@ -10,21 +10,21 @@ ScriptedImporter:
   script: {fileID: 11500000, guid: 94073015eacc34c1d8fc6786e43d60ca, type: 3}
   baseLanguageID: 
   stringIDs:
-  - Witch-Start-0
-  - Witch-Start-1
-  - Witch-Start-2
-  - Witch-Start-3
-  - Witch-Start-4
-  - Witch-Start-5
-  - Witch-Start-6
-  - Witch-Start-7
-  - Witch-Start-8
-  - Witch-Start-9
-  - Witch-Start-10
-  - Witch-Start-11
-  - Witch-Start-12
-  - Witch-Start-13
-  - Witch-Start-14
+  - Witch-witch_start-0
+  - Witch-witch_start-1
+  - Witch-witch_start-2
+  - Witch-witch_start-3
+  - Witch-witch_start-4
+  - Witch-witch_start-5
+  - Witch-witch_start-6
+  - Witch-witch_start-7
+  - Witch-witch_start-8
+  - Witch-witch_start-9
+  - Witch-witch_start-10
+  - Witch-witch_start-11
+  - Witch-witch_start-12
+  - Witch-witch_start-13
+  - Witch-witch_start-14
   - Witch-less_morale_1-15
   - Witch-less_morale_1-16
   - Witch-less_morale_1-17

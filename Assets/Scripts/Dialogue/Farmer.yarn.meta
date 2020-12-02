@@ -9,12 +9,72 @@ ScriptedImporter:
   assetBundleVariant: 
   script: {fileID: 11500000, guid: 94073015eacc34c1d8fc6786e43d60ca, type: 3}
   baseLanguageID: 
-  stringIDs: []
-  compilationStatus: 0
-  isSuccesfullyCompiled: 0
+  stringIDs:
+  - Farmer-farmer_start-0
+  - Farmer-farmer_start-1
+  - Farmer-farmer_start-2
+  - Farmer-farmer_start-3
+  - Farmer-farmer_start-4
+  - Farmer-farmer_start-5
+  - Farmer-farmer_start-6
+  - Farmer-farmer_start-7
+  - Farmer-farmer_start-8
+  - Farmer-farmer_start-9
+  - Farmer-farmer_start-10
+  - Farmer-farmer_start-11
+  - Farmer-farmer_start-12
+  - Farmer-farmer_start-13
+  - Farmer-farmer_start-14
+  - Farmer-farmer_start-15
+  - Farmer-farmer_start-16
+  - Farmer-farmer_start-17
+  - Farmer-less_morale_1-18
+  - Farmer-less_morale_1-19
+  - Farmer-less_morale_1-20
+  - Farmer-more_morale_1-21
+  - Farmer-more_morale_1-22
+  - Farmer-more_morale_1-23
+  - Farmer-more_morale_1-24
+  - Farmer-more_morale_1-25
+  - Farmer-more_morale_1-26
+  - Farmer-less_morale_2-27
+  - Farmer-less_morale_2-28
+  - Farmer-less_morale_2-29
+  - Farmer-less_morale_2-30
+  - Farmer-less_morale_2-31
+  - Farmer-less_morale_2-32
+  - Farmer-more_morale_2-33
+  - Farmer-more_morale_2-34
+  - Farmer-more_morale_2-35
+  - Farmer-more_morale_2-36
+  - Farmer-more_morale_2-37
+  - Farmer-more_morale_2-38
+  - Farmer-more_morale_2-39
+  - Farmer-more_morale_2-40
+  - Farmer-more_morale_2-41
+  - Farmer-less_morale_3-42
+  - Farmer-less_morale_3-43
+  - Farmer-less_morale_3-44
+  - Farmer-less_morale_3-45
+  - Farmer-less_morale_3-46
+  - Farmer-neutral_morale_2-47
+  - Farmer-neutral_morale_2-48
+  - Farmer-neutral_morale_2-49
+  - Farmer-neutral_morale_2-50
+  - Farmer-neutral_morale_2-51
+  - Farmer-neutral_morale_2-52
+  - Farmer-neutral_morale_1-53
+  - Farmer-neutral_morale_1-54
+  - Farmer-neutral_morale_1-55
+  - Farmer-neutral_morale_1-56
+  - Farmer-neutral_morale_1-57
+  - Farmer-neutral_morale_1-58
+  compilationStatus: 1
+  isSuccesfullyCompiled: 1
   compilationErrorMessage: 'Error on line 32 at position 46:token recognition error
     at: '':''
 
 '
-  baseLanguage: {instanceID: 0}
+  baseLanguage: {fileID: 7128917941130120860, guid: 5a3cd936ccfd35240aafd454b7863833,
+    type: 3}
   localizations: []
