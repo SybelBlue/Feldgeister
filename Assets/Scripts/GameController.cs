@@ -11,8 +11,15 @@ public class GameController : MonoBehaviour
     public CameraController cameraController
         => Camera.main.GetComponent<CameraController>();
 
+    public bool cameraLocked
+    {
+        get => cameraController.lockPosition;
+        set => cameraController.lockPosition = value;
+    }
+
     public bool mapReady { get => mapGenerator != null; }
     public HouseOccupant houseOccupantUI;
+    public CharacterDisplayController characterDisplay;
 
     [Range(0, 1)]
     public float UIVolume;
@@ -43,27 +50,32 @@ public class GameController : MonoBehaviour
             Feldgeister.Input.SendClick();
         }
 
-        if (!cameraController.lockPosition && Feldgeister.Input.lastFocused is House)
+        if (!cameraLocked && Feldgeister.Input.lastFocused is House)
         {
             var house = Feldgeister.Input.lastFocused as House;
             houseOccupantUI.UpdateDisplay(house.occupant);
+            characterDisplay.DisplayCharacter(house.occupant);
         }
         else
         {
             houseOccupantUI.UpdateDisplay(null);
+            if (!cameraLocked)
+            {
+                characterDisplay.DisplayCharacter(null);
+            }
         }
     }
 
     public void BeginCharacterDialogue(Character character)
     {
-        print($"Requested character dialogue: {character.characterClass} {cameraController.lockPosition}");
-        if (cameraController.lockPosition) return;
+        print($"Requested character dialogue: {character.characterClass} {cameraLocked}");
+        if (cameraLocked) return;
 
         var npcConor = character?.GetComponent<NPC_Conor>();
         if (!npcConor.enabled) return;
 
         npcConor.RunDialogue();
-        cameraController.lockPosition = true;
+        cameraLocked = true;
     }
 
     public void BeginOpeningDialogue()
@@ -73,12 +85,12 @@ public class GameController : MonoBehaviour
 #endif
         {
             GetComponent<NPC_Conor>()?.RunDialogue();
-            cameraController.lockPosition = true;
+            cameraLocked = true;
         }
 #if UNITY_EDITOR
         else
         {
-            cameraController.lockPosition = false;
+            cameraLocked = false;
         }
 #endif
     }
