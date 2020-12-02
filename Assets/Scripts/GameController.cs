@@ -9,6 +9,10 @@ public class GameController : MonoBehaviour
     private RegionManager<Building> buildingMap;
 
     public bool mapReady { get => mapGenerator != null; }
+    public HouseOccupant houseOccupantUI;
+
+    [Range(0, 1)]
+    public float UIVolume;
 
 #if UNITY_EDITOR
     // used only to display progress in inspector!
@@ -36,6 +40,15 @@ public class GameController : MonoBehaviour
         {
             Feldgeister.Input.SendClick();
         }
+
+        if (Feldgeister.Input.lastFocused is House)
+        {
+            var house = Feldgeister.Input.lastFocused as House;
+            houseOccupantUI.UpdateDisplay(house.occupant);
+        }
+        else{
+            houseOccupantUI.UpdateDisplay(null);
+        }
     }
 
     public void PlayButttonHover()
@@ -43,7 +56,7 @@ public class GameController : MonoBehaviour
         var source = GetComponent<AudioSource>();
         if (!source) return;
         source.clip = buttonHoverClip;
-        source.volume = 0.15f;
+        source.volume = UIVolume;
         source.Play();
     }
 
@@ -52,7 +65,7 @@ public class GameController : MonoBehaviour
         var source = GetComponent<AudioSource>();
         if (!source) return;
         source.clip = buttonSelectClip;
-        source.volume = 0.15f;
+        source.volume = UIVolume;
         source.Play();
     }
 

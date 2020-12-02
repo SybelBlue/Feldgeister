@@ -11,6 +11,8 @@ public class House : Building
 {
     public CharacterClass character;
 
+    public CharacterEvent onHover;
+
     public List<BuildingDefense> defenses;
 
     public Character occupant
@@ -75,10 +77,8 @@ public class House : Building
         {
             print($"Clicked the {character}'s house! (occupant={occupant})");
         }
-
-        // TODO: update ui to display occupant data and enter house
-        print($"Fill in UI hook for {occupant} here.");
     }
+
 }
 
 #if UNITY_EDITOR
