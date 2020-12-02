@@ -9,6 +9,7 @@ public class GameController : MonoBehaviour
     private RegionManager<Building> buildingMap;
 
     public bool mapReady { get => mapGenerator != null; }
+    public HouseOccupant houseOccupantUI;
 
 #if UNITY_EDITOR
     // used only to display progress in inspector!
@@ -35,6 +36,15 @@ public class GameController : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
         {
             Feldgeister.Input.SendClick();
+        }
+
+        if (Feldgeister.Input.lastFocused is House)
+        {
+            var house = Feldgeister.Input.lastFocused as House;
+            houseOccupantUI.UpdateDisplay(house.occupant);
+        }
+        else{
+            houseOccupantUI.UpdateDisplay(null);
         }
     }
 
