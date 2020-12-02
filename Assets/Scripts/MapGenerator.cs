@@ -14,6 +14,7 @@ public class MapEvent : UnityEvent<MapGenerator>
 public class MapGenerator : MonoBehaviour
 {
     public MapEvent onMapMade;
+    public CharacterEvent onHouseClick;
 
     [SerializeField, ReadOnly] 
     private Tilemap groundTilemap, mainTilemap, darkForestTilemap;
@@ -86,6 +87,7 @@ public class MapGenerator : MonoBehaviour
     {
         Template template = LoadTemplate(tilemap, out RectInt usedSpace);
         House house = House.AddTo(gameObject, name, character, usedSpace);
+        house.onHouseClick = onHouseClick;
         house.defenses = giveEachHouse.Select(defense => Instantiate(defense)).ToList();
         usedSpaces.Add(usedSpace, house);
         return template;

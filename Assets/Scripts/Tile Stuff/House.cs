@@ -9,9 +9,8 @@ using UnityEditor;
 
 public class House : Building
 {
-    public CharacterClass character;
 
-    public CharacterEvent onHover;
+    public CharacterClass character;
 
     public List<BuildingDefense> defenses;
 
@@ -19,6 +18,8 @@ public class House : Building
         => characters[(int)character];
 
     private Character[] characters;
+    
+    public CharacterEvent onHouseClick;
 
     void Awake()
         => ResetCharactersArray();
@@ -68,6 +69,7 @@ public class House : Building
         house.buildingName = name;
         house.character = character;
         house.region = region;
+
         return house;
     }
 
@@ -77,8 +79,9 @@ public class House : Building
         {
             print($"Clicked the {character}'s house! (occupant={occupant})");
         }
-    }
 
+        onHouseClick.Invoke(occupant);
+    }
 }
 
 #if UNITY_EDITOR
