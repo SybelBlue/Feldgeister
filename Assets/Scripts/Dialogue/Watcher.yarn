@@ -88,7 +88,7 @@ There is only the sound of the kettle beginning to boil
 title: full_info_end
 tags: 
 colorID: 0
-position: 601,1089
+position: 550,1003
 ---
 ELFRIEDE: I... well. Yes. I have.
 Minna perks up and begins baa-ing at Ewald
@@ -104,21 +104,29 @@ ELFRIEDE: But last night... it was different
 title: some_info_end
 tags: 
 colorID: 0
-position: 917,1089
+position: 915,1092
 ---
-Empty Text
+The Watcher shrinks back at the mention of nightmares.
+ELFRIEDE: I... yes. Let me think. I saw...
+$if_wolves: I saw a pack of wolves. They surrounded the house and Minna was crying, and I held the door, and nobody came and The Watcher shudders, stops. Minna sniffles. 
+ELFRIEDE: That's all I can remember. Goodbye. 
+She starts to shut the door.
+-> Elfriede, thank you. We'll keep Minna safe.
+ELFRIEDE: You can thank me tomorrow. 
+She backs into the house to the sound of Minna crying.
+[[Time to check in on the others |end]]
 ===
 title: end
 tags: 
 colorID: 0
-position: 135,1485
+position: 93,1612
 ---
 Empty Text
 ===
 title: end_most
 tags: 
 colorID: 0
-position: 447,1431
+position: 299,1272
 ---
 The Watcher tells Ewald what she saw
 Ewald hands the lamb back. Minna promptly falls asleep.
