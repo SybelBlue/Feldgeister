@@ -42,7 +42,10 @@ public class GameController : MonoBehaviour
 
     void Update()
     {
+        // required so that the feldgeister input system is up to date each frame
+        // do not change __
         Feldgeister.Input.Update(buildingMap.Get);
+        // do not change ^^
 
         rightCharacterDisplay.DisplayCharacter(cameraLocked ? mayorCharacter : null);
 
