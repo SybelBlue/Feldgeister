@@ -9,7 +9,6 @@ public static class StaticUtils
     public static float PerlinNoise(float x, float y)
         => Mathf.PerlinNoise(x * one_ish, y * one_ish);
 
-
     public static bool randomBool => Random.value < 0.5f;
     public static int randomSign => randomBool? -1 : 1;
 
