@@ -8,6 +8,9 @@ public class GameController : MonoBehaviour
     private MapGenerator mapGenerator;
     private RegionManager<Building> buildingMap;
 
+    public CameraController cameraController
+        => Camera.main.GetComponent<CameraController>();
+
     public bool mapReady { get => mapGenerator != null; }
     public HouseOccupant houseOccupantUI;
 
@@ -41,14 +44,21 @@ public class GameController : MonoBehaviour
             Feldgeister.Input.SendClick();
         }
 
-        if (Feldgeister.Input.lastFocused is House)
+        if (!cameraController.lockPosition && Feldgeister.Input.lastFocused is House)
         {
             var house = Feldgeister.Input.lastFocused as House;
             houseOccupantUI.UpdateDisplay(house.occupant);
         }
-        else{
+        else
+        {
             houseOccupantUI.UpdateDisplay(null);
         }
+    }
+
+    public void BeginCharacterDialogue(Character character)
+    {
+        character?.GetComponent<NPC_Conor>()?.RunDialogue();
+        cameraController.lockPosition = true;
     }
 
     public void PlayButttonHover()
