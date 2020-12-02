@@ -17,6 +17,8 @@ public class GameController : MonoBehaviour
     [Range(0, 1)]
     public float UIVolume;
 
+    public bool runOpeningDialogue;
+
 #if UNITY_EDITOR
     // used only to display progress in inspector!
 #pragma warning disable 0414
@@ -57,8 +59,28 @@ public class GameController : MonoBehaviour
 
     public void BeginCharacterDialogue(Character character)
     {
+        print($"Requested character dialogue: {character.characterClass} {cameraController.lockPosition}");
+        if (cameraController.lockPosition) return;
+
         character?.GetComponent<NPC_Conor>()?.RunDialogue();
         cameraController.lockPosition = true;
+    }
+
+    public void BeginOpeningDialogue()
+    {
+#if UNITY_EDITOR
+        if (runOpeningDialogue)
+#endif
+        {
+            GetComponent<NPC_Conor>()?.RunDialogue();
+            cameraController.lockPosition = true;
+        }
+#if UNITY_EDITOR
+        else
+        {
+            cameraController.lockPosition = false;
+        }
+#endif
     }
 
     public void PlayButttonHover()
