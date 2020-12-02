@@ -18,8 +18,11 @@ public class GameController : MonoBehaviour
     }
 
     public bool mapReady { get => mapGenerator != null; }
+    
     public HouseOccupant houseOccupantUI;
-    public CharacterDisplayController characterDisplay;
+
+    public CharacterDisplayController leftCharacterDisplay, rightCharacterDisplay;
+    public Character mayorCharacter;
 
     [Range(0, 1)]
     public float UIVolume;
@@ -50,18 +53,20 @@ public class GameController : MonoBehaviour
             Feldgeister.Input.SendClick();
         }
 
+        rightCharacterDisplay.DisplayCharacter(cameraLocked ? mayorCharacter : null);
+
         if (!cameraLocked && Feldgeister.Input.lastFocused is House)
         {
             var house = Feldgeister.Input.lastFocused as House;
             houseOccupantUI.UpdateDisplay(house.occupant);
-            characterDisplay.DisplayCharacter(house.occupant);
+            leftCharacterDisplay.DisplayCharacter(house.occupant);
         }
         else
         {
             houseOccupantUI.UpdateDisplay(null);
             if (!cameraLocked)
             {
-                characterDisplay.DisplayCharacter(null);
+                leftCharacterDisplay.DisplayCharacter(null);
             }
         }
     }
