@@ -8,66 +8,12 @@ ScriptedImporter:
   assetBundleName: 
   assetBundleVariant: 
   script: {fileID: 11500000, guid: 94073015eacc34c1d8fc6786e43d60ca, type: 3}
-  baseLanguageID: en-US
-  stringIDs:
-  - Miner-miner_start-0
-  - Miner-miner_start-1
-  - Miner-miner_start-2
-  - Miner-miner_start-3
-  - Miner-miner_start-4
-  - Miner-miner_start-5
-  - Miner-more_morale_1-6
-  - Miner-more_morale_1-7
-  - Miner-more_morale_1-8
-  - Miner-more_morale_1-9
-  - Miner-more_morale_1-10
-  - Miner-less_morale_1-11
-  - Miner-less_morale_1-12
-  - Miner-less_morale_1-13
-  - Miner-less_morale_1-14
-  - Miner-less_morale_1-15
-  - Miner-less_morale_2-16
-  - Miner-less_morale_2-17
-  - Miner-less_morale_2-18
-  - Miner-less_morale_2-19
-  - Miner-neutral_morale_1-20
-  - Miner-neutral_morale_1-21
-  - Miner-neutral_morale_1-22
-  - Miner-neutral_morale_1-23
-  - Miner-neutral_morale_1-24
-  - Miner-more_morale_2-25
-  - Miner-more_morale_2-26
-  - Miner-more_morale_2-27
-  - Miner-more_morale_2-28
-  - Miner-more_morale_2-29
-  - Miner-more_morale_2-30
-  - Miner-more_morale_2-31
-  - Miner-more_morale_2-32
-  - Miner-more_morale_2-33
-  - Miner-more_morale_2-34
-  - Miner-more_morale_2-35
-  - Miner-less_morale_3-36
-  - Miner-less_morale_3-37
-  - Miner-less_morale_3-38
-  - Miner-less_morale_3-39
-  - Miner-less_morale_3-40
-  - Miner-less_morale_3-41
-  - Miner-less_morale_3-42
-  - Miner-less_morale_3-43
-  - Miner-more_morale_3-44
-  - Miner-more_morale_3-45
-  - Miner-more_morale_3-46
-  - Miner-more_morale_3-47
-  - Miner-more_morale_3-48
-  - Miner-more_morale_3-49
-  - Miner-more_morale_3-50
-  - Miner-more_morale_3-51
-  - Miner-more_morale_3-52
-  compilationStatus: 1
-  isSuccesfullyCompiled: 1
+  baseLanguageID: 
+  stringIDs: []
+  compilationStatus: 0
+  isSuccesfullyCompiled: 0
   compilationErrorMessage: "Error on line 11 at position 35:\nextraneous input '
-    _morale_1' expecting ']]'\r\n[[We\u2019re in for a hard night. |less _morale_1]]\r\n                                 
+    _morale_1' expecting ']]'\n[[We\u2019re in for a hard night. |less _morale_1]]\n                                 
     ^^^^^^^^^^"
-  baseLanguage: {fileID: 7128917941130120860, guid: 0443fb1effde0ee4ea22c96fb5333732,
-    type: 3}
+  baseLanguage: {instanceID: 0}
   localizations: []
