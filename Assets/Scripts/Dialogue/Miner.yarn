@@ -7,10 +7,10 @@ You knock on the door. You hear a chair scraping, and a moment later the miner o
 -> Good morning, Magdalene
 MAGDALENE: Good morning, Mayor Schaf. Well. Could be better.
 She laughs nervously 
-[[It always could be better. |more_morale_1]]
-[[We’re in for a hard night. |less_morale_1]]
+[[It always could be better. |more_morale_1_m1]]
+[[We’re in for a hard night. |less_morale_1_m1]]
 ===
-title: more_morale_1
+title: more_morale_1_m1
 tags: 
 colorID: 0
 position: 497,632
@@ -18,10 +18,10 @@ position: 497,632
 The miner nods. Her wool is grimy with dust.
 MAGDALENE: You’re right. Been looking on the bright side since ma and pa died. Chin up.
 MAGDALENE: Anyhow, what can I do for you, Mr. Mayor. 
-[[I know I’m new to the village but… I’m sorry about your parents. |less_morale_2]]
-[[That’s a good reminder for me as well… chin up. |neutral_morale_1]]
+[[I know I’m new to the village but… I’m sorry about your parents. |less_morale_2_m1]]
+[[That’s a good reminder for me as well… chin up. |neutral_morale_1_m1]]
 ===
-title: less_morale_1
+title: less_morale_1_m1
 tags: 
 colorID: 0
 position: -11,639
@@ -29,20 +29,20 @@ position: -11,639
 The miner swallows nervously. 
 MAGDALENE: Anything can happen in one night. You forget, and nighttime seem so mundane, and then... 
 MAGDALENE: Someone lands themselves with a baby and suddenly so many lives are at risk. 
-[[I was looking through the town records, and we've fought off  feldgeister in the past without issue. Salt, though, has been a real asset do you have any to spare? |more_morale_2]]
-[[Yes, can’t forget about the imminent danger. Well, I’m sure you haven’t forgotten, given. Um. Your family history. |less_morale_2]]
+[[I was looking through the town records, and we've fought off  feldgeister in the past without issue. Salt, though, has been a real asset do you have any to spare? |more_morale_2_m1]]
+[[Yes, can’t forget about the imminent danger. Well, I’m sure you haven’t forgotten, given. Um. Your family history. |less_morale_2_m1]]
 ===
-title: less_morale_2
+title: less_morale_2_m1
 tags: 
 colorID: 0
-position: 0,1244
+position: -70,1182
 ---
 The miner’s young face hardens. 
 MAGDALENE: Well, actions have consequences. As we will see tonight. I wonder who they’ll take first. 
-[[We’re all here today, fighting for tomorrow. With some of your salt, we stand a shot. |more_morale_2]] 
-[[Well, they want Minna, but probably anyone who gets in their way. So we need to stop them. |less_morale_3]]
+[[We’re all here today, fighting for tomorrow. With some of your salt, we stand a shot. |more_morale_2_m1]] 
+[[Well, they want Minna, but probably anyone who gets in their way. So we need to stop them. |less_morale_3_m1]]
 ===
-title: neutral_morale_1
+title: neutral_morale_1_m1
 tags: 
 colorID: 0
 position: 710,994
@@ -51,9 +51,9 @@ position: 710,994
 MAGDALENE: Words to live by
 -> Well, there’s a few things. I’m going around seeing what everyone can contribute
 MAGDALENE: Such as?
-[[Salt to protect the houses. Every bit helps. |more_morale_2]]
+[[Salt to protect the houses. Every bit helps. |more_morale_2_m1]]
 ===
-title: more_morale_2
+title: more_morale_2_m1
 tags: 
 colorID: 0
 position: 456,1355
@@ -67,10 +67,10 @@ MAGDALENE: Well. I’ll see what I can scrounge up. Been up since dawn working.
 -> About the salt, though
 MAGDALENE: Of course, of course. I’ll focus on getting extra salt the next few mornings.
 MAGDALENE: If we have a next few mornings.
-[[We will. Chin up, yeah? |more_morale_3]]
-[[Magdalene, doom and gloom won’t help anybody |less_morale_3]]
+[[We will. Chin up, yeah? |more_morale_3_m1]]
+[[Magdalene, doom and gloom won’t help anybody |less_morale_3_m1]]
 ===
-title: less_morale_3
+title: less_morale_3_m1
 tags: 
 colorID: 0
 position: 184,1626
@@ -84,7 +84,7 @@ EWALD I have to check on the others. Just remember not all is lost.
 You walk away.
 -> MAGDALENE: Yeah. Yet.
 ===
-title: more_morale_3
+title: more_morale_3_m1
 tags: 
 colorID: 0
 position: 648,1769
