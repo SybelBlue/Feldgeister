@@ -62,7 +62,10 @@ public class GameController : MonoBehaviour
         print($"Requested character dialogue: {character.characterClass} {cameraController.lockPosition}");
         if (cameraController.lockPosition) return;
 
-        character?.GetComponent<NPC_Conor>()?.RunDialogue();
+        var npcConor = character?.GetComponent<NPC_Conor>();
+        if (!npcConor.enabled) return;
+        
+        npcConor.RunDialogue();
         cameraController.lockPosition = true;
     }
 
