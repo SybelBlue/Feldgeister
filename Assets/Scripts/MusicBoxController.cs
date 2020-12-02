@@ -11,6 +11,9 @@ public class MusicBoxController : MonoBehaviour
     [SerializeField, ReadOnly]
     private AudioSource mainSource;
 
+    [Range(0, 1)]
+    public float maxVolume;
+
     // taken from
     // https://docs.unity3d.com/ScriptReference/Object.DontDestroyOnLoad.html
     //
@@ -29,6 +32,7 @@ public class MusicBoxController : MonoBehaviour
     void Start()
     {
         mainSource.clip = dayAudioClip;
+        mainSource.volume = maxVolume;
         StartCoroutine(FadeIn(mainSource, 3));
     }
 
