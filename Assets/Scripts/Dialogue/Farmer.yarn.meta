@@ -8,12 +8,12 @@ ScriptedImporter:
   assetBundleName: 
   assetBundleVariant: 
   script: {fileID: 11500000, guid: 94073015eacc34c1d8fc6786e43d60ca, type: 3}
-  baseLanguageID: 
+  baseLanguageID: en-US
   stringIDs: []
   compilationStatus: 0
   isSuccesfullyCompiled: 0
-  compilationErrorMessage: 'Error on line 19 at position 7:token recognition error
-    at: '']''
+  compilationErrorMessage: 'Error on line 32 at position 46:token recognition error
+    at: '':''
 
 '
   baseLanguage: {instanceID: 0}

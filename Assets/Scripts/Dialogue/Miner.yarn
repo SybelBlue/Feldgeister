@@ -8,7 +8,7 @@ You knock on the door. You hear a chair scraping, and a moment later the miner o
 MAGDALENE: Good morning, Mayor Schaf. Well. Could be better.
 She laughs nervously 
 [[It always could be better. |more_morale_1]]
-[[We’re in for a hard night. |less _morale_1]]
+[[We’re in for a hard night. |less_morale_1]]
 ===
 title: more_morale_1
 tags: 
@@ -21,7 +21,7 @@ MAGDALENE: Anyhow, what can I do for you, Mr. Mayor.
 [[I know I’m new to the village but… I’m sorry about your parents. |less_morale_2]]
 [[That’s a good reminder for me as well… chin up. |neutral_morale_1]]
 ===
-title: less _morale_1
+title: less_morale_1
 tags: 
 colorID: 0
 position: -11,639
@@ -29,7 +29,7 @@ position: -11,639
 The miner swallows nervously. 
 MAGDALENE: Anything can happen in one night. You forget, and nighttime seem so mundane, and then... 
 MAGDALENE: Someone lands themselves with a baby and suddenly so many lives are at risk. 
-[[I was looking through the town records, and we've fought off  feldgeister in the past without issue. Salt, though, has been a real asset do you have any to spare?|more_morale_2]]
+[[I was looking through the town records, and we've fought off  feldgeister in the past without issue. Salt, though, has been a real asset do you have any to spare? |more_morale_2]]
 [[Yes, can’t forget about the imminent danger. Well, I’m sure you haven’t forgotten, given. Um. Your family history. |less_morale_2]]
 ===
 title: less_morale_2
@@ -48,7 +48,7 @@ colorID: 0
 position: 710,994
 ---
 -> That’s a good reminder for me as well… chin up.
-    MAGDALENE: Words to live by
+MAGDALENE: Words to live by
 -> Well, there’s a few things. I’m going around seeing what everyone can contribute
 MAGDALENE: Such as?
 [[Salt to protect the houses. Every bit helps. |more_morale_2]]
@@ -82,7 +82,7 @@ EWALD: Thank you so much, Magdalene.
 EWALD I have to check on the others. Just remember not all is lost.
 -> Leave
 You walk away.
-[[MAGDALENE: Yeah. Yet.|end]]
+-> MAGDALENE: Yeah. Yet.
 ===
 title: more_morale_3
 tags: 
@@ -97,13 +97,5 @@ MAGDALENE: I’ll have the salt tomorrow, Mayor Schaf. Let it help us all.
 -> Stay safe, Magdalene
 MAGDALENE: You as well.
 The miner nods to you briskly and shuts the door. 
-[[Time to make the rest of the rounds |end]]
-END
-===
-title: end
-tags: 
-colorID: 0
-position: 267,2008
----
-Empty Text
+-> Time to make the rest of the rounds
 ===
