@@ -19,12 +19,9 @@ public class GameController : MonoBehaviour
 
     public bool runOpeningDialogue;
 
-#if UNITY_EDITOR
-    // used only to display progress in inspector!
 #pragma warning disable 0414
     [SerializeField, ReadOnly]
     private bool _mapReady = false;
-#endif
 
     public void OnMapMade(MapGenerator map)
     {
@@ -64,7 +61,7 @@ public class GameController : MonoBehaviour
 
         var npcConor = character?.GetComponent<NPC_Conor>();
         if (!npcConor.enabled) return;
-        
+
         npcConor.RunDialogue();
         cameraController.lockPosition = true;
     }
