@@ -1,0 +1,19 @@
+fileFormatVersion: 2
+guid: 0443fb1effde0ee4ea22c96fb5333732
+ScriptedImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 2
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: 11500000, guid: 94073015eacc34c1d8fc6786e43d60ca, type: 3}
+  baseLanguageID: 
+  stringIDs: []
+  compilationStatus: 0
+  isSuccesfullyCompiled: 0
+  compilationErrorMessage: "Error on line 11 at position 35:\nextraneous input '
+    _morale_1' expecting ']]'\r\n[[We\u2019re in for a hard night. |less _morale_1]]\r\n                                 
+    ^^^^^^^^^^"
+  baseLanguage: {instanceID: 0}
+  localizations: []
