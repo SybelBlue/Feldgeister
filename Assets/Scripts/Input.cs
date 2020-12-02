@@ -33,6 +33,23 @@ namespace Feldgeister
             }
         }
 
+        public static void Update(System.Func<Vector2Int, IRegion> regionForMousePosition)
+        {
+            ///////////////         USED TO KEEP INPUT WORKING  //////////////////////////
+            //                      NO TOUCHY!!!                                        //
+            if (Feldgeister.Input.mouseHasMoved)                            //
+            {                                                                           //
+                var flattened = Feldgeister.Input.currentWorldMousePosition.To2DInt();  //
+                Feldgeister.Input.lastFocused = regionForMousePosition(flattened);                 //
+            }                                                                           //
+            
+            if (UnityEngine.Input.GetMouseButtonDown(0))                                //
+            {                                                                           //
+                Feldgeister.Input.SendClick();                                          //
+            }                                                                           //
+            //////////////////////////////////////////////////////////////////////////////
+        }
+
         public static void SendClick()
             => lastFocused?.OnClick();
     }

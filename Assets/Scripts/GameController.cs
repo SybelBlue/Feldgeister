@@ -42,16 +42,7 @@ public class GameController : MonoBehaviour
 
     void Update()
     {
-        if (Feldgeister.Input.mouseHasMoved && mapReady) 
-        {
-            var flattened = Feldgeister.Input.currentWorldMousePosition.To2DInt();
-            Feldgeister.Input.lastFocused = buildingMap[flattened];
-        }
-
-        if (Input.GetMouseButtonDown(0))
-        {
-            Feldgeister.Input.SendClick();
-        }
+        Feldgeister.Input.Update(buildingMap.Get);
 
         rightCharacterDisplay.DisplayCharacter(cameraLocked ? mayorCharacter : null);
 
