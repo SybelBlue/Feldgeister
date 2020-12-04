@@ -31,15 +31,6 @@ namespace UnityEngine.Tilemaps
         /// </summary>
         [SerializeField] public WeightedSprite[] Sprites;
 
-        // adapted from
-        // https://gamedev.stackexchange.com/questions/169700/how-can-i-change-a-sprite-used-for-a-unity-tilemap-tile-at-runtime
-        /// <summary>
-        /// Called when a tile gets the signal to refresh from outside sources.
-        /// Strangely necessary for the map to be able to reresh itself.
-        /// </summary>
-        public override void RefreshTile(Vector3Int position, ITilemap tilemap)
-            => tilemap.RefreshTile(position);
-
         /// <summary>
         /// Re-randomizes this scriptableobject instace of GatedPerlinTile
         /// </summary>
@@ -58,6 +49,15 @@ namespace UnityEngine.Tilemaps
             Rerandomize();
             return base.StartUp(location, tilemap, go);
         }
+
+        // adapted from
+        // https://gamedev.stackexchange.com/questions/169700/how-can-i-change-a-sprite-used-for-a-unity-tilemap-tile-at-runtime
+        /// <summary>
+        /// Called when a tile gets the signal to refresh from outside sources.
+        /// Strangely necessary for the map to be able to refresh itself.
+        /// </summary>
+        public override void RefreshTile(Vector3Int position, ITilemap tilemap)
+            => tilemap.RefreshTile(position);
 
         /// <summary>
         /// Retrieves any tile rendering data from the scripted tile.
@@ -95,9 +95,8 @@ namespace UnityEngine.Tilemaps
         private SerializedProperty m_Color;
         private SerializedProperty m_ColliderType;
 
-        private GatedPerlinTile Tile {
-            get { return target as GatedPerlinTile; }
-        }
+        private GatedPerlinTile Tile 
+            => target as GatedPerlinTile;
 
         /// <summary>
         /// OnEnable for GatedPerlinTile.
