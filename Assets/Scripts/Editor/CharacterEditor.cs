@@ -6,11 +6,12 @@ using UnityEditor;
 public class CharacterEditor : Editor
 {
     private SerializedProperty onDeathProp;
-    private SerializedProperty happySpriteProp, normalSpriteProp, angrySpriteProp;
+    private SerializedProperty happySpriteProp;
+    private SerializedProperty normalSpriteProp;
+    private SerializedProperty angrySpriteProp;
 
-    private Character character {
-        get => target as Character;
-    }
+    private Character character 
+        => target as Character;
 
     void OnEnable()
     {
