@@ -90,16 +90,16 @@ public class Character : MonoBehaviour
     
     public int moraleValue { 
         get => _moraleValue;
-        set => _moraleValue = ClampMorale(moraleValue);
+        set => _moraleValue = ClampMorale(value);
     }
 
     [SerializeField]
-    private int _maxMorale = 6;
+    private int _maxMorale;
     public int maxMorale 
     { 
         get => _maxMorale;
         set {
-            _maxMorale = Mathf.Max(0, moraleValue);
+            _maxMorale = Mathf.Max(0, value);
             this.moraleValue = _moraleValue;
         }
     }
@@ -216,7 +216,7 @@ public class CharacterEditor : Editor
                 EditorGUI.indentLevel++;
 
                 // set the max morale in [3, 10]
-                character.maxMorale = EditorGUILayout.IntSlider("Max Morale", character.maxMorale, 3, 10);
+                character.maxMorale = EditorGUILayout.IntSlider("Max Morale", Mathf.Clamp(character.maxMorale, 3, 10), 3, 10);
                 // set the morale value in [0, maxMorale]
                 character.moraleValue = EditorGUILayout.IntSlider("Morale", character.moraleValue, 0, character.maxMorale);
 
