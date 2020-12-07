@@ -5,10 +5,10 @@ position: 473,60
 ---
 It is the night after a joyous first birthday celebration for Minna, the only lamb in the village of Schafstadt am Berg. Ewald, the mayor of the village, lies in a deep sleep
 EWALD: Zzz... Zzz... Zzz
-a rattling wind blows outside, the sound of cornstalks brushing together, wheat shifting in the wind, and underneath it all... the sound of wolves howling
+A rattling wind blows outside, the sound of cornstalks brushing together, wheat shifting in the wind, and underneath it all... the haunting howl of a wolf. 
 EWALD: Zzz... Zzz... AH! 
-Ewald jerks awake, as if from a nightmare. Rubs his eyes. The wind still blows.
-EWALD: Ugh... too much to drink. Maybe I should get some fresh air.
+Ewald jerks awake, as if from a nightmare. The wind still blows.
+EWALD: Ugh... note to self: don't drink so much at Minna's second birthday party. Maybe I should get some fresh air.
 -> Get up
     Ewald yawns, rubs sleep from his eyes. Gets out of bed.
 [[Go outside |Door]]
@@ -52,8 +52,7 @@ tags:
 colorID: 0
 position: -30,701
 ---
-The doorway is filled with a figure twice Ewald's height, wearing nothing but a skirt of corn husks
-Its skin is peppered with hardened corn kernels, tufts of corn silk where hair should be.
+The doorway is filled with a figure twice Ewald's height. The figure was dark enough to blend into the night, except for the glare of its eyes. 
 Atop its head a crown of corn cobs, knawed to the core and rotting.
 It steps into the house.
 [[Say nothing |Fear]]
@@ -73,8 +72,6 @@ The knock grows louder.
     The smell of rotting corn gets stronger.
     The knocking gets louder.
     [[ Go to the door|Door]]
-
-[[ Go to the door|Door]]
 ===
 title: Fear
 tags: 
@@ -109,7 +106,10 @@ position: -176,1400
 ---
 CORN KING: Why does anybody do anything, little sheep.
 CORN KING: Because we're hungry.
-Two wolves, eyes glowing red, enter the house behind the figure.
+Into the house stalks a wolf with fangs longer than a hoof, followed by a wildcat flickering with lightning. 
+Ewald tries to edge away, but a crow from behind him startles him. 
+Turning, Ewald finds himself at knifepoint. 
+Brandishing it stands a disconcertingly large and shockingly malevolent rooster.
 ===
 title: Back_in_morning
 tags: 
@@ -117,6 +117,17 @@ colorID: 0
 position: 138,1414
 ---
 A loud growl sounds behind the Oat King.
-Two wolves, eyes glowing red, stalk into the house.
+Into the house stalks a wolf with fangs longer than a hoof, followed by a wildcat flickering with lightning. 
+Ewald tries to edge away, but a crow from behind him startles him. 
+Turning, Ewald finds himself at knifepoint. 
+Brandishing it stands a disconcertingly large and shockingly malevolent rooster. 
+
 THE OAT KING:
+===
+title: Node
+tags: 
+colorID: 0
+position: 724,1018
+---
+Empty Text
 ===
