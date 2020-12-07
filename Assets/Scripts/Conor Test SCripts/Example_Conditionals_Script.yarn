@@ -1,0 +1,54 @@
+title: test_start
+tags: 
+colorID: 0
+position: 540,229
+---
+<<set $times_spoken to $times_spoken +1>>
+<<if $morale_test is null>>
+    <<set $morale_test to 0>> 
+<<endif>>
+EXAMPLE: Hi! I'm an example script!
+EXAMPLE: You have spoken with me {$times_spoken} times today. 
+EXAMPLE: My morale is {$morale_test}
+<<if $morale_test > 0 is true>> 
+    EXAMPLE: You're my best friend! What can I do to help you!
+    [[I lied, eat dirt. |lie]]
+    [[You're my best friend too! |best_friend]]
+<<elseif $morale_test < 0 is true>> 
+    EXAMPLE: You're mean, I'm not helping you anymore.
+<<else>>
+    EXAMPLE: How can I help you today?
+    [[You stink, eat dirt |less_morale_test]]
+    [[Thanks, that's so sweet! |more_morale_test]]
+<<endif>>
+===
+title: less_morale_test
+tags: 
+colorID: 0
+position: 294,456
+---
+<<set $morale_test to $morale_test-1>> 
+EXAMPLE: Well, that's not very nice! Have a bad day!
+===
+title: more_morale_test
+tags: 
+colorID: 0
+position: 838,488
+---
+<<set $morale_test to $morale_test+1>> 
+EXAMPLE: Oh! That's so sweet of you. Have a nice day!
+===
+title: lie
+tags: 
+colorID: 0
+position: 384,760
+---
+EXAMPLE: Then find another example script, you awful liar!
+===
+title: best_friend
+tags: 
+colorID: 0
+position: 729,830
+---
+EXAMPLE: I'm so glad we're friends :)
+===

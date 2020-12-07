@@ -817,8 +817,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   characterName: Blacksmith
-  talkToNode: start_blacksmith
-  scriptToLoad: {fileID: 2480198943629176163, guid: dff43fff18211c64c857e21d72b93116,
+  talkToNode: miner_start
+  scriptToLoad: {fileID: 2480198943629176163, guid: 0443fb1effde0ee4ea22c96fb5333732,
     type: 3}
 --- !u!1001 &2037278597
 PrefabInstance:
