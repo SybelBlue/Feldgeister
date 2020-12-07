@@ -11,20 +11,27 @@ public class GameController : MonoBehaviour
     public CameraController cameraController
         => Camera.main.GetComponent<CameraController>();
 
+    public bool cameraLocked
+    {
+        get => cameraController.lockPosition;
+        set => cameraController.lockPosition = value;
+    }
+
     public bool mapReady { get => mapGenerator != null; }
+    
     public HouseOccupant houseOccupantUI;
+
+    public CharacterDisplayController leftCharacterDisplay, rightCharacterDisplay;
+    public Character mayorCharacter;
 
     [Range(0, 1)]
     public float UIVolume;
 
     public bool runOpeningDialogue;
 
-#if UNITY_EDITOR
-    // used only to display progress in inspector!
 #pragma warning disable 0414
     [SerializeField, ReadOnly]
     private bool _mapReady = false;
-#endif
 
     public void OnMapMade(MapGenerator map)
     {
@@ -35,38 +42,39 @@ public class GameController : MonoBehaviour
 
     void Update()
     {
-        if (Feldgeister.Input.mouseHasMoved && mapReady) 
-        {
-            var flattened = Feldgeister.Input.currentWorldMousePosition.To2DInt();
-            Feldgeister.Input.lastFocused = buildingMap[flattened];
-        }
+        // required so that the feldgeister input system is up to date each frame
+        // do not change __
+        Feldgeister.Input.Update(buildingMap.Get);
+        // do not change ^^
 
-        if (Input.GetMouseButtonDown(0))
-        {
-            Feldgeister.Input.SendClick();
-        }
+        rightCharacterDisplay.DisplayCharacter(cameraLocked ? mayorCharacter : null);
 
-        if (!cameraController.lockPosition && Feldgeister.Input.lastFocused is House)
+        if (!cameraLocked && Feldgeister.Input.lastFocused is House)
         {
             var house = Feldgeister.Input.lastFocused as House;
             houseOccupantUI.UpdateDisplay(house.occupant);
+            leftCharacterDisplay.DisplayCharacter(house.occupant);
         }
         else
         {
             houseOccupantUI.UpdateDisplay(null);
+            if (!cameraLocked)
+            {
+                leftCharacterDisplay.DisplayCharacter(null);
+            }
         }
     }
 
     public void BeginCharacterDialogue(Character character)
     {
-        print($"Requested character dialogue: {character.characterClass} {cameraController.lockPosition}");
-        if (cameraController.lockPosition) return;
+        print($"Requested character dialogue: {character.characterClass} {cameraLocked}");
+        if (cameraLocked) return;
 
         var npcConor = character?.GetComponent<NPC_Conor>();
         if (!npcConor.enabled) return;
-        
+
         npcConor.RunDialogue();
-        cameraController.lockPosition = true;
+        cameraLocked = true;
     }
 
     public void BeginOpeningDialogue()
@@ -76,12 +84,12 @@ public class GameController : MonoBehaviour
 #endif
         {
             GetComponent<NPC_Conor>()?.RunDialogue();
-            cameraController.lockPosition = true;
+            cameraLocked = true;
         }
 #if UNITY_EDITOR
         else
         {
-            cameraController.lockPosition = false;
+            cameraLocked = false;
         }
 #endif
     }

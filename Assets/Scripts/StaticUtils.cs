@@ -27,13 +27,16 @@ public static class StaticUtils
         Gizmos.color = oldColor;
     }
 
+#if UNITY_EDITOR
     [UnityEditor.MenuItem("Assets/Create/Scriptable Objects/Building Defense")]
     public static void CreateDefense()
     {
         UnityEditor.ProjectWindowUtil.CreateAsset(ScriptableObject.CreateInstance<BuildingDefense>(), "New Defense.asset");
     }
+#endif
 }
 
+#if UNITY_EDITOR
 public sealed class DisabledGroup : System.IDisposable
 {
     public readonly bool disable;
@@ -59,3 +62,4 @@ public sealed class DisabledGroup : System.IDisposable
         }
     }
 }
+#endif

@@ -52,6 +52,6 @@ MonoBehaviour:
   angrySprite: {fileID: 21300000, guid: f52d75c88162441ac9a7d3d04163bebc, type: 3}
   alive: 1
   unchangingMood: 0
-  _mood: 1
-  _moraleValue: 0
-  _maxMorale: 0
+  _mood: 0
+  _moraleValue: 3
+  _maxMorale: 7

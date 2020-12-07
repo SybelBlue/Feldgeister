@@ -19,6 +19,9 @@ public class RegionManager<TValue> : Dictionary<RectInt, TValue>
         }
     }
 
+    public TValue Get(Vector2Int v)
+        => this[v];
+
     public RectInt? GetKeyContaining(Vector2Int v)
     {
         foreach (var item in Keys)

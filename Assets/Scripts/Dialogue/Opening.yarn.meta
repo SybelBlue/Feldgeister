@@ -10,16 +10,16 @@ ScriptedImporter:
   script: {fileID: 11500000, guid: 94073015eacc34c1d8fc6786e43d60ca, type: 3}
   baseLanguageID: 
   stringIDs:
-  - Opening-Start-0
-  - Opening-Start-1
-  - Opening-Start-2
-  - Opening-Start-3
-  - Opening-Start-4
-  - Opening-Start-5
-  - Opening-Start-6
-  - Opening-Start-7
-  - Opening-Start-8
-  - Opening-Start-9
+  - Opening-intro_start-0
+  - Opening-intro_start-1
+  - Opening-intro_start-2
+  - Opening-intro_start-3
+  - Opening-intro_start-4
+  - Opening-intro_start-5
+  - Opening-intro_start-6
+  - Opening-intro_start-7
+  - Opening-intro_start-8
+  - Opening-intro_start-9
   - Opening-Door-10
   - Opening-Door-11
   - Opening-Door-12

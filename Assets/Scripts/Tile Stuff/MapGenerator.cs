@@ -41,7 +41,7 @@ public class MapGenerator : MonoBehaviour
 
     private Template castleTemplate;
     private Template graveyardTemplate;
-    private Template house1Template, house2Template, house3Template, house4Template;
+    private Template house1Template, house2Template, house3Template, house4Template, house5Template;
     private Template shop1Template, shop2Template, shopHouseTemplate;
 
     [SerializeField, ReadOnly]
@@ -73,6 +73,7 @@ public class MapGenerator : MonoBehaviour
         // add 2 more houses (now 5, enough for each character)
         house3Template = LoadHouse(houseTilemap, "house3", Watcher);
         house4Template = LoadHouse(houseTilemap, "house4", Witch);
+        house5Template = LoadHouse(houseTilemap, "house5", Farmer);
 
         // make roads
         // make river
