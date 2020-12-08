@@ -1,5 +1,5 @@
 ﻿using UnityEngine;
-using System.Linq;
+using System.Collections.Generic;
 
 #pragma warning disable 0649
 public class GameController : MonoBehaviour
@@ -30,18 +30,33 @@ public class GameController : MonoBehaviour
 
     public bool runOpeningDialogue;
 
-    private House[] houses;
+    private List<House> houses;
+
+    public House strategicTarget;
+
+    public AttackStrategy strategy;
+
+    [SerializeField, ReadOnly, Tooltip("For inspector debugging use only.")]
+    private CharacterClass targetCharacter;
 
 #pragma warning disable 0414
     [SerializeField, ReadOnly]
     private bool _mapReady = false;
 
+    public void SetUpForDay()
+    {
+        strategy = new List<AttackStrategy>(StaticUtils.allStrategies).RandomChoice();
+        strategicTarget = StaticUtils.HouseForStrategy(strategy, houses);
+        targetCharacter = strategicTarget.character;
+    }
+
     public void OnMapMade(MapGenerator map)
     {
         mapGenerator = map;
         buildingMap = map.usedSpaces;
-        houses = mapGenerator.GetComponents<House>();
+        houses = new List<House>(mapGenerator.GetComponents<House>());
         _mapReady = true;
+        SetUpForDay();
     }
 
     void Update()
@@ -68,9 +83,6 @@ public class GameController : MonoBehaviour
             }
         }
     }
-
-    public House HouseForCharacter(CharacterClass c)
-        => houses?.First(h => h.character == c);
 
     public void BeginCharacterDialogue(Character character)
     {
