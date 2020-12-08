@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Linq;
 using UnityEngine;
-using UnityEngine.Tilemaps;
 
 public static class Extensions
 {
@@ -53,4 +51,7 @@ public static class Extensions
 
     public static Vector3 MapComponents(this Vector3 vec, Func<float, float> f)
         => new Vector3(f(vec.x), f(vec.y), f(vec.z));
+
+    public static T RandomChoice<T>(this System.Collections.Generic.List<T> items)
+        => items[UnityEngine.Random.Range(0, items.Count)];
 }
