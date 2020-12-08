@@ -13,19 +13,13 @@ public class NPC_Conor : MonoBehaviour {
 
     public string talkToNode = "";
 
-    public Character character = gameObject.GetComponent() as Character;
-    
-    public House house;
-
-    public int defense = house.defenseLevel;
-
     [Header("Optional")]
     public YarnProgram scriptToLoad;
 
-    // public int houseDefenseLevel
-    // {
-    //     get => GetComponent<Character>()
-    // }
+    public int houseDefenseLevel
+    {
+        get => GetComponent<Character>().house.defenseLevel;
+    }
 
     public void RunDialogue()
     {

@@ -64,6 +64,7 @@ public class House : Building
         House house = gameObject.AddComponent<House>() as House;
         house.buildingName = name;
         house.character = character;
+        house.character.house = house;
         house.region = region;
 
         return house;
