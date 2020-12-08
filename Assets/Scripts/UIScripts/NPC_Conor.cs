@@ -16,9 +16,14 @@ public class NPC_Conor : MonoBehaviour {
     [Header("Optional")]
     public YarnProgram scriptToLoad;
 
+    // public int houseDefenseLevel
+    // {
+    //     get => GetComponent<Character>()
+    // }
+
     public void RunDialogue()
     {
-        FindObjectOfType<DialogueRunner> ().StartDialogue (talkToNode);
+        FindObjectOfType<DialogueRunner>().StartDialogue(talkToNode);
     }
 
     void Start () {

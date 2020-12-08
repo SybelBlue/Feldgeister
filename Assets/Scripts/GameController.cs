@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using System.Linq;
 
 #pragma warning disable 0649
 public class GameController : MonoBehaviour
@@ -29,6 +30,8 @@ public class GameController : MonoBehaviour
 
     public bool runOpeningDialogue;
 
+    private House[] houses;
+
 #pragma warning disable 0414
     [SerializeField, ReadOnly]
     private bool _mapReady = false;
@@ -37,6 +40,7 @@ public class GameController : MonoBehaviour
     {
         mapGenerator = map;
         buildingMap = map.usedSpaces;
+        houses = mapGenerator.GetComponents<House>();
         _mapReady = true;
     }
 
@@ -64,6 +68,9 @@ public class GameController : MonoBehaviour
             }
         }
     }
+
+    public House HouseForCharacter(CharacterClass c)
+        => houses?.First(h => h.character == c);
 
     public void BeginCharacterDialogue(Character character)
     {

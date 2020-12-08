@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections.Generic;
 
 public static class StaticUtils 
 {
@@ -25,6 +26,18 @@ public static class StaticUtils
         Gizmos.DrawWireCube(position, size + new Vector3(0, 0, 1));
 
         Gizmos.color = oldColor;
+    }
+
+    public static House HouseForStrategy(AttackStrategy strat, List<House> houses)
+    {
+        switch (strat)
+        {
+            case AttackStrategy.Random:
+                return houses.RandomChoice();
+            // case AttackStrategy.Weakest:
+                // return 
+        }
+        return null;
     }
 
 #if UNITY_EDITOR
