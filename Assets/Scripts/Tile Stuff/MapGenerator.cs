@@ -4,8 +4,6 @@ using UnityEngine.Tilemaps;
 using UnityEngine.Events;
 using System.Linq;
 
-using static CharacterClass;
-
 [System.Serializable]
 public class MapEvent : UnityEvent<MapGenerator>
 {  }
@@ -39,6 +37,9 @@ public class MapGenerator : MonoBehaviour
 
     public BuildingDefense[] giveEachHouse;
 
+    [SerializeField]
+    public Character miner, blacksmith, watcher, witch, farmer;
+
     private Template castleTemplate;
     private Template graveyardTemplate;
     private Template house1Template, house2Template, house3Template, house4Template, house5Template;
@@ -60,8 +61,8 @@ public class MapGenerator : MonoBehaviour
         graveyardTemplate = LoadBuilding(graveyardTilemap, "graveyard");
 
         // add 2 houses
-        house1Template = LoadHouse(houseTilemap, "house1", Miner);
-        house2Template = LoadHouse(houseTilemap, "house2", Blacksmith);
+        house1Template = LoadHouse(houseTilemap, "house1", miner);
+        house2Template = LoadHouse(houseTilemap, "house2", blacksmith);
 
         // add 2 shops
         shop1Template = LoadBuilding(shop1Tilemap, "shop1");
@@ -71,9 +72,9 @@ public class MapGenerator : MonoBehaviour
         shopHouseTemplate = LoadBuilding(shopHouseTilemap, "shopHouse");
 
         // add 2 more houses (now 5, enough for each character)
-        house3Template = LoadHouse(houseTilemap, "house3", Watcher);
-        house4Template = LoadHouse(houseTilemap, "house4", Witch);
-        house5Template = LoadHouse(houseTilemap, "house5", Farmer);
+        house3Template = LoadHouse(houseTilemap, "house3", watcher);
+        house4Template = LoadHouse(houseTilemap, "house4", witch);
+        house5Template = LoadHouse(houseTilemap, "house5", farmer);
 
         // make roads
         // make river
@@ -84,7 +85,7 @@ public class MapGenerator : MonoBehaviour
         onMapMade.Invoke(this);
     }
 
-    private Template LoadHouse(Tilemap tilemap, string name, CharacterClass character)
+    private Template LoadHouse(Tilemap tilemap, string name, Character character)
     {
         Template template = LoadTemplate(tilemap, out RectInt usedSpace);
         House house = House.AddTo(gameObject, name, character, usedSpace);
