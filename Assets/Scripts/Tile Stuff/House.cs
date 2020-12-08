@@ -6,12 +6,12 @@ using System;
 public class House : Building
 {
 
-    public CharacterClass character;
+    public Character character;
 
     public List<BuildingDefense> defenses;
 
     public Character occupant
-        => characters[(int)character];
+        => characters[(int)character.characterClass];
 
     private Character[] characters;
     
@@ -59,7 +59,7 @@ public class House : Building
         }
     }
 
-    public static House AddTo(GameObject gameObject, string name, CharacterClass character, RectInt region)
+    public static House AddTo(GameObject gameObject, string name, Character character, RectInt region)
     {
         House house = gameObject.AddComponent<House>() as House;
         house.buildingName = name;

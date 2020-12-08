@@ -47,7 +47,7 @@ public class GameController : MonoBehaviour
     {
         strategy = new List<AttackStrategy>(StaticUtils.allStrategies).RandomChoice();
         strategicTarget = StaticUtils.HouseForStrategy(strategy, houses);
-        targetCharacter = strategicTarget.character;
+        targetCharacter = strategicTarget.character.characterClass;
     }
 
     public void OnMapMade(MapGenerator map)
