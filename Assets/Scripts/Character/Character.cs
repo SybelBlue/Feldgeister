@@ -21,6 +21,8 @@ public class Character : MonoBehaviour
 {
     public CharacterClass characterClass;
 
+    public House house;
+
     public CharacterEvent onDeath;
 
     public Sprite happySprite, normalSprite, angrySprite;

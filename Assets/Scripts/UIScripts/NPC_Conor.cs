@@ -16,10 +16,10 @@ public class NPC_Conor : MonoBehaviour {
     [Header("Optional")]
     public YarnProgram scriptToLoad;
 
-    // public int houseDefenseLevel
-    // {
-    //     get => GetComponent<Character>()
-    // }
+    public int houseDefenseLevel
+    {
+        get => GetComponent<Character>().house.defenseLevel;
+    }
 
     public void RunDialogue()
     {
