@@ -5,11 +5,11 @@ position: 191,147
 ---
 The farmer looks up from his work and scowls. 
 HELMUT: Mayor Schaf. Bearing more bad news, I presume.
-EWALD: Not any worse than what you heard this morning, Helmut.
+-> Not any worse than what you heard this morning, Helmut.
 HELMUT: Hard to get worse than another Feldgeister attack. 
 -> I'm sorry, Helmut.
-    HELMUT: I don't need your sorries, Schaf. What do you want.
-    EWALD: Need to make sure everyone's fed. 
+HELMUT: I don't need your sorries, Schaf. What do you want.
+-> Need to make sure everyone's fed. 
     HELMUT: And?
 [[EWALD: Well, you are the farmer: |less_morale_1_f1]]
 -> That's why I'm here. Trying to make sure everyone's fed. 
@@ -73,7 +73,7 @@ HELMUT: Now. What do you want?
 title: less_morale_3_f1
 tags: 
 colorID: 0
-position: 702,992
+position: 615,778
 ---
 HELMUT: No use crying over what you can't change, Schaf.
 -> Fair enough.
