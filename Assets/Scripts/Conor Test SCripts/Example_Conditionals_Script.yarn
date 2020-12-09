@@ -1,20 +1,23 @@
 title: test_start
 tags: 
 colorID: 0
-position: 540,229
+position: 537,229
 ---
 <<set $times_spoken to $times_spoken +1>>
 <<if $morale_test is null>>
     <<set $morale_test to 0>> 
 <<endif>>
+<<Increase YarnScriptRunner>>
+<<set $yarn_test_variable to $yarn_test_variable>> 
 EXAMPLE: Hi! I'm an example script!
 EXAMPLE: You have spoken with me {$times_spoken} times today. 
 EXAMPLE: My morale is {$morale_test}
-<<if $morale_test > 0 is true>> 
+EXAMPLE: The Yarn_test_variable is {$yarn_test_variable}
+<<if $morale_test > 0>> 
     EXAMPLE: You're my best friend! What can I do to help you!
     [[I lied, eat dirt. |lie]]
     [[You're my best friend too! |best_friend]]
-<<elseif $morale_test < 0 is true>> 
+<<elseif $morale_test < 0>> 
     EXAMPLE: You're mean, I'm not helping you anymore.
 <<else>>
     EXAMPLE: How can I help you today?

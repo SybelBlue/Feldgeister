@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class DefenseList : MonoBehaviour
 {
@@ -15,10 +16,11 @@ public class DefenseList : MonoBehaviour
 
     public TMP_Text watcher;
     public Character watcherChar;
-    public void toggleDisplay()
-    {
-        DefenseList.setActive(!activeSelf);
-    }
+    //error here 
+    // public void toggleDisplay()
+    // {
+    //     DefenseList.setActive(!activeSelf);
+    // }
     public void UpdateAll(){
         blacksmith.text = "Blacksmith: " + blacksmithChar.house.defenseLevel;
         witch.text = "Witch: " + witchChar.house.defenseLevel;

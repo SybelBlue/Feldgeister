@@ -1,0 +1,23 @@
+fileFormatVersion: 2
+guid: aa82133754d65674c992da4642da9e29
+ScriptedImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 2
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: 11500000, guid: 94073015eacc34c1d8fc6786e43d60ca, type: 3}
+  baseLanguageID: en-US
+  stringIDs:
+  - Intervariable_Test-intervariable_start-0
+  - Intervariable_Test-intervariable_start-1
+  - Intervariable_Test-intervariable_start-2
+  - Intervariable_Test-low_morale_intervariable-3
+  - Intervariable_Test-command_test-4
+  compilationStatus: 1
+  isSuccesfullyCompiled: 1
+  compilationErrorMessage: 
+  baseLanguage: {fileID: 7128917941130120860, guid: aa82133754d65674c992da4642da9e29,
+    type: 3}
+  localizations: []

@@ -1,0 +1,26 @@
+title: intervariable_start
+tags: 
+colorID: 0
+position: 209,5
+---
+Hi, I'm the example script's cousin!
+[[Oh, so you must be stinky too |low_morale_intervariable]]
+[[That's very cool! |command_test]]
+===
+title: low_morale_intervariable
+tags: 
+colorID: 0
+position: 33,295
+---
+That's mean! I'm telling my cousin!
+<<set $morale_test to -20>>
+<<Increase YarnScriptRunner>>
+===
+title: command_test
+tags: 
+colorID: 0
+position: 431,290
+---
+Wow! So cool!
+<<hello_world YarnScriptRunner>>
+===
