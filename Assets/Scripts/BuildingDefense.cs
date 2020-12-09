@@ -6,7 +6,7 @@ public class BuildingDefense : ScriptableObject
     public string description;
     public bool magical, damaged;
     public int value = 1;
-    public CharacterClass source;
+    public CharacterJob source;
 
     void OnValidate()
     {

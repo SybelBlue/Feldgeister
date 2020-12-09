@@ -32,12 +32,12 @@ public class GameController : MonoBehaviour
 
     private List<House> houses;
 
-    public House strategicTarget;
+    public House strategicTarget, randomTarget;
 
     public AttackStrategy strategy;
 
     [SerializeField, ReadOnly, Tooltip("For inspector debugging use only.")]
-    private CharacterClass targetCharacter;
+    private CharacterJob strategicTargetCharacter, randomTargetCharacter;
 
 #pragma warning disable 0414
     [SerializeField, ReadOnly]
@@ -47,7 +47,15 @@ public class GameController : MonoBehaviour
     {
         strategy = new List<AttackStrategy>(StaticUtils.allStrategies).RandomChoice();
         strategicTarget = StaticUtils.HouseForStrategy(strategy, houses);
-        targetCharacter = strategicTarget.character.characterClass;
+        strategicTargetCharacter = strategicTarget.character.characterClass;
+
+        randomTarget = houses.RandomChoice();
+        randomTargetCharacter = randomTarget.character.characterClass;
+    }
+
+    public void MonsterAttack()
+    {
+
     }
 
     public void OnMapMade(MapGenerator map)

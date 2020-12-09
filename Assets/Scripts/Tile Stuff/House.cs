@@ -37,9 +37,9 @@ public class House : Building
                     .Distinct()
                     .ToArray();
             
-            if (Enum.GetValues(typeof(CharacterClass)).Length != characters.Length)
+            if (Enum.GetValues(typeof(CharacterJob)).Length != characters.Length)
             {
-                Debug.LogError($"Expected {Enum.GetValues(typeof(CharacterClass)).Length} character objects, got {characters.Length}");
+                Debug.LogError($"Expected {Enum.GetValues(typeof(CharacterJob)).Length} character objects, got {characters.Length}");
             }
         }
     }
