@@ -57,6 +57,13 @@ public class GameController : MonoBehaviour
     {
         strategicTarget.defenseLevel--;
         randomTarget.defenseLevel--;
+        print("Show feldgeisters now!");
+    }
+
+    public void PassNight()
+    {
+        MonsterAttack();
+        SetUpForDay();
     }
 
     public void OnMapMade(MapGenerator map)
@@ -91,6 +98,11 @@ public class GameController : MonoBehaviour
                 leftCharacterDisplay.DisplayCharacter(null);
             }
         }
+    }
+
+    void OnGUI()
+    {
+        
     }
 
     public void OnCharacterDied(Character c)

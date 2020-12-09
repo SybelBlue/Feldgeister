@@ -155,7 +155,7 @@ public class Character : MonoBehaviour
 }
 
 #if UNITY_EDITOR
-[CustomEditor(typeof(Character))]
+[CustomEditor(typeof(Character)), CanEditMultipleObjects]
 public class CharacterEditor : Editor
 {
     private SerializedProperty onDeathProp;
@@ -234,7 +234,7 @@ public class CharacterEditor : Editor
         EditorGUILayout.Separator();
 
         // create the onDeath event box
-        EditorGUILayout.PropertyField(onDeathProp, new GUIContent("On Death"));
+        EditorGUILayout.PropertyField(onDeathProp, new GUIContent(character.immortal ? "On \"Death\" <immortal>" : "On Death"));
 
         EditorGUILayout.Separator();
 
