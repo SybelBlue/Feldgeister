@@ -31,7 +31,7 @@ The door explodes.
 title: The_Corn_King
 tags: 
 colorID: 0
-position: -30,701
+position: -31,700
 ---
 The doorway is filled with a figure twice Ewald's height. The figure blends into the night but for the glare of its eyes. 
 Atop its head rests a crown of corn cobs, gnawed to the core and rotting.
@@ -42,7 +42,7 @@ It steps into the house.
 title: Fear
 tags: 
 colorID: 0
-position: -247,1024
+position: -248,1024
 ---
 CORN KING: Wetterkatze got your tongue, little sheep?
 CORN KING: Where is the young lamb? If your voice fails you, you can simply bring her to me. 
@@ -53,7 +53,7 @@ Ewald steels himself
 title: Snark
 tags: 
 colorID: 0
-position: 150,1034
+position: 150,1032
 ---
 The figure emits a laugh like kernels popping in the kettle
 CORN KING: Oh, little sheep. I like you. If you were a smidge younger...
@@ -78,7 +78,7 @@ CORN KING: We'll see about that. Tomorrow night we come in full force.
 title: Back_in_morning
 tags: 
 colorID: 0
-position: 138,1414
+position: 137,1413
 ---
 A loud growl sounds behind the Corn King.
 Into the house stalks a plum-colored wolf with glinting fangs, followed by a wildcat flickering with lightning. 

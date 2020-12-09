@@ -11,7 +11,7 @@ FRANZISKA: Hi there, Ewald. I suppose you're here about the baa-aad news, then?
 title: morale_up_1_b1
 tags: 
 colorID: 0
-position: -89,636
+position: -91,633
 ---
 FRANZISKA: Well, of course, I'm sure you'll be in a rush. 
 FRANZISKA: Straight to business and all that, just like my Pops. Well, he isn't here now anyway, just his big apron and that loud snoring of mine I got to remember him by.
@@ -23,7 +23,7 @@ tags:
 colorID: 0
 position: 441,638
 ---
-The Blacksmith turns a slight pink color
+The Blacksmith turns a slightly uncomfortable pink color
 FRANZISKA: Oh, wow. I'm fine, really. That's all.
 [[No, tell me, how are you? |morale_down_2_b1]]
 [[Let's get down to business, then.|morale_up_1_b1]]
@@ -31,7 +31,7 @@ FRANZISKA: Oh, wow. I'm fine, really. That's all.
 title: morale_neutral_1_b1
 tags: 
 colorID: 0
-position: -274,945
+position: -276,943
 ---
 The Blacksmith turns slightly pink.
 FRANZISKA: Well, yes. He was. Certainly.
@@ -54,7 +54,7 @@ FRANZISKA: ...well, that's neither here nor there
 title: morale_down_2_b1
 tags: 
 colorID: 0
-position: 620,1067
+position: 619,1066
 ---
 The Blacksmith turns a darker shade of pink and takes an involuntary step back
 FRANZISKA: Oh, my. I really don't know how to talk about myself. 
@@ -79,7 +79,7 @@ FRANZISKA: You keep that farmer of ours safe...and Magdalene, and the Watcher an
 title: morale_down_3_b1
 tags: 
 colorID: 0
-position: -515,1667
+position: -517,1666
 ---
 FRANSIZKA: Oh, the witch? Funny, I...nearly forgot. About them. Funny how that happens.
 FRANSIZKA: Anyway. Here are those weapons of yours, Ewald. Let me know if there's anything else I can do for you.
@@ -102,7 +102,7 @@ FRANZISKA: ...
 title: morale_down_4_b1
 tags: 
 colorID: 0
-position: 214,1237
+position: 213,1235
 ---
 The Blacksmith seems to turn a little pink
 FRANZISKA: It's not important. Really.
@@ -113,7 +113,7 @@ The Blacksmith bustles away to find her weapons.
 title: end_b1
 tags: 
 colorID: 0
-position: -45,2094
+position: -46,2093
 ---
 FRANSIZKA: It's no problem, Ewald. No problem at all.
 The Blacksmith bustles back into the smithy. 

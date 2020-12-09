@@ -27,12 +27,12 @@ position: -94,442
 ---
 HELMUT: And you're the mayor.
 [[*sighs* Helmut, I know you don't like me |less_morale_2_f1]]
-[[*pause* So, how are the crops doing? It'll be a long month: |neutral_morale_1_f1]]
+[[So, how are the crops doing? It'll be a long month: |neutral_morale_1_f1]]
 ===
 title: more_morale_1_f1
 tags: farmer
 colorID: 0
-position: 469,441
+position: 468,439
 ---
 HELMUT: *snorts* Not well, Schaf.
 HELMUT: That cold snap last night froze half of what's still in the fields.
@@ -70,7 +70,7 @@ HELMUT: Now. What do you want?
 title: less_morale_3_f1
 tags: 
 colorID: 0
-position: 615,778
+position: 614,776
 ---
 HELMUT: No use crying over what you can't change, Schaf.
 -> Fair enough.
@@ -81,7 +81,7 @@ EWALD: ...
 title: neutral_morale_2_f1
 tags: 
 colorID: 0
-position: 383,1056
+position: 380,1055
 ---
 HELMUT: I should be fine, but I'll call if I could use a hoof.
 -> Just holler. And stay safe.
@@ -93,12 +93,12 @@ He picks up a pitchfork and begins to shovel hay.
 title: neutral_morale_1_f1
 tags: 
 colorID: 0
-position: -292,765
+position: -293,765
 ---
 HELMUT: Yes. Correct. 
 EWALD: ... 
 HELMUT: ...
 [[So. Uh. How are the crops? |more_morale_1_f1]]
 [[Why? |less_morale_2_f1]]
-[[Would you like some sweetbread? The Watcher made it for you.|more_morale_2_f1]]
+[[Want some sweetbread? The Watcher made it for you.|more_morale_2_f1]]
 ===
