@@ -37,7 +37,7 @@ public class GameController : MonoBehaviour
     public AttackStrategy strategy;
 
     [SerializeField, ReadOnly, Tooltip("For inspector debugging use only.")]
-    private CharacterJob strategicTargetCharacter, randomTargetCharacter;
+    private CharacterJob strategicTargetJob, randomTargetJob;
 
 #pragma warning disable 0414
     [SerializeField, ReadOnly]
@@ -47,15 +47,16 @@ public class GameController : MonoBehaviour
     {
         strategy = new List<AttackStrategy>(StaticUtils.allStrategies).RandomChoice();
         strategicTarget = StaticUtils.HouseForStrategy(strategy, houses);
-        strategicTargetCharacter = strategicTarget.character.characterClass;
+        strategicTargetJob = strategicTarget.character.characterClass;
 
         randomTarget = houses.RandomChoice();
-        randomTargetCharacter = randomTarget.character.characterClass;
+        randomTargetJob = randomTarget.character.characterClass;
     }
 
     public void MonsterAttack()
     {
-
+        strategicTarget.defenseLevel--;
+        randomTarget.defenseLevel--;
     }
 
     public void OnMapMade(MapGenerator map)
@@ -90,6 +91,11 @@ public class GameController : MonoBehaviour
                 leftCharacterDisplay.DisplayCharacter(null);
             }
         }
+    }
+
+    public void OnCharacterDied(Character c)
+    {
+        print($"he ded: {c}");
     }
 
     public void BeginCharacterDialogue(Character character)
