@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 372054244289775458}
   - component: {fileID: 372054244289775459}
+  - component: {fileID: 1734538983}
   m_Layer: 0
   m_Name: Watcher
   m_TagString: CharacterObject
@@ -43,15 +44,42 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db977300b61ec434e9cc6f9f566fddd0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  characterClass: 3
+  job: 4
+  house: {fileID: 0}
   onDeath:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_MethodName: OnCharacterDied
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   happySprite: {fileID: 21300000, guid: be474d56e8deb4c11984cad25672a30e, type: 3}
   normalSprite: {fileID: 21300000, guid: 7321b94b804414ead80124a062c469f1, type: 3}
   angrySprite: {fileID: 21300000, guid: 2fb182b25732446cfb5286e20c7f868a, type: 3}
-  alive: 1
   unchangingMood: 1
   _mood: 2
   _moraleValue: 0
   _maxMorale: 6
+--- !u!114 &1734538983
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 372054244289775484}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2ff0c675f1b7cbe439993788688147d5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  characterName: Watcher
+  talkToNode: watcher_start
+  scriptToLoad: {fileID: 2480198943629176163, guid: facd97d48201440448c0017a56c1c47c,
+    type: 3}

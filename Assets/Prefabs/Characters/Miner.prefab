@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7640438891557228837}
   - component: {fileID: 7640438891557228836}
+  - component: {fileID: 1949582936}
   m_Layer: 0
   m_Name: Miner
   m_TagString: CharacterObject
@@ -43,15 +44,42 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db977300b61ec434e9cc6f9f566fddd0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  characterClass: 0
+  job: 3
+  house: {fileID: 0}
   onDeath:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_MethodName: OnCharacterDied
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   happySprite: {fileID: 21300000, guid: 63ef7a569167f4cf99ef3a83828876e3, type: 3}
   normalSprite: {fileID: 21300000, guid: 626cc3082c6164e99864e0036d102dc6, type: 3}
   angrySprite: {fileID: 21300000, guid: baf948138115545e999ebbe003406068, type: 3}
-  alive: 1
   unchangingMood: 0
   _mood: 1
   _moraleValue: 4
   _maxMorale: 5
+--- !u!114 &1949582936
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7640438891557228839}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2ff0c675f1b7cbe439993788688147d5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  characterName: Miner
+  talkToNode: miner_start
+  scriptToLoad: {fileID: 2480198943629176163, guid: 0443fb1effde0ee4ea22c96fb5333732,
+    type: 3}

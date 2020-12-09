@@ -43,14 +43,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db977300b61ec434e9cc6f9f566fddd0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  characterClass: 5
+  job: 2
+  house: {fileID: 0}
   onDeath:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_MethodName: PlummetMorale
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   happySprite: {fileID: 21300000, guid: c76965aec246441f2a58a32dda808150, type: 3}
   normalSprite: {fileID: 21300000, guid: fe8e42c596c46464b94359fb15249ac4, type: 3}
   angrySprite: {fileID: 21300000, guid: f52d75c88162441ac9a7d3d04163bebc, type: 3}
-  alive: 1
   unchangingMood: 0
   _mood: 0
   _moraleValue: 3

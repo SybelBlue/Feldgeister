@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 183142497910124614}
   - component: {fileID: 183142497910124613}
+  - component: {fileID: 1949108125}
   m_Layer: 0
   m_Name: Witch
   m_TagString: CharacterObject
@@ -43,13 +44,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db977300b61ec434e9cc6f9f566fddd0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  characterClass: 2
+  job: 5
+  house: {fileID: 0}
   onDeath:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 0}
-        m_MethodName: PlummentMorale
-        m_Mode: 1
+        m_MethodName: OnCharacterDied
+        m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -61,8 +63,23 @@ MonoBehaviour:
   happySprite: {fileID: 21300000, guid: df15720b940ed4d3ebb1b042879b2c55, type: 3}
   normalSprite: {fileID: 21300000, guid: 29e48651343144a3987fc9a0e3734f76, type: 3}
   angrySprite: {fileID: 21300000, guid: 29e48651343144a3987fc9a0e3734f76, type: 3}
-  alive: 1
   unchangingMood: 1
   _mood: 1
   _moraleValue: 0
   _maxMorale: 6
+--- !u!114 &1949108125
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 183142497910124612}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2ff0c675f1b7cbe439993788688147d5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  characterName: Witch
+  talkToNode: witch_start
+  scriptToLoad: {fileID: 2480198943629176163, guid: b51821cdbd240e34ca9ddf8802b21ef7,
+    type: 3}
