@@ -8,11 +8,26 @@ ScriptedImporter:
   assetBundleName: 
   assetBundleVariant: 
   script: {fileID: 11500000, guid: 94073015eacc34c1d8fc6786e43d60ca, type: 3}
-  baseLanguageID: 
-  stringIDs: []
-  compilationStatus: 0
-  isSuccesfullyCompiled: 0
+  baseLanguageID: en-US
+  stringIDs:
+  - Example_Conditionals_Script-test_start-0
+  - Example_Conditionals_Script-test_start-1
+  - Example_Conditionals_Script-test_start-2
+  - Example_Conditionals_Script-test_start-3
+  - Example_Conditionals_Script-test_start-4
+  - Example_Conditionals_Script-test_start-5
+  - Example_Conditionals_Script-test_start-6
+  - Example_Conditionals_Script-test_start-7
+  - Example_Conditionals_Script-test_start-8
+  - Example_Conditionals_Script-test_start-9
+  - Example_Conditionals_Script-less_morale_test-10
+  - Example_Conditionals_Script-more_morale_test-11
+  - Example_Conditionals_Script-lie-12
+  - Example_Conditionals_Script-best_friend-13
+  compilationStatus: 1
+  isSuccesfullyCompiled: 1
   compilationErrorMessage: "Error on line 26 at position 14:\nmismatched input '=='
     expecting '('\r\n{morale_test == morale_test+1}\r\n             ^^"
-  baseLanguage: {instanceID: 0}
+  baseLanguage: {fileID: 7128917941130120860, guid: cde5e1a8e4af70844846e832fe07144a,
+    type: 3}
   localizations: []
