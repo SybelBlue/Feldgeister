@@ -15,8 +15,8 @@ OTTO: Oh! Or do you think it's because bodies make good plant food?
 OTTO: Oh! Or do you think it's because nobody else grazes in the graveyard?
 -> Maybe? I... nobody ELSE? Otto, have you been-
 OTTO: Oh! I almost forgot. Have I told you recently that you make a super chill mayor?
-[[Great? You do recall me telling you about what happened last night, yeah? |less_morale_1_wi1]]
-[[Just between you and me, do you think I'm handling this all professionally enough? |more_morale_1_wi1]]
+[[Great? You do recall what happened last night, yeah? |less_morale_1_wi1]]
+[[Between you and me, am I handling this all professionally enough? |more_morale_1_wi1]]
 ===
 title: less_morale_1_wi1
 tags: 
@@ -25,7 +25,7 @@ position: -80,701
 ---
 OTTO: Oh! Well, you know. Things happen. Our poor little Minna, all those big bad wolves coming to eat her up. Good thing you're here. 
 The witch turns to leave
-[[ Wait, Otto! Do you know anything about the feldgeister? |neutral_morale_1_wi1]]
+[[ Otto! Do you know anything about the feldgeister? |neutral_morale_1_wi1]]
 ===
 title: more_morale_1_wi1
 tags: 
@@ -37,7 +37,7 @@ OTTO: Oh, I don’t know about that. But you've got a great voice!
 The witch has been staring at the sun
 OTTO: It’s getting late, I have to go or the sun will be at the wrong angle by the time I make it to the pond! It’ll reflect off the water all wrong and I won’t be able to see the fish! 
 They turn to leave
-[[Wait, Otto! Do you know anything about the feldgeister? |neutral_morale_1_wi1]]
+[[Otto! Do you know anything about the feldgeister? |neutral_morale_1_wi1]]
 ===
 title: neutral_morale_1_wi1
 tags: 

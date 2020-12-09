@@ -7,7 +7,7 @@ The Watcher is inside her house, cradling Minna
 -> How's the lamb, Elfriede?
     ELFRIEDE: Happy, Ewald. Ignorant. 
     A silence falls.
-[[I don't mean to pry but... you said you've been having dreams |less_info_1]]
+[[I don't mean to pry, but you said you've been having dreams |less_info_1]]
 [[You seem tired, is there anything I can do? |more_info_1]]
 ===
 title: less_info_1
@@ -18,18 +18,18 @@ position: 11,446
 The Watcher grows visibly uncomfortable.
 ELFRIEDE: I'm not feeling very well. I need to make some tea.
 She moves to close the door.
-[[Elfriede, wait! I'm sorry. I know this is scary. |more_info_3]]
-[[Elfriede, I need you to tell me what you saw. |less_info_2]]
+[[Wait! I'm sorry. I know this is scary. |more_info_3]]
+[[I need you to tell me what you saw. |less_info_2]]
 ===
 title: more_info_1
 tags: 
 colorID: 0
-position: 604,404
+position: 603,402
 ---
 ELFRIEDE: I... I haven't been sleeping very well. 
 She hugs the lamb closer to her. Minna coos. 
 [[I can understand. It's a stressful time |more_info_2]]
-[[I wouldn't either, dreaming of Feldgeister! Can you tell me about them? |less_info_1]]
+[[Can you tell me about them? |less_info_1]]
 ===
 title: more_info_2
 tags: 
@@ -45,7 +45,7 @@ ELFRIEDE: Yes. Yes, I never did.
 -> I'm working on making the town as secure as possible
 She straightens. 
 ELFRIEDE: Is there... Is there anything I can do to help?
-[[I know this is scary, but have you seen anything... specific in your dreams? |full_info_end]]
+[[I know this is scary, but have you seen anything specific? |full_info_end]]
 [[Tell me about your nightmares! |some_info_end]]
 ===
 title: more_info_3
@@ -59,17 +59,17 @@ ELFRIEDE: I just...
 She shakes her head as if to clear it
 -> I'm doing my best to protect the town
 ELFRIEDE: Of course. Of course. Yes.
-[[We all have a part to play, but your situation is... unique|more_info_2]]
+[[We all have a part to play, but your situation is...unique|more_info_2]]
 ===
 title: less_info_2
 tags: 
 colorID: 0
-position: -119,769
+position: -120,768
 ---
 The sound of a kettle clanking onto a stove comes from inside the house. 
 Minna begins to fuss.
 ELFRIEDE: What was that, I can't hear you.
-[[Elfriede, I'm sorry. I should have been more patient. I do want to help you. |more_info_3]]
+[[I'm sorry I keep pushing. I do want to help you. |more_info_3]]
 [[Elfriede, for Minna's sake, stop running away! |no_info]]
 ===
 title: no_info
