@@ -47,11 +47,23 @@ public class Character : MonoBehaviour
         }
     }
 
-    public bool immortal {
-        get => characterClass == CharacterJob.Mayor || characterClass == CharacterJob.Witch;
-    }
+    public bool immortal
+        => characterClass == CharacterJob.Mayor || characterClass == CharacterJob.Witch;
 
-    public bool alive;
+    private bool _alive;
+    public bool alive
+    {
+        get => _alive;
+        set
+        {
+            _alive = immortal || value;
+
+            if (!_alive)
+            {
+                onDeath.Invoke(this);
+            }
+        }
+    }
 
     private HungerLevel _hunger;
     public HungerLevel hunger
