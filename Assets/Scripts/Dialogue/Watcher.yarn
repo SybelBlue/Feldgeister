@@ -29,7 +29,7 @@ position: 604,404
 ELFRIEDE: I... I haven't been sleeping very well. 
 She hugs the lamb closer to her. Minna coos. 
 [[I can understand. It's a stressful time |more_info_2]]
-[[Of course, because of your nightmares about the feldgeister! Tell me all about them! |less_info_1]]
+[[I wouldn't either, dreaming of Feldgeister! Can you tell me about them? |less_info_1]]
 ===
 title: more_info_2
 tags: 
@@ -59,7 +59,7 @@ ELFRIEDE: I just...
 She shakes her head as if to clear it
 -> I'm doing my best to protect the town
 ELFRIEDE: Of course. Of course. Yes.
-[[We all have a part to play, but I know your situation is... unique|more_info_2]]
+[[We all have a part to play, but your situation is... unique|more_info_2]]
 ===
 title: less_info_2
 tags: 
