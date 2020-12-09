@@ -10,7 +10,7 @@ public class House : Building
     public List<BuildingDefense> defenses;
 
     public Character occupant
-        => characters[(int)character.characterClass];
+        => characters[(int)character.job];
 
     private Character[] characters;
     
@@ -28,7 +28,7 @@ public class House : Building
                     .FindGameObjectsWithTag("CharacterObject")
                     .Select(obj => obj?.GetComponent<Character>())
                     .Where(c => c != null)
-                    .OrderBy(c => c.characterClass)
+                    .OrderBy(c => c.job)
                     .Distinct()
                     .ToArray();
             
@@ -44,7 +44,7 @@ public class House : Building
         get => defenses.Select(defenseItem => defenseItem.value).Sum();
         set
         {
-            print($"Setting {character.characterClass} defenses to {value}");
+            print($"Setting {character.job} defenses to {value}");
 
             if (value < 0)
             {
@@ -52,7 +52,7 @@ public class House : Building
                 character.alive = false;
                 return;
             }
-            
+
             int remainingPoints = value;
             defenses = defenses.TakeWhile(defenseItem => {
                 if (remainingPoints <= 0) return false;

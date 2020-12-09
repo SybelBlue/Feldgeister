@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEditor;
 
 #pragma warning disable 0618
-[CustomEditor(typeof(Character))]
+[CustomEditor(typeof(House))]
 public class HouseEditor : Editor
 {
     private House house => target as House;

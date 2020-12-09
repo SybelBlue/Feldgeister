@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8469361942942560040}
   - component: {fileID: 8469361942942560043}
+  - component: {fileID: 671547990}
   m_Layer: 0
   m_Name: Farmer
   m_TagString: CharacterObject
@@ -43,15 +44,42 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db977300b61ec434e9cc6f9f566fddd0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  characterClass: 4
+  job: 1
+  house: {fileID: 0}
   onDeath:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_MethodName: OnCharacterDied
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   happySprite: {fileID: 21300000, guid: 78f9fc49e9cb04fc0b69dd51f43d42bf, type: 3}
   normalSprite: {fileID: 21300000, guid: 839b518573f544ac88079d6e08ce7610, type: 3}
   angrySprite: {fileID: 21300000, guid: 1dc0523ce019e43d98b0de69fd4d0c55, type: 3}
-  alive: 1
   unchangingMood: 0
   _mood: 0
   _moraleValue: 2
   _maxMorale: 3
+--- !u!114 &671547990
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8469361942942560042}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2ff0c675f1b7cbe439993788688147d5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  characterName: Farmer
+  talkToNode: farmer_start
+  scriptToLoad: {fileID: 2480198943629176163, guid: 5a3cd936ccfd35240aafd454b7863833,
+    type: 3}

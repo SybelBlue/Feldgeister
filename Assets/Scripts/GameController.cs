@@ -39,18 +39,23 @@ public class GameController : MonoBehaviour
     [SerializeField, ReadOnly, Tooltip("For inspector debugging use only.")]
     private CharacterJob strategicTargetJob, randomTargetJob;
 
+    private static int jobCount = System.Enum.GetValues(typeof(CharacterJob)).Length;
+    private bool[] charactersTalkedToday = new bool[jobCount];
+
 #pragma warning disable 0414
     [SerializeField, ReadOnly]
     private bool _mapReady = false;
 
     public void SetUpForDay()
     {
+        charactersTalkedToday = new bool[jobCount];
+
         strategy = new List<AttackStrategy>(StaticUtils.allStrategies).RandomChoice();
         strategicTarget = StaticUtils.HouseForStrategy(strategy, houses);
-        strategicTargetJob = strategicTarget.character.characterClass;
+        strategicTargetJob = strategicTarget.character.job;
 
         randomTarget = houses.RandomChoice();
-        randomTargetJob = randomTarget.character.characterClass;
+        randomTargetJob = randomTarget.character.job;
     }
 
     public void MonsterAttack()
@@ -100,11 +105,6 @@ public class GameController : MonoBehaviour
         }
     }
 
-    void OnGUI()
-    {
-        
-    }
-
     public void OnCharacterDied(Character c)
     {
         print($"he ded: {c}");
@@ -112,15 +112,35 @@ public class GameController : MonoBehaviour
 
     public void BeginCharacterDialogue(Character character)
     {
-        print($"Requested character dialogue: {character.characterClass} {cameraLocked}");
-        if (cameraLocked) return;
+        print($"Requested character dialogue: {character.job} {cameraLocked}");
+        if (cameraLocked) 
+        {
+            print("Rejected dialogue start, dialogue already running.");
+            return;
+        }
+
+        if (HasTalkedToday(character))
+        {
+            print("Rejected dialogue start, already talked today.");
+            return;
+        }
 
         var npcConor = character?.GetComponent<NPC_Conor>();
-        if (!npcConor.enabled) return;
+        if (!npcConor || !npcConor.enabled)
+        {
+            print("Rejected dialogue start, no active NPC_Conor found.");
+            return;
+        }
 
         npcConor.RunDialogue();
         cameraLocked = true;
     }
+
+    private void MarkTalkedToday(Character c)
+        => charactersTalkedToday[(int)c.job] = true;
+    
+    private bool HasTalkedToday(Character c)
+        => charactersTalkedToday[(int)c.job];
 
     public void BeginOpeningDialogue()
     {

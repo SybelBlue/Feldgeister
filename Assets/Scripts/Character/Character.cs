@@ -23,7 +23,7 @@ public class CharacterEvent : UnityEvent<Character>
 [Serializable, DisallowMultipleComponent]
 public class Character : MonoBehaviour
 {
-    public CharacterJob characterClass;
+    public CharacterJob job;
 
     public House house;
 
@@ -48,7 +48,7 @@ public class Character : MonoBehaviour
     }
 
     public bool immortal
-        => characterClass == CharacterJob.Mayor || characterClass == CharacterJob.Witch;
+        => job == CharacterJob.Mayor || job == CharacterJob.Witch;
 
     private bool _alive;
     public bool alive
@@ -68,7 +68,7 @@ public class Character : MonoBehaviour
     private HungerLevel _hunger;
     public HungerLevel hunger
     {
-        get => characterClass == CharacterJob.Farmer ? 
+        get => job == CharacterJob.Farmer ? 
             HungerLevel.Full :
             _hunger;
         set => _hunger = value;
@@ -179,9 +179,9 @@ public class CharacterEditor : Editor
         serializedObject.Update();
         EditorGUI.BeginChangeCheck();
         
-        character.name = character.characterClass.ToString();
+        character.name = character.job.ToString();
 
-        character.characterClass = (CharacterJob)EditorGUILayout.EnumPopup("Class", character.characterClass);
+        character.job = (CharacterJob)EditorGUILayout.EnumPopup("Job", character.job);
 
         EditorGUILayout.Space();
 
@@ -195,7 +195,7 @@ public class CharacterEditor : Editor
             EditorGUILayout.Space();
 
             // if farmer, can't change hunger level from max
-            using (new DisabledGroup(character.characterClass == CharacterJob.Farmer))
+            using (new DisabledGroup(character.job == CharacterJob.Farmer))
             {
                 character.hunger = (HungerLevel)EditorGUILayout.EnumPopup("Hunger", character.hunger);
             }
