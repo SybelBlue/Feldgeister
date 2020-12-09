@@ -92,7 +92,7 @@ public class GameController : MonoBehaviour
         if (!cameraLocked && Feldgeister.Input.lastFocused is House)
         {
             var house = Feldgeister.Input.lastFocused as House;
-            houseOccupantUI.UpdateDisplay(house.occupant);
+            houseOccupantUI.UpdateDisplay(house.occupant, !HasTalkedToday(house.occupant));
             leftCharacterDisplay.DisplayCharacter(house.occupant);
         }
         else
@@ -112,7 +112,12 @@ public class GameController : MonoBehaviour
 
     public void BeginCharacterDialogue(Character character)
     {
-        print($"Requested character dialogue: {character.job} {cameraLocked}");
+        if (!character)
+        {
+            print("Rejected dialogue start, null character.");
+            return;
+        }
+
         if (cameraLocked) 
         {
             print("Rejected dialogue start, dialogue already running.");
@@ -134,6 +139,8 @@ public class GameController : MonoBehaviour
 
         npcConor.RunDialogue();
         cameraLocked = true;
+
+        MarkTalkedToday(character);
     }
 
     private void MarkTalkedToday(Character c)
