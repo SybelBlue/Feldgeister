@@ -1,7 +1,10 @@
 using UnityEngine;
+using System.Collections.Generic;
 
 public static class StaticUtils 
 {
+    public static AttackStrategy[] allStrategies = (AttackStrategy[])System.Enum.GetValues(typeof(AttackStrategy));
+
     private static float one_ish = Mathf.PI / 3f;
     // need to multiply by one_ish so that the numbers are floats.
     // Anything resembling an int will always return 46.75821.
@@ -27,16 +30,29 @@ public static class StaticUtils
         Gizmos.color = oldColor;
     }
 
+    public static House HouseForStrategy(AttackStrategy strat, List<House> houses)
+    {
+        houses.Shuffle();
+        switch (strat)
+        {
+            case AttackStrategy.Random:
+                return houses.RandomChoice();
+            case AttackStrategy.Weakest:
+                return houses.MinBy(h => h.defenseLevel);
+            case AttackStrategy.Strongest:
+                return houses.MaxBy(h => h.defenseLevel);
+        }
+        throw new System.Exception("Unknown strat: " + strat);
+    }
+
 #if UNITY_EDITOR
     [UnityEditor.MenuItem("Assets/Create/Scriptable Objects/Building Defense")]
     public static void CreateDefense()
     {
         UnityEditor.ProjectWindowUtil.CreateAsset(ScriptableObject.CreateInstance<BuildingDefense>(), "New Defense.asset");
     }
-#endif
 }
 
-#if UNITY_EDITOR
 public sealed class DisabledGroup : System.IDisposable
 {
     public readonly bool disable;
@@ -61,5 +77,5 @@ public sealed class DisabledGroup : System.IDisposable
             UnityEditor.EditorGUI.EndDisabledGroup();
         }
     }
-}
 #endif
+}

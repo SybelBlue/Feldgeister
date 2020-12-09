@@ -3,15 +3,19 @@ using UnityEngine;
 using System.Linq;
 using System;
 
+#if UNITY_EDITOR
+using UnityEditor;
+#endif
+
 public class House : Building
 {
 
-    public CharacterClass character;
+    public Character character;
 
     public List<BuildingDefense> defenses;
 
     public Character occupant
-        => characters[(int)character];
+        => characters[(int)character.characterClass];
 
     private Character[] characters;
     
@@ -33,9 +37,9 @@ public class House : Building
                     .Distinct()
                     .ToArray();
             
-            if (Enum.GetValues(typeof(CharacterClass)).Length != characters.Length)
+            if (Enum.GetValues(typeof(CharacterJob)).Length != characters.Length)
             {
-                Debug.LogError($"Expected {Enum.GetValues(typeof(CharacterClass)).Length} character objects, got {characters.Length}");
+                Debug.LogError($"Expected {Enum.GetValues(typeof(CharacterJob)).Length} character objects, got {characters.Length}");
             }
         }
     }
@@ -59,11 +63,12 @@ public class House : Building
         }
     }
 
-    public static House AddTo(GameObject gameObject, string name, CharacterClass character, RectInt region)
+    public static House AddTo(GameObject gameObject, string name, Character character, RectInt region)
     {
         House house = gameObject.AddComponent<House>() as House;
         house.buildingName = name;
         house.character = character;
+        house.character.house = house;
         house.region = region;
 
         return house;
@@ -79,3 +84,41 @@ public class House : Building
         onHouseClick.Invoke(occupant);
     }
 }
+
+#if UNITY_EDITOR
+#pragma warning disable 0618
+[CustomEditor(typeof(Character))]
+public class HouseEditor : Editor
+{
+    private House house => target as House;
+    public override void OnInspectorGUI()
+    {
+        base.OnInspectorGUI();
+
+        var oldLevel = house.defenseLevel;
+        var newLevel = EditorGUILayout.IntField("Defense Level", oldLevel);
+        if (newLevel < 0)
+        {
+            Debug.LogWarning("Cannot decrease defense level past 0.");
+            house.defenseLevel = 0;
+        }
+        else if (oldLevel > newLevel)
+        {
+            house.defenseLevel = newLevel;
+        }
+        else if (oldLevel < newLevel)
+        {
+            Debug.LogWarning("Cannot increase defense level directly. \nAdd a defense object to the defenses list instead.");
+        }
+
+        using (new DisabledGroup())
+        {
+            if (!house.occupant)
+            {
+                house.ResetCharactersArray();
+            }
+            EditorGUILayout.ObjectField("Occupant", house.occupant, typeof(Character));
+        }
+    }
+}
+#endif

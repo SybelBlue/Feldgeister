@@ -5,18 +5,16 @@ position: 191,147
 ---
 The farmer looks up from his work and scowls. 
 HELMUT: Mayor Schaf. Bearing more bad news, I presume.
-EWALD: Not any worse than what you heard this morning, Helmut.
+-> Not any worse than what you heard this morning, Helmut.
 HELMUT: Hard to get worse than another Feldgeister attack. 
 -> I'm sorry, Helmut.
-    HELMUT: I don't need your sorries, Schaf. What do you want.
-    EWALD: Need to make sure everyone's fed. 
+HELMUT: I don't need your sorries, Schaf. What do you want.
+-> Need to make sure everyone's fed. 
     HELMUT: And?
 [[EWALD: Well, you are the farmer: |less_morale_1_f1]]
 -> That's why I'm here. Trying to make sure everyone's fed. 
-    HELMUT: I've got what we have from last week's early wheat.
-    HELMUT: Set it aside to give those damn wolves the tithe
-    HELMUT: But looks like we won't be needing that this year. 
-    EWALD: Looks like it.
+    HELMUT: I've got what we have from last week's early wheat. Set it aside to give those damn wolves the tithe. Looks like we won't be needing that this year. 
+-> Looks like it.
     HELMUT: ...
     EWALD: ...
     HELMUT: ...
@@ -36,7 +34,7 @@ tags: farmer
 colorID: 0
 position: 469,441
 ---
-HELMUT: *snorts* Not well, Schaf
+HELMUT: *snorts* Not well, Schaf.
 HELMUT: That cold snap last night froze half of what's still in the fields.
 -> How much is left?
 HELMUT: A month, if we stretch. More, if I can spend a day haying. 
@@ -48,8 +46,7 @@ tags: farmer
 colorID: 0
 position: -81,1093
 ---
-HELMUT: Schaf, I don't owe you an explanation. 
-HELMUT: I don't owe you a damn thing.
+HELMUT: Schaf, I don't owe you an explanation. I don't owe you a damn thing.
 EWALD: ...
 HELMUT: ...
 EWALD: ...
@@ -73,7 +70,7 @@ HELMUT: Now. What do you want?
 title: less_morale_3_f1
 tags: 
 colorID: 0
-position: 702,992
+position: 615,778
 ---
 HELMUT: No use crying over what you can't change, Schaf.
 -> Fair enough.

@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using System.Collections.Generic;
 
 #pragma warning disable 0649
 public class GameController : MonoBehaviour
@@ -29,15 +30,42 @@ public class GameController : MonoBehaviour
 
     public bool runOpeningDialogue;
 
+    private List<House> houses;
+
+    public House strategicTarget, randomTarget;
+
+    public AttackStrategy strategy;
+
+    [SerializeField, ReadOnly, Tooltip("For inspector debugging use only.")]
+    private CharacterJob strategicTargetJob, randomTargetJob;
+
 #pragma warning disable 0414
     [SerializeField, ReadOnly]
     private bool _mapReady = false;
+
+    public void SetUpForDay()
+    {
+        strategy = new List<AttackStrategy>(StaticUtils.allStrategies).RandomChoice();
+        strategicTarget = StaticUtils.HouseForStrategy(strategy, houses);
+        strategicTargetJob = strategicTarget.character.characterClass;
+
+        randomTarget = houses.RandomChoice();
+        randomTargetJob = randomTarget.character.characterClass;
+    }
+
+    public void MonsterAttack()
+    {
+        strategicTarget.defenseLevel--;
+        randomTarget.defenseLevel--;
+    }
 
     public void OnMapMade(MapGenerator map)
     {
         mapGenerator = map;
         buildingMap = map.usedSpaces;
+        houses = new List<House>(mapGenerator.GetComponents<House>());
         _mapReady = true;
+        SetUpForDay();
     }
 
     void Update()
@@ -63,6 +91,11 @@ public class GameController : MonoBehaviour
                 leftCharacterDisplay.DisplayCharacter(null);
             }
         }
+    }
+
+    public void OnCharacterDied(Character c)
+    {
+        print($"he ded: {c}");
     }
 
     public void BeginCharacterDialogue(Character character)

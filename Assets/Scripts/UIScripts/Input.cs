@@ -37,10 +37,10 @@ namespace Feldgeister
         {
             ///////////////         USED TO KEEP INPUT WORKING  //////////////////////////
             //                      NO TOUCHY!!!                                        //
-            if (Feldgeister.Input.mouseHasMoved)                            //
+            if (Feldgeister.Input.mouseHasMoved)                                        //
             {                                                                           //
                 var flattened = Feldgeister.Input.currentWorldMousePosition.To2DInt();  //
-                Feldgeister.Input.lastFocused = regionForMousePosition(flattened);                 //
+                Feldgeister.Input.lastFocused = regionForMousePosition(flattened);      //
             }                                                                           //
             
             if (UnityEngine.Input.GetMouseButtonDown(0))                                //

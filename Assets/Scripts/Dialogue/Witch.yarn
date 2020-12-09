@@ -8,41 +8,36 @@ The witch, as always, is nowhere to be found at first.
 EWALD: Otto! Hey, Otto! 
 The Witch appears, the scent of honeysuckle and earth drifting on the wind.
 OTTO: Ewald! I'm great! Big day ahead of me! Going fishing until lunch, then spending the afternoon updating my stores!
-OTTO: I saw a big patch of anise getting ready to bloom over in the graveyard the other day
-OTTO: You really do find the best plants in the graveyard! Do you think it's because those passed tend to the plants each night?
--> I- Otto-
+OTTO: You really do find the best plants in the graveyard! Do you think it's because the dead tend to the plants each night?
+-> I- 
 OTTO: Oh! Or do you think it's because bodies make good plant food?
--> Um- Well-
+-> Um- 
 OTTO: Oh! Or do you think it's because nobody else grazes in the graveyard?
 -> Maybe? I... nobody ELSE? Otto, have you been-
-OTTO: Oh! I almost forgot. Great job at the meeting this morning, by the way
-[[Great? Do you recall the subject matter, by any chance? |less_morale_1_wi1]]
-[[Just between you and me, do you think I was professional enough? |more_morale_1_wi1]]
+OTTO: Oh! I almost forgot. Have I told you recently that you make a super chill mayor?
+[[Great? You do recall me telling you about what happened last night, yeah? |less_morale_1_wi1]]
+[[Just between you and me, do you think I'm handling this all professionally enough? |more_morale_1_wi1]]
 ===
 title: less_morale_1_wi1
 tags: 
 colorID: 0
 position: -80,701
 ---
-OTTO: Oh! Well, you know. Things happen. Our poor little Minna, all those big bad wolves coming to eat her up. 
-OTTO: Something will have to be done about that. Hmm. At least you're here!
+OTTO: Oh! Well, you know. Things happen. Our poor little Minna, all those big bad wolves coming to eat her up. Good thing you're here. 
 The witch turns to leave
-[[ Wait, Otto! Any thoughts at all about the  feldgeister attacks? Do you know anything about the behavior of the feldgeister that could help? |neutral_morale_1_wi1]]
+[[ Wait, Otto! Do you know anything about the feldgeister? |neutral_morale_1_wi1]]
 ===
 title: more_morale_1_wi1
 tags: 
 colorID: 0
-position: 368,678
+position: 367,678
 ---
-OTTO: Oh, I don’t know about that. 
-OTTO: It’s just always great to hear you speak about something you’re so earnest about! You have such a timbre-full voice!
+OTTO: Oh, I don’t know about that. But you've got a great voice!
 -> Uh, thank you?
--> You know, that's good to hear. I've been working on my intonation
 The witch has been staring at the sun
-OTTO: It’s getting late, I have to go or the sun will be at the wrong angle by the time I make it to the pond! 
-OTTO: It’ll reflect off the water all wrong and I won’t be able to see the fish! 
-She turns to leave
-[[Wait, Otto! Any thoughts at all about the feldgeister attacks? Do you know anything about the behavior of the feldgeister that could help? |neutral_morale_1_wi1]]
+OTTO: It’s getting late, I have to go or the sun will be at the wrong angle by the time I make it to the pond! It’ll reflect off the water all wrong and I won’t be able to see the fish! 
+They turn to leave
+[[Wait, Otto! Do you know anything about the feldgeister? |neutral_morale_1_wi1]]
 ===
 title: neutral_morale_1_wi1
 tags: 
@@ -50,12 +45,8 @@ colorID: 0
 position: 170,996
 ---
 Otto stops momentarily, looks away from the sun.
-OTTO: Oh?
--> Yes, you know the most of any of us
-OTTO: So kind of you to say! Well, I’m curious about the damage the feldgeister will do this time! 
-OTTO: They haven’t attacked in a while, so either they’ve saved up their energy and the attacks will be excruciatingly devastating, or they’ll be really rusty for a night or two. 
-OTTO: Only time will tell. 
-OTTO: Or, Elfriede, maybe, if she’s willing to go look for them. Either way, you’ve got a situation on your hands.
+OTTO: Hmm. They haven’t attacked in a while, so maybe they’ve saved up their energy and the attacks will be devastating, or they’ll be rusty for a night or two. Only time will tell. 
+OTTO: Or, Elfriede, maybe. Either way, you’ve got a situation on your hands.
 OTTO: Time to fish!
 [[ Otto, WAIT! |less_morale_2_wi1]]
 [[If you wait a minute, I know a great fishing hole! |more_morale_2_wi1]]
@@ -65,21 +56,13 @@ tags:
 colorID: 0
 position: -163,1198
 ---
-The witch huffs, looks back at the sun.
-OTTO: You know better than to talk to me like that, young lamb.
--> I'm sorry
-The witch sniffs at you
-OTTO: Apology accepted.
--> Otto, would you be able to fit some time into today’s plans to set up any defenses?
+OTTO: Why are you yelling at me?
+-> Otto, please, would you be able to fit some time into today’s plans to set up any defenses?
 OTTO: Perhaps? I have much to do.
--> Great! So, defenses. You know. The magical kind.
-EWALD: I’m hoping everyone in the town will contribute to its protection. Do you have any, um, plants that would help?
-OTTO: I suppose I could take a look! 
-OTTO: I maybe I have some belladonna dried from last season. 
-OTTO: Sure, I can build some defenses. 
+-> I’m hoping everyone in the town will contribute to its protection. Do you have any, um, plants that would help, for, um, magic defenses?
+OTTO: Fine, you'll get your defenses. I think I have some belladonna dried from last season. 
 OTTO: Oh! I also have some chamomile!
-OTTO: I should make some tea!
-OTTO: Oh, I’ll make some tea and drink it while I fish! Ewald, you always have the best ideas! 
+OTTO: I should make some tea! Oh, I’ll make some tea and drink it while I fish! Ewald, you always have the best ideas! 
 [[Uh… okay, talk to you later I guess. |End_wi1]]
 ===
 title: more_morale_2_wi1
@@ -90,16 +73,12 @@ position: 432,1167
 The witch grins
 OTTO: REALLY! A new fishing spot, how lovely! What do you need?
 -> Would you be able to fit some time into today’s plans to set up any defenses?
-OTTO: Of course! I'd love to!.
--> Great! So, defenses. You know. The magical kind.
-EWALD: I’m hoping everyone in the town will contribute to its protection. Do you have any, um, plants that would help?
-OTTO: I suppose I could take a look! 
-OTTO: I maybe I have some belladonna dried from last season. 
-OTTO: Sure, I can build some defenses. 
-OTTO: Oh! I also have some chamomile!
-OTTO: I should make some tea!
+OTTO: Of course! I'd love to!
+-> Great! I’m hoping everyone in the town will contribute to its protection. Do you have any, um, plants that would help, for, um, magic defenses?
+OTTO: Sure, I think I have some belladonna dried from last season. 
+OTTO: Oh! I also have some chamomile! I should make some tea!
 OTTO: Oh, I’ll make some tea and drink it while I fish! Ewald, you always have the best ideas! 
-[[Wait, Otto, your fishing spot! It's down by the--|End_wi1]]
+[[Wait, Otto, the fishing spot! It's down by the--|End_wi1]]
 ===
 title: End_wi1
 tags: 
@@ -107,7 +86,6 @@ colorID: 0
 position: 131,1477
 ---
 The witch has already disappeared
-EWALD: ...
 EWALD: ...
 EWALD: Huh. I just wish I knew if anything I’m saying gets through to them or not.
 -> Head back to check on the others.
