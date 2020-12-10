@@ -56,12 +56,12 @@ public class Character : MonoBehaviour
         get => _alive;
         set
         {
-            _alive = immortal || value;
-
-            if (!_alive)
+            if (!immortal && _alive && !value)
             {
                 onDeath.Invoke(this);
             }
+
+            _alive = immortal || value;
         }
     }
 
