@@ -11,7 +11,8 @@ public class TopMenuController : MonoBehaviour
     public UnityEvent hideResources;
     public UnityEvent hideDefenses;
     public UnityEvent changeToDusk;
-    //hides resource and defense lists but keeps top menu
+   
+   //reduces food by one, should be called after speaking with a character
     public void ReduceFood()
     {
         foodRemaining.text = "Food Remaining: " + --food;
@@ -21,11 +22,13 @@ public class TopMenuController : MonoBehaviour
             print("***changing to dusk***");
         }
     }
+//resets food remaining text (needs to eventually update food variable as well)
     public void ResetFood()
     {
         //Todo: update food variable here
         foodRemaining.text = "Food Remaining: " + food;
     }
+    //hides resource and defense lists but keeps top menu
     public void HideLists()
     {
         hideResources.Invoke();
