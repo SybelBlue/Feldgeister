@@ -10,16 +10,26 @@ public class IntroRunner : MonoBehaviour
     public GameObject plumWolf;
     public GameObject weatherCat;
     public GameObject rooster;
-    // Start is called before the first frame update
-    void Start()
+    
+    public void addEwald()
     {
         ewald.SetActive(true);
     }
-
-    // Update is called once per frame
-    void Update()
+    public void addCornKing()
     {
-        
+        cornKing.SetActive(true);
+    }
+    public void addPlumWolf()
+    {
+        plumWolf.SetActive(true);
+    }
+    public void addWeatherCat()
+    {
+        weatherCat.SetActive(true);
+    }
+    public void addRooster()
+    {
+        rooster.SetActive(true);
     }
 
     public void MoveToTitle()
