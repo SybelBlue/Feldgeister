@@ -7,7 +7,7 @@ position: 537,229
 <<if $morale_test is null>>
     <<set $morale_test to 0>> 
 <<endif>>
-<<Increase YarnScriptRunner>>
+<<Increase>>
 <<set $yarn_test_variable to $yarn_test_variable>> 
 EXAMPLE: Hi! I'm an example script!
 EXAMPLE: You have spoken with me {$times_spoken} times today. 

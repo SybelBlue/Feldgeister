@@ -24,13 +24,13 @@ MAGDALENE: Anyhow, what can I do for you, Mr. Mayor.
 title: less_morale_1_m1
 tags: 
 colorID: 0
-position: -11,639
+position: -11,636
 ---
 The miner swallows nervously. 
 MAGDALENE: Anything can happen in one night. You forget, and nighttime seem so mundane, and then... 
 MAGDALENE: Someone lands themselves with a baby and suddenly so many lives are at risk. 
 [[This village has fought off  feldgeister in the past without issue. |more_morale_2_m1]]
-[[I’m sure you haven’t forgotten the danger, given. Um. Your family history. |less_morale_2_m1]]
+[[I’m sure you haven’t forgotten the danger, given.Your family history. |less_morale_2_m1]]
 ===
 title: less_morale_2_m1
 tags: 
@@ -45,11 +45,10 @@ MAGDALENE: Well, actions have consequences. As we will see tonight. I wonder who
 title: neutral_morale_1_m1
 tags: 
 colorID: 0
-position: 710,994
+position: 710,992
 ---
--> That’s a good reminder for me as well… chin up.
 MAGDALENE: Words to live by
--> Well, there’s a few things. I’m going around seeing what everyone can contribute
+-> Well, there’s a few things. I’m going around seeing what everyone can contribute.
 MAGDALENE: Such as?
 [[Salt to protect the houses. Every bit helps. |more_morale_2_m1]]
 ===
@@ -61,7 +60,7 @@ position: 455,1354
 MAGDALENE: Well. I’ll see what I can scrounge up. Been up since dawn working.
 -> That so?
 MAGDALENE: Couldn’t sleep. Being in the ground helps me focus. Just you and the lantern and a pick, taste of salt on your tongue.
-    -> Ah. It sounds lovely. About the salt, though.
+-> Ah. It sounds lovely. About the salt, though.
 MAGDALENE: Of course, of course. I’ll focus on getting extra salt the next few mornings.
 MAGDALENE: If we have a next few mornings.
 [[We will. Chin up, yeah? |more_morale_3_m1]]

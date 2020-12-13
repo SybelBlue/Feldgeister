@@ -1,7 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.Events;
+﻿using UnityEngine;
 using Yarn.Unity;
 
 /// attached to the non-player characters, and stores the name of the Yarn
@@ -16,10 +13,24 @@ public class NPC_Conor : MonoBehaviour {
     [Header("Optional")]
     public YarnProgram scriptToLoad;
 
-    public int houseDefenseLevel
-    {
-        get => GetComponent<Character>().house.defenseLevel;
+    [SerializeField, ReadOnly]
+    private Character _linkedCharacter;
+    public Character linkedCharacter
+        => _linkedCharacter ?? (_linkedCharacter = GetComponent<Character>());
+
+    [YarnCommand("decrease_morale")]
+    public void Decrease_Morale(){
+        linkedCharacter.DecreaseMorale();
+        print(linkedCharacter.moraleValue); 
     }
+
+    [YarnCommand("increase_morale")]
+    public void Increase_Morale(){
+        linkedCharacter.IncreaseMorale();
+        print(linkedCharacter.moraleValue); 
+    }
+    public int houseDefenseLevel 
+        => linkedCharacter.house.defenseLevel;
 
     public void RunDialogue()
     {

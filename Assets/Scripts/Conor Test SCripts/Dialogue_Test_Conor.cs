@@ -11,9 +11,7 @@ using Yarn.Unity;
 public class Dialogue_Test_Conor : MonoBehaviour {
 
     public string characterName = "";
-
     public int morale_test;
-
     public int times_spoken;
 
     public string talkToNode = "";

@@ -13,6 +13,7 @@ tags:
 colorID: 0
 position: -91,633
 ---
+<<increase_morale Blacksmith>> 
 FRANZISKA: Well, of course, I'm sure you'll be in a rush. 
 FRANZISKA: Straight to business and all that, just like my Pops. Well, he isn't here now anyway, just his big apron and that loud snoring of mine I got to remember him by.
 [[I'm sure he was a great man. |morale_neutral_1_b1]]
@@ -23,6 +24,7 @@ tags:
 colorID: 0
 position: 441,638
 ---
+<<decrease_morale Blacksmith>> 
 The Blacksmith turns a slightly uncomfortable pink color
 FRANZISKA: Oh, wow. I'm fine, really. That's all.
 [[No, tell me, how are you? |morale_down_2_b1]]

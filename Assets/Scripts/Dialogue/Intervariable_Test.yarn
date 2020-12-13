@@ -10,11 +10,10 @@ Hi, I'm the example script's cousin!
 title: low_morale_intervariable
 tags: 
 colorID: 0
-position: 33,295
+position: 30,292
 ---
 That's mean! I'm telling my cousin!
-<<set $morale_test to -20>>
-<<Increase YarnEventRunner>>
+<<Morale_Down YarnEventRunner>>
 ===
 title: command_test
 tags: 
@@ -22,5 +21,5 @@ colorID: 0
 position: 431,290
 ---
 Wow! So cool!
-<<hello_world YarnEventRunner>>
+<<hello_world YarnScriptRunner>>
 ===

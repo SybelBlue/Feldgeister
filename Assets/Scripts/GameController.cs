@@ -39,8 +39,9 @@ public class GameController : MonoBehaviour
     private MapGenerator mapGenerator;
     private RegionManager<Building> buildingMap;
 
+    private CameraController _cameraController;
     public CameraController cameraController
-        => Camera.main.GetComponent<CameraController>();
+        => _cameraController ?? (_cameraController = Camera.main.GetComponent<CameraController>());
 
     public bool cameraLocked
     {
@@ -75,6 +76,8 @@ public class GameController : MonoBehaviour
     [SerializeField, ReadOnly, Tooltip("For inspector debugging use only.")]
     private CharacterJob strategicTargetJob, randomTargetJob;
 
+    public int foodRemaining;
+
     public void OnMapMade(MapGenerator map)
     {
         mapGenerator = map;
@@ -95,26 +98,27 @@ public class GameController : MonoBehaviour
 
                 randomTarget = houses.RandomChoice();
                 randomTargetJob = randomTarget.character.job;
-                print("TODO: watcher says attack strategy");
+                print("TODO: watcher says attack strategy"); // conor
                 // use this to transition to day after watcher dialogue finishes
                 // AutoAdvancePhaseOnDialogueComplete();
                 AdvancePhase(); // remove this line when above todo implemeted
                 break;
             case GamePhase.Day:
-                print("TODO: update character food and morale stats");
-                print("TODO: display defense and resource dropdowns");
+                print("TODO: update character food and morale stats"); // katia
+                print("TODO: display defense and resource dropdowns"); // katia
                 selectionMode = new DialogueSelectionMode(this);
-                print("TODO: change selection mode to allow food donation");
+                print("TODO: show button to change selection mode to allow food donation"); // katia
+
                 break;
             case GamePhase.Dusk:
-                print("TODO: get defenses from blacksmith");
-                print("TODO: change selection mode to place defenses");
-                print("TODO: await defense finish to change selection mode to place lamb");
+                print("TODO: get defenses from blacksmith"); // conor
+                print("TODO: change selection mode to place lamb");
+                print("TODO: await defense finish to change selection mode to place defenses");
                 break;
             case GamePhase.Night:
                 MonsterAttack();
                 print("TODO: show feldgeister on screen");
-                print("TODO: display attack dialogue");
+                print("TODO: display attack dialogue"); // conor
                 break;
         }
     }
@@ -148,6 +152,11 @@ public class GameController : MonoBehaviour
     public void OnCharacterDied(Character c)
     {
         print($"he ded: {c}");
+    }
+
+    public void LoseFood()
+    {
+        print("TODO: lose food");
     }
 
     public void CharacterSelected(Character character)

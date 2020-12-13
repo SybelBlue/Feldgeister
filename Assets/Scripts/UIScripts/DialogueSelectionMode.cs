@@ -5,11 +5,12 @@ public class DialogueSelectionMode : ISelectionMode
     public string name => "Dialogue Selection";
 
     private static int jobCount = System.Enum.GetValues(typeof(CharacterJob)).Length;
-    private bool[] charactersTalkedToday = new bool[jobCount];
+    private bool[] charactersTalkedToday;
 
     private bool runningDialogue => gameController.runningDialogue;
 
     private GameController gameController;
+
     public DialogueSelectionMode(GameController controller)
     {
         gameController = controller;
@@ -17,6 +18,7 @@ public class DialogueSelectionMode : ISelectionMode
 
     public void OnBeginSelectionMode()
     {
+        charactersTalkedToday = new bool[jobCount];
         gameController.houseOccupantUI.UpdateDisplay(null);
         gameController.leftCharacterDisplay.DisplayCharacter(null);
         gameController.rightCharacterDisplay.DisplayCharacter(null);
@@ -27,24 +29,27 @@ public class DialogueSelectionMode : ISelectionMode
 
     public void OnHover(Character c)
     {
+        // only show the mayor during dialogue
         gameController.rightCharacterDisplay.DisplayCharacter(
-            runningDialogue ? 
-                gameController.mayorCharacter : 
-                null
+            runningDialogue ? gameController.mayorCharacter : null
         );
 
-        if (!runningDialogue && c)
-        {
-            gameController.houseOccupantUI.UpdateDisplay(c, !HasTalkedToday(c));
-            gameController.leftCharacterDisplay.DisplayCharacter(c);
+        HouseOccupant.InstructionText instructionText = HouseOccupant.InstructionText.CanTalk;;
+        if (c && HasTalkedToday(c)) {
+            instructionText = HouseOccupant.InstructionText.AlreadyTalked;
+        } else if (gameController.mayorCharacter.hunger == HungerLevel.Starving) { 
+            instructionText = HouseOccupant.InstructionText.TooHungry;
         }
-        else
+
+        gameController.houseOccupantUI.UpdateDisplay(
+            // shut off houseOccupantUI during dialogue
+            runningDialogue ? null : c, 
+            instructionText
+        );
+        
+        if (!runningDialogue) // freeze the display if running the dialogue
         {
-            gameController.houseOccupantUI.UpdateDisplay(null);
-            if (!runningDialogue)
-            {
-                gameController.leftCharacterDisplay.DisplayCharacter(null);
-            }
+            gameController.leftCharacterDisplay.DisplayCharacter(c);
         }
     }
 
@@ -68,6 +73,13 @@ public class DialogueSelectionMode : ISelectionMode
             return;
         }
 
+        if (gameController.mayorCharacter.hunger == HungerLevel.Starving)
+        {
+            LogWarning("Rejected dialogue start, mayor starving");
+            return;
+        }
+
+
         var npcConor = character?.GetComponent<NPC_Conor>();
         if (!npcConor || !npcConor.enabled)
         {
@@ -77,6 +89,16 @@ public class DialogueSelectionMode : ISelectionMode
 
         npcConor.RunDialogue();
         gameController.runningDialogue = true;
+        gameController.houseOccupantUI.UpdateDisplay(null);
+
+        if (gameController.foodRemaining > 0)
+        {
+            gameController.foodRemaining--;
+        }
+        else
+        {
+            gameController.mayorCharacter.GetHungrier();
+        }
 
         MarkTalkedToday(character);
     }
