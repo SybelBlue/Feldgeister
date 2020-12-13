@@ -39,8 +39,9 @@ public class GameController : MonoBehaviour
     private MapGenerator mapGenerator;
     private RegionManager<Building> buildingMap;
 
+    private CameraController _cameraController;
     public CameraController cameraController
-        => Camera.main.GetComponent<CameraController>();
+        => _cameraController ?? (_cameraController = Camera.main.GetComponent<CameraController>());
 
     public bool cameraLocked
     {
