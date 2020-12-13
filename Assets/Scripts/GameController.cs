@@ -13,7 +13,7 @@ public class GameController : MonoBehaviour
         Dusk,
         Night,
     }
-    
+
     private static int phaseCount = Enum.GetValues(typeof(GamePhase)).Length;
 
     public GamePhase phase = GamePhase.Night;
@@ -33,6 +33,8 @@ public class GameController : MonoBehaviour
     }
 
     public bool mapReady { get => mapGenerator != null; }
+
+    public Yarn.Unity.DialogueRunner dialogueRunner;
     
     public HouseOccupant houseOccupantUI;
 
@@ -76,6 +78,8 @@ public class GameController : MonoBehaviour
                 randomTarget = houses.RandomChoice();
                 randomTargetJob = randomTarget.character.job;
                 print("TODO: watcher says attack strategy");
+                // use this to transition to day after watcher dialogue finishes
+                // AutoPhaseAdvanceOnDialogueComplete();
                 break;
             case GamePhase.Day:
                 print("TODO: update character food and morale stats");
@@ -107,7 +111,6 @@ public class GameController : MonoBehaviour
         buildingMap = map.usedSpaces;
         houses = new List<House>(mapGenerator.GetComponents<House>());
         _mapReady = true;
-        RunPhase(GamePhase.Dawn);
     }
 
     void Update()
@@ -192,14 +195,28 @@ public class GameController : MonoBehaviour
 #endif
         {
             GetComponent<NPC_Conor>()?.RunDialogue();
+            print("delaying game start till after opening dialogue");
+            AutoPhaseAdvanceOnDialogueComplete();
             cameraLocked = true;
         }
 #if UNITY_EDITOR
         else
         {
             cameraLocked = false;
+            AdvancePhase();
         }
 #endif
+    }
+
+    public void AutoPhaseAdvanceOnDialogueComplete()
+    {
+        dialogueRunner.onDialogueComplete.AddListener(_AdvanceOnDialogueComplete);
+    }
+
+    public void _AdvanceOnDialogueComplete()
+    {
+        AdvancePhase();
+        dialogueRunner.onDialogueComplete.RemoveListener(_AdvanceOnDialogueComplete);
     }
 
     public void PlayButttonHover()
