@@ -2,14 +2,16 @@
 using System.Collections.Generic;
 using System;
 using Yarn.Unity;
+
 [Serializable]
-    public enum GamePhase
-    {
-        Dawn,
-        Day,
-        Dusk,
-        Night,
-    }
+public enum GamePhase
+{
+    Dawn,
+    Day,
+    Dusk,
+    Night,
+}
+
 #pragma warning disable 0649
 public class GameController : MonoBehaviour
 {
@@ -42,6 +44,10 @@ public class GameController : MonoBehaviour
     private CameraController _cameraController;
     public CameraController cameraController
         => _cameraController ?? (_cameraController = Camera.main.GetComponent<CameraController>());
+
+    private Phase_Test _phaseTest;
+    private Phase_Test phaseTest
+        => _phaseTest ?? (_phaseTest = GetComponent<Phase_Test>());
 
     public bool cameraLocked
     {
@@ -100,7 +106,7 @@ public class GameController : MonoBehaviour
                 randomTargetJob = randomTarget.character.job;
                 // use this to transition to day after watcher dialogue finishes
                 AutoAdvancePhaseOnDialogueComplete();
-                GetComponent<Phase_Test>().RunDawnDialogue();
+                phaseTest.RunDawnDialogue();
                 break;
             case GamePhase.Day:
                 print("TODO: update character food and morale stats"); // katia
@@ -111,12 +117,13 @@ public class GameController : MonoBehaviour
                 // will advance to food placement
                 break;
             case GamePhase.Dusk:
-                GetComponent<Phase_Test>().RunDuskDialogue();
-                print("TODO: await defense finish to change selection mode to place defenses");
+                phaseTest.RunDuskDialogue();
                 selectionMode = new LambSelectionMode(this);
+                // defense placement mode will start after lamb is placed
                 break;
             case GamePhase.Night:
-                GetComponent<Phase_Test>().RunNightDialogue();
+                AutoAdvancePhaseOnDialogueComplete();
+                phaseTest.RunNightDialogue();
                 MonsterAttack();
                 print("TODO: show feldgeister on screen");
                 break;
