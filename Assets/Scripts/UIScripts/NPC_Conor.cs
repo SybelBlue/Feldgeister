@@ -18,6 +18,17 @@ public class NPC_Conor : MonoBehaviour {
     public Character linkedCharacter
         => _linkedCharacter ?? (_linkedCharacter = GetComponent<Character>());
 
+    [YarnCommand("decrease_morale")]
+    public void Decrease_Morale(){
+        linkedCharacter.DecreaseMorale();
+        print(linkedCharacter.moraleValue); 
+    }
+
+    [YarnCommand("increase_morale")]
+    public void Increase_Morale(){
+        linkedCharacter.IncreaseMorale();
+        print(linkedCharacter.moraleValue); 
+    }
     public int houseDefenseLevel 
         => linkedCharacter.house.defenseLevel;
 
