@@ -26,7 +26,7 @@ public class FoodSelectionMode : ISelectionMode
     
     public void OnSelected(Character c)
     {
-        if (c.Feed())
+        if (gameController.foodRemaining > 0 && c.Feed())
         {
             gameController.LoseFood();
         }
