@@ -32,8 +32,6 @@ public class GameController : MonoBehaviour
         set => cameraController.lockPosition = value;
     }
 
-    public bool mapReady { get => mapGenerator != null; }
-
     public Yarn.Unity.DialogueRunner dialogueRunner;
     
     public HouseOccupant houseOccupantUI;
@@ -58,9 +56,12 @@ public class GameController : MonoBehaviour
     private static int jobCount = System.Enum.GetValues(typeof(CharacterJob)).Length;
     private bool[] charactersTalkedToday = new bool[jobCount];
 
-#pragma warning disable 0414
-    [SerializeField, ReadOnly]
-    private bool _mapReady = false;
+    public void OnMapMade(MapGenerator map)
+    {
+        mapGenerator = map;
+        buildingMap = map.usedSpaces;
+        houses = new List<House>(mapGenerator.GetComponents<House>());
+    }
 
     public void RunPhase(GamePhase phase)
     {
@@ -84,12 +85,12 @@ public class GameController : MonoBehaviour
             case GamePhase.Day:
                 print("TODO: update character food and morale stats");
                 print("TODO: display defense and resource dropdowns");
-                print("TODO: change selection mode to allow hose calls and food donation");
+                print("TODO: change selection mode to allow house calls and food donation");
                 break;
             case GamePhase.Dusk:
                 print("TODO: get defenses from blacksmith");
                 print("TODO: change selection mode to place defenses");
-                print("TODO: change selection mode to place lamb");
+                print("TODO: await defense finish to change selection mode to place lamb");
                 break;
             case GamePhase.Night:
                 MonsterAttack();
@@ -103,14 +104,6 @@ public class GameController : MonoBehaviour
     {
         var nextPhase = (GamePhase)(((int)phase + 1) % phaseCount);
         RunPhase(nextPhase);
-    }
-
-    public void OnMapMade(MapGenerator map)
-    {
-        mapGenerator = map;
-        buildingMap = map.usedSpaces;
-        houses = new List<House>(mapGenerator.GetComponents<House>());
-        _mapReady = true;
     }
 
     void Update()
