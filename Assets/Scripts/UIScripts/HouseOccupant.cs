@@ -10,6 +10,8 @@ public class HouseOccupant : MonoBehaviour
         CanTalk,
         AlreadyTalked,
         TooHungry,
+        CanPlaceLamb,
+        NotSuitableForLamb,
     }
     public Text instructionText;
     public TMP_Text nameText;
@@ -22,18 +24,7 @@ public class HouseOccupant : MonoBehaviour
         lastInstruction = instruction;
         last = character;
 
-        switch (lastInstruction)
-        {
-            case InstructionText.AlreadyTalked:
-                instructionText.text = ">> Already Talked Today <<";
-                break;
-            case InstructionText.TooHungry:
-                instructionText.text = ">> Too Hungry, Need Food <<";
-                break;
-            default:
-                instructionText.text = "Click House to Talk!";
-                break;
-        }
+        instructionText.text = InstructionToString(instruction);
 
         if(character) 
         {
@@ -44,5 +35,26 @@ public class HouseOccupant : MonoBehaviour
         {
             this.gameObject.SetActive(false);
         }
+    }
+
+    public static string InstructionToString(InstructionText text)
+    {
+        switch (text)
+        {
+            // dialogue selection
+            case InstructionText.AlreadyTalked:
+                return ">> Already Talked Today <<";
+            case InstructionText.TooHungry:
+                return ">> Too Hungry, Need Food <<";
+            case InstructionText.CanTalk:
+                return "Click House to Talk!";
+            // lamb placement
+            case InstructionText.NotSuitableForLamb:
+                return ">> Not Suitable for Lamb <<";
+            case InstructionText.CanPlaceLamb:
+                return "Click House to Place Lamb!";
+        }
+        Debug.LogError($"Unknown instruction text! ({text})");
+        return text.ToString();
     }
 }

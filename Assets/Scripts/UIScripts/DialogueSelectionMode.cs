@@ -19,18 +19,16 @@ public class DialogueSelectionMode : ISelectionMode
     public void OnBeginSelectionMode()
     {
         charactersTalkedToday = new bool[jobCount];
-        gameController.houseOccupantUI.UpdateDisplay(null);
-        gameController.leftCharacterDisplay.DisplayCharacter(null);
-        gameController.rightCharacterDisplay.DisplayCharacter(null);
+        gameController.ClearHouseAndCharacterDisplays();
     }
 
     public void OnEndSelectionMode()
-    { }
+        => gameController.ClearHouseAndCharacterDisplays();
 
     public void OnHover(Character c)
     {
         // only show the mayor during dialogue
-        gameController.rightCharacterDisplay.DisplayCharacter(
+        gameController.rightCharacterDisplay.UpdateDisplay(
             runningDialogue ? gameController.mayorCharacter : null
         );
 
@@ -49,7 +47,7 @@ public class DialogueSelectionMode : ISelectionMode
         
         if (!runningDialogue) // freeze the display if running the dialogue
         {
-            gameController.leftCharacterDisplay.DisplayCharacter(c);
+            gameController.leftCharacterDisplay.UpdateDisplay(c);
         }
     }
 
