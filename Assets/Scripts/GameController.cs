@@ -108,22 +108,28 @@ public class GameController : MonoBehaviour
                 print("TODO: display defense and resource dropdowns"); // katia
                 selectionMode = new DialogueSelectionMode(this);
                 print("TODO: show button to change selection mode to allow food donation"); // katia
-
+                // make button call GameController.FinishDialogueSelection(),
+                // will advance to food placement
                 break;
             case GamePhase.Dusk:
-    //         dialogueRunner.Add(Dusk_Main);
-    //         FindObjectOfType<DialogueRunner>().StartDialogue(dusk_start);
-                print("TODO: change selection mode to place lamb");
                 print("TODO: await defense finish to change selection mode to place defenses");
+                selectionMode = new LambSelectionMode(this);
                 break;
             case GamePhase.Night:
                 MonsterAttack();
                 print("TODO: show feldgeister on screen");
-     //         dialogueRunner.Add(Night_Main);
-     //         FindObjectOfType<DialogueRunner>().StartDialogue(night_start);
                 break;
         }
     }
+
+    public void FinishLambSelection()
+        => selectionMode = new DefenseSelectionMode(this);
+
+    public void FinishDialogueSelection()
+        => selectionMode = new FoodSelectionMode(this);
+
+    public void FinishDefenseSelection()
+        => AdvancePhase();
 
     public void AdvancePhase()
     {
@@ -143,6 +149,25 @@ public class GameController : MonoBehaviour
                 (Feldgeister.Input.lastFocused as House).occupant :
                 null;
         selectionMode?.OnHover(hovered);
+
+#if UNITY_EDITOR
+        // if in the editor, can advance selection modes with ']'
+        if (Input.GetKeyDown(KeyCode.RightBracket))
+        {
+            switch (selectionMode)
+            {
+                case DialogueSelectionMode _:
+                    FinishDialogueSelection();
+                    break;
+                case DefenseSelectionMode _:
+                    FinishDefenseSelection();
+                    break;
+                default:
+                    AdvancePhase();
+                    break;
+            }
+        }
+#endif
     }
 
     public void MonsterAttack()
@@ -211,5 +236,12 @@ public class GameController : MonoBehaviour
         source.clip = buttonSelectClip;
         source.volume = UIVolume;
         source.Play();
+    }
+
+    public void ClearHouseAndCharacterDisplays()
+    {
+        houseOccupantUI.UpdateDisplay(null);
+        leftCharacterDisplay.UpdateDisplay(null);
+        rightCharacterDisplay.UpdateDisplay(null);
     }
 }
