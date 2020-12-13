@@ -23,6 +23,10 @@ public class Intervar_Test : MonoBehaviour
         print(yarn_test_variable);
 
     }
+    // [YarnCommand("Morale_Down")]
+    // public void Morale_Down_Test(){
+    //     morale_test--;
+    // }
 
     // Start is called before the first frame update
     void Start()

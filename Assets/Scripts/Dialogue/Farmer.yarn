@@ -1,7 +1,7 @@
 title: farmer_start
 tags: farmer
 colorID: 0
-position: 191,142
+position: 157,-119
 ---
 The farmer looks up from his work and scowls. 
 HELMUT: Mayor Schaf. Bearing more bad news, I presume.
@@ -9,21 +9,15 @@ HELMUT: Mayor Schaf. Bearing more bad news, I presume.
 HELMUT: Hard to get worse than another Feldgeister attack. 
 -> I'm sorry, Helmut.
 HELMUT: I don't need your sorries, Schaf. What do you want.
--> Need to make sure everyone's fed. 
-    HELMUT: And?
-[[EWALD: Well, you are the farmer: |less_morale_1_f1]]
--> That's why I'm here. Trying to make sure everyone's fed. 
-    HELMUT: I've got what we have from last week's early wheat. Set it aside to give those damn wolves the tithe. Looks like we won't be needing that this year. 
--> Looks like it.
-    HELMUT: ...
-    EWALD: ...
-    HELMUT: ...
-    [[EWALD: So how are the crops? |more_morale_1_f1]]
+-> Trying to make sure everyone's fed.
+HELMUT: And?
+[[Well, you are the farmer. |less_morale_1_f1]]
+[[Just making the rounds to see what everyone can contribute. |bridge_node_f1]]
 ===
 title: less_morale_1_f1
 tags: farmer
 colorID: 0
-position: -94,442
+position: -197,245
 ---
 HELMUT: And you're the mayor.
 [[*sighs* Helmut, I know you don't like me |less_morale_2_f1]]
@@ -101,4 +95,16 @@ HELMUT: ...
 [[So. Uh. How are the crops? |more_morale_1_f1]]
 [[Why? |less_morale_2_f1]]
 [[Want some sweetbread? The Watcher made it for you.|more_morale_2_f1]]
+===
+title: bridge_node_f1
+tags: 
+colorID: 0
+position: 186,197
+---
+HELMUT: I've got what we have from last week's early wheat. Set it aside to give those damn wolves the tithe. Looks like we won't be needing that this year. 
+-> Looks like it.
+HELMUT: ...
+EWALD: ...
+HELMUT: ...
+[[EWALD: So how are the crops looking today? |more_morale_1_f1]]
 ===
