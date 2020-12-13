@@ -13,7 +13,7 @@ public class NPC_Conor : MonoBehaviour {
     [Header("Optional")]
     public YarnProgram scriptToLoad;
 
-    [ReadOnly]
+    [SerializeField, ReadOnly]
     private Character _linkedCharacter;
     public Character linkedCharacter
         => _linkedCharacter ?? (_linkedCharacter = GetComponent<Character>());
