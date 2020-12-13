@@ -16,11 +16,18 @@ public class DefenseList : MonoBehaviour
 
     public TMP_Text watcher;
     public Character watcherChar;
-    //error here 
-    // public void toggleDisplay()
-    // {
-    //     DefenseList.setActive(!activeSelf);
-    // }
+    public void toggleDisplay()
+    {
+        this.gameObject.SetActive(!gameObject.activeInHierarchy);
+    }
+    public void turnOn()
+    {
+        this.gameObject.SetActive(true);
+    }
+    public void turnOff()
+    {
+        this.gameObject.SetActive(false);
+    }
     public void UpdateAll(){
         blacksmith.text = "Blacksmith: " + blacksmithChar.house.defenseLevel;
         witch.text = "Witch: " + witchChar.house.defenseLevel;
