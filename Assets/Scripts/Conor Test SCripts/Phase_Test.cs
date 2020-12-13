@@ -1,38 +1,43 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using Yarn.Unity;
 
 public class Phase_Test : MonoBehaviour
 {
-    public GamePhase phase => GetComponent<GameController>().phase;
+    public GameController _gameController;
+    public GameController gameController
+        => _gameController ?? (_gameController = GetComponent<GameController>());
+
+    public DialogueRunner _dialogueRunner;
+    public DialogueRunner dialogueRunner
+        => _dialogueRunner ?? (_dialogueRunner = FindObjectOfType<DialogueRunner>());
+
     public YarnProgram Dusk;
     public YarnProgram Night;
     public YarnProgram Dawn;
     public string phase_talkToNode = "";
 
-    public void RunPhaseDialogue()
-    {
-        if (phase == GamePhase.Dusk) {
-            phase_talkToNode = "dusk_start";
-            DialogueRunner dialogueRunner = FindObjectOfType<Yarn.Unity.DialogueRunner>();
-            dialogueRunner.Add(Dusk);
-            FindObjectOfType<DialogueRunner>().StartDialogue(phase_talkToNode);
-        }
+    private void StartDialogue()
+        => dialogueRunner.StartDialogue(phase_talkToNode);
 
-        if (phase == GamePhase.Night) {
-            phase_talkToNode = "night_start";
-            DialogueRunner dialogueRunner = FindObjectOfType<Yarn.Unity.DialogueRunner>();
-            dialogueRunner.Add(Night);
-            FindObjectOfType<DialogueRunner>().StartDialogue(phase_talkToNode);
-        }
-        
-        if (phase == GamePhase.Dawn) {
-            phase_talkToNode = "dawn_start";
-            DialogueRunner dialogueRunner = FindObjectOfType<Yarn.Unity.DialogueRunner>();
-            dialogueRunner.Add(Dawn);
-            FindObjectOfType<DialogueRunner>().StartDialogue(phase_talkToNode);
-        }
+    public void RunDawnDialogue()
+    {
+        phase_talkToNode = "dawn_start";
+        dialogueRunner.Add(Dawn);
+        StartDialogue();
+    }
+
+    public void RunDuskDialogue()
+    {
+        phase_talkToNode = "dusk_start";
+        dialogueRunner.Add(Dusk);
+        StartDialogue();
+    }
+
+    public void RunNightDialogue()
+    {
+        phase_talkToNode = "night_start";
+        dialogueRunner.Add(Night);
+        StartDialogue();
     }
 
 }

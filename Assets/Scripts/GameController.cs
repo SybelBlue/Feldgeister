@@ -98,10 +98,9 @@ public class GameController : MonoBehaviour
 
                 randomTarget = houses.RandomChoice();
                 randomTargetJob = randomTarget.character.job;
-                print("TODO: watcher says attack strategy"); // conor
                 // use this to transition to day after watcher dialogue finishes
-                // AutoAdvancePhaseOnDialogueComplete();
-                AdvancePhase(); // remove this line when above todo implemeted
+                AutoAdvancePhaseOnDialogueComplete();
+                GetComponent<Phase_Test>().RunDawnDialogue();
                 break;
             case GamePhase.Day:
                 print("TODO: update character food and morale stats"); // katia
@@ -112,10 +111,12 @@ public class GameController : MonoBehaviour
                 // will advance to food placement
                 break;
             case GamePhase.Dusk:
+                GetComponent<Phase_Test>().RunDuskDialogue();
                 print("TODO: await defense finish to change selection mode to place defenses");
                 selectionMode = new LambSelectionMode(this);
                 break;
             case GamePhase.Night:
+                GetComponent<Phase_Test>().RunNightDialogue();
                 MonsterAttack();
                 print("TODO: show feldgeister on screen");
                 break;
