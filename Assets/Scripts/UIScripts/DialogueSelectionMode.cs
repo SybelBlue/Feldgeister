@@ -5,11 +5,12 @@ public class DialogueSelectionMode : ISelectionMode
     public string name => "Dialogue Selection";
 
     private static int jobCount = System.Enum.GetValues(typeof(CharacterJob)).Length;
-    private bool[] charactersTalkedToday = new bool[jobCount];
+    private bool[] charactersTalkedToday;
 
     private bool runningDialogue => gameController.runningDialogue;
 
     private GameController gameController;
+    
     public DialogueSelectionMode(GameController controller)
     {
         gameController = controller;
@@ -17,6 +18,7 @@ public class DialogueSelectionMode : ISelectionMode
 
     public void OnBeginSelectionMode()
     {
+        charactersTalkedToday = new bool[jobCount];
         gameController.houseOccupantUI.UpdateDisplay(null);
         gameController.leftCharacterDisplay.DisplayCharacter(null);
         gameController.rightCharacterDisplay.DisplayCharacter(null);
@@ -27,24 +29,21 @@ public class DialogueSelectionMode : ISelectionMode
 
     public void OnHover(Character c)
     {
+        // only show the mayor during dialogue
         gameController.rightCharacterDisplay.DisplayCharacter(
-            runningDialogue ? 
-                gameController.mayorCharacter : 
-                null
+            runningDialogue ? gameController.mayorCharacter : null
         );
 
-        if (!runningDialogue && c)
+        gameController.houseOccupantUI.UpdateDisplay(
+            // shut off houseOccupantUI during dialogue
+            runningDialogue ? null : c, 
+            // can only talk if the character exists and hasn't talked already
+            canTalkTo: c && !HasTalkedToday(c)
+        );
+        
+        if (!runningDialogue) // freeze the display if running the dialogue
         {
-            gameController.houseOccupantUI.UpdateDisplay(c, !HasTalkedToday(c));
             gameController.leftCharacterDisplay.DisplayCharacter(c);
-        }
-        else
-        {
-            gameController.houseOccupantUI.UpdateDisplay(null);
-            if (!runningDialogue)
-            {
-                gameController.leftCharacterDisplay.DisplayCharacter(null);
-            }
         }
     }
 
@@ -77,6 +76,7 @@ public class DialogueSelectionMode : ISelectionMode
 
         npcConor.RunDialogue();
         gameController.runningDialogue = true;
+        gameController.houseOccupantUI.UpdateDisplay(null);
 
         MarkTalkedToday(character);
     }

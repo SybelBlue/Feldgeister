@@ -108,8 +108,8 @@ public class GameController : MonoBehaviour
                 break;
             case GamePhase.Dusk:
                 print("TODO: get defenses from blacksmith");
-                print("TODO: change selection mode to place defenses");
-                print("TODO: await defense finish to change selection mode to place lamb");
+                print("TODO: change selection mode to place lamb");
+                print("TODO: await defense finish to change selection mode to place defenses");
                 break;
             case GamePhase.Night:
                 MonsterAttack();
