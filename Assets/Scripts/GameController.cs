@@ -123,11 +123,8 @@ public class GameController : MonoBehaviour
         }
     }
 
-    public void OnLambHouseSelected(House house)
-    {
-        house.hasLamb = true;
-        selectionMode = new DefenseSelectionMode(this);
-    }
+    public void FinishLambSelection()
+        => selectionMode = new DefenseSelectionMode(this);
 
     public void FinishDialogueSelection()
         => selectionMode = new FoodSelectionMode(this);

@@ -33,7 +33,8 @@ public class LambSelectionMode : ISelectionMode
     {
         if (character && character.canTakeLamb)
         {
-            gameController.OnLambHouseSelected(character.house);
+            character.house.hasLamb = true;
+            gameController.FinishLambSelection();
         }
     }
 }
