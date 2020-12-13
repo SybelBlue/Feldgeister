@@ -19,14 +19,14 @@ public class FoodSelectionMode : ISelectionMode
     public void OnEndSelectionMode()
     {  }
     
-    public void OnHover(Character c)
+    public void OnHover(Character character)
     {
-        LogWarning($"Display: character hunger level is {c.hunger}");
+        LogWarning($"Display: character hunger level is {character.hunger}");
     }
     
-    public void OnSelected(Character c)
+    public void OnSelected(Character character)
     {
-        if (c && gameController.foodRemaining > 0 && c.Feed())
+        if (character && gameController.foodRemaining > 0 && character.Feed())
         {
             gameController.LoseFood();
         }
