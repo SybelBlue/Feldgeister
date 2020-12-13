@@ -1,0 +1,30 @@
+title: blacksmith_start_day_2
+tags: 
+colorID: 0
+position: 44,-26
+---
+//<<if $character.witch.hurt = true>> 
+You knock on the door. Silence. You knock again.
+You can 
+//<<if $character.blacksmith.hurt = true>>
+The blacksmith's door is battered, the salt circle around her house ragged and smudged.
+steeling yourself for bad news.
+//<<if character.blacksmith.dead = true>>
+//You walk up to the blacksmith's house, and your heart sinks.
+//The door is no longer on its hinges.
+//There are tooth marks and scrapes across the sides of the house.
+//You walk inside, dreading what you'll find. 
+//In the living room, there is the smell of sulfur mixed with rotting corn.
+//Tufts of wool are spread across the floor.
+//Fransizka is gone.
+//You don't know what you're going to tell the Witch.
+//[[The other townsfolk need attention. |end]]
+//<<else>>
+===
+title: end
+tags: 
+colorID: 0
+position: -324,212
+---
+EWALD: Goodbye, Fransizka. I'm sorry.
+===
