@@ -16,15 +16,15 @@ public class DefenseList : MonoBehaviour
 
     public TMP_Text watcher;
     public Character watcherChar;
-    public void toggleDisplay()
+    public void ToggleDisplay()
     {
         this.gameObject.SetActive(!gameObject.activeInHierarchy);
     }
-    public void turnOn()
+    public void TurnOn()
     {
         this.gameObject.SetActive(true);
     }
-    public void turnOff()
+    public void TurnOff()
     {
         this.gameObject.SetActive(false);
     }

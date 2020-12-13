@@ -18,11 +18,11 @@ public class ResourceList : MonoBehaviour
         //taken from https://answers.unity.com/questions/800940/toggle-gameobject-onoff-with-button.html
         gameObject.SetActive(!gameObject.activeInHierarchy);
     }
-    public void turnOn()
+    public void TurnOn()
     {
         this.gameObject.SetActive(true);
     }
-    public void turnOff()
+    public void TurnOff()
     {
         this.gameObject.SetActive(false);
     }

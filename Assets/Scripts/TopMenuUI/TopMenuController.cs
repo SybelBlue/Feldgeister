@@ -12,7 +12,7 @@ public class TopMenuController : MonoBehaviour
     public UnityEvent hideDefenses;
     public UnityEvent changeToDusk;
     //hides resource and defense lists but keeps top menu
-    public void reduceFood()
+    public void ReduceFood()
     {
         foodRemaining.text = "Food Remaining: " + --food;
         if(food < 1)
@@ -21,18 +21,23 @@ public class TopMenuController : MonoBehaviour
             print("***changing to dusk***");
         }
     }
-    public void hideLists()
+    public void ResetFood()
+    {
+        //Todo: update food variable here
+        foodRemaining.text = "Food Remaining: " + food;
+    }
+    public void HideLists()
     {
         hideResources.Invoke();
         hideDefenses.Invoke();
     }
     //hides both the lists and the top menu itself
-    public void hideAll()
+    public void HideAll()
     {
         this.gameObject.SetActive(false);
     }
     //shows just the top menu and not the lists
-    public void showTop()
+    public void ShowTop()
     {
         this.gameObject.SetActive(true);
         hideResources.Invoke();
