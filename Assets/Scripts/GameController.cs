@@ -1,9 +1,23 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
+using System;
 
 #pragma warning disable 0649
 public class GameController : MonoBehaviour
 {
+    [Serializable]
+    public enum GamePhase
+    {
+        Dawn,
+        Day,
+        Dusk,
+        Night,
+    }
+    
+    private static int phaseCount = Enum.GetValues(typeof(GamePhase)).Length;
+
+    public GamePhase phase = GamePhase.Night;
+
     [SerializeField]
     private AudioClip buttonHoverClip, buttonSelectClip;
     private MapGenerator mapGenerator;
@@ -46,29 +60,45 @@ public class GameController : MonoBehaviour
     [SerializeField, ReadOnly]
     private bool _mapReady = false;
 
-    public void SetUpForDay()
+    public void RunPhase(GamePhase phase)
     {
-        charactersTalkedToday = new bool[jobCount];
+        this.phase = phase;
 
-        strategy = new List<AttackStrategy>(StaticUtils.allStrategies).RandomChoice();
-        strategicTarget = StaticUtils.HouseForStrategy(strategy, houses);
-        strategicTargetJob = strategicTarget.character.job;
+        switch (phase)
+        {
+            case GamePhase.Dawn:
+                charactersTalkedToday = new bool[jobCount];
 
-        randomTarget = houses.RandomChoice();
-        randomTargetJob = randomTarget.character.job;
+                strategy = new List<AttackStrategy>(StaticUtils.allStrategies).RandomChoice();
+                strategicTarget = StaticUtils.HouseForStrategy(strategy, houses);
+                strategicTargetJob = strategicTarget.character.job;
+
+                randomTarget = houses.RandomChoice();
+                randomTargetJob = randomTarget.character.job;
+                print("TODO: watcher says attack strategy");
+                break;
+            case GamePhase.Day:
+                print("TODO: update character food and morale stats");
+                print("TODO: display defense and resource dropdowns");
+                print("TODO: change selection mode to allow hose calls and food donation");
+                break;
+            case GamePhase.Dusk:
+                print("TODO: get defenses from blacksmith");
+                print("TODO: change selection mode to place defenses");
+                print("TODO: change selection mode to place lamb");
+                break;
+            case GamePhase.Night:
+                MonsterAttack();
+                print("TODO: show feldgeister on screen");
+                print("TODO: display attack dialogue");
+                break;
+        }
     }
 
-    public void MonsterAttack()
+    public void AdvancePhase()
     {
-        strategicTarget.defenseLevel--;
-        randomTarget.defenseLevel--;
-        print("Show feldgeisters now!");
-    }
-
-    public void PassNight()
-    {
-        MonsterAttack();
-        SetUpForDay();
+        var nextPhase = (GamePhase)(((int)phase + 1) % phaseCount);
+        RunPhase(nextPhase);
     }
 
     public void OnMapMade(MapGenerator map)
@@ -77,7 +107,7 @@ public class GameController : MonoBehaviour
         buildingMap = map.usedSpaces;
         houses = new List<House>(mapGenerator.GetComponents<House>());
         _mapReady = true;
-        SetUpForDay();
+        RunPhase(GamePhase.Dawn);
     }
 
     void Update()
@@ -103,6 +133,12 @@ public class GameController : MonoBehaviour
                 leftCharacterDisplay.DisplayCharacter(null);
             }
         }
+    }
+
+    public void MonsterAttack()
+    {
+        strategicTarget.defenseLevel--;
+        randomTarget.defenseLevel--;
     }
 
     public void OnCharacterDied(Character c)
