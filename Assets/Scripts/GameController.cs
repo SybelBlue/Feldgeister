@@ -158,7 +158,7 @@ public class GameController : MonoBehaviour
             switch (selectionMode)
             {
                 case DialogueSelectionMode _:
-                    FinishDefenseSelection();
+                    FinishDialogueSelection();
                     break;
                 case DefenseSelectionMode _:
                     FinishDefenseSelection();

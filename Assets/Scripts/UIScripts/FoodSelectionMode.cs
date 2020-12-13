@@ -22,7 +22,10 @@ public class FoodSelectionMode : ISelectionMode
     
     public void OnHover(Character character)
     {
-        LogWarning($"Display: character hunger level is {character.hunger}");
+        if (character)
+        {
+            Log($"Display: {character.job} hunger level is {character.hunger}");
+        }
     }
     
     public void OnSelected(Character character)
