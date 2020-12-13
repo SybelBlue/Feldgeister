@@ -51,7 +51,7 @@ public class Character : MonoBehaviour
         => job == CharacterJob.Mayor || job == CharacterJob.Witch;
 
     public bool canTakeLamb
-        => !immortal;
+        => !immortal && alive;
 
     [SerializeField]
     private bool _alive = true;
