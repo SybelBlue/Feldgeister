@@ -12,10 +12,10 @@ public class LambSelectionMode : ISelectionMode
     }
 
     public void OnBeginSelectionMode()
-    {  }
+        => gameController.ClearHouseAndCharacterDisplays();
     
     public void OnEndSelectionMode()
-    {  }
+        => gameController.ClearHouseAndCharacterDisplays();
     
     public void OnHover(Character character)
     {
@@ -26,14 +26,15 @@ public class LambSelectionMode : ISelectionMode
                 HouseOccupant.InstructionText.NotSuitableForLamb
         );
 
-        gameController.leftCharacterDisplay.DisplayCharacter(character);
+        gameController.leftCharacterDisplay.UpdateDisplay(character);
     }
     
     public void OnSelected(Character character)
     {
         if (character && character.canTakeLamb)
         {
-            gameController.OnLambHouseSelected(character.house);
+            character.house.hasLamb = true;
+            gameController.FinishLambSelection();
         }
     }
 }

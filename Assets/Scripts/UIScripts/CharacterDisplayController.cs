@@ -14,7 +14,7 @@ public class CharacterDisplayController : MonoBehaviour
         displayImage = GetComponent<Image>();
     }
 
-    public void DisplayCharacter(Character c)
+    public void UpdateDisplay(Character c)
     {
         character = c;
         // set active if not null
