@@ -1,0 +1,27 @@
+fileFormatVersion: 2
+guid: 85226a3bfe6d6154b82d17e685e50306
+ScriptedImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 2
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: 11500000, guid: 94073015eacc34c1d8fc6786e43d60ca, type: 3}
+  baseLanguageID: 
+  stringIDs:
+  - Night_Main-night_start-0
+  - Night_Main-night_start-1
+  - Night_Main-night_start-2
+  - Night_Main-night_start-3
+  - Night_Main-night_start-4
+  - Night_Main-night_start-5
+  - Night_Main-daybreak-6
+  - Night_Main-daybreak-7
+  - Night_Main-daybreak-8
+  - Night_Main-damage-9
+  compilationStatus: 1
+  isSuccesfullyCompiled: 1
+  compilationErrorMessage: 
+  baseLanguage: {instanceID: 0}
+  localizations: []
