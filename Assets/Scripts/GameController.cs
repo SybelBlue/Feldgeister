@@ -97,9 +97,8 @@ public class GameController : MonoBehaviour
                 randomTargetJob = randomTarget.character.job;
                 print("TODO: watcher says attack strategy");
                 // use this to transition to day after watcher dialogue finishes
-                // AutoPhaseAdvanceOnDialogueComplete();
-                // remove this when implemeted
-                AdvancePhase();
+                // AutoAdvancePhaseOnDialogueComplete();
+                AdvancePhase(); // remove this line when above todo implemeted
                 break;
             case GamePhase.Day:
                 print("TODO: update character food and morale stats");
@@ -162,7 +161,7 @@ public class GameController : MonoBehaviour
         {
             GetComponent<NPC_Conor>()?.RunDialogue();
             print("delaying game start till after opening dialogue");
-            AutoPhaseAdvanceOnDialogueComplete();
+            AutoAdvancePhaseOnDialogueComplete();
             cameraLocked = true;
         }
 #if UNITY_EDITOR
@@ -174,7 +173,7 @@ public class GameController : MonoBehaviour
 #endif
     }
 
-    public void AutoPhaseAdvanceOnDialogueComplete()
+    public void AutoAdvancePhaseOnDialogueComplete()
     {
         dialogueRunner.onDialogueComplete.AddListener(_AdvanceOnDialogueComplete);
     }
