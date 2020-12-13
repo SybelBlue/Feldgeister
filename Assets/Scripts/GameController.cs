@@ -57,6 +57,8 @@ public class GameController : MonoBehaviour
 
     public DialogueRunner dialogueRunner;
     
+    public TopMenuController topMenuUI;
+
     public HouseOccupant houseOccupantUI;
 
     public CharacterDisplayController leftCharacterDisplay, rightCharacterDisplay;
@@ -82,7 +84,18 @@ public class GameController : MonoBehaviour
     [SerializeField, ReadOnly, Tooltip("For inspector debugging use only.")]
     private CharacterJob strategicTargetJob, randomTargetJob;
 
-    public int foodRemaining;
+    [SerializeField, ReadOnly]
+    private int _foodRemaining;
+    public int foodRemaining
+    {
+        get => _foodRemaining;
+        set
+        {
+            topMenuUI.food = value;
+            _foodRemaining = value;
+            topMenuUI.ResetFood();
+        }
+    }
 
     public void OnMapMade(MapGenerator map)
     {
@@ -120,6 +133,8 @@ public class GameController : MonoBehaviour
                 phaseTest.RunDuskDialogue();
                 selectionMode = new LambSelectionMode(this);
                 // defense placement mode will start after lamb is placed
+                // make button call GameController.FinishDefenseSelection(),
+                // will advance to night
                 break;
             case GamePhase.Night:
                 AutoAdvancePhaseOnDialogueComplete();

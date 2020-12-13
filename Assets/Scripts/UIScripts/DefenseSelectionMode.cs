@@ -21,7 +21,7 @@ public class DefenseSelectionMode : ISelectionMode
     {
         if (character)
         {
-            Log("Display in-depth defense stuff for " + character.job);
+            Log("TODO: Display in-depth defense stuff for " + character.job);
         }
     }
     
@@ -29,7 +29,8 @@ public class DefenseSelectionMode : ISelectionMode
     {
         if (character)
         {
-            LogWarning("Give " + character.job + " next defense");
+            LogWarning("TODO: Give " + character.job + " next defense");
+            // character.house.defenses.Add(...)
         }
     }
 }
