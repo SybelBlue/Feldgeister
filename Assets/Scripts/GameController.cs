@@ -76,6 +76,8 @@ public class GameController : MonoBehaviour
     [SerializeField, ReadOnly, Tooltip("For inspector debugging use only.")]
     private CharacterJob strategicTargetJob, randomTargetJob;
 
+    public int foodRemaining;
+
     public void OnMapMade(MapGenerator map)
     {
         mapGenerator = map;
@@ -106,6 +108,7 @@ public class GameController : MonoBehaviour
                 print("TODO: display defense and resource dropdowns"); // katia
                 selectionMode = new DialogueSelectionMode(this);
                 print("TODO: show button to change selection mode to allow food donation"); // katia
+
                 break;
             case GamePhase.Dusk:
                 print("TODO: get defenses from blacksmith"); // conor
@@ -149,6 +152,11 @@ public class GameController : MonoBehaviour
     public void OnCharacterDied(Character c)
     {
         print($"he ded: {c}");
+    }
+
+    public void LoseFood()
+    {
+        print("TODO: lose food");
     }
 
     public void CharacterSelected(Character character)

@@ -4,18 +4,36 @@ using TMPro;
 
 public class HouseOccupant : MonoBehaviour 
 {
+    [System.Serializable]
+    public enum InstructionText 
+    {
+        CanTalk,
+        AlreadyTalked,
+        TooHungry,
+    }
     public Text instructionText;
     public TMP_Text nameText;
     private Character last;
-    private bool lastCanTalk;
+    private InstructionText lastInstruction;
 
-    public void UpdateDisplay(Character character, bool canTalkTo=true){
-        if (last == character && lastCanTalk == canTalkTo) return;
+    public void UpdateDisplay(Character character, InstructionText instruction=InstructionText.CanTalk){
+        if (last == character && lastInstruction == instruction) return;
 
-        lastCanTalk = canTalkTo;
+        lastInstruction = instruction;
         last = character;
 
-        instructionText.text = canTalkTo ? "Click house to talk" : ">> Already talked today! <<";
+        switch (lastInstruction)
+        {
+            case InstructionText.AlreadyTalked:
+                instructionText.text = ">> Already Talked Today <<";
+                break;
+            case InstructionText.TooHungry:
+                instructionText.text = ">> Too Hungry, Need Food <<";
+                break;
+            default:
+                instructionText.text = "Click House to Talk!";
+                break;
+        }
 
         if(character) 
         {
