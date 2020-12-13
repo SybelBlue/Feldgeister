@@ -1,0 +1,22 @@
+fileFormatVersion: 2
+guid: 087419feb97f2e04f894ddc11c9a69c5
+ScriptedImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 2
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: 11500000, guid: 94073015eacc34c1d8fc6786e43d60ca, type: 3}
+  baseLanguageID: 
+  stringIDs:
+  - Blacksmith_Day_2-blacksmith_start_day_2-0
+  - Blacksmith_Day_2-blacksmith_start_day_2-1
+  - Blacksmith_Day_2-blacksmith_start_day_2-2
+  - Blacksmith_Day_2-blacksmith_start_day_2-3
+  - Blacksmith_Day_2-end-4
+  compilationStatus: 1
+  isSuccesfullyCompiled: 1
+  compilationErrorMessage: 
+  baseLanguage: {instanceID: 0}
+  localizations: []
