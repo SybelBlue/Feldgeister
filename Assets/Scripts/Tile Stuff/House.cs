@@ -9,6 +9,7 @@ using UnityEditor;
 
 public class House : Building
 {
+    private static House houseWithLamb;
 
     public Character character;
 
@@ -70,6 +71,12 @@ public class House : Building
                 return true;
             }).ToList();
         }
+    }
+
+    public bool hasLamb
+    {
+        get => houseWithLamb == this;
+        set => houseWithLamb = value ? this : null;
     }
 
     public static House AddTo(GameObject gameObject, string name, Character character, RectInt region)
@@ -134,6 +141,8 @@ public class HouseEditor : Editor
                 house.ResetCharactersArray();
             }
             EditorGUILayout.ObjectField("Occupant", house.occupant, typeof(Character));
+
+            EditorGUILayout.Toggle("Has Lamb", house.hasLamb);
         }
     }
 }

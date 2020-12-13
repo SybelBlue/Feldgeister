@@ -108,12 +108,12 @@ public class GameController : MonoBehaviour
                 print("TODO: display defense and resource dropdowns"); // katia
                 selectionMode = new DialogueSelectionMode(this);
                 print("TODO: show button to change selection mode to allow food donation"); // katia
-
+                // make button call GameController.FinishDialogueSelection(),
+                // will advance to food placement
                 break;
             case GamePhase.Dusk:
                 print("TODO: get defenses from blacksmith"); // conor
-                print("TODO: change selection mode to place lamb");
-                print("TODO: await defense finish to change selection mode to place defenses");
+                selectionMode = new LambSelectionMode(this);
                 break;
             case GamePhase.Night:
                 MonsterAttack();
@@ -122,6 +122,18 @@ public class GameController : MonoBehaviour
                 break;
         }
     }
+
+    public void OnLambHouseSelected(House house)
+    {
+        house.hasLamb = true;
+        selectionMode = new DefenseSelectionMode(this);
+    }
+
+    public void FinishDialogueSelection()
+        => selectionMode = new FoodSelectionMode(this);
+
+    public void FinishDefenseSelection()
+        => AdvancePhase();
 
     public void AdvancePhase()
     {
@@ -141,6 +153,13 @@ public class GameController : MonoBehaviour
                 (Feldgeister.Input.lastFocused as House).occupant :
                 null;
         selectionMode?.OnHover(hovered);
+
+#if UNITY_EDITOR
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            AdvancePhase();
+        }
+#endif
     }
 
     public void MonsterAttack()
