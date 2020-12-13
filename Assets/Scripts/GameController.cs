@@ -17,6 +17,22 @@ public class GameController : MonoBehaviour
     private static int phaseCount = Enum.GetValues(typeof(GamePhase)).Length;
 
     public GamePhase phase = GamePhase.Night;
+    
+    private ISelectionMode _selectionMode;
+    private ISelectionMode selectionMode
+    {
+        get => _selectionMode;
+        set
+        {
+            if (_selectionMode != null)
+            {
+                _selectionMode.OnEndSelectionMode();
+            }
+            print("Changing to selection mode: " + value?.name);
+            _selectionMode = value;
+            _selectionMode.OnBeginSelectionMode();
+        }
+    }
 
     [SerializeField]
     private AudioClip buttonHoverClip, buttonSelectClip;
@@ -44,6 +60,12 @@ public class GameController : MonoBehaviour
 
     public bool runOpeningDialogue;
 
+    public bool runningDialogue
+    {
+        get => cameraLocked;
+        set => cameraLocked = value;
+    }
+
     private List<House> houses;
 
     public House strategicTarget, randomTarget;
@@ -52,9 +74,6 @@ public class GameController : MonoBehaviour
 
     [SerializeField, ReadOnly, Tooltip("For inspector debugging use only.")]
     private CharacterJob strategicTargetJob, randomTargetJob;
-
-    private static int jobCount = System.Enum.GetValues(typeof(CharacterJob)).Length;
-    private bool[] charactersTalkedToday = new bool[jobCount];
 
     public void OnMapMade(MapGenerator map)
     {
@@ -70,8 +89,6 @@ public class GameController : MonoBehaviour
         switch (phase)
         {
             case GamePhase.Dawn:
-                charactersTalkedToday = new bool[jobCount];
-
                 strategy = new List<AttackStrategy>(StaticUtils.allStrategies).RandomChoice();
                 strategicTarget = StaticUtils.HouseForStrategy(strategy, houses);
                 strategicTargetJob = strategicTarget.character.job;
@@ -81,11 +98,14 @@ public class GameController : MonoBehaviour
                 print("TODO: watcher says attack strategy");
                 // use this to transition to day after watcher dialogue finishes
                 // AutoPhaseAdvanceOnDialogueComplete();
+                // remove this when implemeted
+                AdvancePhase();
                 break;
             case GamePhase.Day:
                 print("TODO: update character food and morale stats");
                 print("TODO: display defense and resource dropdowns");
-                print("TODO: change selection mode to allow house calls and food donation");
+                selectionMode = new DialogueSelectionMode(this);
+                print("TODO: change selection mode to allow food donation");
                 break;
             case GamePhase.Dusk:
                 print("TODO: get defenses from blacksmith");
@@ -113,22 +133,11 @@ public class GameController : MonoBehaviour
         Feldgeister.Input.Update(buildingMap.Get);
         // do not change ^^
 
-        rightCharacterDisplay.DisplayCharacter(cameraLocked ? mayorCharacter : null);
-
-        if (!cameraLocked && Feldgeister.Input.lastFocused is House)
-        {
-            var house = Feldgeister.Input.lastFocused as House;
-            houseOccupantUI.UpdateDisplay(house.occupant, !HasTalkedToday(house.occupant));
-            leftCharacterDisplay.DisplayCharacter(house.occupant);
-        }
-        else
-        {
-            houseOccupantUI.UpdateDisplay(null);
-            if (!cameraLocked)
-            {
-                leftCharacterDisplay.DisplayCharacter(null);
-            }
-        }
+        Character hovered = 
+            Feldgeister.Input.lastFocused is House ? 
+                (Feldgeister.Input.lastFocused as House).occupant :
+                null;
+        selectionMode?.OnHover(hovered);
     }
 
     public void MonsterAttack()
@@ -142,44 +151,8 @@ public class GameController : MonoBehaviour
         print($"he ded: {c}");
     }
 
-    public void BeginCharacterDialogue(Character character)
-    {
-        if (!character)
-        {
-            print("Rejected dialogue start, null character.");
-            return;
-        }
-
-        if (cameraLocked) 
-        {
-            print("Rejected dialogue start, dialogue already running.");
-            return;
-        }
-
-        if (HasTalkedToday(character))
-        {
-            print("Rejected dialogue start, already talked today.");
-            return;
-        }
-
-        var npcConor = character?.GetComponent<NPC_Conor>();
-        if (!npcConor || !npcConor.enabled)
-        {
-            print("Rejected dialogue start, no active NPC_Conor found.");
-            return;
-        }
-
-        npcConor.RunDialogue();
-        cameraLocked = true;
-
-        MarkTalkedToday(character);
-    }
-
-    private void MarkTalkedToday(Character c)
-        => charactersTalkedToday[(int)c.job] = true;
-    
-    private bool HasTalkedToday(Character c)
-        => charactersTalkedToday[(int)c.job];
+    public void CharacterSelected(Character character)
+        => selectionMode.OnSelected(character);
 
     public void BeginOpeningDialogue()
     {
@@ -229,7 +202,4 @@ public class GameController : MonoBehaviour
         source.volume = UIVolume;
         source.Play();
     }
-
-    public void SetCameraLock(bool locked)
-        => Camera.main.GetComponent<CameraController>().lockPosition = locked;
 }
