@@ -152,9 +152,21 @@ public class GameController : MonoBehaviour
         selectionMode?.OnHover(hovered);
 
 #if UNITY_EDITOR
-        if (Input.GetKeyDown(KeyCode.P))
+        // if in the editor, can advance selection modes with ']'
+        if (Input.GetKeyDown(KeyCode.RightBracket))
         {
-            AdvancePhase();
+            switch (selectionMode)
+            {
+                case DialogueSelectionMode _:
+                    FinishDefenseSelection();
+                    break;
+                case DefenseSelectionMode _:
+                    FinishDefenseSelection();
+                    break;
+                default:
+                    AdvancePhase();
+                    break;
+            }
         }
 #endif
     }
@@ -225,5 +237,12 @@ public class GameController : MonoBehaviour
         source.clip = buttonSelectClip;
         source.volume = UIVolume;
         source.Play();
+    }
+
+    public void ClearHouseAndCharacterDisplays()
+    {
+        houseOccupantUI.UpdateDisplay(null);
+        leftCharacterDisplay.UpdateDisplay(null);
+        rightCharacterDisplay.UpdateDisplay(null);
     }
 }

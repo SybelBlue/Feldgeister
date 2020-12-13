@@ -13,6 +13,7 @@ public class FoodSelectionMode : ISelectionMode
 
     public void OnBeginSelectionMode()
     {
+        gameController.ClearHouseAndCharacterDisplays();
         Log("Display: Highlight food?");
     }
     
