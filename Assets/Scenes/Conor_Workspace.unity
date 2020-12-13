@@ -586,6 +586,7 @@ GameObject:
   - component: {fileID: 1712139008}
   - component: {fileID: 1712139007}
   - component: {fileID: 1712139011}
+  - component: {fileID: 1712139012}
   m_Layer: 5
   m_Name: Button
   m_TagString: Untagged
@@ -620,7 +621,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1712139005}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2ff0c675f1b7cbe439993788688147d5, type: 3}
   m_Name: 
@@ -629,6 +630,7 @@ MonoBehaviour:
   talkToNode: intervariable_start
   scriptToLoad: {fileID: 2480198943629176163, guid: aa82133754d65674c992da4642da9e29,
     type: 3}
+  _linkedCharacter: {fileID: 0}
 --- !u!114 &1712139008
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -672,7 +674,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1712139007}
+      - m_Target: {fileID: 1712139012}
         m_MethodName: RunDialogue
         m_Mode: 1
         m_Arguments:
@@ -727,7 +729,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1712139005}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6966b753d6bb27345a900d4760a8965a, type: 3}
   m_Name: 
@@ -735,6 +737,23 @@ MonoBehaviour:
   runner: {fileID: 5935829474200346692}
   varStore: {fileID: 0}
   yarn_test_variable: 0
+--- !u!114 &1712139012
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1712139005}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb5ed582710ac4540b89c8bb37921141, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  phase: 0
+  Dusk: {fileID: 2480198943629176163, guid: c638f4f910b9de14188877e38f1580ca, type: 3}
+  talkToNode: 
+  Night: {fileID: 0}
+  Dawn: {fileID: 0}
 --- !u!1 &2010151099
 GameObject:
   m_ObjectHideFlags: 0
@@ -883,6 +902,7 @@ MonoBehaviour:
   talkToNode: miner_start
   scriptToLoad: {fileID: 2480198943629176163, guid: 0443fb1effde0ee4ea22c96fb5333732,
     type: 3}
+  _linkedCharacter: {fileID: 0}
 --- !u!114 &2010151105
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -1,0 +1,28 @@
+title: night_start
+tags: 
+colorID: 0
+position: -140,-99
+---
+You do not sleep at all.
+At midnight, moonbeams slanting through the small window like knives, the howling starts.
+You resist looking outside. The sweet-sour scent of grain left out to rot drifts into the town.
+You hope they do not find the lamb. You hope that they do not break down the doors. You hope the salt in front of each and every house is enough. 
+You close your eyes and try to shut out the sound of snarling, the yelp and hiss of a feldgeister pawing at salt, the snap of a trap closing on their limbs. There is nothing to be done until morning.
+[[Wait out the night|daybreak]]
+===
+title: daybreak
+tags: 
+colorID: 0
+position: -312,298
+---
+Finally, dawn begins to broach the horizon. THere is a keening howl, and all of a sudden, silence, the grain-smell dissapates.
+It's time to see what happened
+[[Go outside to survey the damage |damage]]
+===
+title: damage
+tags: 
+colorID: 0
+position: -480,766
+---
+Empty Text
+===

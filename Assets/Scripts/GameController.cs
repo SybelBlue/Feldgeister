@@ -1,11 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
 using System;
-
-#pragma warning disable 0649
-public class GameController : MonoBehaviour
-{
-    [Serializable]
+using Yarn.Unity;
+[Serializable]
     public enum GamePhase
     {
         Dawn,
@@ -13,7 +10,10 @@ public class GameController : MonoBehaviour
         Dusk,
         Night,
     }
-
+#pragma warning disable 0649
+public class GameController : MonoBehaviour
+{
+    
     private static int phaseCount = Enum.GetValues(typeof(GamePhase)).Length;
 
     public GamePhase phase = GamePhase.Night;
@@ -49,7 +49,7 @@ public class GameController : MonoBehaviour
         set => cameraController.lockPosition = value;
     }
 
-    public Yarn.Unity.DialogueRunner dialogueRunner;
+    public DialogueRunner dialogueRunner;
     
     public HouseOccupant houseOccupantUI;
 
@@ -111,14 +111,16 @@ public class GameController : MonoBehaviour
 
                 break;
             case GamePhase.Dusk:
-                print("TODO: get defenses from blacksmith"); // conor
+    //         dialogueRunner.Add(Dusk_Main);
+    //         FindObjectOfType<DialogueRunner>().StartDialogue(dusk_start);
                 print("TODO: change selection mode to place lamb");
                 print("TODO: await defense finish to change selection mode to place defenses");
                 break;
             case GamePhase.Night:
                 MonsterAttack();
                 print("TODO: show feldgeister on screen");
-                print("TODO: display attack dialogue"); // conor
+     //         dialogueRunner.Add(Night_Main);
+     //         FindObjectOfType<DialogueRunner>().StartDialogue(night_start);
                 break;
         }
     }
