@@ -10,7 +10,7 @@ public class DialogueSelectionMode : ISelectionMode
     private bool runningDialogue => gameController.runningDialogue;
 
     private GameController gameController;
-    
+
     public DialogueSelectionMode(GameController controller)
     {
         gameController = controller;
@@ -34,11 +34,17 @@ public class DialogueSelectionMode : ISelectionMode
             runningDialogue ? gameController.mayorCharacter : null
         );
 
+        HouseOccupant.InstructionText instructionText = HouseOccupant.InstructionText.CanTalk;;
+        if (c && HasTalkedToday(c)) {
+            instructionText = HouseOccupant.InstructionText.AlreadyTalked;
+        } else if (gameController.mayorCharacter.hunger == HungerLevel.Starving) { 
+            instructionText = HouseOccupant.InstructionText.TooHungry;
+        }
+
         gameController.houseOccupantUI.UpdateDisplay(
             // shut off houseOccupantUI during dialogue
             runningDialogue ? null : c, 
-            // can only talk if the character exists and hasn't talked already
-            canTalkTo: c && !HasTalkedToday(c)
+            instructionText
         );
         
         if (!runningDialogue) // freeze the display if running the dialogue
@@ -67,6 +73,13 @@ public class DialogueSelectionMode : ISelectionMode
             return;
         }
 
+        if (gameController.mayorCharacter.hunger == HungerLevel.Starving)
+        {
+            LogWarning("Rejected dialogue start, mayor starving");
+            return;
+        }
+
+
         var npcConor = character?.GetComponent<NPC_Conor>();
         if (!npcConor || !npcConor.enabled)
         {
@@ -77,6 +90,15 @@ public class DialogueSelectionMode : ISelectionMode
         npcConor.RunDialogue();
         gameController.runningDialogue = true;
         gameController.houseOccupantUI.UpdateDisplay(null);
+
+        if (gameController.foodRemaining > 0)
+        {
+            gameController.foodRemaining--;
+        }
+        else
+        {
+            gameController.mayorCharacter.GetHungrier();
+        }
 
         MarkTalkedToday(character);
     }

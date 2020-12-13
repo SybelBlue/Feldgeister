@@ -50,7 +50,8 @@ public class Character : MonoBehaviour
     public bool immortal
         => job == CharacterJob.Mayor || job == CharacterJob.Witch;
 
-    private bool _alive;
+    [SerializeField]
+    private bool _alive = true;
     public bool alive
     {
         get => _alive;
@@ -65,6 +66,7 @@ public class Character : MonoBehaviour
         }
     }
 
+    [SerializeField]
     private HungerLevel _hunger;
     public HungerLevel hunger
     {
@@ -72,6 +74,21 @@ public class Character : MonoBehaviour
             HungerLevel.Full :
             _hunger;
         set => _hunger = value;
+    }
+
+    /// <summary> returns true when character eats, false otherwise </summary>
+    public bool Feed()
+    {
+        if (hunger == HungerLevel.Full) return false;
+        print($"Feeding {job}");
+        hunger = (HungerLevel)Mathf.Clamp((int)hunger + 1, (int)HungerLevel.Starving, (int)HungerLevel.Full);
+        return true;
+    }
+
+    public void GetHungrier()
+    {
+        if (hunger == HungerLevel.Starving) return;
+        hunger = (HungerLevel)Mathf.Clamp((int)hunger - 1, (int)HungerLevel.Starving, (int)HungerLevel.Full);
     }
 
     public bool unchangingMood;

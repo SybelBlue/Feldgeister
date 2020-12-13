@@ -44,7 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db977300b61ec434e9cc6f9f566fddd0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  job: 3
+  job: 0
   house: {fileID: 0}
   onDeath:
     m_PersistentCalls:
@@ -63,6 +63,8 @@ MonoBehaviour:
   happySprite: {fileID: 21300000, guid: 63ef7a569167f4cf99ef3a83828876e3, type: 3}
   normalSprite: {fileID: 21300000, guid: 626cc3082c6164e99864e0036d102dc6, type: 3}
   angrySprite: {fileID: 21300000, guid: baf948138115545e999ebbe003406068, type: 3}
+  _alive: 1
+  _hunger: 2
   unchangingMood: 0
   _mood: 1
   _moraleValue: 4
