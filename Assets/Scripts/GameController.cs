@@ -1,16 +1,47 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
+using System;
 
 #pragma warning disable 0649
 public class GameController : MonoBehaviour
 {
+    [Serializable]
+    public enum GamePhase
+    {
+        Dawn,
+        Day,
+        Dusk,
+        Night,
+    }
+
+    private static int phaseCount = Enum.GetValues(typeof(GamePhase)).Length;
+
+    public GamePhase phase = GamePhase.Night;
+    
+    private ISelectionMode _selectionMode;
+    private ISelectionMode selectionMode
+    {
+        get => _selectionMode;
+        set
+        {
+            if (_selectionMode != null)
+            {
+                _selectionMode.OnEndSelectionMode();
+            }
+            print("Changing to selection mode: " + value?.name);
+            _selectionMode = value;
+            _selectionMode.OnBeginSelectionMode();
+        }
+    }
+
     [SerializeField]
     private AudioClip buttonHoverClip, buttonSelectClip;
     private MapGenerator mapGenerator;
     private RegionManager<Building> buildingMap;
 
+    private CameraController _cameraController;
     public CameraController cameraController
-        => Camera.main.GetComponent<CameraController>();
+        => _cameraController ?? (_cameraController = Camera.main.GetComponent<CameraController>());
 
     public bool cameraLocked
     {
@@ -18,7 +49,7 @@ public class GameController : MonoBehaviour
         set => cameraController.lockPosition = value;
     }
 
-    public bool mapReady { get => mapGenerator != null; }
+    public Yarn.Unity.DialogueRunner dialogueRunner;
     
     public HouseOccupant houseOccupantUI;
 
@@ -30,6 +61,12 @@ public class GameController : MonoBehaviour
 
     public bool runOpeningDialogue;
 
+    public bool runningDialogue
+    {
+        get => cameraLocked;
+        set => cameraLocked = value;
+    }
+
     private List<House> houses;
 
     public House strategicTarget, randomTarget;
@@ -39,45 +76,54 @@ public class GameController : MonoBehaviour
     [SerializeField, ReadOnly, Tooltip("For inspector debugging use only.")]
     private CharacterJob strategicTargetJob, randomTargetJob;
 
-    private static int jobCount = System.Enum.GetValues(typeof(CharacterJob)).Length;
-    private bool[] charactersTalkedToday = new bool[jobCount];
-
-#pragma warning disable 0414
-    [SerializeField, ReadOnly]
-    private bool _mapReady = false;
-
-    public void SetUpForDay()
-    {
-        charactersTalkedToday = new bool[jobCount];
-
-        strategy = new List<AttackStrategy>(StaticUtils.allStrategies).RandomChoice();
-        strategicTarget = StaticUtils.HouseForStrategy(strategy, houses);
-        strategicTargetJob = strategicTarget.character.job;
-
-        randomTarget = houses.RandomChoice();
-        randomTargetJob = randomTarget.character.job;
-    }
-
-    public void MonsterAttack()
-    {
-        strategicTarget.defenseLevel--;
-        randomTarget.defenseLevel--;
-        print("Show feldgeisters now!");
-    }
-
-    public void PassNight()
-    {
-        MonsterAttack();
-        SetUpForDay();
-    }
-
     public void OnMapMade(MapGenerator map)
     {
         mapGenerator = map;
         buildingMap = map.usedSpaces;
         houses = new List<House>(mapGenerator.GetComponents<House>());
-        _mapReady = true;
-        SetUpForDay();
+    }
+
+    public void RunPhase(GamePhase phase)
+    {
+        this.phase = phase;
+
+        switch (phase)
+        {
+            case GamePhase.Dawn:
+                strategy = new List<AttackStrategy>(StaticUtils.allStrategies).RandomChoice();
+                strategicTarget = StaticUtils.HouseForStrategy(strategy, houses);
+                strategicTargetJob = strategicTarget.character.job;
+
+                randomTarget = houses.RandomChoice();
+                randomTargetJob = randomTarget.character.job;
+                print("TODO: watcher says attack strategy"); // conor
+                // use this to transition to day after watcher dialogue finishes
+                // AutoAdvancePhaseOnDialogueComplete();
+                AdvancePhase(); // remove this line when above todo implemeted
+                break;
+            case GamePhase.Day:
+                print("TODO: update character food and morale stats"); // katia
+                print("TODO: display defense and resource dropdowns"); // katia
+                selectionMode = new DialogueSelectionMode(this);
+                print("TODO: show button to change selection mode to allow food donation"); // katia
+                break;
+            case GamePhase.Dusk:
+                print("TODO: get defenses from blacksmith"); // conor
+                print("TODO: change selection mode to place lamb");
+                print("TODO: await defense finish to change selection mode to place defenses");
+                break;
+            case GamePhase.Night:
+                MonsterAttack();
+                print("TODO: show feldgeister on screen");
+                print("TODO: display attack dialogue"); // conor
+                break;
+        }
+    }
+
+    public void AdvancePhase()
+    {
+        var nextPhase = (GamePhase)(((int)phase + 1) % phaseCount);
+        RunPhase(nextPhase);
     }
 
     void Update()
@@ -87,22 +133,17 @@ public class GameController : MonoBehaviour
         Feldgeister.Input.Update(buildingMap.Get);
         // do not change ^^
 
-        rightCharacterDisplay.DisplayCharacter(cameraLocked ? mayorCharacter : null);
+        Character hovered = 
+            Feldgeister.Input.lastFocused is House ? 
+                (Feldgeister.Input.lastFocused as House).occupant :
+                null;
+        selectionMode?.OnHover(hovered);
+    }
 
-        if (!cameraLocked && Feldgeister.Input.lastFocused is House)
-        {
-            var house = Feldgeister.Input.lastFocused as House;
-            houseOccupantUI.UpdateDisplay(house.occupant, !HasTalkedToday(house.occupant));
-            leftCharacterDisplay.DisplayCharacter(house.occupant);
-        }
-        else
-        {
-            houseOccupantUI.UpdateDisplay(null);
-            if (!cameraLocked)
-            {
-                leftCharacterDisplay.DisplayCharacter(null);
-            }
-        }
+    public void MonsterAttack()
+    {
+        strategicTarget.defenseLevel--;
+        randomTarget.defenseLevel--;
     }
 
     public void OnCharacterDied(Character c)
@@ -110,44 +151,8 @@ public class GameController : MonoBehaviour
         print($"he ded: {c}");
     }
 
-    public void BeginCharacterDialogue(Character character)
-    {
-        if (!character)
-        {
-            print("Rejected dialogue start, null character.");
-            return;
-        }
-
-        if (cameraLocked) 
-        {
-            print("Rejected dialogue start, dialogue already running.");
-            return;
-        }
-
-        if (HasTalkedToday(character))
-        {
-            print("Rejected dialogue start, already talked today.");
-            return;
-        }
-
-        var npcConor = character?.GetComponent<NPC_Conor>();
-        if (!npcConor || !npcConor.enabled)
-        {
-            print("Rejected dialogue start, no active NPC_Conor found.");
-            return;
-        }
-
-        npcConor.RunDialogue();
-        cameraLocked = true;
-
-        MarkTalkedToday(character);
-    }
-
-    private void MarkTalkedToday(Character c)
-        => charactersTalkedToday[(int)c.job] = true;
-    
-    private bool HasTalkedToday(Character c)
-        => charactersTalkedToday[(int)c.job];
+    public void CharacterSelected(Character character)
+        => selectionMode.OnSelected(character);
 
     public void BeginOpeningDialogue()
     {
@@ -156,14 +161,28 @@ public class GameController : MonoBehaviour
 #endif
         {
             GetComponent<NPC_Conor>()?.RunDialogue();
+            print("delaying game start till after opening dialogue");
+            AutoAdvancePhaseOnDialogueComplete();
             cameraLocked = true;
         }
 #if UNITY_EDITOR
         else
         {
             cameraLocked = false;
+            AdvancePhase();
         }
 #endif
+    }
+
+    public void AutoAdvancePhaseOnDialogueComplete()
+    {
+        dialogueRunner.onDialogueComplete.AddListener(_AdvanceOnDialogueComplete);
+    }
+
+    public void _AdvanceOnDialogueComplete()
+    {
+        AdvancePhase();
+        dialogueRunner.onDialogueComplete.RemoveListener(_AdvanceOnDialogueComplete);
     }
 
     public void PlayButttonHover()
@@ -183,7 +202,4 @@ public class GameController : MonoBehaviour
         source.volume = UIVolume;
         source.Play();
     }
-
-    public void SetCameraLock(bool locked)
-        => Camera.main.GetComponent<CameraController>().lockPosition = locked;
 }
