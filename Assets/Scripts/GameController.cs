@@ -201,12 +201,10 @@ public class GameController : MonoBehaviour
 
     public void OnCharacterDied(Character c)
     {
-        print($"he ded: {c}");
-    }
-
-    public void LoseFood()
-    {
-        print("TODO: lose food");
+        if (c.house.hasLamb)
+        {
+            Debug.LogWarning("You lost!");
+        }
     }
 
     public void CharacterSelected(Character character)

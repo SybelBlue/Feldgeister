@@ -31,7 +31,7 @@ public class FoodSelectionMode : ISelectionMode
     {
         if (character && gameController.foodRemaining > 0 && character.Feed())
         {
-            gameController.LoseFood();
+            gameController.foodRemaining--;
         }
     }
 }
