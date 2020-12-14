@@ -1,0 +1,21 @@
+fileFormatVersion: 2
+guid: c638f4f910b9de14188877e38f1580ca
+ScriptedImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 2
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: 11500000, guid: 94073015eacc34c1d8fc6786e43d60ca, type: 3}
+  baseLanguageID: 
+  stringIDs:
+  - Dusk_Main-dusk_start-0
+  - Dusk_Main-dusk_start-1
+  - Dusk_Main-dusk_start-2
+  - Dusk_Main-dusk_start-3
+  compilationStatus: 1
+  isSuccesfullyCompiled: 1
+  compilationErrorMessage: 
+  baseLanguage: {instanceID: 0}
+  localizations: []
