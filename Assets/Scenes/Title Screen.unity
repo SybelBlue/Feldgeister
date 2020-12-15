@@ -364,6 +364,49 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &429088329
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 429088331}
+  - component: {fileID: 429088330}
+  m_Layer: 0
+  m_Name: SceneRunner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &429088330
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 429088329}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5bf416e3d61c04836b12dc470fbb4271, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &429088331
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 429088329}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 523.85767, y: 246.36417, z: -52.487778}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &964627368
 GameObject:
   m_ObjectHideFlags: 0
@@ -822,6 +865,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2055665776}
     m_Modifications:
+    - target: {fileID: 488583191607522908, guid: 07ebd05ca8b214592a3da3dfab8ada26,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 429088330}
+    - target: {fileID: 488583191607522908, guid: 07ebd05ca8b214592a3da3dfab8ada26,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: moveToMainScene
+      objectReference: {fileID: 0}
     - target: {fileID: 2529517525630216944, guid: 07ebd05ca8b214592a3da3dfab8ada26,
         type: 3}
       propertyPath: m_Name
