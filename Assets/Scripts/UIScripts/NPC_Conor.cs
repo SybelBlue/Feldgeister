@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using Yarn.Unity;
+using UnityEngine.Events;
 
 /// attached to the non-player characters, and stores the name of the Yarn
 /// node that should be run when you talk to them.
@@ -9,6 +10,10 @@ public class NPC_Conor : MonoBehaviour {
     public string characterName = "";
 
     public string talkToNode = "";
+
+    public UnityEvent moraleUp;
+
+    public UnityEvent moraleDown;
 
     [Header("Optional")]
     public YarnProgram scriptToLoad;
@@ -21,13 +26,15 @@ public class NPC_Conor : MonoBehaviour {
     [YarnCommand("decrease_morale")]
     public void Decrease_Morale(){
         linkedCharacter.DecreaseMorale();
-        print(linkedCharacter.moraleValue); 
+        print(linkedCharacter.moraleValue);
+        moraleDown.Invoke();
     }
 
     [YarnCommand("increase_morale")]
     public void Increase_Morale(){
         linkedCharacter.IncreaseMorale();
-        print(linkedCharacter.moraleValue); 
+        print(linkedCharacter.moraleValue);
+        moraleUp.Invoke(); 
     }
     public int houseDefenseLevel 
         => linkedCharacter.house.defenseLevel;
