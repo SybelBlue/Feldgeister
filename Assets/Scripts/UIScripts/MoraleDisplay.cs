@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using Yarn;
 
 public class MoraleDisplay : MonoBehaviour
 {
@@ -10,7 +11,7 @@ public class MoraleDisplay : MonoBehaviour
     public AudioSource moraleDown;
     public float volume = 0.5f;
     
-    public void IncreaseMorale()
+    public void IncreaseMoraleDisplay()
     {
         //from https://gamedevbeginner.com/how-to-play-audio-in-unity-with-examples/#play, 
         //https://answers.unity.com/questions/1327656/how-to-change-the-color-of-the-textmeshpro-gui-com.html,
@@ -18,7 +19,7 @@ public class MoraleDisplay : MonoBehaviour
         morale.color = new Color32(50,150,50,255); //green
         morale.text = "+ morale";
     }
-    public void DecreaseMorale() 
+    public void DecreaseMoraleDisplay() 
     {
         moraleDown.PlayOneShot(moraleDown.clip, volume);
         morale.color = new Color32(175,25,25,255); //red

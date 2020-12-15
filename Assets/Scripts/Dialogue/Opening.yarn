@@ -1,10 +1,11 @@
 title: intro_start
 tags: Opening 
 colorID: 0
-position: 473,60
+position: 471,54
 ---
 It is the night after a joyous first birthday celebration for Minna, the only lamb in the village of Schafstadt am Berg. Ewald, the mayor of the village, lies in a deep sleep
 EWALD: Zzz... Zzz... AH! 
+<<addEwald SceneRunner>> 
 Ewald jerks awake, as if from a nightmare. A rattling wind blows outside, the sound of cornstalks whipping together, and underneath it all... the haunting howl of a wolf. 
 EWALD: Ugh... note to self: don't drink so much at Minna's next birthday party.
 [[Go outside to investigate the howling|Door]]
@@ -35,6 +36,7 @@ position: -31,700
 ---
 The doorway is filled with a figure twice Ewald's height. The figure blends into the night but for the glare of its eyes. 
 Atop its head rests a crown of corn cobs, gnawed to the core and rotting.
+<<addCornKing SceneRunner>> 
 It steps into the house.
 [[Say nothing |Fear]]
 [["If you're going to barge in, at least introduce yourself"|Snark]]
@@ -68,12 +70,16 @@ position: -176,1400
 ---
 CORN KING: What else, little sheep?
 CORN KING: We're hungry.
-Into the house stalks a plum-colored wolf with glinting fangs, followed by a wildcat flickering with lightning. 
+Into the house stalks a plum-colored wolf with glinting fangs, followed by a wildcat flickering with lightning.
+<<addPlumWolf SceneRunner>> 
+<<addWeatherCat SceneRunner>> 
 Ewald tries to edge away, but a cry from behind him startles him. Turning, Ewald finds himself at knifepoint. 
 Brandishing it stands a disconcertingly large and shockingly malevolent rooster.
+<<addRooster SceneRunner>> 
 CORN KING: The lamb. Bring her to us.
 -> Never. 
 CORN KING: We'll see about that. Tomorrow night we come in full force.
+<<MoveToTitle SceneRunner>>
 ===
 title: Back_in_morning
 tags: 
@@ -81,24 +87,14 @@ colorID: 0
 position: 137,1413
 ---
 A loud growl sounds behind the Corn King.
-Into the house stalks a plum-colored wolf with glinting fangs, followed by a wildcat flickering with lightning. 
+Into the house stalks a plum-colored wolf with glinting fangs, followed by a wildcat flickering with lightning.
+<<addPlumWolf SceneRunner>> 
+<<addWeatherCat SceneRunner>> 
 Ewald tries to edge away, but a cry from behind him startles him. Turning, Ewald finds himself at knifepoint. 
+<<addRooster SceneRunner>> 
 Brandishing it stands a disconcertingly large and shockingly malevolent rooster.
 CORN KING: The lamb. Bring her to us now.
 -> Never. 
 CORN KING: We'll see about that. Tomorrow night we come in full force.
-===
-title: Node
-tags: 
-colorID: 0
-position: 724,1018
----
-Empty Text
-===
-title: Ignore_knock
-tags: 
-colorID: 0
-position: 821,143
----
-Empty Text
+<<MoveToTitle SceneRunner>>
 ===

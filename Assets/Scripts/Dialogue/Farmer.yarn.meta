@@ -8,7 +8,7 @@ ScriptedImporter:
   assetBundleName: 
   assetBundleVariant: 
   script: {fileID: 11500000, guid: 94073015eacc34c1d8fc6786e43d60ca, type: 3}
-  baseLanguageID: 
+  baseLanguageID: en-US
   stringIDs:
   - Farmer-farmer_start-0
   - Farmer-farmer_start-1
@@ -20,55 +20,52 @@ ScriptedImporter:
   - Farmer-farmer_start-7
   - Farmer-farmer_start-8
   - Farmer-farmer_start-9
-  - Farmer-farmer_start-10
-  - Farmer-farmer_start-11
-  - Farmer-farmer_start-12
-  - Farmer-farmer_start-13
-  - Farmer-farmer_start-14
-  - Farmer-farmer_start-15
-  - Farmer-farmer_start-16
-  - Farmer-farmer_start-17
-  - Farmer-less_morale_1-18
-  - Farmer-less_morale_1-19
-  - Farmer-less_morale_1-20
-  - Farmer-more_morale_1-21
-  - Farmer-more_morale_1-22
-  - Farmer-more_morale_1-23
-  - Farmer-more_morale_1-24
-  - Farmer-more_morale_1-25
-  - Farmer-more_morale_1-26
-  - Farmer-less_morale_2-27
-  - Farmer-less_morale_2-28
-  - Farmer-less_morale_2-29
-  - Farmer-less_morale_2-30
-  - Farmer-less_morale_2-31
-  - Farmer-less_morale_2-32
-  - Farmer-more_morale_2-33
-  - Farmer-more_morale_2-34
-  - Farmer-more_morale_2-35
-  - Farmer-more_morale_2-36
-  - Farmer-more_morale_2-37
-  - Farmer-more_morale_2-38
-  - Farmer-more_morale_2-39
-  - Farmer-more_morale_2-40
-  - Farmer-more_morale_2-41
-  - Farmer-less_morale_3-42
-  - Farmer-less_morale_3-43
-  - Farmer-less_morale_3-44
-  - Farmer-less_morale_3-45
-  - Farmer-less_morale_3-46
-  - Farmer-neutral_morale_2-47
-  - Farmer-neutral_morale_2-48
-  - Farmer-neutral_morale_2-49
-  - Farmer-neutral_morale_2-50
-  - Farmer-neutral_morale_2-51
-  - Farmer-neutral_morale_2-52
-  - Farmer-neutral_morale_1-53
-  - Farmer-neutral_morale_1-54
-  - Farmer-neutral_morale_1-55
-  - Farmer-neutral_morale_1-56
-  - Farmer-neutral_morale_1-57
-  - Farmer-neutral_morale_1-58
+  - Farmer-less_morale_1_f1-10
+  - Farmer-less_morale_1_f1-11
+  - Farmer-less_morale_1_f1-12
+  - Farmer-more_morale_1_f1-13
+  - Farmer-more_morale_1_f1-14
+  - Farmer-more_morale_1_f1-15
+  - Farmer-more_morale_1_f1-16
+  - Farmer-more_morale_1_f1-17
+  - Farmer-more_morale_1_f1-18
+  - Farmer-less_morale_2_f1-19
+  - Farmer-less_morale_2_f1-20
+  - Farmer-less_morale_2_f1-21
+  - Farmer-less_morale_2_f1-22
+  - Farmer-less_morale_2_f1-23
+  - Farmer-more_morale_2_f1-24
+  - Farmer-more_morale_2_f1-25
+  - Farmer-more_morale_2_f1-26
+  - Farmer-more_morale_2_f1-27
+  - Farmer-more_morale_2_f1-28
+  - Farmer-more_morale_2_f1-29
+  - Farmer-more_morale_2_f1-30
+  - Farmer-more_morale_2_f1-31
+  - Farmer-more_morale_2_f1-32
+  - Farmer-less_morale_3_f1-33
+  - Farmer-less_morale_3_f1-34
+  - Farmer-less_morale_3_f1-35
+  - Farmer-less_morale_3_f1-36
+  - Farmer-less_morale_3_f1-37
+  - Farmer-neutral_morale_2_f1-38
+  - Farmer-neutral_morale_2_f1-39
+  - Farmer-neutral_morale_2_f1-40
+  - Farmer-neutral_morale_2_f1-41
+  - Farmer-neutral_morale_2_f1-42
+  - Farmer-neutral_morale_2_f1-43
+  - Farmer-neutral_morale_1_f1-44
+  - Farmer-neutral_morale_1_f1-45
+  - Farmer-neutral_morale_1_f1-46
+  - Farmer-neutral_morale_1_f1-47
+  - Farmer-neutral_morale_1_f1-48
+  - Farmer-neutral_morale_1_f1-49
+  - Farmer-bridge_node_f1-50
+  - Farmer-bridge_node_f1-51
+  - Farmer-bridge_node_f1-52
+  - Farmer-bridge_node_f1-53
+  - Farmer-bridge_node_f1-54
+  - Farmer-bridge_node_f1-55
   compilationStatus: 1
   isSuccesfullyCompiled: 1
   compilationErrorMessage: 'Error on line 32 at position 46:token recognition error
