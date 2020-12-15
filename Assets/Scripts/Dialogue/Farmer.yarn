@@ -19,15 +19,17 @@ tags: farmer
 colorID: 0
 position: -197,245
 ---
-HELMUT: And you're the mayor.
+<<decrease_morale Farmer>>
+HELMUT: And you're the mayor. 
 [[*sighs* Helmut, I know you don't like me |less_morale_2_f1]]
 [[So, how are the crops doing? It'll be a long month: |neutral_morale_1_f1]]
 ===
 title: more_morale_1_f1
 tags: farmer
 colorID: 0
-position: 468,439
+position: 465,441
 ---
+<<increase_morale Farmer>>
 HELMUT: *snorts* Not well, Schaf.
 HELMUT: That cold snap last night froze half of what's still in the fields.
 -> How much is left?
@@ -38,8 +40,9 @@ HELMUT: A month, if we stretch. More, if I can spend a day haying.
 title: less_morale_2_f1
 tags: farmer
 colorID: 0
-position: -81,1093
+position: -80,1090
 ---
+<<decrease_morale Farmer>>
 HELMUT: Schaf, I don't owe you an explanation. I don't owe you a damn thing.
 EWALD: ...
 HELMUT: ...
@@ -51,6 +54,7 @@ tags: farmer
 colorID: 0
 position: -465,1078
 ---
+<<increase_morale Farmer>>
 HELMUT: That so? 
 He takes the bread
 HELMUT: Ah, still warm.
@@ -66,6 +70,7 @@ tags:
 colorID: 0
 position: 614,776
 ---
+<<decrease_morale Farmer>>
 HELMUT: No use crying over what you can't change, Schaf.
 -> Fair enough.
 HELMUT: ...
