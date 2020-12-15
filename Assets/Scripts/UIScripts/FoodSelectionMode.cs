@@ -25,6 +25,12 @@ public class FoodSelectionMode : ISelectionMode
         {
             Log($"TODO: Display: {character.job} hunger level is {character.hunger}");
         }
+        gameController.houseOccupantUI.UpdateDisplay(
+            gameController.runningDialogue ? null : character, 
+            HouseOccupant.InstructionText.GiveFood
+        );
+        gameController.leftCharacterDisplay.UpdateDisplay(
+            gameController.runningDialogue ? null : character);
     }
     
     public void OnSelected(Character character)

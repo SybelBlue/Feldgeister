@@ -119,6 +119,7 @@ public class GameController : MonoBehaviour
                 randomTargetJob = randomTarget.character.job;
                 // use this to transition to day after watcher dialogue finishes
                 AutoAdvancePhaseOnDialogueComplete();
+                runningDialogue = true;
                 phaseTest.RunDawnDialogue();
                 break;
             case GamePhase.Day:
@@ -130,6 +131,7 @@ public class GameController : MonoBehaviour
                 // will advance to food placement
                 break;
             case GamePhase.Dusk:
+                runningDialogue = true;
                 phaseTest.RunDuskDialogue();
                 selectionMode = new LambSelectionMode(this);
                 // defense placement mode will start after lamb is placed
@@ -137,6 +139,7 @@ public class GameController : MonoBehaviour
                 // will advance to night
                 break;
             case GamePhase.Night:
+                runningDialogue = true;
                 AutoAdvancePhaseOnDialogueComplete();
                 phaseTest.RunNightDialogue();
                 MonsterAttack();

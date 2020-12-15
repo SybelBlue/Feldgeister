@@ -12,6 +12,7 @@ public class HouseOccupant : MonoBehaviour
         TooHungry,
         CanPlaceLamb,
         NotSuitableForLamb,
+        GiveFood,
     }
     public Text instructionText;
     public TMP_Text nameText;
@@ -53,6 +54,9 @@ public class HouseOccupant : MonoBehaviour
                 return ">> Not Suitable for Lamb <<";
             case InstructionText.CanPlaceLamb:
                 return "Click House to Place Lamb!";
+            // food placement
+            case InstructionText.GiveFood:
+                return "Click House to Give Food!";
         }
         Debug.LogError($"Unknown instruction text! ({text})");
         return text.ToString();
