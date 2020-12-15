@@ -1,30 +1,175 @@
 title: blacksmith_start_day_2
 tags: 
 colorID: 0
-position: 44,-26
+position: 44,-28
 ---
 //<<if $character.witch.hurt = true>> 
 You knock on the door. Silence. You knock again.
-You can 
+A feeble voice comes from inside.
+BLACKSMITH: I’m super busy right now. Come back later.
+-> Franziska, please let me in. I understand that you’re scared because of what happened to the witch last night-  
+The sudden scrape of a chair. Suddenly the blacksmith opens the door, wide-eyed and upset. 
+BLACKSMITH: You’re not saying anything about the witch in particular, right? I’m just concerned about the town, you know that, right?
+[[ Oh, um. Of course. Of course. That’s what I’m here about. Helping the town in general.|morale_u1_witch]]
+[[Aren’t you pretty close with the witch though? That’s why I’m checking in with you specifically|morale_d1_witch]]
+
 //<<if $character.blacksmith.hurt = true>>
 The blacksmith's door is battered, the salt circle around her house ragged and smudged.
-steeling yourself for bad news.
+Steeling yourself for bad news, you knock. 
+After a moment, you hear a cough, and a weak voice bleats at you. 
+FRANZISKA: You might as well come in. It’s not like that door’s gonna keep you out and I’m in no shape to get up to let you in. 
+Ewald enters to find the blacksmith lying in bed. She has a black eye, and the rest of her house and shop are completely trashed.  
+[[Oh god, Franziska! What the hell happened to you?|morale_d1_hurt]]
+[[Franziska, I’m sorry. I won’t let it happen again. How can I help?|morale_u1_hurt]]
+
 //<<if character.blacksmith.dead = true>>
-//You walk up to the blacksmith's house, and your heart sinks.
-//The door is no longer on its hinges.
-//There are tooth marks and scrapes across the sides of the house.
-//You walk inside, dreading what you'll find. 
-//In the living room, there is the smell of sulfur mixed with rotting corn.
-//Tufts of wool are spread across the floor.
-//Fransizka is gone.
-//You don't know what you're going to tell the Witch.
-//[[The other townsfolk need attention. |end]]
+You walk up to the blacksmith's house, and your heart sinks.
+The door is no longer on its hinges.
+There are tooth marks and scrapes across the sides of the house.
+You walk inside, dreading what you'll find. 
+In the living room, there is the smell of sulfur mixed with rotting corn.
+Tufts of wool are spread across the floor.
+Fransizka is gone.
+You don't know what you're going to tell the Witch.
+[[The other townsfolk need attention. |end_dead]]
 //<<else>>
+As you approach the Blacksmith’s house, the rhythmic sound of her hammer on anvil drifts in the morning air. 
+Her house seems untouched, eerily normal. Save the pristine ring of salt surrounding it.
+-> Knock on the door 
+The hammering stops. A moment later Franziska opens the door a crack.
+FRANZISKA: Oh, it’s you! You’re not a demon. I’m gla-aad you’re safe, Mr. Mayor. 
+[[Me too, Franziska. Just making the rounds. |else_high_morale_1]]
+[[Thank you, Franziska. But I’m more worried about you. |else_low_morale_1]]
 ===
-title: end
+title: end_dead
 tags: 
 colorID: 0
-position: -324,212
+position: 531,-13
 ---
 EWALD: Goodbye, Fransizka. I'm sorry.
+===
+title: else_high_morale_1
+tags: 
+colorID: 0
+position: 490,368
+---
+FRANZISKA: Well, I’m very glad to hear that. It was a scary night. 
+FRANZISKA: All of those demons growling around. I had my hammer in hand, though, and that must have scared them off.
+FRANZISKA: Went to make sure, er, Otto was doing okay. You know how forgetful they are. Had to whack a rooster with a knife! Can you imagine! But that’s over for now.
+[[For now. We’ll have more nights like this. I wanted to see what you can do today to prepare.|else_high_morale_2]]
+[[Of course. I’m glad you’re okay. I should ask — did you check on the Witch?|else_low_morale_2]]
+===
+title: else_low_morale_1
+tags: 
+colorID: 0
+position: 740,373
+---
+The Blacksmith laughs nervously.
+FRANZISKA: I’m fine. I’m more worried about everyone else. Little old me, hammer in hand. 
+Not much to think about. 
+FRANZISKA: …
+EWALD: ....
+[[Sorry to pry, Franziska. It was a hard night.|else_high_morale_2]]
+[[Of course. I’m glad you’re okay. I should ask — did you check on the Witch?|else_low_morale_2]]
+===
+title: else_high_morale_2
+tags: 
+colorID: 0
+position: 797,752
+---
+FRANZISKA: Indeed, we’re really in the thick of it now. Speaking of which, let me grab you my latest trap. Great workmanship on this one, if I do say so myself.
+She fetches a trap and presents it to you proudly. 
+FRANZISKA: Now this’ll get those fiends. Make ‘em think twice about messing with our village. 
+Ewald takes the trap.
+-> Thank you, Franziska, for all your help. Keep up the good work.
+[[ Go check on the others.|end_else]]
+===
+title: else_low_morale_2
+tags: 
+colorID: 0
+position: 562,752
+---
+FRANZISKA: The Witch? No? Why? Are they okay?
+-> Yes, they’re fine. Sorry to alarm you.
+FRANZISKA: Well, that’s a relief. Because they’re such an asset to the town’s defenses, of course. 
+FRANZISKA: Speaking of defenses. I think I might be able to scrounge up some traps. I would have gotten more done, but other things were distracting me. 
+She looks at you. 
+-> Oh! I won’t keep distracting you, then. 
+The blacksmith nods, then fetches some traps and hands them to you. 
+FRANZISKA: I’m sure you have much to do anyway, no sense talking with me for any longer than it takes to get traps. 
+-> I see. Well, thank you, Franziska. 
+She nods and returns to her forge. 
+[[ Check on the others. |end_else]]
+===
+title: end_else
+tags: 
+colorID: 0
+position: 687,1000
+---
+Empty Text
+===
+title: morale_u1_witch
+tags: 
+colorID: 0
+position: -116,388
+---
+FRANZISKA: Absolutely. Let me see what I can get for you. 
+As she walks to the back, you see a bundle of flowers on the table behind her, as if to give as a gift to someone wounded. But they could be for anything or anyone. Best not to presume. 
+FRANZISKA: Here are the traps I could find. Hard times and all that, but these should serve you well. Try to give the wounded a little defense boost tonight. 
+-> I will, Franziska. Thank you. Stay strong and keep up the good work. 
+She nods and returns to her forge.
+[[ Check on the others. |end_witch]]
+===
+title: morale_d1_witch
+tags: 
+colorID: 0
+position: 167,398
+---
+The Blacksmith looks dismayed. 
+BLACKSMITH: Wha-aaat? Me? The witch? You’re talking to me specifically? About? The witch? Who’s going to be okay, by the way. They’re strong. They’ll pull through. 
+Ewald starts to speak again, only to be immediately cut off. 
+BLACKSMITH: I’m afraid you’re mistaken. I’m only close with my hammer and anvil. Speaking of which! Which, not witch, that. Why would we speak about the witch? You want some traps? 
+The Blacksmith practically flees into her shop, returning moments later and shoving a hastily constructed trap into your arms. 
+BLACKSMITH: Take it! Go! I’m sure you have lots to do! Maybe try to give the wounded a little defense boost tonight, I don’t know.
+The door is shut in your face.
+[[ Check on the others. |end_witch]]
+===
+title: morale_d1_hurt
+tags: 
+colorID: 0
+position: -733,392
+---
+The blacksmith glares at you. If looks could kill, you wouldn’t need to worry about the feldgiester any more. 
+FRANZISKA: What do you think happened, Mr. Mayor? Lot of good your defenses did.
+-> Oh god. I’m so sorry. I’ll try to make your defenses extra strong for tonight. 
+FRANZISKA: Why bother? Protect someone else. That way you won’t have to spare any defenses on me, just mourning. Go away Ewald, and let me sleep.
+Ewald tries to protest, but she’s already laid back down.
+[[ Check on the others. |end_hurt]]
+===
+title: morale_u1_hurt
+tags: 
+colorID: 0
+position: -470,395
+---
+The blacksmith looks up at you, fire in her weary eyes. 
+FRANZISKA: What you can do is defend this town from those bastard spirits, Ewald. But I guess I’m not one to talk. I barely fought them off last night. 
+FRANZISKA: I won’t be able to forge anything new for you until I recover, but there’s maybe one trap somewhere in the back if you can find it. If I make it long enough to recover.
+-> Thank you, Franziska. I’ll try to make your defenses extra strong for tonight.
+FRANZISKA: Thanks, Ewald. And. Um. If I, you know. Could you maybe tell… Never mind. Go help someone else. 
+She shoos you out. You hesitate, but you don’t want to upset her in her injured state. You leave.
+[[ Check on the others.|end_hurt]]
+===
+title: end_witch
+tags: 
+colorID: 0
+position: 35,705
+---
+Empty Text
+===
+title: end_hurt
+tags: 
+colorID: 0
+position: -587,711
+---
+Empty Text
 ===

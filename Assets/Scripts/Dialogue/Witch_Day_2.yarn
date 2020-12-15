@@ -1,0 +1,79 @@
+title: witch_day_2_start
+tags: 
+colorID: 0
+position: 1128,-266
+---
+//<<if $character.witch.hurt = true>> 
+You knock on the door. Silence. You knock again.
+
+[[ |morale_u1_hurt_wi2]]
+[[|morale_d1_hurt_wi2]]
+
+//<<else>>
+As you approach the witch’s house, peaceful except for the out of tune singing, you note that the salt ring surrounsing it is untouched. Must have been an easy night. 
+-> Knock on the door 
+The singing stops. 
+OTTO: Oh, come on in, Ewald! 
+You enter the witch's house. There are plants in every nook and cranny and the floor is a mess, due to the witch's lack of organization skills instead of an attack. 
+-> Um. How did you know it was me knocking? And not another villager? Or even a feldgeister?
+OTTO: A knock is like a fingerprint, Ewald. Unique. 
+-> What's a fingerpr... never mind. How are you, Otto?
+OTTO: Oh, you know. The usual. Oh! Wanna play a fun game? We each take a bite of a random plant from my stores and see what happens!
+[[Absolutely not! Don't you have poisonous plants in there? |else_low_morale_1_wi2]]
+[[Um. Maybe later. Are? All your plants edible? |else_high_morale_1_wi2]]
+===
+title: morale_u1_hurt_wi2
+tags: 
+colorID: 0
+position: 491,57
+---
+Empty Text
+===
+title: morale_d1_hurt_wi2
+tags: 
+colorID: 0
+position: 724,59
+---
+Empty Text
+===
+title: else_high_morale_1_wi2
+tags: 
+colorID: 0
+position: 1546,60
+---
+OTTO: Well, no. But they won't kill me. I've seen how I die, and it isn't for a while yet, nor is it from this. 
+Their voice drops to a conspiratorial whisper
+OTTO: It'll be a fishing accident. Doing what you love, eh?
+-> Uh, yes, sure. This is going to be an awkward transition, but. Speaking of death. Or, ideally, its absence. Do you have any more magic to spare for defenses?
+OTTO: Of course, Ewald. Do you even have to ask? 
+They turn to their plants, then back to you. 
+OTTO: Oh! Wanna play a fun game? We each take a bite of a random plant from my stores and see what happens!
+-> Otto... defenses?
+OTTO: Whoops, guess you do have to ask. Okay, here's a defense for you. The magic word to activate it is 'please.' Just kidding, there's no such thing as magic words. Anyway, I've got ~witchy~ stuff to do, so you gotta go! Great talking to you!
+Their eyes flit to their fishing pole propped against the wall. You decide not to call them on it and leave. 
+[[ Go talk to someone else. |end_witch_else]]
+===
+title: else_low_morale_1_wi2
+tags: 
+colorID: 0
+position: 1795,58
+---
+OTTO: Oh, I guess. But they won't kill me. I've seen how I die, and it isn't for a while yet, nor is it from this. 
+Their voice drops to a conspiratorial whisper
+OTTO: It'll be a fishing accident. Doing what you love, eh?
+-> Uh, yes, sure. This is going to be an awkward transition, but. Speaking of death. Or, ideally, its absence. Do you have any more magic to spare for defenses?
+OTTO: Of course, Ewald. Do you even have to ask? 
+They turn to their plants, then back to you. 
+OTTO: Oh! Wanna play a fun game? We each take a bite of a random plant from my stores and see what happens!
+-> Otto... defenses?
+OTTO: Whoops, guess you do have to ask. Okay, here's a defense for you. The magic word to activate it is 'please.' Just kidding, there's no such thing as magic words. Anyway, I've got ~witchy~ stuff to do, so you gotta go! Great talking to you!
+Their eyes flit to their fishing pole propped against the wall. You decide not to call them on it and leave. 
+[[ Go talk to someone else. |end_witch_else]]
+===
+title: end_witch_else
+tags: 
+colorID: 0
+position: 1698,402
+---
+Empty Text
+===

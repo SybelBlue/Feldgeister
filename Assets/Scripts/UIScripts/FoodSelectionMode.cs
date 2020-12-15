@@ -14,7 +14,6 @@ public class FoodSelectionMode : ISelectionMode
     public void OnBeginSelectionMode()
     {
         gameController.ClearHouseAndCharacterDisplays();
-        Log("Display: Highlight food?");
     }
     
     public void OnEndSelectionMode()
@@ -24,15 +23,21 @@ public class FoodSelectionMode : ISelectionMode
     {
         if (character)
         {
-            Log($"Display: {character.job} hunger level is {character.hunger}");
+            Log($"TODO: Display: {character.job} hunger level is {character.hunger}");
         }
+        gameController.houseOccupantUI.UpdateDisplay(
+            gameController.runningDialogue ? null : character, 
+            HouseOccupant.InstructionText.GiveFood
+        );
+        gameController.leftCharacterDisplay.UpdateDisplay(
+            gameController.runningDialogue ? null : character);
     }
     
     public void OnSelected(Character character)
     {
         if (character && gameController.foodRemaining > 0 && character.Feed())
         {
-            gameController.LoseFood();
+            gameController.foodRemaining--;
         }
     }
 }

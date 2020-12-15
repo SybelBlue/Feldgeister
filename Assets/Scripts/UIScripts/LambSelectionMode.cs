@@ -1,5 +1,3 @@
-using static UnityEngine.Debug;
-
 public class LambSelectionMode : ISelectionMode
 {
     public string name => "Lamb Placement";

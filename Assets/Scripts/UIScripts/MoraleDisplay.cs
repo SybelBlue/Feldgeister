@@ -6,30 +6,30 @@ using TMPro;
 public class MoraleDisplay : MonoBehaviour
 {
     public TMP_Text morale;
-    public AudioSource audioSource;
-    public AudioClip moraleUp;
-    public AudioClip moraleDown;
+    public AudioSource moraleUp;
+    public AudioSource moraleDown;
+    public float volume = 0.5f;
     
     public void IncreaseMorale()
     {
         //from https://gamedevbeginner.com/how-to-play-audio-in-unity-with-examples/#play, 
         //https://answers.unity.com/questions/1327656/how-to-change-the-color-of-the-textmeshpro-gui-com.html,
-        morale.color = new Color(50,150,50,255); //green
+        moraleUp.PlayOneShot(moraleUp.clip, volume);
+        morale.color = new Color32(50,150,50,255); //green
         morale.text = "+ morale";
-        audioSource.PlayOneShot(moraleUp);
-        while(audioSource.isPlaying){
-            print("still playing");
-        }
-        morale.text = "";
     }
     public void DecreaseMorale() 
     {
-        morale.color = new Color(150,50,50,255); //red
+        moraleDown.PlayOneShot(moraleDown.clip, volume);
+        morale.color = new Color32(175,25,25,255); //red
         morale.text = "- morale";
-        audioSource.PlayOneShot(moraleDown);
-        while(audioSource.isPlaying){
-            print("still playing");
+    }
+
+    void Update()
+    {
+        if(!moraleUp.isPlaying && !moraleDown.isPlaying)
+        {
+            morale.text = "";
         }
-        morale.text = "";
     }
 }

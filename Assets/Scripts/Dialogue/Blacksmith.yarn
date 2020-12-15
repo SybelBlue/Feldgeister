@@ -5,7 +5,7 @@ position: 216,382
 ---
 The blacksmith puffs herself out so that she looks a little bit fleecier.
 FRANZISKA: Hi there, Ewald. I suppose you're here about the baa-aad news, then?
-[[Yes, do you have any weapons you could contribute? |morale_up_1_b1]]
+[[Yes, do you have any traps you could contribute? |morale_up_1_b1]]
 [[Yes, but we can get to that. How are you? |morale_down_1_b1]]
 ===
 title: morale_up_1_b1
@@ -17,7 +17,7 @@ position: -91,633
 FRANZISKA: Well, of course, I'm sure you'll be in a rush. 
 FRANZISKA: Straight to business and all that, just like my Pops. Well, he isn't here now anyway, just his big apron and that loud snoring of mine I got to remember him by.
 [[I'm sure he was a great man. |morale_neutral_1_b1]]
-[[What sort of weapons do you have? |morale_up_2_b1]]
+[[What sort of traps do you have? |morale_up_2_b1]]
 ===
 title: morale_down_1_b1
 tags: 
@@ -38,7 +38,7 @@ position: -276,943
 The Blacksmith turns slightly pink.
 FRANZISKA: Well, yes. He was. Certainly.
 She quickly changes the subject.
-FRANZISKA: How about I get you those weapons?
+FRANZISKA: How about I get you those traps?
 [[Wait for Blacksmith |morale_neutral_2_b1]]
 ===
 title: morale_up_2_b1
@@ -50,7 +50,7 @@ FRANZISKA: Well, I'll just go them quick, I know you don't have much time.
 FRANZISKA: See, I've been working on multiple designs all day, so much so that my little hooves are worn out.
 FRANZISKA:I haven't felt this tired since I hauled a whole day's worth of iron back just to my house just to impress...
 FRANZISKA: ...well, that's neither here nor there
-[[How about those weapons |morale_up_3_b1]]
+[[How about those traps? |morale_up_3_b1]]
 [[Wait, impress who? |morale_down_4_b1]]
 ===
 title: morale_down_2_b1
@@ -60,7 +60,7 @@ position: 619,1066
 ---
 The Blacksmith turns a darker shade of pink and takes an involuntary step back
 FRANZISKA: Oh, my. I really don't know how to talk about myself. 
-FRANZISKA: Let me get you some weapons.
+FRANZISKA: Let me get you some traps.
 [[Wait for Blacksmith |morale_up_3_b1]]
 ===
 title: morale_neutral_2_b1
@@ -76,7 +76,7 @@ FRANZISKA: But no funny business, you hear me?
 ->No ma'am
 FRANZISKA: You keep that farmer of ours safe...and Magdalene, and the Watcher and little Minna, bless them.
 [[I'll keep them all safe. The witch, too. |morale_down_3_b1]]
-[[I'll take any weapons you can get me. |morale_up_3_b1]]
+[[I'll take any traps you can get me. |morale_up_3_b1]]
 ===
 title: morale_down_3_b1
 tags: 
@@ -84,7 +84,7 @@ colorID: 0
 position: -517,1666
 ---
 FRANSIZKA: Oh, the witch? Funny, I...nearly forgot. About them. Funny how that happens.
-FRANSIZKA: Anyway. Here are those weapons of yours, Ewald. Let me know if there's anything else I can do for you.
+FRANSIZKA: Anyway. Here are those traps of yours, Ewald. Let me know if there's anything else I can do for you.
 [[Thanks, Blacksmith |end_b1]]
 ===
 title: morale_up_3_b1
@@ -93,7 +93,7 @@ colorID: 0
 position: -33,1653
 ---
 The Blacksmith rustles around in the back of her house a long time, muttering to herself.
-She comes back to the front of the smithy clutching a few battered pitchforks, a sword, and some knives
+She comes back to the front of the smithy clutching a few battered traps.
 FRANZISKA: Well, here's what I have for you today.
 FRANZISKA: Now you take care and everything like that. Alright? 
 FRANZISKA: And, uh, now that I think about it, erm, keep an eye on that Witch of ours too.
@@ -108,8 +108,8 @@ position: 213,1235
 ---
 The Blacksmith seems to turn a little pink
 FRANZISKA: It's not important. Really.
-FRANZISKA: How about those weapons, huh?
-The Blacksmith bustles away to find her weapons.
+FRANZISKA: How about those traps, huh?
+The Blacksmith bustles away to find her traps.
 [[Wait for Blacksmith |morale_up_3_b1]]
 ===
 title: end_b1
