@@ -1,16 +1,22 @@
 title: witch_day_2_start
 tags: 
 colorID: 0
-position: 1128,-266
+position: 1123,-267
 ---
 //<<if $character.witch.hurt = true>> 
-You knock on the door. Silence. You knock again.
-
-[[ |morale_u1_hurt_wi2]]
-[[|morale_d1_hurt_wi2]]
+As you approach the witch's house, you notice that, while everything looks intact, the door is scratched but still securely closed.
+Confused and concerned, you knock on the door. A voice responds, drowsy and slurred. 
+OTTO: Oh, Ewald. Come on in. 
+You enter to find Otto sitting at their table, wrapped in a blanket and nursing a cup of tea.
+-> Whoa. I don't think I've ever seen you sitting down. Your door? Are you okay? Did the feldgeister attack?
+OTTO: Well, no. I mean, yes. I mean, they tried. I was able to bolster my walls with magic, but it took lots out of me. 
+They yawn. 
+OTTO: I won't be much help tonight. Too sleepy. Heh. Sleepy sheepy. 
+[[Get some rest, then. Is there anything I can do to help?|morale_u1_hurt_wi2]]
+[[But Otto, we NEED magic defenses. |morale_d1_hurt_wi2]]
 
 //<<else>>
-As you approach the witch’s house, peaceful except for the out of tune singing, you note that the salt ring surrounsing it is untouched. Must have been an easy night. 
+As you approach the witch’s house, peaceful except for the out of tune singing, you note that the salt ring surrounding it is untouched. Must have been an easy night. 
 -> Knock on the door 
 The singing stops. 
 OTTO: Oh, come on in, Ewald! 
@@ -25,16 +31,23 @@ OTTO: Oh, you know. The usual. Oh! Wanna play a fun game? We each take a bite of
 title: morale_u1_hurt_wi2
 tags: 
 colorID: 0
-position: 491,57
+position: 491,56
 ---
-Empty Text
+They think for a brief moment. 
+OTTO: No, I don't much trust you to gather plants. I'll just have to sleep this one off. And drink lots of ~magic~ tea. Kidding, it's just peppermint. But it helps with the upset stomach too much magic gives me.
+OTTO: Speaking of magic, I might have a little something lying around somewhere. If you can find it. 
+-> Thanks, Otto. You get some rest while I search. 
+After searching for a while, you pick up something that looks sort of magic. It'll have to do. 
+[[Go check on the others. |end_hurt_witch2]]
 ===
 title: morale_d1_hurt_wi2
 tags: 
 colorID: 0
-position: 724,59
+position: 719,59
 ---
-Empty Text
+OTTO: Well, I NEED a PS5, but we can't always get what we want, Ewald. Maybe tomorrow. I'm going to sleep this one off. 
+They shoo you out, and you leave, confused and empty handed. 
+[[ Go check on the others. |end_hurt_witch2]]
 ===
 title: else_high_morale_1_wi2
 tags: 
@@ -74,6 +87,13 @@ title: end_witch_else
 tags: 
 colorID: 0
 position: 1698,402
+---
+Empty Text
+===
+title: end_hurt_witch2
+tags: 
+colorID: 0
+position: 625,333
 ---
 Empty Text
 ===
