@@ -44,8 +44,9 @@ FRANZISKA: How about I get you those traps?
 title: morale_up_2_b1
 tags: 
 colorID: 0
-position: 118,976
+position: 116,972
 ---
+<<increase_morale Blacksmith>>
 FRANZISKA: Well, I'll just go them quick, I know you don't have much time.
 FRANZISKA: See, I've been working on multiple designs all day, so much so that my little hooves are worn out.
 FRANZISKA:I haven't felt this tired since I hauled a whole day's worth of iron back just to my house just to impress...
@@ -56,8 +57,9 @@ FRANZISKA: ...well, that's neither here nor there
 title: morale_down_2_b1
 tags: 
 colorID: 0
-position: 619,1066
+position: 620,1062
 ---
+<<decrease_morale Blacksmith>>
 The Blacksmith turns a darker shade of pink and takes an involuntary step back
 FRANZISKA: Oh, my. I really don't know how to talk about myself. 
 FRANZISKA: Let me get you some traps.
@@ -83,6 +85,7 @@ tags:
 colorID: 0
 position: -517,1666
 ---
+<<decrease_morale Blacksmith>>
 FRANSIZKA: Oh, the witch? Funny, I...nearly forgot. About them. Funny how that happens.
 FRANSIZKA: Anyway. Here are those traps of yours, Ewald. Let me know if there's anything else I can do for you.
 [[Thanks, Blacksmith |end_b1]]
@@ -92,6 +95,7 @@ tags:
 colorID: 0
 position: -33,1653
 ---
+<<increase_morale Blacksmith>>
 The Blacksmith rustles around in the back of her house a long time, muttering to herself.
 She comes back to the front of the smithy clutching a few battered traps.
 FRANZISKA: Well, here's what I have for you today.
@@ -106,6 +110,7 @@ tags:
 colorID: 0
 position: 213,1235
 ---
+<<decrease_morale Blacksmith>>
 The Blacksmith seems to turn a little pink
 FRANZISKA: It's not important. Really.
 FRANZISKA: How about those traps, huh?
