@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System;
 using Yarn.Unity;
 
+public int day_number = 1;
+
 [Serializable]
 public enum GamePhase
 {
@@ -115,9 +117,8 @@ public class GameController : MonoBehaviour
 
         switch (phase)
         {
-            case GamePhase.Dawn: 
-                //CONOR FUTZING TO GET YARN WORKING
-                //CONOR FUTZING TO GET YARN WORKING
+            case GamePhase.Dawn:  
+                day_number ++;
                 strategy = new List<AttackStrategy>(StaticUtils.allStrategies).RandomChoice();
                 strategicTarget = StaticUtils.HouseForStrategy(strategy, houses);
                 strategicTargetJob = strategicTarget.character.job;
@@ -134,6 +135,9 @@ public class GameController : MonoBehaviour
                 phaseTest.RunDawnDialogue();
                 break;
             case GamePhase.Day:
+                print("TODO: set Yarn variables with character defenses"); // Conor
+                //write a get command that just auto-populates the defense level of each character. 
+                // 
                 print("TODO: update character food and morale stats"); // katia
                 print("TODO: display defense and resource dropdowns"); // katia
                 selectionMode = new DialogueSelectionMode(this);
