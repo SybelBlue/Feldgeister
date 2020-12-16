@@ -1,0 +1,234 @@
+title: Watcher_Day2
+tags: 
+colorID: 0
+position: 250,-469
+---
+//<<if $character.watcher.hurt = true>> 
+The watcher's door is battered, the salt circle around her house ragged and smudged.
+Steeling yourself for bad news, you knock. Silence. You knock again, louder, fearing the worst. Finally, a drowsy voice responds. 
+ELFRIEDE: Hello?
+-> Elfriede, it's me, Ewald. Come to check on you.
+ELFRIEDE: Mm. You can come in.
+Ewald enters to find Elfriede in bed, Minna asleep peacefully, Elfriede not so much. The crib in the corner is smashed. Elfriede follows your gaze.
+ELFRIEDE: Thank goodness Minna wasn't with me last night. I'm only wounded, but she's just a lamb. And now I can't even stay awake to protect her. Oh god, I'm a bad mother. And a bad friend, I've put everyone at risk. 
+[[Elfriede, you know that isn't true. This is all on the feldgeister. |morale_u1_whurt]]
+[[That's certainly one way of looking at it. |morale_d1_whurt]]
+
+
+//<<if character.watcher.dead = true>>
+You walk up to the watcher's house, and your heart sinks.
+The door is no longer on its hinges. There are claw marks and scrapes across the sides of the house.
+You enter, dreading what you'll find. 
+In the living room, there are tufts of wool are spread across the floor. Elfriede is gone.
+Oh, god. Minna. 
+[[Go check on the others. |end_dead]]
+
+//<<else>>
+You approach the watcher's house. the defenses look intact, but it's eerily silent. Not wanting to break the still, you quietly call out to Elfriede instead of knocking. 
+-> Elfriede?
+ELFRIEDE: Yes?
+Her voice is low, rough.
+-> Um. Are you- Can I come in?
+ELFRIEDE: I guess. But quietly, Minna is asleep. 
+Ewald enters to find Elfriede standing over Minna's crib, wringing her hands. She looks up at you, her eyes bloodshot.
+-> What happened? Are you hurt?
+She laughs, pained and frightened.
+ELFRIEDE: Nothing happened. I'm totally fine. My defenses held. One house safe for one night. 
+She laughs again.
+->I'm afraid I don't understand.
+She looks at you imploringly. 
+ELFRIEDE: What if everyone I love dies? Oh god, Ewald, what if my lamb is the death of this whole village?
+[[Elfriede, look around. You're safe. Minna's safe. We'll make it through this.  |else_high_morale_1]] 
+[[ Yeah, that would suck. You have any prophetic dreams lately? |else_low_morale_1]]
+===
+title: morale_u1_whurt
+tags: 
+colorID: 0
+position: -918,221
+---
+Elfriede pales, then bitterly speaks. 
+ELFRIEDE: Damn them. They threaten my lamb, they attack my home, and the worst part is that my body wants nothing more than to sleep to recover, but every time I close my eyes, I see their teeth ripping into someone else I love and- 
+She breaks off, curling around Minna, still asleep in her arms. 
+[[ Give her a moment. |morale_u2_whurt]]
+[[ Oh, good! More visions, good intel! What did you see?|morale_d2_whurt]]
+===
+title: morale_d1_whurt
+tags: 
+colorID: 0
+position: -641,208
+---
+ELFRIEDE: And what is that supposed to mean? You're the mayor, aren't you supposed to be able to keep this town safe enough that we can keep a lamb once every twenty years?
+[[ ...I'm sorry. I... I'm scared too. Is there anything I can do to help? |morale_d1u1_whurt]]
+[[ Oh, like you're contributing so much to the town's defense. Scared of your own nightmares. |morale_youfuckedup_whurt]]
+===
+title: end_dead
+tags: 
+colorID: 0
+position: 242,-119
+---
+Empty Text
+===
+title: else_high_morale_1
+tags: 
+colorID: 0
+position: 667,93
+---
+She looks at her peacefully sleeping lamb.
+ELFRIEDE: I'll believe that when we've survived. When I stop having these nightmares. When I don't have to keep passing my lamb around like smuggled goods. 
+ELFRIEDE: You know what's funny? My safety makes the dreams feel even worse. I've been trying to stay awake, but last night the exhaustion caught up to me, and...
+//what she saw with most detail
+-> I'll reinforce our defenses accordingly. Thank you, Elfriede. It's going to be okay. 
+She huffs, too tired to argue. You can tell that the conversation is over. 
+[[ Go check on the others. |end_else]]
+===
+title: else_low_morale_1
+tags: 
+colorID: 0
+position: 934,93
+---
+She looks up at you bitterly.
+ELFRIEDE: Yes, as a matter of fact. I heard a voice, asking me rude questions and not leaving me a moment of peace in the midst of my darkest moment. Oh! That would explain the deja vu I've been feeling this whole interaction. 
+-> Hey!
+ELFRIEDE: Well, sorry! I haven't gotten any sleep in days. If you want a cordial conversation, you can start. 
+[[ Or you can start giving me information!|else_morale_d2_w]]
+[[You're right. Sorry, Elfriede. How can I help you? |else_d1u1_w]]
+===
+title: morale_u2_whurt
+tags: 
+colorID: 0
+position: -1283,358
+---
+The watcher takes a breath.
+//she says what she saw
+-> Thank you, Elfriede.
+She nods.
+ELFRIEDE: Can you hand me Minna's rattle for when she wakes up? It's, well, somewhere in the wreckage of the crib.
+Ewald finds it and hands it to her, getting a small smile in return.
+ELFRIEDE: Thanks, Ewald. You should probably get going now. Much to do, I'm sure.
+-> Yes, of course. Thank you again, Elfriede. 
+[[ Check on the others. |end_whurt]]
+===
+title: morale_d2_whurt
+tags: 
+colorID: 0
+position: -927,481
+---
+The watcher snaps. 
+ELFRIEDE: Maybe if I'm lucky they'll attack you. We might all still die, but at least it'll be more peaceful without your damn interrogations. 
+She curls back on herself, ashamed.
+ELFRIEDE: Sorry. 
+[[ It's okay, you've got a lot going on right now. |morale_d2u1_whurt]]
+[[ You should be. That was really mean. |morale_d3_whurt]]
+===
+title: morale_d1u1_whurt
+tags: 
+colorID: 0
+position: -585,480
+---
+The watcher sighs. 
+ELFRIEDE: Beyond getting all the defenses you can? Probably not. 
+She takes a deep breath. 
+ELFRIEDE: Let me tell you what I saw. 
+//*mario voice* whosa gonna get owwie
+-> Thank you, Elfriede. 
+ELFRIEDE: Mm. Do something with the info, then thank me.
+Ewald hesitates, then leaves. 
+[[ Go check on the others. |end_whurt]]
+===
+title: morale_youfuckedup_whurt
+tags: 
+colorID: 0
+position: -357,480
+---
+The watcher's eyes flash. 
+ELFRIEDE: You're lucky I'm stuck in this bed, Ewald. I'd give you something to be scared of. I don't carry this knife for show. For now, you can do me a favor and get out of my fucking house.
+[[ Leave. Fast. |end_whurt]]
+===
+title: end_whurt
+tags: 
+colorID: 0
+position: -827,1127
+---
+Empty Text
+===
+title: morale_d2u1_whurt
+tags: 
+colorID: 0
+position: -1131,747
+---
+ELFRIEDE: Apology accepted. Let me try to remember. 
+//now they say something about whomst will get hurt, but still just a little info bc she shook
+-> Thank you, Elfriede. 
+She nods.
+ELFRIEDE: Can you hand me Minna's rattle for when she wakes up? It's, well, somewhere in the wreckage of the crib.
+Ewald finds it and hands it to her, getting a small smile in return.
+ELFRIEDE: Thanks, Ewald. You should probably get going now. Much to do, I'm sure.
+-> Yes, of course. Thank you again, Elfriede. 
+[[ Check on the others. |end_whurt]]
+===
+title: morale_d3_whurt
+tags: 
+colorID: 0
+position: -865,738
+---
+ELFRIEDE: Oh, my mistake. It's not like I have anything else on my mind right now. You know what? Get out of my damn house. We rely on you to keep us safe and you spend your precious time interrogating the injured. Out.  
+-> But-
+Incensed but still conscious of the sleeping Minna, Elfriede's voice drops to a hiss.
+ELFRIEDE: OUT! 
+Ewald does as requested. 
+[[ Go check on the others. |end_whurt]]
+===
+title: end_else
+tags: 
+colorID: 0
+position: 885,1058
+---
+Empty Text
+===
+title: else_morale_d2_w
+tags: 
+colorID: 0
+position: 1272,361
+---
+She looks past you, taking a calming breath. 
+ELFRIEDE: You know what, Ewald? Sometimes it feels like when I talk to you, I'm dealing with one of two different people. One of them is my beloved mayor, and one is an asshole. 
+[[ You're one to talk! |else_morale_d3_w]]
+[[I'm sorry, Elfriede. You're already dealing with enough monsters without my help. |else_moraled2u1_w]]
+===
+title: else_d1u1_w
+tags: 
+colorID: 0
+position: 994,359
+---
+Elfriede sighs. 
+ELFRIEDE: Unless you can make the next few nights pass quickly and safely, I don't know if you can do anything.
+ELFRIEDE: You know what's funny? My safety makes the dreams feel even worse. I've been trying to stay awake, but last night the exhaustion caught up to me, and...
+//what she saw with medium detail
+-> I'll reinforce our defenses accordingly. Thank you, Elfriede. It's going to be okay. 
+She huffs, too tired to argue. You can tell that the conversation is over. 
+[[ Go check on the others. |end_else]]
+===
+title: else_morale_d3_w
+tags: 
+colorID: 0
+position: 1175,687
+---
+Elfriede very calmly takes the knife out of her belt and, with only a glance, throws it into a target on the wall. It sinks into the very center of the target with a whisper. Ewald looks stunned. Elfriede scoffs. 
+ELFRIEDE: Oh, didn't think about what I've been doing with my sleepless nights?
+She walks over to the target, pulls the knife free, and tucks it back into her belt. 
+ELFRIEDE: So far, you've only met a scared mother. But I can up it to asshole if you're interested. Bye, Ewald. 
+Not a lot of options left there. You flee.
+[[ Go check on the others and hope those interactions don't go as poorly as this one.|end_else]]
+===
+title: else_moraled2u1_w
+tags: 
+colorID: 0
+position: 1475,691
+---
+The watcher makes a noise of tired affirmation. 
+ELFRIEDE: You must have other things to do. No sense in us standing here and fighting. I'll tell you what I dreamt so you'll go away. 
+//what she dreamed about. like a solid medium on the information scale
+-> I'll reinforce our defenses accordingly. Thank you, Elfriede. 
+She huffs. You can tell that the conversation is over. 
+[[ Go check on the others. |end_else]]
+===
