@@ -8,7 +8,8 @@ using UnityEngine.Events;
 
 public class NPC_Conor : MonoBehaviour {
 
-    public GameController gameController = GetComponent<GameController>();
+
+    public int day_number;
     
     public string strategicAttackTarget;
 
@@ -60,13 +61,15 @@ public class NPC_Conor : MonoBehaviour {
     }
 
     void Start ()
+    //VARIABLE STILL NOT GETTING APPLIED FROM GAMECONTROLLER, ALSO WE NEED TO HAVE THIS EXECUTE AT THE START OF EVERY PHASE
+    //OTHERWISE IT WILL BE UNABLE TO CHANGE 
     {
-        if (day_2 != null && gameController.day_number == 2)
+        if (day_number == 1)
         {
             DialogueRunner dialogueRunner = FindObjectOfType<Yarn.Unity.DialogueRunner>();
             dialogueRunner.Add(day_2);
         }  
-        else if (day_1 != null && gameController.day_number == 1)
+        else if (day_number == 0)
         {       
             DialogueRunner dialogueRunner = FindObjectOfType<Yarn.Unity.DialogueRunner>();
             dialogueRunner.Add(day_1);
