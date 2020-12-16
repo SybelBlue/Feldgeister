@@ -1,7 +1,8 @@
 title: dawn_start
 tags: 
 colorID: 0
-position: -100,-93
+position: -104,-97
 ---
-It's Dawn!
+It's Dawn. You wake with grit in your eyes and a bad feeling that the {$random_attack} might be in particular danger. No time to dwell, though. You have a town to protect.
+-> Get up and face the day.
 ===

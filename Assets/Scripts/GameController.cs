@@ -108,7 +108,7 @@ public class GameController : MonoBehaviour
         buildingMap = map.usedSpaces;
         houses = new List<House>(mapGenerator.GetComponents<House>());
     }
-
+//Need to implement a counter that tells us how many phases we have been through in order to start yarn in right places
     public void RunPhase(GamePhase phase)
     {
         this.phase = phase;
