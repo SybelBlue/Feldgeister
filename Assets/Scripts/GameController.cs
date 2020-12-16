@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System;
 using Yarn.Unity;
 
+
+
 [Serializable]
 public enum GamePhase
 {
@@ -15,6 +17,7 @@ public enum GamePhase
 #pragma warning disable 0649
 public class GameController : MonoBehaviour
 {
+    public int day_number = 0;
    //CONOR FUTZING AGAIN
     //VariableStorage varStore = DialogueRunner.GetComponent<VariableStorage>();
     //CONOR FUTZING AGAIN
@@ -116,8 +119,10 @@ public class GameController : MonoBehaviour
         this.phase = phase;
 
         switch (phase)
-        {
+        {   
             case GamePhase.Dawn: 
+                day_number ++;
+                print(day_number);
                 strategy = new List<AttackStrategy>(StaticUtils.allStrategies).RandomChoice();
                 strategicTarget = StaticUtils.HouseForStrategy(strategy, houses);
                 strategicTargetJob = strategicTarget.character.job;
@@ -136,8 +141,15 @@ public class GameController : MonoBehaviour
                 {
                     dialogueRunner.variableStorage.SetValue($"{character.job}_defense".ToLower(), character.house?.defenseLevel ?? 0);
                 }
+                foreach (var npc_conor in characterContainer.GetComponentsInChildren<NPC_Conor>())
+                {
+                    npc_conor.day_number = day_number;
+                }
                 break;
             case GamePhase.Day:
+                print("TODO: set Yarn variables with character defenses"); // Conor
+                //write a get command that just auto-populates the defense level of each character. 
+                // 
                 print("TODO: update character food and morale stats"); // katia
                 print("TODO: display defense and resource dropdowns"); // katia
                 selectionMode = new DialogueSelectionMode(this);

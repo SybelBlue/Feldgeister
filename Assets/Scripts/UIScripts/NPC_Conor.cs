@@ -8,13 +8,18 @@ using UnityEngine.Events;
 
 public class NPC_Conor : MonoBehaviour {
 
+
+    public int day_number;
+    
     public string strategicAttackTarget;
 
     public string randomAttackTarget; 
     
     public string characterName = "";
 
-    public string talkToNode = "";
+    public string day_1_talkToNode = "";
+
+    public string day_2_talkToNode = "";
 
     public UnityEvent moraleUp;
 
@@ -26,7 +31,8 @@ public class NPC_Conor : MonoBehaviour {
     // }
 
     [Header("Optional")]
-    public YarnProgram scriptToLoad;
+    public YarnProgram day_1;
+    public YarnProgram day_2;
 
     [SerializeField, ReadOnly]
     private Character _linkedCharacter;
@@ -51,13 +57,22 @@ public class NPC_Conor : MonoBehaviour {
 
     public void RunDialogue()
     {
-        FindObjectOfType<DialogueRunner>().StartDialogue(talkToNode);
+        FindObjectOfType<DialogueRunner>().StartDialogue(day_1_talkToNode);
     }
 
-    void Start () {
-        if (scriptToLoad != null) {
+    void Start ()
+    //VARIABLE STILL NOT GETTING APPLIED FROM GAMECONTROLLER, ALSO WE NEED TO HAVE THIS EXECUTE AT THE START OF EVERY PHASE
+    //OTHERWISE IT WILL BE UNABLE TO CHANGE 
+    {
+        if (day_number == 1)
+        {
             DialogueRunner dialogueRunner = FindObjectOfType<Yarn.Unity.DialogueRunner>();
-            dialogueRunner.Add(scriptToLoad);                
+            dialogueRunner.Add(day_2);
+        }  
+        else if (day_number == 0)
+        {       
+            DialogueRunner dialogueRunner = FindObjectOfType<Yarn.Unity.DialogueRunner>();
+            dialogueRunner.Add(day_1);
         }
     }
 }

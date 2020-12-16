@@ -1,7 +1,7 @@
 title: Miner_day2_start
 tags: 
 colorID: 0
-position: -84,-99
+position: -89,-102
 ---
 //<<if $character.miner.hurt = true>>
 The miner's door is battered, the salt circle around her house ragged and smudged.
@@ -23,7 +23,8 @@ In the living room, there is the smell of sulfur mixed with rotting corn.
 Tufts of wool are spread across the floor.
 Magdalene is gone.
 Oh, god.
-[[Go check on the others. |end_dead]]
+-> Go check on the others.
+<<stop>> >> 
 
 //<<else>>
 As you approach the miner’s house, where you find her resting next to a towering pile of... rock? 
@@ -48,7 +49,8 @@ MAGDALENE: I'm sure you want salt. See what you can find around here. Give it to
 MAGDALENE: ...Thanks, Ewald. I'll let you get back to your day of, y'know, other mayor stuff. 
 -> Stay strong, Magdalene. 
 She nods and tries not to show you how much effort it took. 
-[[ Go check on the others. |end_hurt]]
+-> Time to check on the others.
+<<stop>>
 ===
 title: morale_u1_hurt
 tags: 
@@ -63,14 +65,9 @@ MAGDALENE: I don't like feeling so helpless. I mean, I can give you what salt I 
 She nods. 
 MAGDALENE: Thanks, Ewald. Once you find the salt, I. Um. I think I might take a nap. Would you be able to, y'know, shut the curtains for me? 
 -> Of course, sleep well. 
-[[ Check on the others. |end_hurt]]
-===
-title: end_dead
-tags: 
-colorID: 0
-position: 218,-88
----
-Empty Text
+You shut the curtains and Magdalene sighs in relief in the darkness.
+-> Time to check on the others.
+<<stop>>
 ===
 title: else_high_morale_1
 tags: 
@@ -83,7 +80,9 @@ She fetches what is, indeed, quite a lot of salt.
 She looks away, suddenly bashful. 
 MAGDALENE: I was just thinking... I survived all those years ago... It's the least I can do so that... y'know. Hopefully Minna will have a mom to grow up to. 
 -> You know that's what we're all fighting for. Chin up, Magdalene. And thanks again for the salt. 
-[[ Go check on the others. |end_else]]
+MAGDALENE: Chin up, Mayor Schaf.
+->Time to check on the others.
+<<stop>>
 ===
 title: else_low_morale_1
 tags: 
@@ -106,14 +105,8 @@ She goes into her house and returns with a bag of salt. She hands it to you with
 She still won't look at you. 
 MAGDALENE: Yeah, no problem. See you around. 
 She enters her home and closes the tight door behind her. 
-[[ Go check on the others. |end_else]]
-===
-title: end_else
-tags: 
-colorID: 0
-position: -505,850
----
-Empty Text
+->Go check on the others.
+<<stop>>
 ===
 title: else_d1u1_miner
 tags: 
@@ -126,7 +119,8 @@ She scampers into her house, then comes back with a sack full of salt over her s
 MAGDALENE: Oof! It's pretty heavy! I think a few rocks snuck in here too, haha! Barricade material, maybe! Let me know if you want me to haul rocks anywhere for you! 
 -> Of course. Thank you, Magdalene. Keep up the good work!
 She gives you a joking salute, then heads back into her home, which is presumably full of rocks. 
-[[ Go check on the others. |end_else]]
+->Go check on the others.
+<<stop>>
 ===
 title: end_hurt
 tags: 
