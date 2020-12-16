@@ -134,7 +134,7 @@ public class GameController : MonoBehaviour
 
                 foreach (var character in characterContainer.GetComponentsInChildren<Character>())
                 {
-                    dialogueRunner.variableStorage.SetValue($"{character.job}_defense", character.house?.defenseLevel ?? 0);
+                    dialogueRunner.variableStorage.SetValue($"{character.job}_defense".ToLower(), character.house?.defenseLevel ?? 0);
                 }
                 break;
             case GamePhase.Day:
