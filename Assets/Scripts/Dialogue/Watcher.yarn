@@ -1,8 +1,13 @@
 title: watcher_start
 tags: 
 colorID: 0
-position: 381,92
+position: 380,79
 ---
+//Note: MUST put string in parentheses!!!!!
+//{$strategic_attack} 
+//<<if $strategic_attack == "Strongest" is true>>
+//Strongest
+//<<endif>>
 The Watcher is inside her house, cradling Minna
 -> How's the lamb, Elfriede?
     ELFRIEDE: Happy, Ewald. Ignorant. 
@@ -24,7 +29,7 @@ She moves to close the door.
 title: more_info_1
 tags: 
 colorID: 0
-position: 603,402
+position: 600,399
 ---
 ELFRIEDE: I... I haven't been sleeping very well. 
 She hugs the lamb closer to her. Minna coos. 
@@ -34,7 +39,7 @@ She hugs the lamb closer to her. Minna coos.
 title: more_info_2
 tags: 
 colorID: 0
-position: 711,708
+position: 709,704
 ---
 ELFRIEDE: It is. It's been so many years since the last attack
 ELFRIEDE: I just never thought... 
@@ -51,7 +56,7 @@ ELFRIEDE: Is there... Is there anything I can do to help?
 title: more_info_3
 tags: 
 colorID: 0
-position: 284,760
+position: 284,759
 ---
 The Watcher stops and turns around. Minna is quiet. 
 ELFRIEDE: I... I understand. 
@@ -82,12 +87,13 @@ ELFRIEDE: I have a lot to do, Ewald. Come back tomorrow.
 She shuts the door
 -> Elfriede, wait--
 There is only the sound of the kettle beginning to boil
-[[Time to go back to town |end]]
+-> Time to go back to town.
+<<stop>>
 ===
 title: full_info_end
 tags: 
 colorID: 0
-position: 550,1003
+position: 548,1002
 ---
 ELFRIEDE: I... well. Yes. I have.
 Minna perks up and begins baa-ing at Ewald
@@ -102,31 +108,42 @@ ELFRIEDE: Every night I go to sleep and hear wolves howling. But last night... i
 title: some_info_end
 tags: 
 colorID: 0
-position: 915,1092
+position: 911,1090
 ---
 ELFRIEDE: Oh, my worst fears that I relive every night? The demons that tear my baby and I to shreds? Of course, no trouble at all. Let me tell you about them. 
-$if_wolves: Last night, I saw a pack of wolves. They surrounded the house and Minna was wailing, and I barricaded the door shut, but it wasn't strong enough, and nobody came and 
+Last night, I saw a pack of wolves. They surrounded the house and Minna was wailing, and I barricaded the door shut, but it wasn't strong enough, and a rooster with a massive cleaver in its talons walked in and loomed over me...  and it cackled and rasped and said it would be back for me, soon, but that first it had to kill the {$random_attack} and that after that it would... that... it....
 The Watcher shudders, stops.
 ELFRIEDE: Goodbye. 
 She starts to shut the door.
 -> Elfriede, thank you. We'll keep Minna safe.
 ELFRIEDE: Thank me tomorrow. 
 She backs into the house to the sound of Minna crying.
-[[Time to check in on the others |end]]
-===
-title: end
-tags: 
-colorID: 0
-position: 302,1666
----
-Empty Text
+-> Time to check in on the others 
+<<stop>>
 ===
 title: end_most
 tags: 
 colorID: 0
-position: 299,1272
+position: 280,1253
 ---
-The Watcher takes a deep breath and tells Ewald what she saw
-Ewald hands the lamb back. Minna promptly falls asleep.
-[[Thank you, Elfriede |end]]
+ELFRIEDE: I... I saw the a huge figure with a crown of rotten corn. He chased me through the fields and tried to snatch Minna from my arms and -- and he said that if he....
+EWALD: If he?
+<<if $strategic_attack == "Strongest" is true>>
+    ELFRIEDE: That if he couldn't have Minna he would instead take the strongest among us first. 
+<<endif>> 
+<<if $strategic_attack == "Weakest" is true>>
+    ELFRIEDE: That if he couldn't have Minna he would instead take the weakest among us first.
+<<endif>> 
+<<if $strategic_attack == "Random" is true>>
+    ELFRIEDE: That if he couldn't have Minna he would attack at random until he found her.
+<<endif>> 
+ELFRIEDE: And after that he loomed over me and grinned, and his teeth were hard kernels, and he breathed rotten and... and he said that if he'd wondered how the {$random_attack} would taste. That's what he said. That's all. I'm sorry.
+Elfriede seems on the edge of tears. 
+-> Thank you, Elfriede, truly.
+ELFRIDE: I just want to make sure Minna is safe. 
+-> I know
+Ewald hands the lamb back. Minna coos, and promptly falls asleep. Ewald nods at the Watcher.
+ELFRIEDE: May we all make it through the night. If you'll excuse me. 
+-> Of course. Goodbye for now, Elfriede.
+<<stop>>
 ===

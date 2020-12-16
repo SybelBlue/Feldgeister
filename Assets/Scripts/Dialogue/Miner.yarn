@@ -15,6 +15,7 @@ tags:
 colorID: 0
 position: 496,631
 ---
+<<increase_morale Miner>> 
 The miner nods. Her wool is grimy with dust.
 MAGDALENE: You’re right. Been looking on the bright side since Ma and Pa died. Chin up.
 MAGDALENE: Anyhow, what can I do for you, Mr. Mayor. 
@@ -26,6 +27,7 @@ tags:
 colorID: 0
 position: -11,636
 ---
+<<decrease_morale Miner>> 
 The miner swallows nervously. 
 MAGDALENE: Anything can happen in one night. You forget, and nighttime seem so mundane, and then... 
 MAGDALENE: Someone lands themselves with a baby and suddenly so many lives are at risk. 
@@ -37,6 +39,7 @@ tags:
 colorID: 0
 position: -71,1181
 ---
+<<decrease_morale Miner>> 
 The miner’s young face hardens. 
 MAGDALENE: Well, actions have consequences. As we will see tonight. I wonder who they’ll take first. 
 [[We’re all here today, fighting for tomorrow. |more_morale_2_m1]] 
@@ -57,6 +60,7 @@ tags:
 colorID: 0
 position: 455,1354
 ---
+<<increase_morale Miner>> 
 MAGDALENE: Well. I’ll see what I can scrounge up. Been up since dawn working.
 -> That so?
 MAGDALENE: Couldn’t sleep. Being in the ground helps me focus. Just you and the lantern and a pick, taste of salt on your tongue.
@@ -71,6 +75,7 @@ tags:
 colorID: 0
 position: 182,1625
 ---
+<<decrease_morale Miner>> 
 MAGDALENE: Of course. I have some salt. In the back. You can have a bit. 
 -> Great, thanks. Maybe I’ll see you tomorrow!
 MAGDALENE: Maybe is right, Mayor Schaf. See you on the other side. I hope.
@@ -84,6 +89,7 @@ tags:
 colorID: 0
 position: 648,1769
 ---
+<<increase_morale Miner>> 
 Magdalene nods.
 MAGDALENE: Chin up. You’re right. We can make it through tonight, then tomorrow.
 MAGDALENE: I wish this weren’t happening. That poor lamb… If Elfreide knew what she was doing. Not for me to judge.

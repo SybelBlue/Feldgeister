@@ -15,6 +15,9 @@ public enum GamePhase
 #pragma warning disable 0649
 public class GameController : MonoBehaviour
 {
+   //CONOR FUTZING AGAIN
+    //VariableStorage varStore = DialogueRunner.GetComponent<VariableStorage>();
+    //CONOR FUTZING AGAIN
     
     private static int phaseCount = Enum.GetValues(typeof(GamePhase)).Length;
 
@@ -64,6 +67,8 @@ public class GameController : MonoBehaviour
     public CharacterDisplayController leftCharacterDisplay, rightCharacterDisplay;
     public Character mayorCharacter;
 
+    public NPC_Conor watcherNPC;
+
     [Range(0, 1)]
     public float UIVolume;
 
@@ -110,14 +115,20 @@ public class GameController : MonoBehaviour
 
         switch (phase)
         {
-            case GamePhase.Dawn:
+            case GamePhase.Dawn: 
+                //CONOR FUTZING TO GET YARN WORKING
+                //CONOR FUTZING TO GET YARN WORKING
                 strategy = new List<AttackStrategy>(StaticUtils.allStrategies).RandomChoice();
                 strategicTarget = StaticUtils.HouseForStrategy(strategy, houses);
                 strategicTargetJob = strategicTarget.character.job;
-
                 randomTarget = houses.RandomChoice();
                 randomTargetJob = randomTarget.character.job;
                 // use this to transition to day after watcher dialogue finishes
+                // watcherNPC.strategicAttackTarget = Enum.GetName(typeof(CharacterJob),strategicTargetJob);
+                watcherNPC.strategicAttackTarget = Enum.GetName(typeof(AttackStrategy),strategy);
+                watcherNPC.randomAttackTarget = Enum.GetName(typeof(CharacterJob),randomTargetJob);
+                dialogueRunner.variableStorage.SetValue("$strategic_attack", new Yarn.Value(Enum.GetName(typeof(AttackStrategy),strategy)));
+                dialogueRunner.variableStorage.SetValue("$random_attack", new Yarn.Value(Enum.GetName(typeof(CharacterJob),randomTargetJob)));
                 AutoAdvancePhaseOnDialogueComplete();
                 runningDialogue = true;
                 phaseTest.RunDawnDialogue();

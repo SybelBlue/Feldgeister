@@ -2,11 +2,16 @@
 using Yarn.Unity;
 using UnityEngine.Events;
 
+
 /// attached to the non-player characters, and stores the name of the Yarn
 /// node that should be run when you talk to them.
 
 public class NPC_Conor : MonoBehaviour {
 
+    public string strategicAttackTarget;
+
+    public string randomAttackTarget; 
+    
     public string characterName = "";
 
     public string talkToNode = "";
@@ -14,6 +19,11 @@ public class NPC_Conor : MonoBehaviour {
     public UnityEvent moraleUp;
 
     public UnityEvent moraleDown;
+
+    // public AttackStrategy strategy
+    // {
+    //     get => 
+    // }
 
     [Header("Optional")]
     public YarnProgram scriptToLoad;
