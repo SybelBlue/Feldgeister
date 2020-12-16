@@ -8,6 +8,8 @@ using UnityEngine.Events;
 
 public class NPC_Conor : MonoBehaviour {
 
+    public GameController gameController = GetComponent<GameController>();
+    
     public string strategicAttackTarget;
 
     public string randomAttackTarget; 
@@ -59,12 +61,12 @@ public class NPC_Conor : MonoBehaviour {
 
     void Start ()
     {
-        if (day_2 != null and day_number = 2)
+        if (day_2 != null && gameController.day_number == 2)
         {
             DialogueRunner dialogueRunner = FindObjectOfType<Yarn.Unity.DialogueRunner>();
             dialogueRunner.Add(day_2);
         }  
-        else if (day_1 != null and day_number = 1)
+        else if (day_1 != null && gameController.day_number == 1)
         {       
             DialogueRunner dialogueRunner = FindObjectOfType<Yarn.Unity.DialogueRunner>();
             dialogueRunner.Add(day_1);

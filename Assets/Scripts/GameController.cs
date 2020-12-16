@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System;
 using Yarn.Unity;
 
-public int day_number = 1;
+
 
 [Serializable]
 public enum GamePhase
@@ -17,6 +17,7 @@ public enum GamePhase
 #pragma warning disable 0649
 public class GameController : MonoBehaviour
 {
+    public int day_number = 1;
    //CONOR FUTZING AGAIN
     //VariableStorage varStore = DialogueRunner.GetComponent<VariableStorage>();
     //CONOR FUTZING AGAIN
@@ -49,6 +50,8 @@ public class GameController : MonoBehaviour
     private CameraController _cameraController;
     public CameraController cameraController
         => _cameraController ?? (_cameraController = Camera.main.GetComponent<CameraController>());
+
+    public GameObject characterContainer;
 
     private Phase_Test _phaseTest;
     private Phase_Test phaseTest
@@ -116,15 +119,14 @@ public class GameController : MonoBehaviour
         this.phase = phase;
 
         switch (phase)
-        {
-            case GamePhase.Dawn:  
+        {   
+            case GamePhase.Dawn: 
                 day_number ++;
                 strategy = new List<AttackStrategy>(StaticUtils.allStrategies).RandomChoice();
                 strategicTarget = StaticUtils.HouseForStrategy(strategy, houses);
                 strategicTargetJob = strategicTarget.character.job;
                 randomTarget = houses.RandomChoice();
                 randomTargetJob = randomTarget.character.job;
-                // use this to transition to day after watcher dialogue finishes
                 // watcherNPC.strategicAttackTarget = Enum.GetName(typeof(CharacterJob),strategicTargetJob);
                 watcherNPC.strategicAttackTarget = Enum.GetName(typeof(AttackStrategy),strategy);
                 watcherNPC.randomAttackTarget = Enum.GetName(typeof(CharacterJob),randomTargetJob);
@@ -133,6 +135,11 @@ public class GameController : MonoBehaviour
                 AutoAdvancePhaseOnDialogueComplete();
                 runningDialogue = true;
                 phaseTest.RunDawnDialogue();
+
+                foreach (var character in characterContainer.GetComponentsInChildren<Character>())
+                {
+                    dialogueRunner.variableStorage.SetValue($"{character.job}_defense", new Yarn.Value(character.house?.defenseLevel ?? 0));
+                }
                 break;
             case GamePhase.Day:
                 print("TODO: set Yarn variables with character defenses"); // Conor
