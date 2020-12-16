@@ -48,6 +48,8 @@ public class GameController : MonoBehaviour
     public CameraController cameraController
         => _cameraController ?? (_cameraController = Camera.main.GetComponent<CameraController>());
 
+    public GameObject characterContainer;
+
     private Phase_Test _phaseTest;
     private Phase_Test phaseTest
         => _phaseTest ?? (_phaseTest = GetComponent<Phase_Test>());
@@ -116,14 +118,11 @@ public class GameController : MonoBehaviour
         switch (phase)
         {
             case GamePhase.Dawn: 
-                //CONOR FUTZING TO GET YARN WORKING
-                //CONOR FUTZING TO GET YARN WORKING
                 strategy = new List<AttackStrategy>(StaticUtils.allStrategies).RandomChoice();
                 strategicTarget = StaticUtils.HouseForStrategy(strategy, houses);
                 strategicTargetJob = strategicTarget.character.job;
                 randomTarget = houses.RandomChoice();
                 randomTargetJob = randomTarget.character.job;
-                // use this to transition to day after watcher dialogue finishes
                 // watcherNPC.strategicAttackTarget = Enum.GetName(typeof(CharacterJob),strategicTargetJob);
                 watcherNPC.strategicAttackTarget = Enum.GetName(typeof(AttackStrategy),strategy);
                 watcherNPC.randomAttackTarget = Enum.GetName(typeof(CharacterJob),randomTargetJob);
@@ -132,6 +131,11 @@ public class GameController : MonoBehaviour
                 AutoAdvancePhaseOnDialogueComplete();
                 runningDialogue = true;
                 phaseTest.RunDawnDialogue();
+
+                foreach (var character in characterContainer.GetComponentsInChildren<Character>())
+                {
+                    dialogueRunner.variableStorage.SetValue($"{character.job}_defense", character.house?.defenseLevel ?? 0);
+                }
                 break;
             case GamePhase.Day:
                 print("TODO: update character food and morale stats"); // katia
