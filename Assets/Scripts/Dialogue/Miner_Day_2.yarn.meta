@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: e4df3ba53c6ad3a489e794aab4e38bc3
+guid: c07eb650f060c6e4e8fa6c91ea34d8f7
 ScriptedImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -8,7 +8,7 @@ ScriptedImporter:
   assetBundleName: 
   assetBundleVariant: 
   script: {fileID: 11500000, guid: 94073015eacc34c1d8fc6786e43d60ca, type: 3}
-  baseLanguageID: en-US
+  baseLanguageID: 
   stringIDs: []
   compilationStatus: 0
   isSuccesfullyCompiled: 1
