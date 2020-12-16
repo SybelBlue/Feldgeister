@@ -34,7 +34,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -2.3936157, y: -34.637573}
+  m_AnchoredPosition: {x: -24, y: -37}
   m_SizeDelta: {x: 285.6211, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6781479794483128917
@@ -64,7 +64,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Witch: 5'
+  m_text: 'Witch: hungry'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: a72002f5b07584489b8056ba07a1e4ff, type: 2}
   m_sharedMaterial: {fileID: 7566451771745737405, guid: a72002f5b07584489b8056ba07a1e4ff,
@@ -92,8 +92,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 60
-  m_fontSizeBase: 60
+  m_fontSize: 50
+  m_fontSizeBase: 50
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -168,8 +168,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -2.3936157, y: -83.4176}
-  m_SizeDelta: {x: 285.6211, y: 50}
+  m_AnchoredPosition: {x: -18.53804, y: -87}
+  m_SizeDelta: {x: 296.5454, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5596165917025379088
 CanvasRenderer:
@@ -198,7 +198,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Farmer: 5'
+  m_text: 'Farmer: hungry'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: a72002f5b07584489b8056ba07a1e4ff, type: 2}
   m_sharedMaterial: {fileID: 7566451771745737405, guid: a72002f5b07584489b8056ba07a1e4ff,
@@ -226,8 +226,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 60
-  m_fontSizeBase: 60
+  m_fontSize: 50
+  m_fontSizeBase: 50
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -279,9 +279,9 @@ GameObject:
   - component: {fileID: 6493750343765575686}
   - component: {fileID: 6441097683722352260}
   - component: {fileID: 2348603121008800244}
-  - component: {fileID: 1745919291699379533}
+  - component: {fileID: 4333110241342715844}
   m_Layer: 5
-  m_Name: Defense Rectangle
+  m_Name: Hunger Rectangle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -296,7 +296,7 @@ RectTransform:
   m_GameObject: {fileID: 397189084306397741}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.8, y: 0.8, z: 1}
   m_Children:
   - {fileID: 3174109365776758591}
   - {fileID: 4548020000529698176}
@@ -308,7 +308,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -530, y: -212.8}
+  m_AnchoredPosition: {x: -563, y: -181}
   m_SizeDelta: {x: 379.97876, y: 325.65448}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6441097683722352260
@@ -348,7 +348,7 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &1745919291699379533
+--- !u!114 &4333110241342715844
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -357,19 +357,24 @@ MonoBehaviour:
   m_GameObject: {fileID: 397189084306397741}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2b055e9e50eaf4de6b58df3a95a051ce, type: 3}
+  m_Script: {fileID: 11500000, guid: 9bf1d5618157949b38d3c6219c3668ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   blacksmith: {fileID: 844672491159608224}
-  blacksmithChar: {fileID: 0}
+  blacksmithChar: {fileID: 6286999437612336129, guid: 279189553b44545dcbef89debc46304b,
+    type: 3}
   witch: {fileID: 8620099758898546436}
-  witchChar: {fileID: 0}
+  witchChar: {fileID: 183142497910124613, guid: 558566e8d34374b10a2e32e448bffaba,
+    type: 3}
   miner: {fileID: 8917703420912288566}
-  minerChar: {fileID: 0}
+  minerChar: {fileID: 7640438891557228836, guid: 7cf45a1cc025e49cfbf8ad7234fe2154,
+    type: 3}
   farmer: {fileID: 7755052715220004745}
-  farmerChar: {fileID: 0}
+  farmerChar: {fileID: 8469361942942560043, guid: cbdc0b02be6454023891e30cc46a0911,
+    type: 3}
   watcher: {fileID: 1700901440169450014}
-  watcherChar: {fileID: 0}
+  watcherChar: {fileID: 372054244289775459, guid: c2a6bc6fdd27343249482f9847143570,
+    type: 3}
 --- !u!1 &729121503213373018
 GameObject:
   m_ObjectHideFlags: 0
@@ -404,7 +409,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -34.766968, y: 14.142456}
+  m_AnchoredPosition: {x: -19.145935, y: -5.7800293}
   m_SizeDelta: {x: 363.90308, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1679151343018019994
@@ -462,8 +467,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 60
-  m_fontSizeBase: 60
+  m_fontSize: 50
+  m_fontSizeBase: 50
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -538,7 +543,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 4.3789062, y: 111.702515}
+  m_AnchoredPosition: {x: 19.999939, y: 91.78003}
   m_SizeDelta: {x: 285.6211, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4047069152528037792
@@ -596,8 +601,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 60
-  m_fontSizeBase: 60
+  m_fontSize: 50
+  m_fontSizeBase: 50
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -715,7 +720,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: See Defenses
+  m_Text: See Hunger
 --- !u!1 &3819996762329344573
 GameObject:
   m_ObjectHideFlags: 0
@@ -828,7 +833,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -2.3936157, y: 62.922485}
+  m_AnchoredPosition: {x: -24.000042, y: 60.559}
   m_SizeDelta: {x: 285.6211, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6677920374938567770
@@ -858,7 +863,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Miner: 5'
+  m_text: 'Miner: hungry'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: a72002f5b07584489b8056ba07a1e4ff, type: 2}
   m_sharedMaterial: {fileID: 7566451771745737405, guid: a72002f5b07584489b8056ba07a1e4ff,
@@ -886,8 +891,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 60
-  m_fontSizeBase: 60
+  m_fontSize: 50
+  m_fontSizeBase: 50
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -1205,7 +1210,7 @@ MonoBehaviour:
   hideDefenses:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1745919291699379533}
+      - m_Target: {fileID: 4333110241342715844}
         m_MethodName: TurnOff
         m_Mode: 1
         m_Arguments:
@@ -1234,7 +1239,7 @@ GameObject:
   - component: {fileID: 4003657154054699545}
   - component: {fileID: 3552232976513718841}
   m_Layer: 5
-  m_Name: See Defenses
+  m_Name: See Hunger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1340,7 +1345,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1745919291699379533}
+      - m_Target: {fileID: 4333110241342715844}
         m_MethodName: ToggleDisplay
         m_Mode: 1
         m_Arguments:
@@ -1547,7 +1552,7 @@ RectTransform:
   m_GameObject: {fileID: 5500522165526134815}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.8, y: 0.8, z: 1}
   m_Children:
   - {fileID: 5259945432790318928}
   - {fileID: 988168007522207197}
@@ -1558,7 +1563,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 530, y: -212.8}
+  m_AnchoredPosition: {x: 563, y: -181}
   m_SizeDelta: {x: 379.97876, y: 325.65448}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6430905084780318938
@@ -1652,8 +1657,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -2.3936157, y: 14.142456}
-  m_SizeDelta: {x: 285.6211, y: 50}
+  m_AnchoredPosition: {x: -5.653042, y: 12.389997}
+  m_SizeDelta: {x: 322.3169, y: 48.78002}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3586380814256315828
 CanvasRenderer:
@@ -1682,7 +1687,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Watcher: 5'
+  m_text: 'Watcher: hungry'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: a72002f5b07584489b8056ba07a1e4ff, type: 2}
   m_sharedMaterial: {fileID: 7566451771745737405, guid: a72002f5b07584489b8056ba07a1e4ff,
@@ -1710,8 +1715,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 60
-  m_fontSizeBase: 60
+  m_fontSize: 50
+  m_fontSizeBase: 50
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -1786,7 +1791,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 4.3789062, y: 62.922485}
+  m_AnchoredPosition: {x: 20, y: 43}
   m_SizeDelta: {x: 285.6211, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &871118512923339750
@@ -1844,8 +1849,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 60
-  m_fontSizeBase: 60
+  m_fontSize: 50
+  m_fontSizeBase: 50
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -1920,7 +1925,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -27.380981, y: -34.637573}
+  m_AnchoredPosition: {x: -11.759949, y: -54.56006}
   m_SizeDelta: {x: 349.2251, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1115670555626188062
@@ -1978,8 +1983,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 60
-  m_fontSizeBase: 60
+  m_fontSize: 50
+  m_fontSizeBase: 50
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -2054,8 +2059,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -2.3936768, y: 111.702576}
-  m_SizeDelta: {x: 285.6211, y: 50}
+  m_AnchoredPosition: {x: 15.08896, y: 110.558}
+  m_SizeDelta: {x: 363.79993, y: 49.99752}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8363516503670188878
 CanvasRenderer:
@@ -2084,7 +2089,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Blacksmith: 5'
+  m_text: 'Blacksmith: starving'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: a72002f5b07584489b8056ba07a1e4ff, type: 2}
   m_sharedMaterial: {fileID: 7566451771745737405, guid: a72002f5b07584489b8056ba07a1e4ff,
@@ -2112,8 +2117,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 60
-  m_fontSizeBase: 60
+  m_fontSize: 50
+  m_fontSizeBase: 50
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
