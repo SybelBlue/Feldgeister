@@ -143,11 +143,12 @@ public class GameController : MonoBehaviour
                 strategicTargetJob = strategicTarget.character.job;
                 randomTarget = houses.RandomChoice();
                 randomTargetJob = randomTarget.character.job;
-                // watcherNPC.strategicAttackTarget = Enum.GetName(typeof(CharacterJob),strategicTargetJob);
+                // watcherNPC.strategicAttackTargetChar = Enum.GetName(typeof(CharacterJob),strategicTargetJob);
                 watcherNPC.strategicAttackTarget = Enum.GetName(typeof(AttackStrategy),strategy);
                 watcherNPC.randomAttackTarget = Enum.GetName(typeof(CharacterJob),randomTargetJob);
                 dialogueRunner.variableStorage.SetValue("$strategic_attack", new Yarn.Value(Enum.GetName(typeof(AttackStrategy),strategy)));
                 dialogueRunner.variableStorage.SetValue("$random_attack", new Yarn.Value(Enum.GetName(typeof(CharacterJob),randomTargetJob)));
+                dialogueRunner.variableStorage.SetValue("$strategic_attack_character", new Yarn.Value(Enum.GetName(typeof(CharacterJob),strategicTargetJob)));
                 AutoAdvancePhaseOnDialogueComplete();
                 runningDialogue = true;
                 phaseTest.RunDawnDialogue();
