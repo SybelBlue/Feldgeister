@@ -26,6 +26,13 @@ public class GameController : MonoBehaviour
     private static int phaseCount = Enum.GetValues(typeof(GamePhase)).Length;
 
     public GamePhase phase = GamePhase.Night;
+
+    public GameObject endDialogue;
+    public GameObject endFoodDonation;
+    public GameObject endDefensePlacement;
+    public GameObject foodDonationScreen;
+    public GameObject dayTopMenu;
+    public GameObject duskTopMenu;
     
     private ISelectionMode _selectionMode;
     private ISelectionMode selectionMode
@@ -190,6 +197,7 @@ public class GameController : MonoBehaviour
         }   
         else
         {
+            print(foodRemaining);
             FinishFoodSelection();
         }
     }

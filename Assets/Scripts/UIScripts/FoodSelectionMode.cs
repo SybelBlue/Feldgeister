@@ -14,10 +14,16 @@ public class FoodSelectionMode : ISelectionMode
     public void OnBeginSelectionMode()
     {
         gameController.ClearHouseAndCharacterDisplays();
+        gameController.endDialogue.SetActive(false);
+        gameController.foodDonationScreen.SetActive(true);
+        gameController.endFoodDonation.SetActive(true);
     }
     
     public void OnEndSelectionMode()
-    {  }
+    { 
+        gameController.foodDonationScreen.SetActive(false);
+        gameController.endFoodDonation.SetActive(false);
+    }
     
     public void OnHover(Character character)
     {

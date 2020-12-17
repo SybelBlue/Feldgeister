@@ -10,7 +10,11 @@ public class LambSelectionMode : ISelectionMode
     }
 
     public void OnBeginSelectionMode()
-        => gameController.ClearHouseAndCharacterDisplays();
+    {
+        gameController.ClearHouseAndCharacterDisplays();
+        gameController.dayTopMenu.SetActive(false);
+        gameController.duskTopMenu.SetActive(true);
+    }
     
     public void OnEndSelectionMode()
         => gameController.ClearHouseAndCharacterDisplays();

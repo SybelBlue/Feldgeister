@@ -23,7 +23,10 @@ public class DialogueSelectionMode : ISelectionMode
     }
 
     public void OnEndSelectionMode()
-        => gameController.ClearHouseAndCharacterDisplays();
+    {
+        gameController.ClearHouseAndCharacterDisplays();
+        gameController.endDialogue.SetActive(false);
+    }
 
     public void OnHover(Character c)
     {

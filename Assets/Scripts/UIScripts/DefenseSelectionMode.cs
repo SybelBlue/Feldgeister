@@ -12,7 +12,10 @@ public class DefenseSelectionMode : ISelectionMode
     }
 
     public void OnBeginSelectionMode()
-        => gameController.ClearHouseAndCharacterDisplays();
+    {
+        gameController.ClearHouseAndCharacterDisplays();
+        gameController.endDefensePlacement.SetActive(true);
+    }
     
     public void OnEndSelectionMode()
     {  }

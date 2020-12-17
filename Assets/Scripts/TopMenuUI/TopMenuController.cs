@@ -11,6 +11,12 @@ public class TopMenuController : MonoBehaviour
     public UnityEvent hideResources;
     public UnityEvent hideDefenses;
     public UnityEvent changeToDusk;
+    public GameController gameController;
+
+    void OnStart()
+    {
+        gameController.foodRemaining = 3;
+    }
    
    //reduces food by one, should be called after speaking with a character
     public void ReduceFood()
