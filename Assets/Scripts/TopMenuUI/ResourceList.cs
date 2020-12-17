@@ -6,7 +6,7 @@ using TMPro;
 public class ResourceList : MonoBehaviour
 {
     public Character miner;
-    public int salt = 0;
+    public int salt = 2;
     public TMP_Text minerText;
     public int weapons = 0;
     public TMP_Text blacksmithText;

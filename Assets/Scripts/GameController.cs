@@ -142,6 +142,7 @@ public class GameController : MonoBehaviour
                 print(day_number);
                 foodRemaining = 3;
                 topMenuUI.ResetFood();
+                print("UI menu reset");
                 //topMenuUI.UpdateAll();
                 dialogueRunner.variableStorage.SetValue("$day_number", new Yarn.Value(day_number));
                 strategy = new List<AttackStrategy>(StaticUtils.allStrategies).RandomChoice();
@@ -155,17 +156,21 @@ public class GameController : MonoBehaviour
                 dialogueRunner.variableStorage.SetValue("$strategic_attack", new Yarn.Value(Enum.GetName(typeof(AttackStrategy),strategy)));
                 dialogueRunner.variableStorage.SetValue("$random_attack", new Yarn.Value(Enum.GetName(typeof(CharacterJob),randomTargetJob)));
                 AutoAdvancePhaseOnDialogueComplete();
+                print("got to the end of this long guy");
                 runningDialogue = true;
                 //adding to seperate out the two dawn dialogues as it seems upset when we roll over into a new day
                 if (day_number == 1)
                 {
                     phaseTest.RunDawnDialogue();
+                    print("running dialogue 1");
 
                 }
                 if (day_number == 2)
                 {
                     phaseTest.RunDawnDialogueTwo();
+                    print("running dialogue 2");
                 }
+                print("yikes why are we here");
 
                 foreach (var character in characterContainer.GetComponentsInChildren<Character>())
                 {
