@@ -8,7 +8,7 @@ using UnityEngine.Events;
 
 public class NPC_Conor : MonoBehaviour {
 
-
+    [ReadOnly]
     public int day_number;
     
     public string strategicAttackTarget;
@@ -60,16 +60,17 @@ public class NPC_Conor : MonoBehaviour {
         FindObjectOfType<DialogueRunner>().StartDialogue(day_1_talkToNode);
     }
 
-    void Start ()
+    public void SetDayDialogue(int day_number)
     //VARIABLE STILL NOT GETTING APPLIED FROM GAMECONTROLLER, ALSO WE NEED TO HAVE THIS EXECUTE AT THE START OF EVERY PHASE
     //OTHERWISE IT WILL BE UNABLE TO CHANGE 
     {
-        if (day_number == 1)
+        this.day_number = day_number;
+        if (day_number == 2)
         {
             DialogueRunner dialogueRunner = FindObjectOfType<Yarn.Unity.DialogueRunner>();
             dialogueRunner.Add(day_2);
         }  
-        else if (day_number == 0)
+        else if (day_number == 1)
         {       
             DialogueRunner dialogueRunner = FindObjectOfType<Yarn.Unity.DialogueRunner>();
             dialogueRunner.Add(day_1);

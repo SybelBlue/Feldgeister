@@ -3,6 +3,14 @@ tags:
 colorID: 0
 position: -104,-97
 ---
-It's Dawn. You wake with grit in your eyes and a bad feeling that the {$random_attack} might be in particular danger. No time to dwell, though. You have a town to protect.
--> Get up and face the day.
+<<if $day_number is 1>> 
+    Day {$day_number} of the attacks.
+    It's Dawn. You wake with grit in your eyes and a bad feeling that the {$random_attack} might be in particular danger. No time to dwell, though. You have a town to protect.
+    -> Get up and face the day.
+<<endif>> 
+<<if $day_number is 2>> 
+    You hear, in the distance, Minna crying, and relief floods you. She's alive.
+    Still, you can't quite shake the feeling that {$random_attack} will be in danger tonight.
+    -> Time to talk to the townsfolk.
+<<endif>>
 ===

@@ -8,11 +8,17 @@ ScriptedImporter:
   assetBundleName: 
   assetBundleVariant: 
   script: {fileID: 11500000, guid: 94073015eacc34c1d8fc6786e43d60ca, type: 3}
-  baseLanguageID: 
-  stringIDs:
-  - Dawn_Main-dawn_start-0
+  baseLanguageID: en-US
+  stringIDs: []
   compilationStatus: 1
-  isSuccesfullyCompiled: 1
-  compilationErrorMessage: 
+  isSuccesfullyCompiled: 0
+  compilationErrorMessage: 'Error on line 15 at position 1:
+
+    mismatched input
+    ''==='' expecting COMMAND_START
+
+    ===
+
+    ^^^'
   baseLanguage: {instanceID: 0}
   localizations: []

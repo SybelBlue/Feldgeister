@@ -131,6 +131,7 @@ public class GameController : MonoBehaviour
             case GamePhase.Dawn: 
                 day_number ++;
                 print(day_number);
+                dialogueRunner.variableStorage.SetValue("$day_number", new Yarn.Value(day_number));
                 strategy = new List<AttackStrategy>(StaticUtils.allStrategies).RandomChoice();
                 strategicTarget = StaticUtils.HouseForStrategy(strategy, houses);
                 strategicTargetJob = strategicTarget.character.job;
@@ -147,16 +148,14 @@ public class GameController : MonoBehaviour
 
                 foreach (var character in characterContainer.GetComponentsInChildren<Character>())
                 {
-                    dialogueRunner.variableStorage.SetValue($"{character.job}_defense".ToLower(), character.house?.defenseLevel ?? 0);
+                    dialogueRunner.variableStorage.SetValue($"${character.job}_defense".ToLower(), new Yarn.Value(character.house?.defenseLevel ?? 0));
                 }
                 foreach (var npc_conor in characterContainer.GetComponentsInChildren<NPC_Conor>())
                 {
-                    npc_conor.day_number = day_number;
+                    npc_conor.SetDayDialogue(day_number);
                 }
                 break;
             case GamePhase.Day:
-                print("TODO: set Yarn variables with character defenses"); // Conor
-                //write a get command that just auto-populates the defense level of each character. 
                 // 
                 print("TODO: update character food and morale stats"); // katia
                 print("TODO: display defense and resource dropdowns"); // katia
@@ -263,22 +262,23 @@ public class GameController : MonoBehaviour
 
     public void BeginOpeningDialogue()
     {
-#if UNITY_EDITOR
-        if (runOpeningDialogue)
-#endif
-        {
-            GetComponent<NPC_Conor>()?.RunDialogue();
-            print("delaying game start till after opening dialogue");
-            AutoAdvancePhaseOnDialogueComplete();
-            cameraLocked = true;
-        }
-#if UNITY_EDITOR
-        else
-        {
-            cameraLocked = false;
-            AdvancePhase();
-        }
-#endif
+// #if UNITY_EDITOR
+//         if (runOpeningDialogue)
+// #endif
+//         {
+//             GetComponent<NPC_Conor>()?.RunDialogue();
+//             print("delaying game start till after opening dialogue");
+//             AutoAdvancePhaseOnDialogueComplete();
+//             cameraLocked = true;
+//         }
+// #if UNITY_EDITOR
+//         else
+//         {
+//             cameraLocked = false;
+//             AdvancePhase();
+//         }
+// #endif
+        AdvancePhase();
     }
 
     public void AutoAdvancePhaseOnDialogueComplete()
