@@ -57,7 +57,15 @@ public class NPC_Conor : MonoBehaviour {
 
     public void RunDialogue()
     {
-        FindObjectOfType<DialogueRunner>().StartDialogue(day_1_talkToNode);
+        if (day_number == 2)
+        {
+            FindObjectOfType<DialogueRunner>().StartDialogue(day_2_talkToNode);
+        }
+
+        if (day_number == 1)
+        {
+            FindObjectOfType<DialogueRunner>().StartDialogue(day_1_talkToNode);
+        }
     }
 
     public void SetDayDialogue(int day_number)
