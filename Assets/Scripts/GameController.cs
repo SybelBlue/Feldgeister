@@ -37,6 +37,7 @@ public class GameController : MonoBehaviour
     public GameObject hungerList;
     public ResourceList resourceList;
     public GameObject duskTopMenu;
+    public GameObject dawnTwoWindow;
     
     private ISelectionMode _selectionMode;
     private ISelectionMode selectionMode
@@ -168,6 +169,7 @@ public class GameController : MonoBehaviour
                 if (day_number == 2)
                 {
                     phaseTest.RunDawnDialogueTwo();
+                    dawnTwoWindow.SetActive(true);
                     print("running dialogue 2");
                 }
                 print("yikes why are we here");
@@ -248,6 +250,7 @@ public class GameController : MonoBehaviour
 
     public void AdvancePhase()
     {
+        print("ADVANCING PHASE");
         var nextPhase = (GamePhase)(((int)phase + 1) % phaseCount);
         RunPhase(nextPhase);
     }
