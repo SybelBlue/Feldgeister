@@ -199,10 +199,10 @@ public class GameController : MonoBehaviour
                 //moved here from dawn in order to ensure that it registers who is actually the strongest character available, though setting strategy
                 //earlier on may end up not actually reflecting here -- Conor
                 dialogueRunner.variableStorage.SetValue("$strategic_attack_character", new Yarn.Value(Enum.GetName(typeof(CharacterJob),strategicTargetJob)));
-                MonsterAttack();
                 AutoAdvancePhaseOnDialogueComplete();
                 runningDialogue = true;
                 phaseTest.RunNightDialogue();
+                MonsterAttack();
                 print("TODO: show feldgeister on screen");
                 break;
         }

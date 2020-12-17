@@ -4,6 +4,6 @@ colorID: 0
 position: -118,-116
 ---
 You hear, in the distance, Minna crying, and relief floods you. She's alive.
-Still, you can't quite shake the feeling that {$random_attack} will be in danger tonight.
--> Time to talk to the townsfolk.
+//Still, you can't quite shake the feeling that {$random_attack} will be in danger tonight.
+//-> Time to talk to the townsfolk.
 ===
