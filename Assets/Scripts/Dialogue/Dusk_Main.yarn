@@ -3,10 +3,9 @@ tags:
 colorID: 0
 position: -37,2
 ---
-The blacksmith arrives, bearing traps and weapons she has made during the day. 
-FRANZISKA: I hope these help, Ewald. 
--> They will. Stay safe tonight. 
-FRANZISKA: You as well, Mayor Schaf. 
+Dusk approaches. A chill is rising in the air, the Feldgeister rousing. You've run out of daylight and must decide where Minna will be safest, where to place the salt and traps to keep the wolves at bay.
+EWALD: May we make it through the night.
+-> It's time to choose.
 //<<increase_traps>> 
 //<increase_weapons>>
 ===
