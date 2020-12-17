@@ -1,8 +1,9 @@
 title: blacksmith_start
 tags: 
 colorID: 7
-position: 216,382
+position: 214,379
 ---
+The Blacksmith's defense is {$Blacksmith_defense} 
 The blacksmith puffs herself out so that she looks a little bit fleecier.
 FRANZISKA: Hi there, Ewald. I suppose you're here about the baa-aad news, then?
 [[Yes, do you have any traps you could contribute? |morale_up_1_b1]]
