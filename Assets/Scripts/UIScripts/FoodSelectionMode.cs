@@ -17,6 +17,8 @@ public class FoodSelectionMode : ISelectionMode
         gameController.endDialogue.SetActive(false);
         gameController.foodDonationScreen.SetActive(true);
         gameController.endFoodDonation.SetActive(true);
+        gameController.hungerList.SetActive(true);
+        gameController.topMenuUI.UpdateAll();
     }
     
     public void OnEndSelectionMode()
@@ -44,6 +46,7 @@ public class FoodSelectionMode : ISelectionMode
         if (character && gameController.foodRemaining > 0 && character.Feed())
         {
             gameController.foodRemaining--;
+            gameController.topMenuUI.UpdateAll();
             if (gameController.foodRemaining == 0)
             {
                 gameController.FinishFoodSelection();

@@ -34,6 +34,7 @@ public class GameController : MonoBehaviour
     public GameObject lambPlacementScreen;
     public GameObject defensePlacementScreen;
     public GameObject dayTopMenu;
+    public GameObject hungerList;
     public GameObject duskTopMenu;
     
     private ISelectionMode _selectionMode;
@@ -136,7 +137,8 @@ public class GameController : MonoBehaviour
                 day_number ++;
                 print(day_number);
                 foodRemaining = 3;
-                topMenuUI.UpdateAll();
+                topMenuUI.ResetFood();
+                //topMenuUI.UpdateAll();
                 dialogueRunner.variableStorage.SetValue("$day_number", new Yarn.Value(day_number));
                 strategy = new List<AttackStrategy>(StaticUtils.allStrategies).RandomChoice();
                 strategicTarget = StaticUtils.HouseForStrategy(strategy, houses);
@@ -200,6 +202,7 @@ public class GameController : MonoBehaviour
     {
         if (foodRemaining > 0)
         {
+            print("there's food here");
             selectionMode = new FoodSelectionMode(this);
         }   
         else
@@ -209,8 +212,10 @@ public class GameController : MonoBehaviour
         }
     }
 
-    public void FinishFoodSelection()
-        => AdvancePhase();
+    public void FinishFoodSelection(){
+        print("finishing food");
+        AdvancePhase();
+    }
 
     public void AdvancePhase()
     {
