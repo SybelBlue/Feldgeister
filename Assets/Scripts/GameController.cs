@@ -135,8 +135,10 @@ public class GameController : MonoBehaviour
 
         switch (phase)
         {   
+            //Note from Conor: defining the strategies at dawn, prior to placing defenses, 
             case GamePhase.Dawn: 
                 day_number ++;
+                print("DAWN NUMBER " + day_number);
                 print(day_number);
                 foodRemaining = 3;
                 topMenuUI.ResetFood();
@@ -152,10 +154,18 @@ public class GameController : MonoBehaviour
                 watcherNPC.randomAttackTarget = Enum.GetName(typeof(CharacterJob),randomTargetJob);
                 dialogueRunner.variableStorage.SetValue("$strategic_attack", new Yarn.Value(Enum.GetName(typeof(AttackStrategy),strategy)));
                 dialogueRunner.variableStorage.SetValue("$random_attack", new Yarn.Value(Enum.GetName(typeof(CharacterJob),randomTargetJob)));
-                dialogueRunner.variableStorage.SetValue("$strategic_attack_character", new Yarn.Value(Enum.GetName(typeof(CharacterJob),strategicTargetJob)));
                 AutoAdvancePhaseOnDialogueComplete();
                 runningDialogue = true;
-                phaseTest.RunDawnDialogue();
+                //adding to seperate out the two dawn dialogues as it seems upset when we roll over into a new day
+                if (day_number == 1)
+                {
+                    phaseTest.RunDawnDialogue();
+
+                }
+                if (day_number == 2)
+                {
+                    phaseTest.RunDawnDialogueTwo();
+                }
 
                 foreach (var character in characterContainer.GetComponentsInChildren<Character>())
                 {
@@ -186,8 +196,11 @@ public class GameController : MonoBehaviour
                 // will advance to night
                 break;
             case GamePhase.Night:
-                runningDialogue = true;
+                //moved here from dawn in order to ensure that it registers who is actually the strongest character available, though setting strategy
+                //earlier on may end up not actually reflecting here -- Conor
+                dialogueRunner.variableStorage.SetValue("$strategic_attack_character", new Yarn.Value(Enum.GetName(typeof(CharacterJob),strategicTargetJob)));
                 AutoAdvancePhaseOnDialogueComplete();
+                runningDialogue = true;
                 phaseTest.RunNightDialogue();
                 MonsterAttack();
                 print("TODO: show feldgeister on screen");
