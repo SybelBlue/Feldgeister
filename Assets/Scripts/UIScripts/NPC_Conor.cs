@@ -69,11 +69,19 @@ public class NPC_Conor : MonoBehaviour {
         {
             DialogueRunner dialogueRunner = FindObjectOfType<Yarn.Unity.DialogueRunner>();
             dialogueRunner.Add(day_2);
+            if(day_2.baseLocalisationStringTable == null)
+            {
+		        dialogueRunner.AddStringTable(day_2);
+            }
         }  
         else if (day_number == 1)
         {       
             DialogueRunner dialogueRunner = FindObjectOfType<Yarn.Unity.DialogueRunner>();
             dialogueRunner.Add(day_1);
+            if(day_1.baseLocalisationStringTable == null)
+            {
+		        dialogueRunner.AddStringTable(day_1);
+            }
         }
     }
 }

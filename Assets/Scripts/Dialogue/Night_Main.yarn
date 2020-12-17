@@ -28,4 +28,5 @@ As you make your rounds, you see the {$strategic_attack_character}'s door is war
 There are burn marks along the side of {$random_attack}'s house. The charred body of a knife-wielding rooster in the ditch next to it. 
 No sense ogling at the damage. You need to talk to the townsfolk. 
 -> Start the day
+<<stop>>
 ===

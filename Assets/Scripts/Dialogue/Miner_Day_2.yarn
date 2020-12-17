@@ -1,4 +1,4 @@
-title: Miner_day2_start
+title: miner_start_day_2
 tags: 
 colorID: 0
 position: -89,-102
@@ -11,8 +11,8 @@ MAGDALENE: E-Ewald?
 ->Yeah, Magdalene, it's me. Can I come in?
 MAGDALENE: Yeah, sure, but it's not pretty.
 Ewald enters to find the miner lying in bed. She has a black eye, and the rest of her house is completely trashed.  
-[[Oh god, Magdalene! What the hell happened to you?|morale_d1_hurt]]
-[[Magdalene, are you okay? How can I help?|morale_u1_hurt]]
+[[Oh god, Magdalene! What the hell happened to you?|morale_d1_hurt_miner]]
+[[Magdalene, are you okay? How can I help?|morale_u1_hurt_miner]]
 
 //<<if character.miner.dead = true>>
 You walk up to the miner's house, and your heart sinks.
@@ -30,10 +30,10 @@ Oh, god.
 As you approach the miner’s house, where you find her resting next to a towering pile of... rock? 
 Her house seems untouched, eerily normal. She notices you approaching and waves.
 MAGDALENE: Hey, Ewald! I wanted to help with defense, so I grabbed not only all the salt I could find, but all the rocks that had been touching it, too! Didn't know if that would help. 
-[[I hadn't thought of that! No harm in trying! |else_high_morale_1]]
-[[It won't. |else_low_morale_1]]
+[[I hadn't thought of that! No harm in trying! |else_high_morale_1_miner]]
+[[It won't. |else_low_morale_1_miner]]
 ===
-title: morale_d1_hurt
+title: morale_d1_hurt_miner
 tags: 
 colorID: 0
 position: 304,200
@@ -52,7 +52,7 @@ She nods and tries not to show you how much effort it took.
 -> Time to check on the others.
 <<stop>>
 ===
-title: morale_u1_hurt
+title: morale_u1_hurt_miner
 tags: 
 colorID: 0
 position: 560,202
@@ -69,7 +69,7 @@ You shut the curtains and Magdalene sighs in relief in the darkness.
 -> Time to check on the others.
 <<stop>>
 ===
-title: else_high_morale_1
+title: else_high_morale_1_miner
 tags: 
 colorID: 0
 position: -713,323
@@ -84,17 +84,17 @@ MAGDALENE: Chin up, Mayor Schaf.
 ->Time to check on the others.
 <<stop>>
 ===
-title: else_low_morale_1
+title: else_low_morale_1_miner
 tags: 
 colorID: 0
 position: -379,178
 ---
 The miner's young face crumples. 
 MAGDALENE: Oh. I guess you would know. Stupid idea, I'll stick to salt.
-[[Yes, do that. Do you have some salt I can use? |else_morale_d2]]
+[[Yes, do that. Do you have some salt I can use? |else_morale_d2_miner]]
 [[You know what? I do think we can work with this for barricades or something. |else_d1u1_miner]]
 ===
-title: else_morale_d2
+title: else_morale_d2_miner
 tags: 
 colorID: 0
 position: -159,428
@@ -121,11 +121,4 @@ MAGDALENE: Oof! It's pretty heavy! I think a few rocks snuck in here too, haha! 
 She gives you a joking salute, then heads back into her home, which is presumably full of rocks. 
 ->Go check on the others.
 <<stop>>
-===
-title: end_hurt
-tags: 
-colorID: 0
-position: 445,569
----
-Empty Text
 ===
