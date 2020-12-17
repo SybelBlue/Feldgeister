@@ -38,6 +38,10 @@ public class FoodSelectionMode : ISelectionMode
         if (character && gameController.foodRemaining > 0 && character.Feed())
         {
             gameController.foodRemaining--;
+            if (gameController.foodRemaining == 0)
+            {
+                gameController.FinishFoodSelection();
+            }
         }
     }
 }

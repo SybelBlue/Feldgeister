@@ -17,7 +17,8 @@ public enum GamePhase
 #pragma warning disable 0649
 public class GameController : MonoBehaviour
 {
-    public int day_number = 0;
+    [ReadOnly]
+    public int day_number;
    //CONOR FUTZING AGAIN
     //VariableStorage varStore = DialogueRunner.GetComponent<VariableStorage>();
     //CONOR FUTZING AGAIN
@@ -178,10 +179,22 @@ public class GameController : MonoBehaviour
     public void FinishLambSelection()
         => selectionMode = new DefenseSelectionMode(this);
 
-    public void FinishDialogueSelection()
-        => selectionMode = new FoodSelectionMode(this);
-
     public void FinishDefenseSelection()
+        => AdvancePhase();
+
+    public void FinishDialogueSelection()
+    {
+        if (foodRemaining > 0)
+        {
+            selectionMode = new FoodSelectionMode(this);
+        }   
+        else
+        {
+            FinishFoodSelection();
+        }
+    }
+
+    public void FinishFoodSelection()
         => AdvancePhase();
 
     public void AdvancePhase()
