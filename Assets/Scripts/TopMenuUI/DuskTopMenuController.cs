@@ -10,11 +10,16 @@ public class DuskTopMenuController : MonoBehaviour
     public UnityEvent hideResources;
     public UnityEvent hideDefenses;
     public UnityEvent changeToDusk;
+    public UnityEvent update;
    
    //called when player places a defense, gets next resource
     public void updateNowPlacing()
     {
         
+    }
+    public void UpdateAll()
+    {
+        update.Invoke();
     }
     //hides resource and defense lists but keeps top menu
     public void HideLists()

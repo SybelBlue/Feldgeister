@@ -11,6 +11,7 @@ public class TopMenuController : MonoBehaviour
     public UnityEvent hideResources;
     public UnityEvent hideDefenses;
     public UnityEvent changeToDusk;
+    public UnityEvent update;
     public GameController gameController;
 
     void OnStart()
@@ -51,5 +52,10 @@ public class TopMenuController : MonoBehaviour
         this.gameObject.SetActive(true);
         hideResources.Invoke();
         hideDefenses.Invoke();
+    }
+    public void UpdateAll()
+    {
+        update.Invoke();
+        ResetFood();
     }
 }

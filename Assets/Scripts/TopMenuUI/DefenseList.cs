@@ -19,6 +19,10 @@ public class DefenseList : MonoBehaviour
     public void ToggleDisplay()
     {
         this.gameObject.SetActive(!gameObject.activeInHierarchy);
+        if(this.gameObject.activeInHierarchy)
+        {
+            UpdateAll();
+        }
     }
     public void TurnOn()
     {
