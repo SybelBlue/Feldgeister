@@ -3,7 +3,7 @@ tags:
 colorID: 0
 position: -104,-97
 ---
-<<if $day_number is 1>> 
+<<if $day_number is 1>> asd
     Day {$day_number} of the attacks.
     It's Dawn. You wake with grit in your eyes and a bad feeling that the {$random_attack} might be in particular danger. No time to dwell, though. You have a town to protect.
     -> Get up and face the day.
