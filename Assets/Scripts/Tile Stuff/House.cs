@@ -47,7 +47,7 @@ public class House : Building
 
     public int defenseLevel
     {
-        get => defenses.Select(defenseItem => defenseItem.value).Sum();
+        get => character.alive ? defenses.Select(defenseItem => defenseItem.value).Sum() : -1;
         set
         {
             print($"Setting {character.job} defenses to {value}");

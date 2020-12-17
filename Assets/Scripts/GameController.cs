@@ -17,7 +17,8 @@ public enum GamePhase
 #pragma warning disable 0649
 public class GameController : MonoBehaviour
 {
-    public int day_number = 0;
+    [ReadOnly]
+    public int day_number;
    //CONOR FUTZING AGAIN
     //VariableStorage varStore = DialogueRunner.GetComponent<VariableStorage>();
     //CONOR FUTZING AGAIN
@@ -178,10 +179,22 @@ public class GameController : MonoBehaviour
     public void FinishLambSelection()
         => selectionMode = new DefenseSelectionMode(this);
 
-    public void FinishDialogueSelection()
-        => selectionMode = new FoodSelectionMode(this);
-
     public void FinishDefenseSelection()
+        => AdvancePhase();
+
+    public void FinishDialogueSelection()
+    {
+        if (foodRemaining > 0)
+        {
+            selectionMode = new FoodSelectionMode(this);
+        }   
+        else
+        {
+            FinishFoodSelection();
+        }
+    }
+
+    public void FinishFoodSelection()
         => AdvancePhase();
 
     public void AdvancePhase()
@@ -203,7 +216,7 @@ public class GameController : MonoBehaviour
                 null;
         selectionMode?.OnHover(hovered);
 
-#if UNITY_EDITOR
+// #if UNITY_EDITOR
         // if in the editor, can advance selection modes with ']'
         if (Input.GetKeyDown(KeyCode.RightBracket))
         {
@@ -220,7 +233,7 @@ public class GameController : MonoBehaviour
                     break;
             }
         }
-#endif
+// #endif
     }
 
     public void MonsterAttack()
