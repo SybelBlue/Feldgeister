@@ -216,7 +216,7 @@ public class GameController : MonoBehaviour
                 null;
         selectionMode?.OnHover(hovered);
 
-#if UNITY_EDITOR
+// #if UNITY_EDITOR
         // if in the editor, can advance selection modes with ']'
         if (Input.GetKeyDown(KeyCode.RightBracket))
         {
@@ -233,7 +233,7 @@ public class GameController : MonoBehaviour
                     break;
             }
         }
-#endif
+// #endif
     }
 
     public void MonsterAttack()
