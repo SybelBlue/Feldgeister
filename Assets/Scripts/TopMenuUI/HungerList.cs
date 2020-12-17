@@ -31,6 +31,7 @@ public class HungerList : MonoBehaviour
     }
     public void UpdateAll(){
         blacksmith.text = "Blacksmith: " + blacksmithChar.hunger.ToString();
+        print("blacksmith: " + blacksmithChar.hunger.ToString());
         witch.text = "Witch: " + witchChar.hunger.ToString();
         miner.text = "Miner: " + minerChar.hunger.ToString();
         farmer.text = "Farmer: " + farmerChar.hunger.ToString();

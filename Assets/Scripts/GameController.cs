@@ -31,6 +31,8 @@ public class GameController : MonoBehaviour
     public GameObject endFoodDonation;
     public GameObject endDefensePlacement;
     public GameObject foodDonationScreen;
+    public GameObject lambPlacementScreen;
+    public GameObject defensePlacementScreen;
     public GameObject dayTopMenu;
     public GameObject duskTopMenu;
     
@@ -74,6 +76,7 @@ public class GameController : MonoBehaviour
     public DialogueRunner dialogueRunner;
     
     public TopMenuController topMenuUI;
+    public DuskTopMenuController duskMenuUI;
 
     public HouseOccupant houseOccupantUI;
 
@@ -103,6 +106,7 @@ public class GameController : MonoBehaviour
     private CharacterJob strategicTargetJob, randomTargetJob;
 
     [SerializeField, ReadOnly]
+    
     private int _foodRemaining;
     public int foodRemaining
     {
@@ -131,6 +135,8 @@ public class GameController : MonoBehaviour
             case GamePhase.Dawn: 
                 day_number ++;
                 print(day_number);
+                foodRemaining = 3;
+                topMenuUI.UpdateAll();
                 dialogueRunner.variableStorage.SetValue("$day_number", new Yarn.Value(day_number));
                 strategy = new List<AttackStrategy>(StaticUtils.allStrategies).RandomChoice();
                 strategicTarget = StaticUtils.HouseForStrategy(strategy, houses);
@@ -165,6 +171,7 @@ public class GameController : MonoBehaviour
                 // will advance to food placement
                 break;
             case GamePhase.Dusk:
+                duskMenuUI.UpdateAll();
                 runningDialogue = true;
                 phaseTest.RunDuskDialogue();
                 selectionMode = new LambSelectionMode(this);
@@ -196,7 +203,7 @@ public class GameController : MonoBehaviour
         }   
         else
         {
-            print(foodRemaining);
+            print("food: " + foodRemaining);
             FinishFoodSelection();
         }
     }

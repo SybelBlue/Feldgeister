@@ -20,6 +20,11 @@ public class DialogueSelectionMode : ISelectionMode
     {
         charactersTalkedToday = new bool[jobCount];
         gameController.ClearHouseAndCharacterDisplays();
+        gameController.endDialogue.SetActive(true);
+        gameController.dayTopMenu.SetActive(true);
+
+        // //setting this by default
+        // gameController.foodRemaining = 3;
     }
 
     public void OnEndSelectionMode()

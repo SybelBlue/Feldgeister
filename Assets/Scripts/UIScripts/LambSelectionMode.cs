@@ -14,6 +14,7 @@ public class LambSelectionMode : ISelectionMode
         gameController.ClearHouseAndCharacterDisplays();
         gameController.dayTopMenu.SetActive(false);
         gameController.duskTopMenu.SetActive(true);
+        gameController.lambPlacementScreen.SetActive(true);
     }
     
     public void OnEndSelectionMode()

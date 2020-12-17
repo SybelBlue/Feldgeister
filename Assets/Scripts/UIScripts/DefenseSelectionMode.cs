@@ -15,10 +15,16 @@ public class DefenseSelectionMode : ISelectionMode
     {
         gameController.ClearHouseAndCharacterDisplays();
         gameController.endDefensePlacement.SetActive(true);
+        gameController.lambPlacementScreen.SetActive(false);
+        gameController.defensePlacementScreen.SetActive(true);
     }
     
     public void OnEndSelectionMode()
-    {  }
+    { 
+        gameController.defensePlacementScreen.SetActive(false);
+        gameController.duskTopMenu.SetActive(false);
+        gameController.endDefensePlacement.SetActive(false);
+    }
     
     public void OnHover(Character character)
     {
