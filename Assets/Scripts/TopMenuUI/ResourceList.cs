@@ -5,6 +5,7 @@ using TMPro;
 
 public class ResourceList : MonoBehaviour
 {
+    public Character miner;
     public int salt = 0;
     public TMP_Text minerText;
     public int weapons = 0;
@@ -12,6 +13,7 @@ public class ResourceList : MonoBehaviour
     public int enchantment = 0;
     public TMP_Text witchText;
     public int rations = 2;
+    public Character farmer;
     public TMP_Text farmerText;
     public void ToggleDisplay()
     {
@@ -53,6 +55,17 @@ public class ResourceList : MonoBehaviour
         AddRations((-rations + 2));
         enchantment = 0;
         witchText.text = "Enchantments: " + enchantment;
+        
+        //default resource values
+        AddSalt(2);
+        if(miner.moraleValue > 1)
+        {
+            AddSalt(1);
+        }
+        if(farmer.moraleValue > 0)
+        {
+            AddRations(1);
+        }
     }
 
 }

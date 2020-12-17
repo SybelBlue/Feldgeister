@@ -35,6 +35,7 @@ public class GameController : MonoBehaviour
     public GameObject defensePlacementScreen;
     public GameObject dayTopMenu;
     public GameObject hungerList;
+    public ResourceList resourceList;
     public GameObject duskTopMenu;
     
     private ISelectionMode _selectionMode;
@@ -83,6 +84,7 @@ public class GameController : MonoBehaviour
 
     public CharacterDisplayController leftCharacterDisplay, rightCharacterDisplay;
     public Character mayorCharacter;
+    public Character blacksmith;
 
     public NPC_Conor watcherNPC;
 
@@ -187,6 +189,7 @@ public class GameController : MonoBehaviour
                 duskMenuUI.UpdateAll();
                 runningDialogue = true;
                 phaseTest.RunDuskDialogue();
+                AddWeapons();
                 selectionMode = new LambSelectionMode(this);
                 // defense placement mode will start after lamb is placed
                 // make button call GameController.FinishDefenseSelection(),
@@ -205,6 +208,14 @@ public class GameController : MonoBehaviour
         }
     }
 
+    public void AddWeapons()
+    {
+        resourceList.AddWeapons(2);
+        if(blacksmith.moraleValue > 1)
+        {
+            resourceList.AddWeapons(1);
+        }
+    }
     public void FinishLambSelection()
         => selectionMode = new DefenseSelectionMode(this);
 
