@@ -6,18 +6,13 @@ using UnityEngine.Events;
 
 public class DuskTopMenuController : MonoBehaviour
 {
-    public TMP_Text foodRemaining;
+    public TMP_Text nowPlacing;
     public UnityEvent hideResources;
     public UnityEvent hideDefenses;
     public UnityEvent changeToDusk;
    
-   //reduces food by one, should be called after speaking with a character
-    public void ReduceFood()
-    {
-        
-    }
-//resets food remaining text (needs to eventually update food variable as well)
-    public void ResetFood()
+   //called when player places a defense, gets next resource
+    public void updateNowPlacing()
     {
         
     }
