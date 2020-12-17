@@ -31,7 +31,10 @@ public class GameController : MonoBehaviour
     public GameObject endFoodDonation;
     public GameObject endDefensePlacement;
     public GameObject foodDonationScreen;
+    public GameObject lambPlacementScreen;
+    public GameObject defensePlacementScreen;
     public GameObject dayTopMenu;
+    public GameObject hungerList;
     public GameObject duskTopMenu;
     
     private ISelectionMode _selectionMode;
@@ -74,6 +77,7 @@ public class GameController : MonoBehaviour
     public DialogueRunner dialogueRunner;
     
     public TopMenuController topMenuUI;
+    public DuskTopMenuController duskMenuUI;
 
     public HouseOccupant houseOccupantUI;
 
@@ -103,6 +107,7 @@ public class GameController : MonoBehaviour
     private CharacterJob strategicTargetJob, randomTargetJob;
 
     [SerializeField, ReadOnly]
+    
     private int _foodRemaining;
     public int foodRemaining
     {
@@ -132,6 +137,10 @@ public class GameController : MonoBehaviour
             case GamePhase.Dawn: 
                 day_number ++;
                 print("DAWN NUMBER " + day_number);
+                print(day_number);
+                foodRemaining = 3;
+                topMenuUI.ResetFood();
+                //topMenuUI.UpdateAll();
                 dialogueRunner.variableStorage.SetValue("$day_number", new Yarn.Value(day_number));
                 strategy = new List<AttackStrategy>(StaticUtils.allStrategies).RandomChoice();
                 strategicTarget = StaticUtils.HouseForStrategy(strategy, houses);
@@ -175,6 +184,7 @@ public class GameController : MonoBehaviour
                 // will advance to food placement
                 break;
             case GamePhase.Dusk:
+                duskMenuUI.UpdateAll();
                 runningDialogue = true;
                 phaseTest.RunDuskDialogue();
                 selectionMode = new LambSelectionMode(this);
@@ -205,17 +215,20 @@ public class GameController : MonoBehaviour
     {
         if (foodRemaining > 0)
         {
+            print("there's food here");
             selectionMode = new FoodSelectionMode(this);
         }   
         else
         {
-            print(foodRemaining);
+            print("food: " + foodRemaining);
             FinishFoodSelection();
         }
     }
 
-    public void FinishFoodSelection()
-        => AdvancePhase();
+    public void FinishFoodSelection(){
+        print("finishing food");
+        AdvancePhase();
+    }
 
     public void AdvancePhase()
     {
